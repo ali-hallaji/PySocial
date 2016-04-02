@@ -111,7 +111,7 @@ if not ON_OPENSHIFT:
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'pysocial',
             'USER': 'admincme1fr3',
             'PASSWORD': '7M4fRk4ByPwy',
