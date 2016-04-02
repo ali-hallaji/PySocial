@@ -15,6 +15,9 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+ON_OPENSHIFT = False
+if os.environ.get('OPENSHIFT_REPO_DIR'):
+    ON_OPENSHIFT = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -74,13 +77,25 @@ WSGI_APPLICATION = 'pysocial.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+
+if not ON_OPENSHIFT:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pysocial',
+        'USER': 'admincme1fr3',
+        'PASSWORD': '7M4fRk4ByPwy',
+        'HOST': 'postgresql://{0}'.format(os.environ['OPENSHIFT_POSTGRESQL_DB_HOST']),
+        'PORT': '{0}'.format(os.environ['OPENSHIFT_POSTGRESQL_DB_PORT']),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -119,3 +134,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+try:
+    from settings_local import *
+except:
+    pass
