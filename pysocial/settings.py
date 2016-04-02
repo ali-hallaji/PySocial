@@ -34,9 +34,13 @@ if 'OPENSHIFT_POSTGRESQL_DB_PASSWORD' in os.environ:
 
 if 'OPENSHIFT_POSTGRESQL_DB_HOST' in os.environ:
     DB_HOST = os.environ['OPENSHIFT_POSTGRESQL_DB_HOST']
+else:
+    DB_HOST = '56ffa9bb89f5cf53a40001d4-hallaji.rhcloud.com'
 
 if 'OPENSHIFT_POSTGRESQL_DB_PORT' in os.environ:
     DB_PORT = os.environ['OPENSHIFT_POSTGRESQL_DB_PORT']
+else:
+    DB_PORT = '41766'
 
 if 'MONGODB_URL' in os.environ:
     MONGODB_URL = os.environ['MONGODB_URL']
