@@ -16,8 +16,30 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ON_OPENSHIFT = False
+
 if os.environ.get('OPENSHIFT_REPO_DIR'):
     ON_OPENSHIFT = True
+
+if 'OPENSHIFT_REPO_DIR' in os.environ:
+    ON_OPENSHIFT = True
+
+if 'OPENSHIFT_APP_NAME' in os.environ:
+    DB_NAME = os.environ['OPENSHIFT_APP_NAME']
+
+if 'OPENSHIFT_POSTGRESQL_DB_USERNAME' in os.environ:
+    DB_USER = os.environ['OPENSHIFT_POSTGRESQL_DB_USERNAME']
+
+if 'OPENSHIFT_POSTGRESQL_DB_PASSWORD' in os.environ:
+    DB_PASSWD = os.environ['OPENSHIFT_POSTGRESQL_DB_PASSWORD']
+
+if 'OPENSHIFT_POSTGRESQL_DB_HOST' in os.environ:
+    DB_HOST = os.environ['OPENSHIFT_POSTGRESQL_DB_HOST']
+
+if 'OPENSHIFT_POSTGRESQL_DB_PORT' in os.environ:
+    DB_PORT = os.environ['OPENSHIFT_POSTGRESQL_DB_PORT']
+
+if 'MONGODB_URL' in os.environ:
+    MONGODB_URL = os.environ['MONGODB_URL']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -86,6 +108,17 @@ if not ON_OPENSHIFT:
         }
     }
 
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'pysocial',
+            'USER': 'admincme1fr3',
+            'PASSWORD': '7M4fRk4ByPwy',
+            'HOST': DB_HOST,
+            'PORT': DB_PORT
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
