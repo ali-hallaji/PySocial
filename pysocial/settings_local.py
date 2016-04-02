@@ -1,8 +1,6 @@
 import os
 
 
-if 'OPENSHIFT_REPO_DIR' in os.environ:
-    ON_OPENSHIFT = True
 
 if 'OPENSHIFT_APP_NAME' in os.environ:
     DB_NAME = os.environ['OPENSHIFT_APP_NAME']
