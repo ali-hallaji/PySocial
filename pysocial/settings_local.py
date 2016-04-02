@@ -1,20 +1,26 @@
 import os
 
 
-
-if os.environ.has_key('OPENSHIFT_REPO_DIR'):
+if 'OPENSHIFT_REPO_DIR' in os.environ:
     ON_OPENSHIFT = True
-if os.environ.has_key('OPENSHIFT_APP_NAME'):
+
+if 'OPENSHIFT_APP_NAME' in os.environ:
     DB_NAME = os.environ['OPENSHIFT_APP_NAME']
-if os.environ.has_key('OPENSHIFT_POSTGRESQL_DB_USERNAME'):
+
+if 'OPENSHIFT_POSTGRESQL_DB_USERNAME' in os.environ:
     DB_USER = os.environ['OPENSHIFT_POSTGRESQL_DB_USERNAME']
-if os.environ.has_key('OPENSHIFT_POSTGRESQL_DB_PASSWORD'):
+
+if 'OPENSHIFT_POSTGRESQL_DB_PASSWORD' in os.environ:
     DB_PASSWD = os.environ['OPENSHIFT_POSTGRESQL_DB_PASSWORD']
-if os.environ.has_key('OPENSHIFT_POSTGRESQL_DB_HOST'):
+
+if 'OPENSHIFT_POSTGRESQL_DB_HOST' in os.environ:
     DB_HOST = os.environ['OPENSHIFT_POSTGRESQL_DB_HOST']
-if os.environ.has_key('OPENSHIFT_POSTGRESQL_DB_PORT'):
+
+if 'OPENSHIFT_POSTGRESQL_DB_PORT' in os.environ:
     DB_PORT = os.environ['OPENSHIFT_POSTGRESQL_DB_PORT']
 
+if 'MONGODB_URL' in os.environ:
+    MONGODB_URL = os.environ['MONGODB_URL']
 
 if ON_OPENSHIFT:
     DATABASES = {

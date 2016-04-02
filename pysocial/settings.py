@@ -86,16 +86,6 @@ if not ON_OPENSHIFT:
         }
     }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pysocial',
-        'USER': 'admincme1fr3',
-        'PASSWORD': '7M4fRk4ByPwy',
-        'HOST': 'postgresql://{0}'.format(os.environ['OPENSHIFT_POSTGRESQL_DB_HOST']),
-        'PORT': '{0}'.format(os.environ['OPENSHIFT_POSTGRESQL_DB_PORT']),
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
