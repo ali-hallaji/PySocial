@@ -20,11 +20,17 @@ from django.contrib import admin
 
 # PySocial import
 from views import home
+from views import under_construction
 
 
 urlpatterns = [
     url(r'^captcha/', include('captcha.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include('users.urls')),
-    url(r'^$', home, name="home"),
+    url(r'^home/$', home, name="home"),
+    url(
+        r'^$',
+        under_construction,
+        name="under_construction"
+    )
 ]

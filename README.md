@@ -1,3 +1,8 @@
+<p align="center">
+  <a href="http://pysocial.com">
+    <img alt="PySocial" src="static/main/img/logo.png">
+  </a>
+</p>
 <a href='http://pysocial.com'><h3 align="center">PySocial</h3></a>
 <p align="center">
   Path to a free self-taught education in <a href='http://python.org'><strong>Python</strong></a> language!
