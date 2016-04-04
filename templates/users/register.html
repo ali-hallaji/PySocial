@@ -1,125 +1,31 @@
-
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
 {% load staticfiles %}
-<div class="uk-container uk-container-center uk-position-cover">
-    <div class="vir-grid-main uk-grid uk-grid-collapse">
-        <div class="uk-width-1-4">
-            <div class="vir-panel-left uk-panel uk-text-center">
-                <i class="virgole-virgolefont"></i>
-                <p>..with VIRGOLE, Different Experience</p>
-                <div class="uk-text-justify">
-                    همه به یک حساب کاربری نیاز دارند.<br>نام کاربری (آدرس ایمیل) و گذرواژه, همه چیز شما در ویرگول خواهد بود.<hr id="vir-divider-1">چنانچه قبلا حساب کاربری ایجاد نموده اید, با آن می توانید به ویرگول وارد شوید.
-                </div>
-                <a class="vir-btn-1 uk-button uk-margin-large-top" href="/users/login">به ویرگول وارد شوید</a>
-            </div>
-        </div>
-        <div class="uk-width-3-4">
-            <div class="vir-panel-right uk-panel">
-                <h5><i class="virgole-71"></i>ثبت حساب کاربری</h5>
-                <hr id="vir-divider-2">
-                <form method="POST" enctype="multipart/form-data" action="">
-                    {% csrf_token %}
-                    <div class="vir-panel-image">
-                        {{ form.image }}
-                        <img class="uk-border-circle" id="vir-user-image" src="{{ STATIC_URL }}virgole/img/Avatar.jpg" alt="user">
-                        <a class="vir-btn-2 uk-button uk-form-file" id="upload-button" data-uk-modal="{target:'#modal-crop', bgclose:false}"><i class="virgole-9"></i>افزودن تصویر</a>
-                    </div>
-                    <div class="vir-form-box">
-                        <h2>به ویرگول بپیوندید</h2>
-                        <p><i class="virgole-47"></i>کاربر گرامی پر کردن تمامی اطلاعات خواسته شده الزامی میباشد.</p>
-                        <div class="vir-form-register uk-form uk-form-horizontal">
-                            <div class="uk-grid">
-                                <div class="uk-width-1-2">
-                                    <div class="uk-form-row">
-                                        <label class="uk-form-label" for="form-h-s">{{ form.first_name.label }}</label>
-                                        <div class="uk-form-controls">{{ form.first_name }}</div>
-                                    </div>
-                                    <div class="uk-form-row">
-                                        <label class="uk-form-label">{{ form.gender.label }}</label>
-                                        <div class="uk-form-controls uk-clearfix">{{ form.gender }}</div>
-                                    </div>
-                                    <div class="uk-form-row">
-                                        <label class="uk-form-label">{{ form.email.label }}</label>
-                                        <div class="uk-form-controls" dir="ltr">{{ form.email }}</div>
-                                    </div>
-                                    <div class="uk-form-row">
-                                        <label class="uk-form-label">{{ form.password1.label }}</label>
-                                        <div class="uk-form-controls" dir="ltr">{{ form.password1 }}</div>
-                                    </div>
-                                    <div class="uk-form-row">
-                                        <label class="uk-form-label">{{ form.password2.label }}</label>
-                                        <div class="uk-form-controls" dir="ltr">{{ form.password2 }}</div>
-                                    </div>
-                                </div>
-                                <div class="uk-width-1-2">
-                                    <div class="uk-form-row">
-                                        <label class="uk-form-label" for="form-h-s">{{ form.last_name.label }}</label>
-                                        <div class="uk-form-controls">{{ form.last_name }}</div>
-                                    </div>
-                                    <div class="uk-form-row" id="vir-date">
-                                        <label class="uk-form-label">تاریخ تولد:</label>
-                                        <div class="uk-form-controls">
-                                            <select name="day" id="day" tabindex="4">
-                                                <option value="">روز</option>
-                                                {% for i in 32|ranger:1 %}
-                                                    <option value="{{ i }}">{{ i }}</option>
-                                                {% endfor %}
-                                            </select>
-                                            <select name="month" id="month" tabindex="5">
-                                                <option value="">ماه</option>
-                                                {% for i in 13|ranger:1 %}
-                                                    <option value="{{ i }}">{{ i }}</option>
-                                                {% endfor %}
-                                            </select>
-                                            <select name="year" id="year" tabindex="6">
-                                                <option value="">سال</option>
-                                                {% for i in 1300|reverse_ranger:1385 %}
-                                                    <option value="{{ i }}">{{ i }}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="vir-form-panel-bottom">
-                                <p>جهت صحت از حقیقی بودن هویت شما کد امنیتی داده شده را در قسمت مربوطه وارد نمایید.</p>
-                                {{ form.captcha }}<a class="captcha-refresh"><i class="uk-icon-refresh"></i><span>تغییر کد امنیتی</span></a>
-                            </div>
-                            <button class="vir-btn-3 uk-button uk-float-left" type="submit">ثبت نام در ویرگول</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="{% static "css/MAIN/signup.css" %}">
+        <link rel="stylesheet" href="/static/css/style.css"/>
+                <title>ثبت نام</title>
+</head>
+<!-- Sign Up  Popup itself -->
+<div id="signup-popup">
+<form id="signup_login" action="" method='post'>
+    <h1 id="signup_ff-proof" class="signup_ribbon signup_text_head">ثبت نام &nbsp;&nbsp;</h1>
+    <a href="/"><img id="home" src="/static/img/MAIN/img/home-icon.png" alt="home"></a>
+    <div class="signup_apple"></div>
+    <fieldset class="fieldset" id="signup_inputs">
+            {% csrf_token %}
+            <div>{{ form.username }}{% if form.username.errors %}<p id="error">{{ form.username.errors|removetags:"ul li" }}</p>{% endif %}</div>
+            <div>{{ form.password1 }}{% if form.password1.errors %}<p id="error">{{ form.password1.errors|removetags:"ul li" }}</p>{% endif %}</div>
+            <div>{{ form.password2 }}{% if form.password2.errors %}<p id="error">{{ form.password2.errors|removetags:"ul li" }}</p>{% endif %}</div>
+            <div>{{ form.email }}{% if form.email.errors %}<p id="error">{{ form.email.errors|removetags:"ul li" }}</p>{% endif %}</div>
+            <div>{{ form.re_email }}{% if form.re_email.errors %}<p id="error">{{ form.re_email.errors|removetags:"ul li" }}</p>{% endif %}</div>
+            <div class="captcha">{{ form.captcha }}{% if form.captcha.errors %}<p id="error">{{ form.captcha.errors|removetags:"ul li" }}</p>{% endif %}</div>
+    </fieldset>
+    <fieldset id="signup_actions">
+        <input type="submit" id="signup_submit" value="تایید"/>
+            <p class="signup_option"><a href="/user/password/reset/">رمز عبور را فراموش کردم</a></p>
+    </fieldset>
+</form>
 </div>
-
-<!-- Modal For Cropping Image -->
-<div id="modal-crop" class="uk-modal">
-    <div class="vir-crop-dialog uk-modal-dialog">
-        <a class="uk-modal-close uk-close"></a>
-        <div class="uk-modal-header"><i class="virgole-97"></i>افزودن عکس</div>
-        <div class="uk-grid uk-grid-medium">
-            <div class="uk-width-6-10">
-                <div class="tm-img-container img-container">
-                    <img class="cropper" id="pre-img">
-                    <i class="virgole-112"></i>
-                </div>
-            </div>
-            <div class="uk-width-4-10">
-                <p id="vir-info"><i class="virgole-35"></i>پیش‌ نمایش کادر انتخابی شما</p>
-                <div class="img-preview preview-lg-n uk-margin-large-bottom"></div>
-                <div class="img-preview preview-lg-2"></div>
-            </div>
-        </div>
-        <div class="uk-modal-footer">
-            <div class="uk-form-file">
-                <button class="vir-btn-5 uk-button" id="upload-img" style="margin-right:1px;"><i class="virgole-112"></i>{{ form.image }}انتخاب عکس</button>
-                <input type="file" class="sr-only" name="file" accept="image/*" id="inputImage">
-            </div>
-            <a class="vir-btn-4 uk-button uk-float-left uk-margin-right" id="saveimage"><i class="virgole-97"></i>آپلود عکس</a>
-            <a class="vir-btn-5 uk-button uk-float-left cancel_cropper"><i class="virgole-68"></i>انصراف</a>
-        </div>
-    </div>
-</div>
-
-
+</html>

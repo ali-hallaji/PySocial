@@ -2,3 +2,4 @@ django
 pymongo
 psycopg2
 cffi
+django-simple-captcha
