@@ -13,7 +13,7 @@ class MongoConnection(object):
         """Singleton method for running Mongo instance"""
         if cls.__db is None:
             cls.__db = MongoClient(
-                settings.MONGODB_URL,
+                settings.MONGO_DB_URL,
                 serverSelectionTimeoutMS=6000, maxPoolSize=None
             )
         return cls.__db

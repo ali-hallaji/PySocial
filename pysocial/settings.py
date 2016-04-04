@@ -21,7 +21,7 @@ SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 config = RawConfigParser()
 config.read(BASE_DIR + '/pysocial/settings.ini')
 
-ON_PYSOCIAL_HOST = config.get('host', 'ON_PYSOCIAL')
+ON_PYSOCIAL_HOST = config.getboolean('host', 'ON_PYSOCIAL')
 
 DJANGO_DB_NAME = config.get('django_db', 'DATABASE_NAME')
 DJANGO_DB_USER = config.get('django_db', 'DATABASE_USER')
@@ -30,17 +30,21 @@ DJANGO_DB_HOST = config.get('django_db', 'DATABASE_HOST')
 DJANGO_DB_PORT = config.get('django_db', 'DATABASE_PORT')
 
 MONGO_DB_NAME = config.get('mongodb', 'DATABASE_NAME')
-MONGO_DB_URL = config.get('mongodb', 'DATABASE_URL')
+
+if ON_PYSOCIAL_HOST:
+    MONGO_DB_URL = config.get('mongodb', 'DATABASE_URL')
+else:
+    MONGO_DB_URL = "mongodb://localhost:27017"
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'n3_xnk$xov3e(yr--u&(vt_x^+rs^_xdvf33uy^x8#)q)^=ppo'
+SECRET_KEY = config.get('secrets', 'SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config.getboolean('debug', 'DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -114,31 +118,14 @@ else:
         }
     }
 
-# Password validation
-# https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
-
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fa-IR'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tehran'
 
 USE_I18N = True
 
@@ -166,7 +153,6 @@ MAILGUN_SERVER_NAME = config.get('email', 'MAILGUN_URL')
 
 try:
     from settings_local import *
+
 except Exception as e:
-    print e
     raise Exception(e)
-    pass
