@@ -25,7 +25,7 @@ ON_PYSOCIAL_HOST = config.getboolean('host', 'ON_PYSOCIAL')
 
 DJANGO_DB_NAME = config.get('django_db', 'DATABASE_NAME')
 DJANGO_DB_USER = config.get('django_db', 'DATABASE_USER')
-DJANGO_DB_PASSWD = config.get('django_db', 'DATABASE_USER')
+DJANGO_DB_PASSWD = config.get('django_db', 'DATABASE_PASSWORD')
 DJANGO_DB_HOST = config.get('django_db', 'DATABASE_HOST')
 DJANGO_DB_PORT = config.get('django_db', 'DATABASE_PORT')
 

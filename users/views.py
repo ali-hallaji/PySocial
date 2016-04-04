@@ -113,7 +113,10 @@ def registration(request):
 
                 if update.raw_result.get('updatedExisting', None):
 
-                    welcome_mail([data['email'], ])
+                    try:
+                        welcome_mail([data['email'], ])
+                    except:
+                        pass
 
                     user = auth.authenticate(
                         username=data['username'],
