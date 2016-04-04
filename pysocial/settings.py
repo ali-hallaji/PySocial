@@ -45,6 +45,8 @@ else:
 
 if 'MONGODB_URL' in os.environ:
     MONGODB_URL = os.environ['MONGODB_URL']
+else:
+    MONGODB_URL = "mongodb://localhost:27017"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -67,6 +69,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'captcha',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -101,7 +104,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'pysocial.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -166,6 +168,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
+# Custome App
+INSTALLED_APPS += [
+    'users',
+]
 
 try:
     from settings_local import *

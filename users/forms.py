@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 from django import forms
+from captcha.fields import CaptchaField
 
 
 class RegisterUsersForm(forms.Form):
@@ -9,7 +11,6 @@ class RegisterUsersForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': "input",
-                'id': "signup_username",
                 'type': "text",
                 'placeholder': 'نام کاربری',
                 'autocomplete': 'off',
@@ -36,6 +37,7 @@ class RegisterUsersForm(forms.Form):
         label='تکرار گذرواژه:',
         widget=forms.PasswordInput(attrs={'tabindex': '9'})
     )
+    captcha = CaptchaField()
 
     def clean(self):
         cleaned_data = super(RegisterUsersForm, self).clean()

@@ -3,28 +3,23 @@
 {% load staticfiles %}
 <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="{% static "css/MAIN/signup.css" %}">
-        <link rel="stylesheet" href="/static/css/style.css"/>
-                <title>ثبت نام</title>
+        <title>ثبت نام</title>
 </head>
-<!-- Sign Up  Popup itself -->
-<div id="signup-popup">
-<form id="signup_login" action="" method='post'>
-    <h1 id="signup_ff-proof" class="signup_ribbon signup_text_head">ثبت نام &nbsp;&nbsp;</h1>
-    <a href="/"><img id="home" src="/static/img/MAIN/img/home-icon.png" alt="home"></a>
-    <div class="signup_apple"></div>
-    <fieldset class="fieldset" id="signup_inputs">
+<div id="register">
+<form id="regiter_form" action="" method='post'>
+    <h1>ثبت نام</h1>
+    <fieldset class="fieldset">
             {% csrf_token %}
-            <div>{{ form.username }}{% if form.username.errors %}<p id="error">{{ form.username.errors|removetags:"ul li" }}</p>{% endif %}</div>
-            <div>{{ form.password1 }}{% if form.password1.errors %}<p id="error">{{ form.password1.errors|removetags:"ul li" }}</p>{% endif %}</div>
-            <div>{{ form.password2 }}{% if form.password2.errors %}<p id="error">{{ form.password2.errors|removetags:"ul li" }}</p>{% endif %}</div>
-            <div>{{ form.email }}{% if form.email.errors %}<p id="error">{{ form.email.errors|removetags:"ul li" }}</p>{% endif %}</div>
-            <div>{{ form.re_email }}{% if form.re_email.errors %}<p id="error">{{ form.re_email.errors|removetags:"ul li" }}</p>{% endif %}</div>
+            <div>نام کاربری: {{ form.username }}{% if form.username.errors %}<p id="error">{{ form.username.errors|removetags:"ul li" }}</p>{% endif %}</div>
+            {% if duplicate_username %}نام کاربری شما در سیستم موجود می باشد، لطفا نام کاربری دیگری را امتحان نمایید.{% endif %}
+            <div>گذر واژه: {{ form.password1 }}{% if form.password1.errors %}<p id="error">{{ form.password1.errors|removetags:"ul li" }}</p>{% endif %}</div>
+            <div>تکرار گذر واژه: {{ form.password2 }}{% if form.password2.errors %}<p id="error">{{ form.password2.errors|removetags:"ul li" }}</p>{% endif %}</div>
+            <div>ایمیل: {{ form.email }}{% if form.email.errors %}<p id="error">{{ form.email.errors|removetags:"ul li" }}</p>{% endif %}</div>
             <div class="captcha">{{ form.captcha }}{% if form.captcha.errors %}<p id="error">{{ form.captcha.errors|removetags:"ul li" }}</p>{% endif %}</div>
     </fieldset>
-    <fieldset id="signup_actions">
-        <input type="submit" id="signup_submit" value="تایید"/>
-            <p class="signup_option"><a href="/user/password/reset/">رمز عبور را فراموش کردم</a></p>
+    <fieldset>
+        <input type="submit" id="register_submit" value="تایید"/>
+            <p class="register_option"><a href="/user/password/reset/">رمز عبور را فراموش کردم</a></p>
     </fieldset>
 </form>
 </div>
