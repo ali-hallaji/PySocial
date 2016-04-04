@@ -1,4 +1,4 @@
-Django==1.9.4
+Django==1.9.5
 django-ckeditor==5.0.3
 django-mailgun==0.8.0
 django-simple-captcha==0.5.1

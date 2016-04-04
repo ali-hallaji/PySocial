@@ -13,6 +13,7 @@ from forms import RegisterUsersForm
 
 # PySocial Import
 from core import cursor
+from core.mail_functions import welcome_mail
 from pysocial import settings
 
 
@@ -83,6 +84,7 @@ def registration(request):
 
             try:
                 result = cursor.users.insert(doc)
+
             except DuplicateKeyError:
                 kwargs['duplicate_username'] = True
                 return render(request, 'users/register.html', kwargs)
@@ -110,6 +112,9 @@ def registration(request):
                 update = cursor.users.update_one(criteria, update_data)
 
                 if update.raw_result.get('updatedExisting', None):
+
+                    welcome_mail([data['email'], ])
+
                     user = auth.authenticate(
                         username=data['username'],
                         password=data['password1'],
