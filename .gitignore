@@ -5,6 +5,7 @@ __pycache__/
 pysocial.sublime-project
 pysocial.sublime-workspace
 restore_user.json
+pysocial/settings.ini
 # sqlite
 *.sqlite3
 

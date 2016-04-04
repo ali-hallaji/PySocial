@@ -11,42 +11,27 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+from ConfigParser import RawConfigParser
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
-ON_OPENSHIFT = False
+config = RawConfigParser()
+config.read(BASE_DIR + '/pysocial/settings.ini')
 
-if os.environ.get('OPENSHIFT_REPO_DIR'):
-    ON_OPENSHIFT = True
+ON_PYSOCIAL_HOST = config.get('host', 'ON_PYSOCIAL')
 
-if 'OPENSHIFT_REPO_DIR' in os.environ:
-    ON_OPENSHIFT = True
+DJANGO_DB_NAME = config.get('django_db', 'DATABASE_NAME')
+DJANGO_DB_USER = config.get('django_db', 'DATABASE_USER')
+DJANGO_DB_PASSWD = config.get('django_db', 'DATABASE_USER')
+DJANGO_DB_HOST = config.get('django_db', 'DATABASE_HOST')
+DJANGO_DB_PORT = config.get('django_db', 'DATABASE_PORT')
 
-if 'OPENSHIFT_APP_NAME' in os.environ:
-    DB_NAME = os.environ['OPENSHIFT_APP_NAME']
+MONGO_DB_NAME = config.get('mongodb', 'DATABASE_NAME')
+MONGO_DB_URL = config.get('mongodb', 'DATABASE_URL')
 
-if 'OPENSHIFT_POSTGRESQL_DB_USERNAME' in os.environ:
-    DB_USER = os.environ['OPENSHIFT_POSTGRESQL_DB_USERNAME']
-
-if 'OPENSHIFT_POSTGRESQL_DB_PASSWORD' in os.environ:
-    DB_PASSWD = os.environ['OPENSHIFT_POSTGRESQL_DB_PASSWORD']
-
-if 'OPENSHIFT_POSTGRESQL_DB_HOST' in os.environ:
-    DB_HOST = os.environ['OPENSHIFT_POSTGRESQL_DB_HOST']
-else:
-    DB_HOST = '56ffa9bb89f5cf53a40001d4-hallaji.rhcloud.com'
-
-if 'OPENSHIFT_POSTGRESQL_DB_PORT' in os.environ:
-    DB_PORT = os.environ['OPENSHIFT_POSTGRESQL_DB_PORT']
-else:
-    DB_PORT = '41766'
-
-if 'MONGODB_URL' in os.environ:
-    MONGODB_URL = os.environ['MONGODB_URL']
-else:
-    MONGODB_URL = "mongodb://localhost:27017"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -109,7 +94,7 @@ WSGI_APPLICATION = 'pysocial.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 
-if not ON_OPENSHIFT:
+if not ON_PYSOCIAL_HOST:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -121,11 +106,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'pysocial',
-            'USER': 'admincme1fr3',
-            'PASSWORD': '7M4fRk4ByPwy',
-            'HOST': DB_HOST,
-            'PORT': DB_PORT
+            'NAME': DJANGO_DB_NAME,
+            'USER': DJANGO_DB_USER,
+            'PASSWORD': DJANGO_DB_PASSWD,
+            'HOST': DJANGO_DB_HOST,
+            'PORT': DJANGO_DB_PORT
         }
     }
 
@@ -174,7 +159,14 @@ INSTALLED_APPS += [
     'users',
 ]
 
+# Email Configurations
+EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
+MAILGUN_ACCESS_KEY = config.get('email', 'MAILGUN_KEY')
+MAILGUN_SERVER_NAME = config.get('email', 'MAILGUN_URL')
+
 try:
     from settings_local import *
-except:
+except Exception as e:
+    print e
+    raise Exception(e)
     pass
