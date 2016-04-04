@@ -4,6 +4,7 @@ from pymongo.errors import DuplicateKeyError
 
 # Django Import
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
@@ -44,6 +45,12 @@ def login(request):
         )
 
         if user:
+            ignore_url = ['logout', 'login']
+
+            for item in ignore_url:
+                if item in redirect_url:
+                    redirect_url = '/'
+
             auth.login(request, user)
 
             return HttpResponseRedirect(
@@ -69,6 +76,7 @@ def registration(request):
 
         if kwargs['form'].is_valid():  # All validation rules pass
             data = kwargs['form'].cleaned_data
+            data['username'] = data['username'].lower()
 
             doc = {}
             doc['username'] = data['username']
@@ -117,3 +125,17 @@ def registration(request):
         kwargs['form'] = RegisterUsersForm()
 
     return render(request, 'users/register.html', kwargs)
+
+
+@login_required
+def logout(request):
+
+    try:
+        url = request.get_full_path().split('next=')[1]
+
+    except:
+        url = request.get_full_path()
+
+    auth.logout(request)
+
+    return HttpResponseRedirect(url)

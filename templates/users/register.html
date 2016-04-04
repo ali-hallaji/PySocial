@@ -1,26 +1,31 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="fa-IR" dir="rtl">
-{% load staticfiles %}
-<head>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta property="og:site_name" content="PySocial">
+        <meta property="og:url" content="http://pysocial.com">
+        <meta name="description" content="Create an account into PySocial.">
         <title>ثبت نام</title>
-</head>
-<div id="register">
-<form id="regiter_form" action="" method='post'>
-    <h1>ثبت نام</h1>
-    <fieldset class="fieldset">
-            {% csrf_token %}
-            <div>نام کاربری: {{ form.username }}{% if form.username.errors %}<p id="error">{{ form.username.errors|removetags:"ul li" }}</p>{% endif %}</div>
-            {% if duplicate_username %}نام کاربری شما در سیستم موجود می باشد، لطفا نام کاربری دیگری را امتحان نمایید.{% endif %}
-            <div>گذر واژه: {{ form.password1 }}{% if form.password1.errors %}<p id="error">{{ form.password1.errors|removetags:"ul li" }}</p>{% endif %}</div>
-            <div>تکرار گذر واژه: {{ form.password2 }}{% if form.password2.errors %}<p id="error">{{ form.password2.errors|removetags:"ul li" }}</p>{% endif %}</div>
-            <div>ایمیل: {{ form.email }}{% if form.email.errors %}<p id="error">{{ form.email.errors|removetags:"ul li" }}</p>{% endif %}</div>
-            <div class="captcha">{{ form.captcha }}{% if form.captcha.errors %}<p id="error">{{ form.captcha.errors|removetags:"ul li" }}</p>{% endif %}</div>
-    </fieldset>
-    <fieldset>
-        <input type="submit" id="register_submit" value="تایید"/>
-            <p class="register_option"><a href="/user/password/reset/">رمز عبور را فراموش کردم</a></p>
-    </fieldset>
-</form>
-</div>
+    </head>
+    <body>
+        <div id="register">
+            <form id="regiter_form" action="" method='post'>
+                <h1>ثبت نام</h1>
+                <fieldset class="fieldset">
+                        {% csrf_token %}
+                        <div>نام کاربری: {{ form.username }}{% if form.username.errors %}<p id="error">{{ form.username.errors|removetags:"ul li" }}</p>{% endif %}</div>
+                        {% if duplicate_username %}نام کاربری شما در سیستم موجود می باشد، لطفا نام کاربری دیگری را امتحان نمایید.{% endif %}
+                        <div>گذر واژه: {{ form.password1 }}{% if form.password1.errors %}<p id="error">{{ form.password1.errors|removetags:"ul li" }}</p>{% endif %}</div>
+                        <div>تکرار گذر واژه: {{ form.password2 }}{% if form.password2.errors %}<p id="error">{{ form.password2.errors|removetags:"ul li" }}</p>{% endif %}</div>
+                        <div>ایمیل: {{ form.email }}{% if form.email.errors %}<p id="error">{{ form.email.errors|removetags:"ul li" }}</p>{% endif %}</div>
+                        <div class="captcha">{{ form.captcha }}{% if form.captcha.errors %}<p id="error">{{ form.captcha.errors|removetags:"ul li" }}</p>{% endif %}</div>
+                </fieldset>
+                <fieldset>
+                    <input type="submit" id="register_submit" value="تایید"/>
+                        <p class="register_option"><a href="/user/password/reset/">رمز عبور را فراموش کردم</a></p>
+                </fieldset>
+            </form>
+        </div>
+    </body>
 </html>

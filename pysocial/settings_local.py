@@ -1,6 +1,8 @@
 
 
-
+# Authetication url
+LOGIN_URL = '/users/login'
+# LOGIN_REDIRECT_URL = '/'  # Disable For staying and redirect to last page
 
 
 # Captcha options
