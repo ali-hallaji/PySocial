@@ -148,6 +148,7 @@ INSTALLED_APPS += [
 
 # Email Configurations
 EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
+DEFAULT_FROM_EMAIL = 'PySocial <info@pysocial.com>'
 MAILGUN_ACCESS_KEY = config.get('email', 'MAILGUN_KEY')
 MAILGUN_SERVER_NAME = config.get('email', 'MAILGUN_URL')
 

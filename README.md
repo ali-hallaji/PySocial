@@ -32,6 +32,57 @@ At the first use pip:
 pip install -r requirements.txt
 ```
 
+Make an ini file for settings and then save it into pysocial path:
+
+```
+pysocial/settings.ini
+```
+
+Fill settings.ini with below options and
+Set your customization value for those option's:
+-----------
+```
+[mongodb]
+DATABASE_USER: xxxxxxxxxxxx
+DATABASE_PASSWORD: xxxxxxxxxxxx
+DATABASE_HOST: localhost
+DATABASE_PORT: 27017
+DATABASE_NAME: PySocial
+DATABASE_URL: mongodb://localhost:27017
+
+
+[django_db]
+DATABASE_USER: xxxxxxxxxxxx
+DATABASE_PASSWORD: xxxxxxxxxxxx
+DATABASE_HOST: localhost
+DATABASE_PORT: 5070
+DATABASE_NAME: pysocial
+
+
+[host]
+ON_PYSOCIAL: true
+
+
+[secrets]
+SECRET_KEY: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+[debug]
+DEBUG: true
+TEMPLATE_DEBUG: true
+VIEW_TEST: true
+INTERNAL_IPS: 127.0.0.1
+SKIP_CSRF_MIDDLEWARE: true
+
+
+[email]
+SERVER_EMAIL: pysocial@localhost
+EMAIL_HOST: localhost
+MAILGUN_KEY: xxxxxxxxxxxx
+MAILGUN_URL: xxxxxxxxxxxx
+
+```
+
 Migrate your database for models:
 -----------
 
