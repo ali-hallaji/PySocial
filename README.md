@@ -5,7 +5,7 @@
 </p>
 <a href='http://pysocial.com'><h3 align="center">PySocial</h3></a>
 <p align="center">
-  Path to a free self-taught education in <a href='http://python.org'><strong>Python</strong></a> language!
+    Path to a free self-taught education in <a href='http://python.org'><strong>Python</strong></a> language!
 </p>
 
 
