@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en-us" dir='rtl'>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <script type="text/javascript" src="{% static "main/js/jquery-2.2.2.min.js" %}"></script>
+        {% block extrastyle %}{% endblock %}
+        {% block extrahead %}{% endblock %}
+        {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+    </head>
+
+    <body>
+        <!-- Container -->
+        <div id="container">
+            <!-- Content -->
+            <div id="content">
+                {% block content %}{% endblock %}
+            </div>
+            <!-- END Content -->
+
+            {% block footer %}<div id="footer"></div>{% endblock %}
+        </div>
+        <!-- END Container -->
+
+    </body>
+    {% block meta_js %}{% endblock %}
+</html>

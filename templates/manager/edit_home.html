@@ -1,0 +1,14 @@
+{% extends 'manager/base.html' %}
+{% load staticfiles %}
+{% block extrahead %}
+    <script src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+    <script src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+    <form method='POST'>
+
+        {{ form.as_p }}
+        <input type="submit"/>
+    </form>
+{% endblock %}

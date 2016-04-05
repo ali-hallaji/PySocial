@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+
+        {% block extrastyle %}{% endblock %}
+        {% block extrahead %}{% endblock %}
+        {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+    </head>
+
+    <body>
+        <!-- Container -->
+        <div id="container">
+            <!-- Content -->
+            <div id="content">
+                {% block content %}{% endblock %}
+            </div>
+            <!-- END Content -->
+
+            {% block footer %}<div id="footer"></div>{% endblock %}
+        </div>
+        <!-- END Container -->
+
+    </body>
+    {% block meta_js %}{% endblock %}
+</html>

@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'captcha',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -133,17 +135,21 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Custome App
 INSTALLED_APPS += [
     'users',
+    'manager',
 ]
 
 # Email Configurations

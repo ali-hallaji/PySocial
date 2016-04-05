@@ -90,6 +90,12 @@ Migrate your database for models:
 ./manage.py migrate
 ```
 
+Run the collectstatic management command:
+-----------
+```
+./manage.py collectstatic
+```
+
 Added group with "Member" name into group user with your permission.
 
 In mongo shell set this indexes:

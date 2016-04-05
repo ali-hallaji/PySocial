@@ -25,8 +25,10 @@ from views import under_construction
 
 urlpatterns = [
     url(r'^captcha/', include('captcha.urls')),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include('users.urls')),
+    url(r'^manager/', include('manager.urls')),
     url(r'^home/$', home, name="home"),
     url(
         r'^$',
