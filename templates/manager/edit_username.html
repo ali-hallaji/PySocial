@@ -1,0 +1,21 @@
+{% extends 'manager/base.html' %}
+{% block title %}Edit Username{% endblock %}
+{% load staticfiles %}
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+    <form class="uk-form" method="POST">
+        {% csrf_token %}
+        <h1><strong>Edit Username</strong></h1>
+        {{ form.as_ul }}
+        <hr>
+        <button type="submit">Edit</button>
+    </form>
+    {% if error.errors %}
+        {% for key, value in error.errors.items %}
+            {{ key }}: {{ value}}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+

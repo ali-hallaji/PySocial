@@ -103,4 +103,5 @@ In mongo shell set this indexes:
 ```
 use PySocial
 db.users.createIndex({'username': 1}, {unique: true})
+db.acl_group.createIndex({'group_name': 1}, {unique: true})
 ```

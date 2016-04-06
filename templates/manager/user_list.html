@@ -1,0 +1,42 @@
+{% extends 'manager/base.html' %}
+{% load staticfiles %}
+{% block title %}User List{% endblock %}
+{% block content %}
+    <h3>user list</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                {% for key, value in users.0.items %}
+                    {% if key != 'id' %}
+                        <th>{{ key }}</th>
+                    {% endif %}
+                {% endfor %}
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in users %}
+                <tr data-id="{{ item.id }}">
+                    <td></td>
+                    {% for key, value in item.items %}
+                        {% if key != 'id' %}
+                            <td>{{ value }}</td>
+                        {% endif %}
+                    {% endfor %}
+                    <td>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                {% for key, value in users.0.items %}
+                    <td></td>
+                {% endfor %}
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}
+

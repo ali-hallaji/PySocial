@@ -1,0 +1,23 @@
+{% extends 'manager/base.html' %}
+{% block title %}Define Group{% endblock %}
+{% load staticfiles %}
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+    <form class="uk-form" method="POST">
+        {% csrf_token %}
+        <h1><strong>Define your group</strong></h1>
+        {% for item in form %}
+            {{ item.label }}: {{ item }}
+        {% endfor %}
+        <hr>
+        <button type="submit">Insert</button>
+    </form>
+    {% if error.errors %}
+        {% for key, value in error.errors.items %}
+            {{ key }}: {{ value}}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+

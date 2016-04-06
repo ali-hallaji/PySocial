@@ -1,0 +1,49 @@
+{% extends 'manager/base.html' %}
+{% block title %}Group List{% endblock %}
+{% load staticfiles %}
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                {% for key, value in data.0.items %}
+                    {% if key != 'id' %}
+                        {% if key == 'views' %}
+                            <th>Check permission from core</th>
+                        {% else %}
+                            <th>{{ key }}</th>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+                <tr>
+                    <td></td>
+                    {% for key, value in item.items %}
+                        {% if key != 'id' %}
+                            {% if key == 'visible_templatetags' or key == 'views' %}
+                                <td><strong title="{% for i in value %} {{ i }} <br> {% endfor %}">{{ value|length }} items</strong></td>
+                            {% else %}
+                                <td>{{ value|truncatewords:8 }}</td>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                {% for key, value in data.0.items %}
+                    <td></td>
+                {% endfor %}
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}

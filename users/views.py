@@ -81,6 +81,9 @@ def registration(request):
 
             doc = {}
             doc['username'] = data['username']
+            doc['groups_name'] = [
+                'Member',
+            ]
 
             try:
                 result = cursor.users.insert(doc)
@@ -97,9 +100,6 @@ def registration(request):
                     email=data['email'],
                 )
                 user.save()
-
-                group = Group.objects.get(name='Member')
-                group.user_set.add(user)
 
                 criteria = {'username': data['username']}
 
