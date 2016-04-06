@@ -7,7 +7,7 @@ from views import delete_group
 from views import delete_user
 from views import edit_group
 from views import edit_home
-from views import edit_username
+from views import edit_user
 from views import group_list
 from views import user_list
 
@@ -19,9 +19,9 @@ urlpatterns = [
     url(r'^group_list/$', group_list, name="group_list"),
     url(r'^edit_group/(?P<_id>[\w\d]+)/$', edit_group, name="edit_group"),
     url(
-        r'^edit_username/(?P<_id>[\w\d]+)/$',
-        edit_username,
-        name="edit_username"
+        r'^edit_user/(?P<_id>[\w\d]+)/$',
+        edit_user,
+        name="edit_user"
     ),
     url(
         r'^delete_group/(?P<_id>[\w\d]+)/$',

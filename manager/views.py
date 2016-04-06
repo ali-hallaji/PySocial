@@ -152,15 +152,10 @@ def user_list(request):
 
 
 @login_required
-def edit_username(request, _id):
+def edit_user(request, _id):
     kwargs = {}
-    user = cursor.users.find_one({'_id': ObjectId(_id)})
-
-    groups_name = []
-    for item in user['groups_name']:
-        groups_name.append((item, item))
-
-    user['groups_name'] = groups_name
+    criteria = {'_id': ObjectId(_id)}
+    user = cursor.users.find_one()
 
     django_user = get_object_or_404(User, username=user['username'])
 
@@ -185,7 +180,11 @@ def edit_username(request, _id):
                     del data['password2']
 
             if 'password1' in data:
-                django_user.set_password(data['password1'])
+                real_password = data['password1']
+                django_user.set_password(real_password)
+
+            else:
+                real_password = None
 
             django_user.username = data['username']
             django_user.last_name = data['last_name']
@@ -193,7 +192,15 @@ def edit_username(request, _id):
             django_user.email = data['email']
             django_user.save()
 
-            return HttpResponseRedirect('/manager/user_list')
+            if real_password:
+                data['password'] = django_user.password
+                del data['password1']
+                del data['password2']
+
+            update = cursor.users.update_one(criteria, {'$set': data})
+
+            if update.raw_result.get('updatedExisting', None):
+                return HttpResponseRedirect('/manager/user_list')
 
     else:
         kwargs['form'] = UserForm(user)

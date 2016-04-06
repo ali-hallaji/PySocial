@@ -59,7 +59,7 @@ class UserForm(forms.Form):
 
         super(UserForm, self).__init__(*args, **kwargs)
 
-        self.fields['groups_name'] = forms.ChoiceField(
+        self.fields['groups_name'] = forms.MultipleChoiceField(
             label='Choose your Group',
             required=True,
             choices=groups_list
