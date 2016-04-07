@@ -155,7 +155,7 @@ def user_list(request):
 def edit_user(request, _id):
     kwargs = {}
     criteria = {'_id': ObjectId(_id)}
-    user = cursor.users.find_one()
+    user = cursor.users.find_one(criteria)
 
     django_user = get_object_or_404(User, username=user['username'])
 

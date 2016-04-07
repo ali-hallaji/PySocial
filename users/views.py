@@ -6,6 +6,7 @@ from pymongo.errors import DuplicateKeyError
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.db import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from forms import RegisterUsersForm
@@ -89,16 +90,24 @@ def registration(request):
 
             except DuplicateKeyError:
                 kwargs['duplicate_username'] = True
+
                 return render(request, 'users/register.html', kwargs)
 
             if result:
 
-                user = User.objects.create_user(
-                    username=data['username'],
-                    password=data['password1'],
-                    email=data['email'],
-                )
-                user.save()
+                try:
+                    user = User.objects.create_user(
+                        username=data['username'],
+                        password=data['password1'],
+                        email=data['email'],
+                    )
+                    user.save()
+
+                except IntegrityError:
+                    cursor.users.remove({'username': data['username']})
+                    kwargs['duplicate_username'] = True
+
+                    return render(request, 'users/register.html', kwargs)
 
                 criteria = {'username': data['username']}
 
