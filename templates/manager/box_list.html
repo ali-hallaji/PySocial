@@ -1,0 +1,43 @@
+{% extends 'manager/base.html' %}
+{% load staticfiles %}
+{% load func_tools %}
+{% block title %}Box List{% endblock %}
+{% block content %}
+    <h3>Box list</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                {% for key, value in boxs.0.items %}
+                    <th>{{ key }}</th>
+                {% endfor %}
+                <th>image</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in boxs %}
+                <tr data-id="{{ item.id }}">
+                    <td></td>
+                    {% for key, value in item.items %}
+                        {% if key != 'id' %}
+                            <td>{{ value }}</td>
+                        {% endif %}
+                    {% endfor %}
+                    <td><img src="/media/dashboard/box/{{ item|mongo_id }}.jpg"></td>
+                    <td>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                {% for key, value in boxs.0.items %}
+                    <td></td>
+                {% endfor %}
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}
+

@@ -9,7 +9,12 @@
 {% block content %}
     <form method='POST'>
 
-        {{ form.as_p }}
-        <input type="submit"/>
+        {{ form.as_ul }}
+        <button type="submit">Edit</button>
     </form>
+    {% if error and error.errors %}
+        {% for key, value in error.errors.items %}
+            {{ key }}: {{ value}}
+        {% endfor %}
+    {% endif %}
 {% endblock %}

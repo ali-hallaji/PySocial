@@ -65,3 +65,14 @@ class UserForm(forms.Form):
             choices=groups_list
         )
 
+
+class BoxForm(forms.Form):
+    title = forms.CharField(label='Title')
+    title_fa = forms.CharField(label='Title Fa')
+    sort = forms.IntegerField(label='Box Order')
+    description = forms.CharField(
+        label='Description',
+        required=False,
+        widget=CKEditorWidget()
+    )
+    box_pic = forms.FileField(label='Box Image', required=False)

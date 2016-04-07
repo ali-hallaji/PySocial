@@ -16,9 +16,12 @@ Including another URLconf
 # Django import
 from django.conf.urls import include
 from django.conf.urls import url
+from django.conf.urls.static import static
 from django.contrib import admin
 
 # PySocial import
+import settings
+
 from views import home
 from views import under_construction
 
@@ -36,3 +39,5 @@ urlpatterns = [
         name="under_construction"
     )
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
