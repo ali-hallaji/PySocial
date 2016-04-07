@@ -19,8 +19,12 @@ def mongo_id(value):
 
 @register.filter("box_exist_file")
 def box_exist_file(value):
-    path = BASE_DIR
-    path += '/media/dashboard/box/{0}.jpg'.format(value)
+    path = BASE_DIR + '/media/dashboard/box/'
+    file_name = find_pic_by_id(value, path)
+
+    if file_name:
+        path += file_name
+        path = '/media' + path.split('media')[1]
 
     if os.path.exists(path):
         return 'True'
