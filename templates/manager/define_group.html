@@ -5,15 +5,19 @@
 {% endblock %}
 
 {% block content %}
-    <form class="uk-form" method="POST">
-        {% csrf_token %}
-        <h1><strong>Define your group</strong></h1>
-        {% for item in form %}
-            {{ item.label }}: {{ item }}
-        {% endfor %}
-        <hr>
-        <button type="submit">Insert</button>
-    </form>
+    {% if not not_exists %}
+        <form class="uk-form" method="POST">
+            {% csrf_token %}
+            <h1><strong>Define your group</strong></h1>
+            {% for item in form %}
+                {{ item.label }}: {{ item }}
+            {% endfor %}
+            <hr>
+            <button type="submit">Insert</button>
+        </form>
+    {% else %}
+        چنین گروهی موجود نمیباشد
+    {% endif %}
     {% if error.errors %}
         {% for key, value in error.errors.items %}
             {{ key }}: {{ value}}

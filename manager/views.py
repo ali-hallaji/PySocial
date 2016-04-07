@@ -92,6 +92,11 @@ def edit_group(request, _id):
 
     criteria = {'_id': ObjectId(_id)}
     group = cursor.acl_group.find_one(criteria)
+
+    if not group:
+        kwargs['not_exists'] = True
+        return render(request, 'manager/define_group.html', kwargs)
+
     all_views = get_all_view_names()
 
     if request.POST:
