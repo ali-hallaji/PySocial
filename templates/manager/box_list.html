@@ -24,7 +24,7 @@
                             <td>{{ value }}</td>
                         {% endif %}
                     {% endfor %}
-                    <td><img src="/media/dashboard/box/{{ item|mongo_id }}.jpg"></td>
+                    <td><img src="{{ item|get_path_pic_box }}"></td>
                     <td>
                     </td>
                 </tr>

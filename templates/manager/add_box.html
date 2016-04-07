@@ -20,7 +20,7 @@
 
             {% if 'edit' in request.get_full_path %}
                 {% if id|box_exist_file == 'True' %}
-                    <img src="/media/dashboard/box/{{ id }}.jpg">
+                    <img src="{{ id|get_path_pic_box }}">
                 {% endif %}
                 <hr>
                 <button type="submit">Edit</button>
