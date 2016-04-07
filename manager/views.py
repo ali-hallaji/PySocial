@@ -157,6 +157,10 @@ def edit_user(request, _id):
     criteria = {'_id': ObjectId(_id)}
     user = cursor.users.find_one(criteria)
 
+    if not user:
+        kwargs['not_exists'] = True
+        return render(request, 'manager/edit_username.html', kwargs)
+
     django_user = get_object_or_404(User, username=user['username'])
 
     if request.method == 'POST':
