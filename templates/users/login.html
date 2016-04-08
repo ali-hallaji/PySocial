@@ -1,29 +1,42 @@
 {% load staticfiles %}
-<html dir="rtl">
+<html dir="rtl" class="uk-height-1-1">
     <head>
         <title>صفحه ورود</title>
         <meta property="og:site_name" content="PySocial">
         <meta property="og:url" content="http://pysocial.com">
         <meta name="description" content="Login into PySocial.">
+        <link rel="stylesheet" type="text/css" href="{% static 'main/css/framework.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'main/css/users/login.css' %}">
     </head>
-    <body>
-        <div>
-            <form id="login" action="" method="post">
-                <h1>ورود به سایت</h1>
-            <fieldset>
-                {% csrf_token %}
-                <input id="username" autocomplete="off" name="username" type="text" value="" placeholder="نام کاربری" />
-                <input id="password" autocomplete="off" name="password" type="password" value="" placeholder="رمز عبور" />
-            </fieldset>
-            <fieldset id="actions">
-                <input type="submit" id="submit" name='login' value="ورود به سایت"/>
-                {{ msg|safe|escape }}
-                <p class="option">
-                    <a href="/users/register">ثبت نام</a>
-                    <a href="/users/reset_password/">رمز عبور را فراموش کردم</a>
-                </p>
-            </fieldset>
-            </form>
+    <body class="uk-height-1-1">
+        <div class="uk-vertical-align uk-height-1-1 uk-text-center">
+            <div class="uk-vertical-align-middle">
+                <form class="uk-form uk-form-stacked uk-text-right" action="" method="post">
+                    {% csrf_token %}
+                    <div class="uk-form-row">
+                        <label class="uk-form-label">نام کاربری</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-form-large uk-form-width-large" autocomplete="off" name="username" type="text">
+                        </div>
+                    </div>
+                    <div class="uk-form-row">
+                        <label class="uk-form-label">رمز عبور</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-form-large uk-form-width-large" autocomplete="off" name="password" type="password">
+                        </div>
+                    </div>
+                    <div class="uk-text-center">
+                        <button class="uk-button uk-button-large uk-button-primary uk-margin-top uk-margin-bottom" type="submit" name='login'>ورود به سایت</button>
+                    </div>
+                    {{ msg|safe|escape }}
+                    <a class="uk-display-block" href="/users/register"><i class="uk-icon-circle uk-margin-small-left"></i>ثبت نام</a>
+                    <a class="uk-display-block" href="/users/reset_password/"><i class="uk-icon-circle uk-margin-small-left"></i>رمز عبور را فراموش کردم</a>
+                    <a><i class="uk-icon-facebook-square"></i></a>
+                    <a><i class="uk-icon-google-plus-square"></i></a>
+                    <a><i class="uk-icon-linkedin-square"></i></a>
+                    <a><i class="uk-icon-twitter-square"></i></a>
+                </form>
+            </div>
         </div>
     </body>
 </html>
