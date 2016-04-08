@@ -1,0 +1,83 @@
+//
+// Component: Search
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$search-height:                                 $global-height;
+$search-color:                                  $global-color;
+$search-placeholder-color:                      $global-muted-color;
+
+$dropdown-search-color:                         $global-color;
+$dropdown-search-navbar-margin-top:             5px;
+$dropdown-search-navbar-margin-right:           -15px;
+
+$nav-search-color:                              $global-color;
+$nav-search-active-background:                  $global-primary-background;
+$nav-search-active-color:                       $global-contrast-color;
+$nav-search-header-color:                       $global-muted-color;
+$nav-search-divider-border:                     $global-border;
+$nav-search-nested-color:                       $global-link-color;
+$nav-search-nested-hover-color:                 $global-link-hover-color;
+
+
+// Component
+// ========================================================================
+
+@mixin hook-search() {}
+
+@mixin hook-search-icon() {}
+
+
+// Sub-object `uk-search-field`
+// ========================================================================
+
+@mixin hook-search-field() {}
+
+@mixin hook-search-field-focus() {}
+
+
+// Dropdown modifier: `uk-dropdown-search`
+// ========================================================================
+
+@mixin hook-dropdown-search() {}
+
+
+// Nav modifier `uk-nav-search`
+// ========================================================================
+
+//
+// Items
+//
+
+@mixin hook-nav-search() {}
+
+// Active
+@mixin hook-nav-search-active() {}
+
+//
+// Sub-object: `uk-nav-header`
+//
+
+@mixin hook-nav-search-header() {}
+
+//
+// Sub-object: `uk-nav-divider`
+//
+
+@mixin hook-nav-search-divider() {}
+
+
+// Search in offcanvas
+// ========================================================================
+
+@mixin hook-offcanvas-search-field() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+@mixin hook-search-misc() {}

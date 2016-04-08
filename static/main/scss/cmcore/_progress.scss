@@ -1,0 +1,46 @@
+//
+// Component: Progress
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$progress-margin-vertical:                      $global-margin;
+
+$progress-bar-background:                       $global-primary-background;
+$progress-bar-font-size:                        round(($global-font-size * 0.85)); // 12px / 14px
+$progress-bar-color:                            $global-contrast-color;
+
+$progress-bar-success-background:               $global-success-background;
+$progress-bar-warning-background:               $global-warning-background;
+$progress-bar-danger-background:                $global-danger-background;
+
+
+// Component
+// ========================================================================
+
+@mixin hook-progress() {}
+
+
+// Sub-object: `progress-bar`
+// ========================================================================
+
+@mixin hook-progress-bar() {}
+
+
+// Color modifiers
+// ========================================================================
+
+@mixin hook-progress-bar-success() {}
+
+@mixin hook-progress-bar-warning() {}
+
+@mixin hook-progress-bar-danger() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+@mixin hook-progress-misc() {}

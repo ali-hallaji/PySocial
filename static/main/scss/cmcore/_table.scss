@@ -1,0 +1,33 @@
+//
+// Component: Table
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$table-margin-vertical:                         $global-margin;
+
+$table-caption-color:                           $global-muted-color;
+$table-caption-font-size:                       round(($global-font-size * 0.85)); // 12px / 14px
+
+
+// Component
+// ========================================================================
+
+@mixin hook-table() {}
+
+@mixin hook-table-active() {}
+
+@mixin hook-table-striped() {}
+
+@mixin hook-table-condensed() {}
+
+@mixin hook-table-hover() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+@mixin hook-table-misc() {}

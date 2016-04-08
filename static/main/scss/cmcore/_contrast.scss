@@ -1,0 +1,89 @@
+//
+// Component: Contrast
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$contrast-button-primary-background:            $button-primary-background;
+$contrast-button-primary-hover-background:      $button-primary-hover-background;
+$contrast-button-primary-active-background:     $button-primary-active-background;
+
+$contrast-text-primary-color:                   $text-primary-color;
+
+
+// Base
+// ========================================================================
+
+@mixin hook-contrast-base-code() {}
+
+
+// Nav
+// ========================================================================
+
+@mixin hook-contrast-nav-side() {}
+@mixin hook-contrast-nav-side-hover() {}
+@mixin hook-contrast-nav-side-active() {}
+@mixin hook-contrast-nav-side-header() {}
+@mixin hook-contrast-nav-side-divider() {}
+
+
+// Subnav
+// ========================================================================
+
+@mixin hook-contrast-subnav() {}
+@mixin hook-contrast-subnav-hover() {}
+@mixin hook-contrast-subnav-active() {}
+@mixin hook-contrast-subnav-line-divider() {}
+@mixin hook-contrast-subnav-pill-hover() {}
+@mixin hook-contrast-subnav-pill-active() {}
+
+
+// Tab
+// ========================================================================
+
+@mixin hook-contrast-tab() {}
+@mixin hook-contrast-tab-hover() {}
+@mixin hook-contrast-tab-active() {}
+
+
+// List
+// ========================================================================
+
+@mixin hook-contrast-list-line() {}
+
+
+// Form
+// ========================================================================
+
+@mixin hook-contrast-form() {}
+@mixin hook-contrast-form-focus() {}
+
+
+// Button
+// ========================================================================
+
+@mixin hook-contrast-button() {}
+@mixin hook-contrast-button-hover() {}
+@mixin hook-contrast-button-active() {}
+@mixin hook-contrast-button-primary() {}
+@mixin hook-contrast-button-primary-hover() {}
+@mixin hook-contrast-button-primary-active() {}
+
+
+// Icon
+// ========================================================================
+
+@mixin hook-contrast-icon-hover() {}
+@mixin hook-contrast-icon-hover-hover() {}
+@mixin hook-contrast-icon-button() {}
+@mixin hook-contrast-icon-button-hover() {}
+@mixin hook-contrast-icon-button-active() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+@mixin hook-contrast-misc() {}

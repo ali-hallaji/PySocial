@@ -1,0 +1,45 @@
+//
+// Component: Block
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$block-default-background:                      $global-background;
+
+
+// Component
+// ========================================================================
+
+@mixin hook-block() {}
+
+
+// Color modifier
+// ========================================================================
+
+@mixin hook-block-default() {}
+
+@mixin hook-block-muted() {}
+
+@mixin hook-block-secondary() {}
+
+@mixin hook-block-primary() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+@mixin hook-block-misc() {
+
+    /*
+     * Adjust padding between equal colored blocks
+     */
+
+    .uk-block-default + .uk-block-default,
+    .uk-block-muted + .uk-block-muted,
+    .uk-block-primary + .uk-block-primary,
+    .uk-block-secondary + .uk-block-secondary { padding-top: 0; }
+
+}

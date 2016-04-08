@@ -1,0 +1,35 @@
+//
+// Component: Notify
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$notify-z-index:                                $global-z-index + 40;
+
+$notify-message-font-size:                      round(($global-font-size * 1.14)); // 16px / 18px
+$notify-message-line-height:                    round(($notify-message-font-size * 1.36)); // 22px / 24px
+
+
+// Component
+// ========================================================================
+
+@mixin hook-notify() {}
+
+@mixin hook-notify-message() {}
+
+@mixin hook-notify-message-primary() {}
+
+@mixin hook-notify-message-success() {}
+
+@mixin hook-notify-message-warning() {}
+
+@mixin hook-notify-message-danger() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+@mixin hook-notify-misc() {}

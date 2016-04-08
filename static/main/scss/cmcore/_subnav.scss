@@ -1,0 +1,58 @@
+//
+// Component: Subnav
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$subnav-color:                                  $global-color;
+$subnav-hover-color:                            $global-link-color;
+$subnav-active-color:                           $global-link-color;
+
+$subnav-line-border:                            $global-border;
+
+$subnav-pill-hover-color:                       $global-color;
+$subnav-pill-active-background:                 $global-primary-background;
+$subnav-pill-active-color:                      $global-contrast-color;
+
+$subnav-disabled-color:                         $global-muted-color;
+
+
+// Component
+// ========================================================================
+
+@mixin hook-subnav() {}
+
+@mixin hook-subnav-hover() {}
+
+@mixin hook-subnav-active() {}
+
+
+// Modifier: `uk-subnav-line'
+// ========================================================================
+
+@mixin hook-subnav-line-divider() {}
+
+
+// Modifier: `uk-subnav-pill'
+// ========================================================================
+
+@mixin hook-subnav-pill() {}
+
+@mixin hook-subnav-pill-hover() {}
+
+@mixin hook-subnav-pill-active() {}
+
+
+// Disabled state
+// ========================================================================
+
+@mixin hook-subnav-disabled() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+@mixin hook-subnav-misc() {}

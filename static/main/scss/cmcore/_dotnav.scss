@@ -1,0 +1,34 @@
+//
+// Component: Dotnav
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+
+// Component
+// ========================================================================
+
+@mixin hook-dotnav-item() {}
+
+@mixin hook-dotnav-item-hover() {}
+
+@mixin hook-dotnav-item-onclick() {}
+
+@mixin hook-dotnav-item-active() {}
+
+@mixin hook-dotnav-contrast-item() {}
+
+@mixin hook-dotnav-contrast-item-hover() {}
+
+@mixin hook-dotnav-contrast-item-onclick() {}
+
+@mixin hook-dotnav-contrast-item-active() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+@mixin hook-dotnav-misc() {}
