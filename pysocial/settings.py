@@ -158,6 +158,82 @@ DEFAULT_FROM_EMAIL = 'PySocial <info@pysocial.com>'
 MAILGUN_ACCESS_KEY = config.get('email', 'MAILGUN_KEY')
 MAILGUN_SERVER_NAME = config.get('email', 'MAILGUN_URL')
 
+# Logging Configurations
+log_dir = config.get('logging', 'DIR')
+log_format = config.get('logging', 'LOG_FORMAT')
+date_format = config.get('logging', 'DATE_FORMAT')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        },
+        'debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue'
+        }
+    },
+    'formatters': {
+        'verbose': {
+            'format': log_format,
+            'datefmt': date_format
+        },
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'django': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': log_dir + 'django.log',
+            'formatter': 'verbose',
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+            'backupCount': 7,
+        },
+        'warning': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': log_dir + 'warning.log',
+            'formatter': 'verbose',
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+            'backupCount': 7,
+        },
+        'unhanlded': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': log_dir + 'debug.log',
+            'formatter': 'verbose',
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+            'backupCount': 7,
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'django': {
+            'handlers': ['django'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+        'py.warnings': {
+            'handlers': ['warning'],
+            'propagate': False
+        },
+        '': {
+            'handlers': ['unhanlded'],
+            'level': 'DEBUG',
+        },
+    }
+}
+
+
 try:
     from settings_local import *
 

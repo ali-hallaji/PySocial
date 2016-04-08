@@ -81,6 +81,12 @@ EMAIL_HOST: localhost
 MAILGUN_KEY: xxxxxxxxxxxx
 MAILGUN_URL: xxxxxxxxxxxx
 
+
+[logging]
+DIR = /var/log/pysocial/
+LOG_FORMAT = %(asctime)s] %(levelname)s [%(name)s:%(filename)s:%(funcName)s:%(lineno)s] %(message)s
+DATE_FORMAT = %Y-%m-%d %H:%M:%S
+
 ```
 
 Migrate your database for models:
@@ -96,8 +102,6 @@ Run the collectstatic management command:
 ./manage.py collectstatic
 ```
 
-Added group with "Member" name into group user with your permission.
-
 In mongo shell set this indexes:
 -----------
 ```
@@ -105,3 +109,8 @@ use PySocial
 db.users.createIndex({'username': 1}, {unique: true})
 db.acl_group.createIndex({'group_name': 1}, {unique: true})
 ```
+
+
+
+Added group with "Member" name into group user with your permission.
+

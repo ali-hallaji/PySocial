@@ -1,4 +1,6 @@
 # Python Import
+import os
+import logging
 from bson.objectid import ObjectId
 
 # Django import
@@ -12,11 +14,16 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
 # PySocial import
+from pysocial.settings import BASE_DIR
 from core import cursor
+from core.func_tools import handle_uploaded_file
 from core.acl_general_funcs import get_all_view_names
+from forms import BoxForm
 from forms import GroupForm
 from forms import HomeForm
 from forms import UserForm
+
+logger = logging.getLogger(__name__)
 
 
 @login_required
@@ -109,7 +116,12 @@ def edit_group(request, _id):
             if update:
                 criteria = {'groups_name': {'$in': [group['group_name']]}}
                 _update = {'$set': {'groups_name.$': data['group_name']}}
-                cursor.users.update_many(criteria, _update)
+                users_update = cursor.users.update_many(criteria, _update)
+
+                msg = 'All users group name modified. result: '
+                msg += '{0}'.format(users_update.raw_result)
+                logger.debug(msg)
+
                 return HttpResponseRedirect('/manager/group_list')
 
         else:
@@ -215,3 +227,94 @@ def edit_user(request, _id):
         kwargs['form'] = UserForm(user)
 
     return render(request, 'manager/edit_username.html', kwargs)
+
+
+@login_required
+def add_box(request):
+    kwargs = {}
+
+    if request.method == 'POST':
+        kwargs['form'] = BoxForm(request.POST, request.FILES)
+
+        if kwargs['form'].is_valid():
+            data = kwargs['form'].cleaned_data
+            box_pic = data.pop('box_pic')
+
+            result = cursor.box.insert(data)
+
+            if result:
+                if box_pic:
+                    path = BASE_DIR
+                    path += '/media/dashboard/box/{0}.jpg'.format(str(result))
+
+                    handle_uploaded_file(path, request.FILES['box_pic'])
+
+                return HttpResponseRedirect('/manager/box_list')
+
+    else:
+        kwargs['form'] = BoxForm()
+
+    return render(request, 'manager/add_box.html', kwargs)
+
+
+@login_required
+def box_list(request):
+    kwargs = {}
+
+    kwargs['boxs'] = list(cursor.box.find())
+
+    return render(request, 'manager/box_list.html', kwargs)
+
+
+@login_required
+@csrf_exempt
+@require_POST
+def delete_box(request, _id):
+    kwargs = {}
+
+    mongodb_remove = cursor.box.delete_one({'_id': ObjectId(_id)})
+    kwargs['mongodb_remove'] = mongodb_remove.raw_result
+
+    path = BASE_DIR
+    path += '/media/dashboard/box/{0}.jpg'.format(_id)
+
+    if os.path.exists(path):
+        os.remove(path)
+
+    return JsonResponse(kwargs, safe=False)
+
+
+@login_required
+def edit_box(request, _id):
+    kwargs = {}
+
+    kwargs['id'] = _id
+    criteria = {'_id': ObjectId(_id)}
+    box = cursor.box.find_one(criteria)
+
+    if not box:
+        kwargs['not_exists'] = True
+        return render(request, 'manager/add_box.html', kwargs)
+
+    if request.method == 'POST':
+        kwargs['form'] = BoxForm(request.POST, request.FILES)
+
+        if kwargs['form'].is_valid():
+            data = kwargs['form'].cleaned_data
+            box_pic = data.pop('box_pic')
+
+            result = cursor.box.update_one(criteria, {'$set': data})
+
+            if result.raw_result.get('updatedExisting', None):
+                if box_pic:
+                    path = BASE_DIR
+                    path += '/media/dashboard/box/{0}.jpg'.format(_id)
+
+                    handle_uploaded_file(path, request.FILES['box_pic'])
+
+                return HttpResponseRedirect('/manager/box_list')
+
+    else:
+        kwargs['form'] = BoxForm(box)
+
+    return render(request, 'manager/add_box.html', kwargs)
