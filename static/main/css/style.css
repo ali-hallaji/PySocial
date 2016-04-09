@@ -7,13 +7,31 @@
 /* Fonts */
 @font-face {
   font-family: Mirza;
-  src: url("../../fonts/mirza/Mirza.woff") format("woff"), url("../../fonts/mirza/Mirza.ttf") format("truetype");
+  src: url("../fonts/mirza/Mirza.woff") format("woff"), url("../fonts/mirza/Mirza.ttf") format("truetype");
   font-weight: normal;
 }
 @font-face {
   font-family: Mirzab;
-  src: url("../../fonts/mirza/Mirza-Bold.woff") format("woff"), url("../../fonts/mirza/Mirza-Bold.ttf") format("truetype");
+  src: url("../fonts/mirza/Mirza-Bold.woff") format("woff"), url("../fonts/mirza/Mirza-Bold.ttf") format("truetype");
   font-weight: normal;
 }
 /* Modules */
 /* Layout */
+nav.tm-navbar {
+  background: #003c5a;
+  padding: 10px 0;
+}
+
+ul.tm-navbar-nav > li > a {
+  color: #2379a3;
+  -webkit-transition: 0.3s all;
+  -moz-transition: 0.3s all;
+  transition: 0.3s all;
+}
+ul.tm-navbar-nav > li > a i {
+  font-size: 14px;
+}
+ul.tm-navbar-nav > li > a:hover, ul.tm-navbar-nav > li > a:focus, ul.tm-navbar-nav > li > a:active {
+  color: #ebebeb;
+  background: transparent;
+}

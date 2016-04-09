@@ -2338,9 +2338,9 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   padding: 0 15px;
   line-height: 40px;
   /* 2 */
-  color: #393d40;
+  color: #fff;
   font-size: 12px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: mirza, "Helvetica Neue";
   font-weight: normal;
 }
 
@@ -2507,6 +2507,13 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 /* Sub-object: `uk-navbar-flip`
  ========================================================================== */
 .uk-navbar-flip {
+  float: right;
+}
+
+.uk-navbar-nav {
+  float: right;
+}
+.uk-navbar-nav > li {
   float: right;
 }
 

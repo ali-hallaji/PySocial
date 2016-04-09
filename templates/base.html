@@ -1,37 +1,60 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en-us" dir="ltr">
     <head>
         <meta charset="utf-8">
         <meta name="robots" content="NONE,NOARCHIVE">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {% block blockbots %}{% endblock %}
-        <title>{% block title x%}{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
 
         <!-- Stylesheet -->
         <link rel="stylesheet" href="{% static 'main/css/framework.css' %}">
         <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
         {% block extrastyle %}{% endblock %}
-        {% block extrahead %}{% endblock %}
 
         <!-- Fav Icons -->
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon.png">
     </head>
-
     <body>
-        <!-- Container -->
-        <div id="container">
-            <!-- Content -->
-            <div id="content">
-                {% block content %}{% endblock %}
-            </div>
-            <!-- END Content -->
+        <header>
+            <nav class="tm-navbar uk-navbar">
+                <div class="uk-container uk-container-center">
+                    <ul class="tm-navbar-nav uk-navbar-nav">
+                        <li>
+                            <a href="{% url 'login' %}">
+                                <i class="uk-icon-sign-in"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'register' %}">
+                                <i class="uk-icon-user"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">چالشگاه</a>
+                        </li>
+                        <li>
+                            <a href="">درباره ما</a>
+                        </li>
+                        <li>
+                            <a href="">تماس باما</a>
+                        </li>
+                    </ul>
+                    <a class="uk-navbar-brand" href="/">
+                        <img src="{% static 'main/img/logo2.png' %}" width="130" alt="پای سوشیال">
+                    </a>
+                </div>
+            </nav>
+        </header>
+        {% block content %}{% endblock %}
+        <!-- jQuery -->
+        <script src="{% static 'main/js/jquery-2.2.3.min.js' %}"></script>
 
-            {% block footer %}<div id="footer"></div>{% endblock %}
-        </div>
-        <!-- END Container -->
-
+        <!-- UIkit -->
+        <script src="{% static 'main/js/uikit.min.js' %}"></script>
+        {% block meta_js %}{% endblock %}
     </body>
-    {% block meta_js %}{% endblock %}
 </html>

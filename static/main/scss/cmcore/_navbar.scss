@@ -12,8 +12,9 @@ $navbar-link-color:                             $global-link-color;
 $navbar-link-hover-color:                       $global-link-hover-color;
 
 $navbar-nav-line-height:                        $navbar-nav-height;
-$navbar-nav-color:                              $global-color;
+$navbar-nav-color:                              $global-contrast-color;
 $navbar-nav-font-size:                          $global-font-size;
+$navbar-nav-font-family:                        $global-font-family;
 $navbar-nav-hover-color:                        $global-color;
 $navbar-nav-onclick-color:                      $global-color;
 $navbar-nav-active-color:                       $global-color;
@@ -57,4 +58,11 @@ $navbar-toggle-hover-color:                     $global-color;
 // Miscellaneous
 // ========================================================================
 
-@mixin hook-navbar-misc() {}
+@mixin hook-navbar-misc() {
+
+    .uk-navbar-nav {
+        float: right;
+
+        > li { float: right; }
+    }
+}

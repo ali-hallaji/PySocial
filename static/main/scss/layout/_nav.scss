@@ -1,0 +1,19 @@
+nav.tm-navbar {
+    background: #003c5a;
+    padding: 10px 0;
+}
+
+ul.tm-navbar-nav > li > a {
+    color: #2379a3;
+
+    @include transition(0.3s all);
+
+    i { font-size: 14px; }
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: #ebebeb;
+        background: transparent;
+    }
+}
