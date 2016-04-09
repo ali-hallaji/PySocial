@@ -5,5 +5,15 @@
 /* Bourbon */
 /* Settings */
 /* Fonts */
+@font-face {
+  font-family: Mirza;
+  src: url("../../fonts/mirza/Mirza.woff") format("woff"), url("../../fonts/mirza/Mirza.ttf") format("truetype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: Mirzab;
+  src: url("../../fonts/mirza/Mirza-Bold.woff") format("woff"), url("../../fonts/mirza/Mirza-Bold.ttf") format("truetype");
+  font-weight: normal;
+}
 /* Modules */
 /* Layout */

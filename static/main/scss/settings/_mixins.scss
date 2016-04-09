@@ -1,0 +1,23 @@
+// Buttons
+@mixin buttons(
+        $btn-background,
+        $btn-color: null,
+        $btn-border: null,
+        $btn-hover: null,
+        $btn-hover-color: null,
+        $btn-hover-text-color: null,
+        $btn-hover-border-color: null
+    ) {
+        background: $btn-background;
+        color: $btn-color;
+
+        @if $btn-border { border: $btn-border; }
+        @if $btn-hover == hover {
+            &:hover,
+            &:focus,
+            &:active {
+                color: $btn-hover-text-color;
+                background: $btn-hover-color;
+            }
+        }
+}

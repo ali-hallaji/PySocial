@@ -1,0 +1,46 @@
+/*=======================================
+=            Style for login            =
+=======================================*/
+
+@import "compass";
+@import "settings/settings";
+@import "settings/mixins";
+@import "modules/buttons";
+@import "../fonts/fonts";
+
+body { background-color: #f6f8f8; }
+
+p#tm-user-links {
+
+    a {
+        color: #003c5a;
+
+        i { color: #fc8f44; }
+    }
+
+    i { @include transition(0.2s all); }
+}
+
+div.tm-social-links {
+    text-align: center;
+    border: 1px solid #f1f1f1;
+    padding: 30px;
+
+    @include border-radius(5px);
+
+    > * { color: #aebdc1; }
+
+    a {
+
+        i {
+            font-size: 32px;
+            vertical-align: -20%;
+            margin-right: 10px;
+
+            @include transition(0.2s all);
+
+            &:hover { color: #748e95; }
+        }
+    }
+
+}

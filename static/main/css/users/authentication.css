@@ -1,0 +1,53 @@
+/*=======================================
+=            Style for login            =
+=======================================*/
+@font-face {
+  font-family: Mirza;
+  src: url("../../fonts/mirza/Mirza.woff") format("woff"), url("../../fonts/mirza/Mirza.ttf") format("truetype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: Mirzab;
+  src: url("../../fonts/mirza/Mirza-Bold.woff") format("woff"), url("../../fonts/mirza/Mirza-Bold.ttf") format("truetype");
+  font-weight: normal;
+}
+body {
+  background-color: #f6f8f8;
+}
+
+p#tm-user-links a {
+  color: #003c5a;
+}
+p#tm-user-links a i {
+  color: #fc8f44;
+}
+p#tm-user-links i {
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+div.tm-social-links {
+  text-align: center;
+  border: 1px solid #f1f1f1;
+  padding: 30px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+div.tm-social-links > * {
+  color: #aebdc1;
+}
+div.tm-social-links a i {
+  font-size: 32px;
+  vertical-align: -20%;
+  margin-right: 10px;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+div.tm-social-links a i:hover {
+  color: #748e95;
+}

@@ -39,7 +39,7 @@ $form-icon-color:                               $global-muted-color;
 // Component
 // ========================================================================
 
-@mixin hook-form() {}
+@mixin hook-form() { @include border-radius(3px); }
 
 // Focus state
 @mixin hook-form-focus() {}

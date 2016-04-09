@@ -1,12 +1,13 @@
 {% load staticfiles %}
-<html dir="rtl" class="uk-height-1-1">
+<html lang="fa-IR" dir="rtl" class="uk-height-1-1">
     <head>
         <title>صفحه ورود</title>
         <meta property="og:site_name" content="PySocial">
         <meta property="og:url" content="http://pysocial.com">
         <meta name="description" content="Login into PySocial.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="{% static 'main/css/framework.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'main/css/users/login.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'main/css/users/authentication.css' %}">
     </head>
     <body class="uk-height-1-1">
         <div class="uk-vertical-align uk-height-1-1 uk-text-center">
@@ -26,15 +27,21 @@
                         </div>
                     </div>
                     <div class="uk-text-center">
-                        <button class="uk-button uk-button-large uk-button-primary uk-margin-top uk-margin-bottom" type="submit" name='login'>ورود به سایت</button>
+                        <button class="uk-button uk-button-primary uk-button-large uk-margin-top uk-margin-bottom" type="submit" name='login'>ورود به سایت</button>
                     </div>
                     {{ msg|safe|escape }}
-                    <a class="uk-display-block" href="/users/register"><i class="uk-icon-circle uk-margin-small-left"></i>ثبت نام</a>
-                    <a class="uk-display-block" href="/users/reset_password/"><i class="uk-icon-circle uk-margin-small-left"></i>رمز عبور را فراموش کردم</a>
-                    <a><i class="uk-icon-facebook-square"></i></a>
-                    <a><i class="uk-icon-google-plus-square"></i></a>
-                    <a><i class="uk-icon-linkedin-square"></i></a>
-                    <a><i class="uk-icon-twitter-square"></i></a>
+                    <p id="tm-user-links">
+                        <a href="/users/register"><i class="uk-icon-circle uk-margin-small-left"></i>ثبت نام</a>
+                        <br>
+                        <a href="/users/reset_password/"><i class="uk-icon-circle uk-margin-small-left"></i>رمز عبور را فراموش کردم</a>
+                    </p>
+                    <div class="tm-social-links uk-margin-large-top">
+                        <span>ورود با حساب های:</span>
+                        <a><i class="uk-icon-facebook-square"></i></a>
+                        <a><i class="uk-icon-google-plus-square"></i></a>
+                        <a><i class="uk-icon-linkedin-square"></i></a>
+                        <a><i class="uk-icon-twitter-square"></i></a>
+                    </div>
                 </form>
             </div>
         </div>
