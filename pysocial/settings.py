@@ -135,8 +135,8 @@ else:
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-# LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'fa-IR'
+LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'fa-IR'
 
 # TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Tehran'
