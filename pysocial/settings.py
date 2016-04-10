@@ -60,6 +60,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'captcha',
+    'ckeditor',
+    'ckeditor_uploader',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -69,9 +72,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.twitter',
     'allauth.socialaccount.providers.linkedin',
     'allauth.socialaccount.providers.linkedin_oauth2',
-    'captcha',
-    'ckeditor',
-    'ckeditor_uploader',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -160,9 +160,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
 # Custome App
 INSTALLED_APPS += [
-
-
-
     'users',
     'manager',
 ]
@@ -198,7 +195,6 @@ AUTHENTICATION_BACKENDS = (
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 )
-
 
 
 # Logging Configurations
