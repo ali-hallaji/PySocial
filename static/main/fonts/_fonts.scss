@@ -1,12 +1,12 @@
 @font-face {
-    font-family: Mirza;
+    font-family: $mirza-font;
     src:url("#{$mirza-font-path}Mirza.woff") format("woff"),
         url("#{$mirza-font-path}Mirza.ttf") format("truetype");
     font-weight: normal;
 }
 
 @font-face {
-    font-family: Mirzab;
+    font-family: $mirzab-font;
     src:url("#{$mirza-font-path}Mirza-Bold.woff") format("woff"),
         url("#{$mirza-font-path}Mirza-Bold.ttf") format("truetype");
     font-weight: normal;

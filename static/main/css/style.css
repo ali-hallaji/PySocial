@@ -4,17 +4,6 @@
 /* Compass */
 /* Bourbon */
 /* Settings */
-/* Fonts */
-@font-face {
-  font-family: Mirza;
-  src: url("../fonts/mirza/Mirza.woff") format("woff"), url("../fonts/mirza/Mirza.ttf") format("truetype");
-  font-weight: normal;
-}
-@font-face {
-  font-family: Mirzab;
-  src: url("../fonts/mirza/Mirza-Bold.woff") format("woff"), url("../fonts/mirza/Mirza-Bold.ttf") format("truetype");
-  font-weight: normal;
-}
 /* Modules */
 /* Layout */
 nav.tm-navbar {
@@ -34,4 +23,9 @@ ul.tm-navbar-nav > li > a i {
 ul.tm-navbar-nav > li > a:hover, ul.tm-navbar-nav > li > a:focus, ul.tm-navbar-nav > li > a:active {
   color: #ebebeb;
   background: transparent;
+}
+
+.tm-navbar-inactive {
+  position: absolute;
+  width: 100%;
 }

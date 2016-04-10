@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en-us" dir="rtl">
     <head>
         <meta charset="utf-8">
         <meta name="robots" content="NONE,NOARCHIVE">
@@ -19,7 +19,7 @@
         <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon.png">
     </head>
     <body>
-        <header>
+        <header data-uk-sticky>
             <nav class="tm-navbar uk-navbar">
                 <div class="uk-container uk-container-center">
                     <ul class="tm-navbar-nav uk-navbar-nav">
@@ -49,12 +49,15 @@
                 </div>
             </nav>
         </header>
+
         {% block content %}{% endblock %}
+
         <!-- jQuery -->
         <script src="{% static 'main/js/jquery-2.2.3.min.js' %}"></script>
 
         <!-- UIkit -->
         <script src="{% static 'main/js/uikit.min.js' %}"></script>
+        <script src="{% static 'main/js/components/sticky.min.js' %}"></script>
         {% block meta_js %}{% endblock %}
     </body>
 </html>

@@ -5,6 +5,18 @@
 /* compass */
 /* Variable */
 /* Mixin */
+/* Settings */
+/* Fonts */
+@font-face {
+  font-family: Mirza;
+  src: url("../fonts/mirza/Mirza.woff") format("woff"), url("../fonts/mirza/Mirza.ttf") format("truetype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: Mirzab;
+  src: url("../fonts/mirza/Mirza-Bold.woff") format("woff"), url("../fonts/mirza/Mirza-Bold.ttf") format("truetype");
+  font-weight: normal;
+}
 /* Theme */
 /* UiKit */
 /* ========================================================================
@@ -1765,21 +1777,21 @@ iframe {
  * Muted
  */
 .uk-block-muted {
-  background: #f9f9f9;
+  background: #EAF2F6;
 }
 
 /*
  * Primary
  */
 .uk-block-primary {
-  background: #00a8e6;
+  background: #003C5A;
 }
 
 /*
  * Secondary
  */
 .uk-block-secondary {
-  background: #222;
+  background: #E76E33;
 }
 
 /*

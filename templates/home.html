@@ -2,5 +2,35 @@
 {% load static %}
 {% block title %}home{% endblock %}
 {% block content %}
-    <p>{{ news }}</p>
+    <section>
+        <div class="uk-block uk-padding-remove uk-block-primary uk-height-viewport">
+            <div class="uk-container uk-container-center">
+                <div class="uk-contrast uk-text-center">
+                    <h1>پای سوشیال</h1>
+                    <p></p>
+                </div>
+            </div>
+            <img src="{% static "main/img/header_wall.png" %}" alt="bigdata">
+        </div>
+    </section>
+    <section>
+        <div class="uk-block uk-block-muted">
+            <div class="uk-container uk-container-center">
+                <div class="uk-grid">
+                    <div class="uk-width-1-2">
+                        <h2>چرا زبان پایتون تا این اندازه محبوب شده ؟</h2>
+                        <p>پایتون یک زبان برنامه نویسی اسکریپتی همه منظوره برای نوشتن برنامه‌ها به صورت مستقل از سکو هست که توسط Guido van Rossum در سال ۱۹۸۹ نوشته شده. اگه در این چند سال اخیر محبوبیت زبان‌های برنامه نویسی را بررسی کنید متوجه محبوبیت روز افزون خواهید شد</p>
+                    </div>
+                    <div class="uk-width-1-2">
+                        <img src="{% static "main/img/page01_img02.png" %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="uk-block uk-block-secondary">
+        </div>
+    </section>
+    <!-- <p>{{ news }}</p> -->
 {% endblock %}

@@ -11,6 +11,12 @@
 /* Mixin */
 @import "uikit-mixins";
 
+/* Settings */
+@import "settings/settings";
+
+/* Fonts */
+@import "../fonts/fonts";
+
 /* Theme */
 @import "cmcore/uikit";
 
