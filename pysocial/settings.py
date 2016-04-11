@@ -49,7 +49,7 @@ DEBUG = config.getboolean('debug', 'DEBUG')
 
 ALLOWED_HOSTS = []
 
-SITE_ID = 2
+SITE_ID = int(config.get('host', 'SITE_ID'))
 
 # Application definition
 
