@@ -42,13 +42,14 @@ else:
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config.get('secrets', 'SECRET_KEY')
-SITE_ID = 1
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config.getboolean('debug', 'DEBUG')
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 2
 
 # Application definition
 
@@ -100,7 +101,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request',
             ],
         },
     },
@@ -131,6 +131,15 @@ else:
             'PORT': DJANGO_DB_PORT
         }
     }
+
+
+# Auth Backend
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
@@ -169,15 +178,6 @@ EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
 DEFAULT_FROM_EMAIL = 'PySocial <info@pysocial.com>'
 MAILGUN_ACCESS_KEY = config.get('email', 'MAILGUN_KEY')
 MAILGUN_SERVER_NAME = config.get('email', 'MAILGUN_URL')
-
-
-# Auth Backend
-AUTHENTICATION_BACKENDS = (
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
-)
 
 
 # Logging Configurations
