@@ -27,6 +27,7 @@ from views import under_construction
 
 
 urlpatterns = [
+    url(r'^accounts/', include('allauth.urls')),
     url(r'^captcha/', include('captcha.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^admin/', admin.site.urls),

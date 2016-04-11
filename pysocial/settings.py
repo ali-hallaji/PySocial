@@ -42,6 +42,7 @@ else:
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config.get('secrets', 'SECRET_KEY')
+SITE_ID = 1
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config.getboolean('debug', 'DEBUG')
@@ -58,9 +59,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'captcha',
     'ckeditor',
     'ckeditor_uploader',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.linkedin',
+    'allauth.socialaccount.providers.linkedin_oauth2',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -89,6 +100,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -157,6 +169,16 @@ EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
 DEFAULT_FROM_EMAIL = 'PySocial <info@pysocial.com>'
 MAILGUN_ACCESS_KEY = config.get('email', 'MAILGUN_KEY')
 MAILGUN_SERVER_NAME = config.get('email', 'MAILGUN_URL')
+
+
+# Auth Backend
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
 
 # Logging Configurations
 log_dir = config.get('logging', 'DIR')
