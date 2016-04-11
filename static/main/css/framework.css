@@ -17,6 +17,11 @@
   src: url("../fonts/mirza/Mirza-Bold.woff") format("woff"), url("../fonts/mirza/Mirza-Bold.ttf") format("truetype");
   font-weight: normal;
 }
+@font-face {
+  font-family: ubuntu;
+  src: url("../fonts/ubuntu/Ubuntu-R.ttf") format("truetype");
+  font-weight: normal;
+}
 /* Theme */
 /* UiKit */
 /* ========================================================================
@@ -29,7 +34,7 @@
  */
 html {
   /* 1 */
-  font: normal 12px / 20px mirza, "Helvetica Neue";
+  font: normal 12px / 20px mirza, ubuntu;
   /* 2 */
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -267,7 +272,7 @@ figure {
  ========================================================================== */
 h1, h2, h3, h4, h5, h6 {
   margin: 0 0 15px 0;
-  font-family: mirza, "Helvetica Neue";
+  font-family: mirza, ubuntu;
   font-weight: normal;
   color: #393d40;
   text-transform: none;
@@ -2352,7 +2357,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   /* 2 */
   color: #fff;
   font-size: 12px;
-  font-family: mirza, "Helvetica Neue";
+  font-family: mirza, ubuntu;
   font-weight: normal;
 }
 
