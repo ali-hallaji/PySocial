@@ -37,6 +37,17 @@ SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
         'SCOPE': ['email', 'publish_stream'],
         'METHOD': 'oauth2'  # instead of 'oauth2'
+    },
+    'linkedin': {
+        'SCOPE': ['r_emailaddress'],
+        'PROFILE_FIELDS': [
+            'id',
+            'first-name',
+            'last-name',
+            'email-address',
+            'picture-url',
+            'public-profile-url'
+        ]
     }
 }
 

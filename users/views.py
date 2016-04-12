@@ -189,7 +189,7 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
             name = sociallogin.account.extra_data['name']
             first_name = name.split()[0]
             last_name = name.split()[1]
-            email = sociallogin.account.extra_data['email']
+            profile_picture = sociallogin.account.extra_data['profile_image_url']
 
         if sociallogin.account.provider == 'facebook':
             first_name = sociallogin.account.extra_data['first_name']
@@ -199,4 +199,9 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
         if sociallogin.account.provider == 'google':
             first_name = sociallogin.account.extra_data['given_name']
             last_name = sociallogin.account.extra_data['family_name']
+            email = sociallogin.account.extra_data['email']
+
+        if sociallogin.account.provider == 'linkedin':
+            first_name = sociallogin.account.extra_data['linkedin']
+            last_name = sociallogin.account.extra_data['last_name']
             email = sociallogin.account.extra_data['email']
