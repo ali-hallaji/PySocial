@@ -27,7 +27,11 @@ def login(request):
     referer = request.META.get('HTTP_REFERER', '').rstrip('/')
 
     if 'next' in request.GET:
-        redirect_url = request.GET['next']
+
+        if 'logout' in request.GET['next']:
+            redirect_url = '/'
+        else:
+            redirect_url = request.GET['next']
 
     elif referer and not referer.endswith(settings.LOGIN_URL):
         redirect_url = referer
@@ -74,7 +78,12 @@ def registration(request):
     kwargs = {}
 
     if 'next' in request.GET:
-        redirect_url = request.GET['next']
+
+        if 'logout' in request.GET['next']:
+            redirect_url = '/'
+        else:
+            redirect_url = request.GET['next']
+
     else:
         redirect_url = '/'
 
@@ -158,6 +167,9 @@ def logout(request):
     except:
         url = request.get_full_path()
 
+    if 'logout' in url:
+        url = '/'
+
     auth.logout(request)
 
     return HttpResponseRedirect(url)
@@ -179,29 +191,72 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
     in the 'extra_data' field.
     '''
 
-    logger.debug("#########################################")
-    logger.debug(sociallogin.account.extra_data)
-    logger.debug("#########################################")
+    doc = user.__dict__
 
-    if sociallogin:
+    try:
+        del doc['_state']
+        del doc['_emailaddress_cache']
+    except:
+        pass
+
+    sl = sociallogin
+
+    doc['last_login'] = doc['last_login'].replace(tzinfo=None)
+    doc['date_joined'] = doc['date_joined'].replace(tzinfo=None)
+    doc['social_name'] = sl.account.provider
+    doc['social_auth'] = True
+    doc['groups_name'] = [
+        'Member',
+    ]
+
+    if sl:
         # Extract first / last names from social nets and store on User record
-        if sociallogin.account.provider == 'twitter':
-            name = sociallogin.account.extra_data['name']
-            first_name = name.split()[0]
-            last_name = name.split()[1]
-            profile_picture = sociallogin.account.extra_data['profile_image_url']
+        if sl.account.provider == 'twitter':
+            name = sl.account.extra_data['name']
+            doc['first_name'] = name.split()[0]
+            doc['last_name'] = name.split()[1]
+            doc['picture'] = sl.account.extra_data['profile_image_url']
 
-        if sociallogin.account.provider == 'facebook':
-            first_name = sociallogin.account.extra_data['first_name']
-            last_name = sociallogin.account.extra_data['last_name']
-            email = sociallogin.account.extra_data['email']
+        if sl.account.provider == 'facebook':
+            doc['first_name'] = sl.account.extra_data['first_name']
+            doc['last_name'] = sl.account.extra_data['last_name']
+            doc['email'] = sl.account.extra_data['email']
 
-        if sociallogin.account.provider == 'google':
-            first_name = sociallogin.account.extra_data['given_name']
-            last_name = sociallogin.account.extra_data['family_name']
-            email = sociallogin.account.extra_data['email']
+        if sl.account.provider == 'google':
+            doc['first_name'] = sl.account.extra_data['given_name']
+            doc['last_name'] = sl.account.extra_data['family_name']
+            doc['email'] = sl.account.extra_data['email']
+            doc['picture'] = sl.account.extra_data['picture']
+            doc['social_url'] = sl.account.extra_data['link']
 
-        if sociallogin.account.provider == 'linkedin':
-            first_name = sociallogin.account.extra_data['linkedin']
-            last_name = sociallogin.account.extra_data['last_name']
-            email = sociallogin.account.extra_data['email']
+        if sl.account.provider == 'linkedin':
+            doc['first_name'] = sl.account.extra_data['first-name']
+            doc['last_name'] = sl.account.extra_data['last-name']
+            doc['email'] = sl.account.extra_data['email-address']
+            doc['social_url'] = sl.account.extra_data['public-profile-url']
+            doc['picture'] = sl.account.extra_data['picture-url']
+
+        if sl.account.provider == 'github':
+            name = sl.account.extra_data['name']
+            doc['first_name'] = name.split()[0]
+            doc['last_name'] = name.split()[1]
+            doc['email'] = sl.account.extra_data['email']
+            doc['social_url'] = sl.account.extra_data['url']
+            doc['picture'] = sl.account.extra_data['avatar_url']
+
+    if user.is_authenticated():
+        criteria = {'username': doc['username']}
+        update_data = {'$set': doc}
+        update = cursor.users.update_one(
+            criteria,
+            update_data,
+            upsert=True
+        )
+
+        if update.raw_result.get('updatedExisting', None):
+            logger.debug("User: {0}, Data: {1}".format(doc['username'], doc))
+        else:
+            msg = "User authenticate faild! "
+            msg += "User: {0}, Data: {1}".format(doc['username'], doc)
+            logger.warning(msg)
+

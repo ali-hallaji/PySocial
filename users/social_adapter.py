@@ -9,7 +9,11 @@ class SocialAdapter(DefaultAccountAdapter):
         referer = request.META.get('HTTP_REFERER', '').rstrip('/')
 
         if 'next' in request.GET:
-            redirect_url = request.GET['next']
+
+            if 'logout' in request.GET['next']:
+                redirect_url = '/'
+            else:
+                redirect_url = request.GET['next']
 
         elif referer and not referer.endswith(settings.LOGIN_URL):
             redirect_url = referer
