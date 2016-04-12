@@ -226,8 +226,10 @@ LOGGING = {
             'backupCount': 7,
         },
         'console': {
+            'level': 'INFO',
             'class': 'logging.StreamHandler',
-            'stream': sys.stdout
+            'stream': sys.stdout,
+            'formatter': 'verbose',
         },
         'stdout': {
             'level': 'INFO',
@@ -263,7 +265,8 @@ LOGGING = {
         },
         'stdout': {
             'handlers': ['console'],
-            'level': 'INFO'
+            'level': 'INFO',
+            'propagate': False,
         },
         '': {
             'handlers': ['unhanlded'],
