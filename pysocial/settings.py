@@ -227,7 +227,11 @@ LOGGING = {
         },
         'console': {
             'class': 'logging.StreamHandler',
-            'stream': sys.stdout,
+            'stream': sys.stdout
+        },
+        'stdout': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
             'filename': log_dir + 'console.log',
             'formatter': 'verbose',
             'maxBytes': 1024 * 1024 * 5,  # 5 MB
