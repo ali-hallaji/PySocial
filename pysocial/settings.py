@@ -225,20 +225,6 @@ LOGGING = {
             'maxBytes': 1024 * 1024 * 5,  # 5 MB
             'backupCount': 7,
         },
-        'console': {
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
-            'stream': sys.stdout,
-            'formatter': 'verbose',
-        },
-        'stdout': {
-            'level': 'INFO',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': log_dir + 'console.log',
-            'formatter': 'verbose',
-            'maxBytes': 1024 * 1024 * 5,  # 5 MB
-            'backupCount': 7,
-        },
         'unhanlded': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
@@ -262,11 +248,6 @@ LOGGING = {
         'py.warnings': {
             'handlers': ['warning'],
             'propagate': False
-        },
-        'stdout': {
-            'handlers': ['console'],
-            'level': 'INFO',
-            'propagate': False,
         },
         '': {
             'handlers': ['unhanlded'],

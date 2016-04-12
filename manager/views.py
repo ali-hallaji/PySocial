@@ -318,4 +318,3 @@ def edit_box(request, _id):
         kwargs['form'] = BoxForm(box)
 
     return render(request, 'manager/add_box.html', kwargs)
-
