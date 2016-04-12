@@ -1,8 +1,11 @@
 # Python Import
-from allauth.account.signals import user_logged_in
+import logging
 
 # Django Import
+from allauth.account.signals import user_logged_in
 from django.dispatch import receiver
+
+logger = logging.getLogger(__name__)
 
 
 @receiver(user_logged_in)
@@ -21,9 +24,9 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
     in the 'extra_data' field.
     '''
 
-    print "#########################################"
-    print sociallogin.account.extra_data
-    print "#########################################"
+    logger.info("#########################################")
+    logger.info(sociallogin.account.extra_data)
+    logger.info("#########################################")
 
     if sociallogin:
         # Extract first / last names from social nets and store on User record
