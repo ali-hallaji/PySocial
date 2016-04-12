@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import sys
 from ConfigParser import RawConfigParser
 
 
@@ -224,6 +225,10 @@ LOGGING = {
             'maxBytes': 1024 * 1024 * 5,  # 5 MB
             'backupCount': 7,
         },
+        'console': {
+            'class': 'logging.StreamHandler',
+            'stream': sys.stdout,
+        },
         'unhanlded': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
@@ -247,6 +252,10 @@ LOGGING = {
         'py.warnings': {
             'handlers': ['warning'],
             'propagate': False
+        },
+        'stdout': {
+            'handlers': ['console'],
+            'level': 'INFO'
         },
         '': {
             'handlers': ['unhanlded'],
