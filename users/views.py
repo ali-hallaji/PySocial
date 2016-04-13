@@ -259,6 +259,7 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
             doc['picture'] = sl.account.extra_data['avatar_url']
 
     if not doc['email']:
+        logger.debug("LLLLLLLLLLLLLLSSSSSSSSSSSSSSSSSSSSSSSS")
         return HttpResponseRedirect('/')
 
     if user.is_authenticated():
