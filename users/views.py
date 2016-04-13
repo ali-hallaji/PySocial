@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 # Python import
+import logging
+
 from pymongo.errors import DuplicateKeyError
 
 # Django Import
+from allauth.account.signals import user_logged_in
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db import IntegrityError
+from django.dispatch import receiver
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from forms import RegisterUsersForm
@@ -16,12 +20,18 @@ from core import cursor
 from core.mail_functions import welcome_mail
 from pysocial import settings
 
+logger = logging.getLogger(__name__)
+
 
 def login(request):
     referer = request.META.get('HTTP_REFERER', '').rstrip('/')
 
     if 'next' in request.GET:
-        redirect_url = request.GET['next']
+
+        if 'logout' in request.GET['next']:
+            redirect_url = '/'
+        else:
+            redirect_url = request.GET['next']
 
     elif referer and not referer.endswith(settings.LOGIN_URL):
         redirect_url = referer
@@ -68,7 +78,12 @@ def registration(request):
     kwargs = {}
 
     if 'next' in request.GET:
-        redirect_url = request.GET['next']
+
+        if 'logout' in request.GET['next']:
+            redirect_url = '/'
+        else:
+            redirect_url = request.GET['next']
+
     else:
         redirect_url = '/'
 
@@ -152,6 +167,96 @@ def logout(request):
     except:
         url = request.get_full_path()
 
+    if 'logout' in url:
+        url = '/'
+
     auth.logout(request)
 
     return HttpResponseRedirect(url)
+
+
+@receiver(user_logged_in)
+def social_auth_handler(request, user, sociallogin=None, **kwargs):
+    '''
+    When a social account is created or login successfully and this
+    signal is received, django-allauth passes in the sociallogin param,
+    giving access to metadata on the remote account, e.g.:
+
+    sociallogin.account.provider  # e.g. 'twitter'
+    sociallogin.account.get_avatar_url()
+    sociallogin.account.get_profile_url()
+    sociallogin.account.extra_data['screen_name']
+
+    See the socialaccount_socialaccount table for more
+    in the 'extra_data' field.
+    '''
+
+    doc = user.__dict__
+
+    try:
+        del doc['_state']
+        del doc['_emailaddress_cache']
+    except:
+        pass
+
+    sl = sociallogin
+
+    doc['last_login'] = doc['last_login'].replace(tzinfo=None)
+    doc['date_joined'] = doc['date_joined'].replace(tzinfo=None)
+    doc['social_name'] = sl.account.provider
+    doc['social_auth'] = True
+    doc['groups_name'] = [
+        'Member',
+    ]
+
+    if sl:
+        # Extract first / last names from social nets and store on User record
+        if sl.account.provider == 'twitter':
+            name = sl.account.extra_data['name']
+            doc['first_name'] = name.split()[0]
+            doc['last_name'] = name.split()[1]
+            doc['picture'] = sl.account.extra_data['profile_image_url']
+
+        if sl.account.provider == 'facebook':
+            doc['first_name'] = sl.account.extra_data['first_name']
+            doc['last_name'] = sl.account.extra_data['last_name']
+            doc['email'] = sl.account.extra_data['email']
+
+        if sl.account.provider == 'google':
+            doc['first_name'] = sl.account.extra_data['given_name']
+            doc['last_name'] = sl.account.extra_data['family_name']
+            doc['email'] = sl.account.extra_data['email']
+            doc['picture'] = sl.account.extra_data['picture']
+            doc['social_url'] = sl.account.extra_data['link']
+
+        if sl.account.provider == 'linkedin':
+            doc['first_name'] = sl.account.extra_data['first-name']
+            doc['last_name'] = sl.account.extra_data['last-name']
+            doc['email'] = sl.account.extra_data['email-address']
+            doc['social_url'] = sl.account.extra_data['public-profile-url']
+            doc['picture'] = sl.account.extra_data['picture-url']
+
+        if sl.account.provider == 'github':
+            name = sl.account.extra_data['name']
+            doc['first_name'] = name.split()[0]
+            doc['last_name'] = name.split()[1]
+            doc['email'] = sl.account.extra_data['email']
+            doc['social_url'] = sl.account.extra_data['url']
+            doc['picture'] = sl.account.extra_data['avatar_url']
+
+    if user.is_authenticated():
+        criteria = {'username': doc['username']}
+        update_data = {'$set': doc}
+        update = cursor.users.update_one(
+            criteria,
+            update_data,
+            upsert=True
+        )
+
+        if update.raw_result.get('updatedExisting', None):
+            logger.debug("User: {0}, Data: {1}".format(doc['username'], doc))
+        else:
+            msg = "User authenticate faild! "
+            msg += "User: {0}, Data: {1}".format(doc['username'], doc)
+            logger.warning(msg)
+

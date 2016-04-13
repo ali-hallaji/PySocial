@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load socialaccount %}
+
 <html lang="fa-IR" dir="rtl" class="uk-height-1-1">
     <head>
         <title>صفحه ورود</title>
@@ -37,10 +39,11 @@
                     </p>
                     <div class="tm-social-links uk-margin-large-top">
                         <span>ورود با حساب های:</span>
-                        <a><i class="uk-icon-facebook-square"></i></a>
-                        <a><i class="uk-icon-google-plus-square"></i></a>
-                        <a><i class="uk-icon-linkedin-square"></i></a>
-                        <a><i class="uk-icon-twitter-square"></i></a>
+                        <a ><i class="uk-icon-facebook-square"></i></a>
+                        <a href="{% provider_login_url "google" %}"><i class="uk-icon-google-plus-square"></i></a>
+                        <a href="{% provider_login_url "linkedin" %}"><i class="uk-icon-linkedin-square"></i></a>
+                        <a href="{% provider_login_url "github" %}"><i class="uk-icon-github-square"></i></a>
+                        <a href="{% provider_login_url "twitter" %}"><i class="uk-icon-twitter-square"></i></a>
                     </div>
                 </form>
             </div>
