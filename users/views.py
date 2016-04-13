@@ -260,7 +260,6 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
 
     if not doc['email']:
         logger.debug("LLLLLLLLLLLLLLSSSSSSSSSSSSSSSSSSSSSSSS")
-        return HttpResponseRedirect('http://PySocial.com/')
 
     if user.is_authenticated():
         criteria = {'username': doc['username']}
