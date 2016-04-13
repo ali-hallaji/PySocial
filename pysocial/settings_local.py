@@ -30,9 +30,9 @@ SOCIALACCOUNT_PROVIDERS = {
             'profile',
             'email'
         ],
-        'AUTH_PARAMS': {
-            'access_type': 'online'
-        }
+        # 'AUTH_PARAMS': {
+        #     'access_type': 'online'
+        # }
     },
     'linkedin': {
         'SCOPE': ['r_emailaddress'],
