@@ -227,21 +227,21 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
             picture = sl.account.extra_data.get('data', {}).get('url', None)
             doc['first_name'] = sl.account.extra_data['first_name']
             doc['last_name'] = sl.account.extra_data['last_name']
-            doc['email'] = sl.account.extra_data['email']
+            doc['email'] = sl.account.extra_data.get('email', None)
             doc['social_url'] = sl.account.extra_data['link']
             doc['picture'] = picture
 
         if sl.account.provider == 'google':
             doc['first_name'] = sl.account.extra_data['given_name']
             doc['last_name'] = sl.account.extra_data['family_name']
-            doc['email'] = sl.account.extra_data['email']
+            doc['email'] = sl.account.extra_data.get('email', None)
             doc['picture'] = sl.account.extra_data['picture']
             doc['social_url'] = sl.account.extra_data['link']
 
         if sl.account.provider == 'linkedin':
             doc['first_name'] = sl.account.extra_data['first-name']
             doc['last_name'] = sl.account.extra_data['last-name']
-            doc['email'] = sl.account.extra_data['email-address']
+            doc['email'] = sl.account.extra_data.get('email-address', None)
             doc['social_url'] = sl.account.extra_data['public-profile-url']
             doc['picture'] = sl.account.extra_data['picture-url']
 
@@ -254,9 +254,12 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
                 doc['first_name'] = sl.account.extra_data['name']
                 doc['last_name'] = sl.account.extra_data['name']
 
-            doc['email'] = sl.account.extra_data['email']
+            doc['email'] = sl.account.extra_data.get('email', None)
             doc['social_url'] = sl.account.extra_data['url']
             doc['picture'] = sl.account.extra_data['avatar_url']
+
+    if not doc['email']:
+        return HttpResponseRedirect('/')
 
     if user.is_authenticated():
         criteria = {'username': doc['username']}
