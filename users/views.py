@@ -209,7 +209,6 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
         'Member',
     ]
     logger.debug('##################################')
-    logger.debug(request.user.profile.profile_image_url)
     logger.debug(sl.account.extra_data)
     logger.debug('##################################')
 
