@@ -208,6 +208,7 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
     doc['groups_name'] = [
         'Member',
     ]
+    logger.debug(sl.account.extra_data)
 
     if sl:
         # Extract first / last names from social nets and store on User record
