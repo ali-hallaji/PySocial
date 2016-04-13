@@ -64,8 +64,7 @@ SOCIALACCOUNT_PROVIDERS = {
                 'updated_time'
             ],
             'EXCHANGE_TOKEN': True,
-            'LOCALE_FUNC': 'path.to.callable',
-            'VERIFIED_EMAIL': False,
+            'VERIFIED_EMAIL': True,
             'VERSION': 'v2.4'
     }
 }
