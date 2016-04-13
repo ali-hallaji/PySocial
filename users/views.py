@@ -221,6 +221,7 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
             doc['first_name'] = sl.account.extra_data['first_name']
             doc['last_name'] = sl.account.extra_data['last_name']
             doc['email'] = sl.account.extra_data['email']
+            doc['social_url'] = sl.account.extra_data['link']
 
         if sl.account.provider == 'google':
             doc['first_name'] = sl.account.extra_data['given_name']
@@ -238,8 +239,13 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
 
         if sl.account.provider == 'github':
             name = sl.account.extra_data['name']
-            doc['first_name'] = name.split()[0]
-            doc['last_name'] = name.split()[1]
+
+            if len(name.split()) > 1:
+                doc['first_name'], doc['last_name'] = name.split()
+            else:
+                doc['first_name'] = sl.account.extra_data['name']
+                doc['last_name'] = sl.account.extra_data['name']
+
             doc['email'] = sl.account.extra_data['email']
             doc['social_url'] = sl.account.extra_data['url']
             doc['picture'] = sl.account.extra_data['avatar_url']
