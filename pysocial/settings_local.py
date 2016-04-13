@@ -48,7 +48,7 @@ SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
             'METHOD': 'oauth2',
             'SCOPE': ['email', 'public_profile', 'user_friends'],
-            'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+            # 'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
             'FIELDS': [
                 'id',
                 'email',
@@ -69,7 +69,6 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-ACCOUNT_AUTHENTICATION_METHOD = ("email")
 ACCOUNT_ADAPTER = 'users.social_adapter.SocialAdapter'
 ACCOUNT_USERNAME_REQUIRED = True
 SOCIALACCOUNT_QUERY_EMAIL = True
