@@ -34,10 +34,6 @@ SOCIALACCOUNT_PROVIDERS = {
             'access_type': 'online'
         }
     },
-    'facebook': {
-        'SCOPE': ['email', 'publish_stream'],
-        'METHOD': 'oauth2'  # instead of 'oauth2'
-    },
     'linkedin': {
         'SCOPE': ['r_emailaddress'],
         'PROFILE_FIELDS': [

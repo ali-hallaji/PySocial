@@ -218,13 +218,18 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
             name = sl.account.extra_data['name']
             doc['first_name'] = name.split()[0]
             doc['last_name'] = name.split()[1]
-            doc['picture'] = sl.account.extra_data['profile_image_url']
+            doc['picture'] = sl.account.extra_data.get(
+                'profile_image_url',
+                None
+            )
 
         if sl.account.provider == 'facebook':
+            picture = sl.account.extra_data.get('data', {}).get('url', None)
             doc['first_name'] = sl.account.extra_data['first_name']
             doc['last_name'] = sl.account.extra_data['last_name']
             doc['email'] = sl.account.extra_data['email']
             doc['social_url'] = sl.account.extra_data['link']
+            doc['picture'] = picture
 
         if sl.account.provider == 'google':
             doc['first_name'] = sl.account.extra_data['given_name']
