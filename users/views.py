@@ -208,9 +208,6 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
     doc['groups_name'] = [
         'Member',
     ]
-    logger.debug('##################################')
-    logger.debug(sl.account.extra_data)
-    logger.debug('##################################')
 
     if sl:
         # Extract first / last names from social nets and store on User record
@@ -258,9 +255,6 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
             doc['social_url'] = sl.account.extra_data['url']
             doc['picture'] = sl.account.extra_data['avatar_url']
 
-    if not doc['email']:
-        logger.debug("LLLLLLLLLLLLLLSSSSSSSSSSSSSSSSSSSSSSSS")
-
     if user.is_authenticated():
         criteria = {'username': doc['username']}
         update_data = {'$set': doc}
@@ -271,7 +265,15 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
         )
 
         if update.raw_result.get('updatedExisting', None):
+
+            if doc['email']:
+                try:
+                    welcome_mail([doc['email'], ])
+                except:
+                    pass
+
             logger.debug("User: {0}, Data: {1}".format(doc['username'], doc))
+
         else:
             msg = "User authenticate faild! "
             msg += "User: {0}, Data: {1}".format(doc['username'], doc)
