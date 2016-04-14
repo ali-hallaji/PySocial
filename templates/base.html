@@ -19,6 +19,18 @@
         <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon.png">
     </head>
     <body>
+        {% block body %}
+            {% if messages %}
+                <div>
+                    <strong>Messages:</strong>
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{message}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endblock %}
         <header data-uk-sticky="{media: 767, clsinactive: 'test', top: '.uk-sticky-placeholder + *',animation: 'uk-animation-slide-top'}">
             <nav class="tm-navbar uk-navbar">
                 <div class="uk-container uk-container-center">
@@ -52,12 +64,20 @@
 
         {% block content %}{% endblock %}
 
+        <footer>
+            <div class="tm-block-footer uk-block">
+                <div class="uk-grid">
+                    
+                </div>
+            </div>
+        </footer>
+
         <!-- jQuery -->
         <script src="{% static 'main/js/jquery-2.2.3.min.js' %}"></script>
 
         <!-- UIkit -->
         <script src="{% static 'main/js/uikit.min.js' %}"></script>
         <script src="{% static 'main/js/components/sticky.min.js' %}"></script>
-        {% block meta_js %}{% endblock %}
+        {% block uikit %}{% endblock %}
     </body>
 </html>
