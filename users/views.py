@@ -265,12 +265,13 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
         )
 
         if update.raw_result.get('updatedExisting', None):
+            if update.raw_result.get('upserted', None):
 
-            if doc['email']:
-                try:
-                    welcome_mail([doc['email'], ])
-                except:
-                    pass
+                if doc['email']:
+                    try:
+                        welcome_mail([doc['email'], ])
+                    except:
+                        pass
 
             logger.debug("User: {0}, Data: {1}".format(doc['username'], doc))
 
@@ -278,4 +279,3 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
             msg = "User authenticate faild! "
             msg += "User: {0}, Data: {1}".format(doc['username'], doc)
             logger.warning(msg)
-
