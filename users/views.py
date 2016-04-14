@@ -17,6 +17,7 @@ from forms import RegisterUsersForm
 
 # PySocial Import
 from core import cursor
+from func_tools import super_user
 from core.mail_functions import welcome_mail
 from pysocial import settings
 
@@ -205,9 +206,16 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
     doc['date_joined'] = doc['date_joined'].replace(tzinfo=None)
     doc['social_name'] = sl.account.provider
     doc['social_auth'] = True
-    doc['groups_name'] = [
-        'Member',
-    ]
+
+    if user.username not in super_user:
+        doc['groups_name'] = [
+            'Member',
+        ]
+
+    else:
+        doc['groups_name'] = [
+            'root',
+        ]
 
     if sl:
         # Extract first / last names from social nets and store on User record

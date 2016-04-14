@@ -2,13 +2,13 @@
 from functools import wraps
 
 # Django Import
-from django.contrib.auth.models import User
 from django.core.urlresolvers import RegexURLPattern
 from django.core.urlresolvers import RegexURLResolver
 from django.shortcuts import render
 
 # PySocial Import
 from pysocial import settings
+from users.func_tools import super_user
 from core import cursor
 
 
@@ -18,38 +18,50 @@ def has_perm_view(in_view=None):
 
         @wraps(method)
         def permission(*args, **kwargs):
+
             param = {}
-            root = User.objects.first().username
+            views_list = []
+            username = args[0].user.username
 
-            if args[0].user.username != root:
-                group_name = args[0].user.group_name.group_name
-                criteria = {'group_name': group_name}
-                data = cursor.acl_group.find_one(criteria)
+            if username not in super_user:
 
-                if method.func_name in data['views']:
+                criteria = {
+                    'username': username
+                }
+                projection = {
+                    'groups_name': 1
+                }
+                groups_name = cursor.users.find_one(criteria, projection)
 
-                    if in_view:
-                        return True
+                for group in groups_name['groups_name']:
+                    criteria = {'group_name': group}
+                    projection = {'views': 1}
+                    views = cursor.acl_group.find_one(criteria)['views']
+                    views_list.extend(views)
 
-                    else:
-                        return method(*args, **kwargs)
+                if method.func_name in views_list:
+
+                    return method(*args, **kwargs)
+                    # if in_view:
+                    #     return True
+                    # else:
+                    #     return method(*args, **kwargs)
 
                 else:
+                    # if in_view:
+                    #     return False
+                    msg = "Forbidden: You don't have permission to access for"
+                    msg += " {0}".format(method.func_name)
+                    param['msg'] = msg
 
-                    if in_view:
-                        return False
-
-                    else:
-                        param['msg'] = "Forbidden: You don't have permission to access for %s" % method.func_name
-                        return render(args[0], 'acl/not_permit_views.html', param)
+                    return render(
+                        args[0],
+                        'users/not_permit_views.html',
+                        param
+                    )
 
             else:
-
-                if in_view:
-                    return True
-
-                else:
-                    return method(*args, **kwargs)
+                return method(*args, **kwargs)
 
         return permission
 

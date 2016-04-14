@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Mobile Specific Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta charset="utf-8">
+        <title>{% block title %}PySocial ACL{% endblock %}</title>
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="{% static "css/framework.css" %}">
+        <link rel="stylesheet" href="{% static "css/403.css" %}">
+        {% block css %}{% endblock %}
+
+        <!-- Favicon and Apple Icons -->
+        <link rel="shortcut icon" href="{% static "img/fav.png" %}">
+        <link rel="apple-touch-icon" href="{% static "img/fav.png" %}">
+        <link rel="apple-touch-iocn" sizes="72⨯ 72" href="{% static "img/fav.png" %}">
+        <link rel="apple-touch-iocn" sizes="114⨯ 114" href="{% static "img/fav.png" %}">
+    </head>
+    <body>
+        <nav class="tm-nav uk-navbar">
+            <a class="uk-navbar-brand uk-hidden-small" href="/">
+                <img src="{% static "img/iranairportcompany.png" %}" alt="" width="185">
+            </a>
+        </nav>
+
+        <div class="tm-error-content uk-container uk-container-center uk-contrast">
+            <div class="error-sub uk-clearfix">
+                <h1>403</h1>
+                <h2 class="header-content"><i class="uk-icon-exclamation-triangle"></i>Oops! Permission denied.</h2>
+            </div>
+            <h2><i class="uk-icon-angle-double-right"></i>{{ msg }}.</h2>
+            {% if request.META.HTTP_REFERER %}
+            <h3 >you can return to <a href="{{ request.META.HTTP_REFERER }}">previous page</a>.</h3>
+            {% else %}
+            <h3 >you can return to <a href="/">dashboard</a>.</h3>
+            {% endif %}
+        </div>
+
+        <!-- jQuery -->
+        <script src="{% static "js/jquery.min.js" %}"></script>
+
+        <!-- UIkit -->
+        <script src="{% static "js/uikit.min.js" %}"></script>
+    </body>
+</html>
