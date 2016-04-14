@@ -70,6 +70,7 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 ACCOUNT_ADAPTER = 'users.social_adapter.SocialAdapter'
+SOCIALACCOUNT_ADAPTER = 'users.social_adapter.SocialAccountAdapter'
 ACCOUNT_USERNAME_REQUIRED = True
 SOCIALACCOUNT_QUERY_EMAIL = True
 ACCOUNT_UNIQUE_EMAIL = True
