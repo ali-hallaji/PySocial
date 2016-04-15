@@ -1,0 +1,43 @@
+@import "style";
+
+ul.tm-home-widget-list {
+
+    div.uk-panel {
+        padding: 10px;
+        background-color: #f1f1f1;
+
+        @include border-radius(5px);
+
+        > div {
+            overflow: hidden;
+            position: relative;
+            background-color: #fff;
+            margin: -9px -9px 0 -9px;
+            padding: 10px;
+
+            @include border-top-left-radius(4px);
+            @include border-top-right-radius(4px);
+        }
+    }
+
+    h2 {
+        color: #FC8F48;
+        margin: 0;
+    }
+
+    i {
+        opacity: .3;
+        font-size: 7em;
+        color: #FC8F48;
+        text-align: center;
+
+        @include position(absolute, -10px null null 20px);
+        @include border-radius(50%);
+    }
+
+    p {
+        color: #837c77;
+        text-align: justify;
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,31 @@
+/*====================================
+=            Style Codes.            =
+====================================*/
+/* Compass */
+/* Bourbon */
+/* Settings */
+/* Modules */
+/* Layout */
+nav.tm-navbar {
+  background: #003c5a;
+  padding: 10px 0;
+}
+
+ul.tm-navbar-nav > li > a {
+  color: #2379a3;
+  -webkit-transition: 0.3s all;
+  -moz-transition: 0.3s all;
+  transition: 0.3s all;
+}
+ul.tm-navbar-nav > li > a i {
+  font-size: 14px;
+}
+ul.tm-navbar-nav > li > a:hover, ul.tm-navbar-nav > li > a:focus, ul.tm-navbar-nav > li > a:active {
+  color: #ebebeb;
+  background: transparent;
+}
+
+.tm-navbar-inactive {
+  position: absolute;
+  width: 100%;
+}
