@@ -15,8 +15,8 @@
         {% block extrastyle %}{% endblock %}
 
         <!-- Fav Icons -->
-        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-        <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon.png">
+        <link rel="shortcut icon" href="{% static "main/img/social_logo.png" %}" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" href="{% static "main/img/social_logo.png" %}">
     </head>
     <body>
         {% block body %}
@@ -65,9 +65,29 @@
         {% block content %}{% endblock %}
 
         <footer>
-            <div class="tm-block-footer uk-block">
-                <div class="uk-grid">
-                    
+            <div class="uk-block uk-block-muted">
+                <div class="uk-container uk-container-center">
+                    <div class="uk-grid uk-text-center">
+                        <div class="uk-width-small-1-2 uk-width-large-1-4">
+                            <a href=""><i class="uk-icon-facebook-square uk-icon-large"></i></a>
+                            <a href=""><i class="uk-icon-google-plus-square uk-icon-large"></i></a>
+                            <a href=""><i class="uk-icon-linkedin-square uk-icon-large"></i></a>
+                            <a href=""><i class="uk- icon-twitter-square uk-icon-large"></i></a>
+                        </div>
+                        <div class="uk-width-small-1-2 uk-width-large-2-4">
+                            <ul class="uk-subnav uk-flex-space-between uk-flex-center">
+                                <li><a href="/">خانه</a></li>
+                                <li><a href="/">درباره ما</a></li>
+                                <li><a href="/">تماس با ما</a></li>
+                                <li><a href="/">چالشگاه</a></li>
+                            </ul>
+                        </div>
+                        <div class="uk-width-small-1-2 uk-width-large-1-4">
+                            <img src="{% static "main/img/logo2.png" %}" alt="پای سوشیال" width="100">
+                        </div>
+                    </div>
+                    <hr>
+                    <p>2013&copyتمامی مطالب محفوظ و کپی برداری با ذکر منبع مجاز میبا شد.</p>
                 </div>
             </div>
         </footer>

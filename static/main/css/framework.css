@@ -1775,14 +1775,14 @@ iframe {
  * Default
  */
 .uk-block-default {
-  background: #fff;
+  background: #EAF2F6;
 }
 
 /*
  * Muted
  */
 .uk-block-muted {
-  background: #EAF2F6;
+  background: #272727;
 }
 
 /*

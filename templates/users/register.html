@@ -13,7 +13,7 @@
     </head>
     <body class="uk-height-1-1">
         <div class="uk-vertical-align uk-height-1-1 uk-text-center">
-            <div class="uk-vertical-align-middle">
+            <div class="uk-vertical-align-middle uk-block uk-text-large">
                 <form class="uk-form uk-form-stacked uk-text-right" action="" method="post">
                     {% csrf_token %}
                     <div class="uk-form-row">
@@ -61,11 +61,13 @@
                         <a><i class="uk-icon-twitter-square"></i></a>
                     </div>
 
-                    <div>نام کاربری: {% if form.username.errors %}<p id="error">{{ form.username.errors|removetags:"ul li" }}</p>{% endif %}</div>
-                    {% if duplicate_username %}نام کاربری شما در سیستم موجود می باشد، لطفا نام کاربری دیگری را امتحان نمایید.{% endif %}
-                    <div>گذر واژه:{% if form.password1.errors %}<p id="error">{{ form.password1.errors|removetags:"ul li" }}</p>{% endif %}</div>
-                    <div>تکرار گذر واژه:{% if form.password2.errors %}<p id="error">{{ form.password2.errors|removetags:"ul li" }}</p>{% endif %}</div>
-                    <div>ایمیل:{% if form.email.errors %}<p id="error">{{ form.email.errors|removetags:"ul li" }}</p>{% endif %}</div>
+                    {% comment %}
+                        <div>نام کاربری: {% if form.username.errors %}<p id="error">{{ form.username.errors|removetags:"ul li" }}</p>{% endif %}</div>
+                        {% if duplicate_username %}نام کاربری شما در سیستم موجود می باشد، لطفا نام کاربری دیگری را امتحان نمایید.{% endif %}
+                        <div>گذر واژه:{% if form.password1.errors %}<p id="error">{{ form.password1.errors|removetags:"ul li" }}</p>{% endif %}</div>
+                        <div>تکرار گذر واژه:{% if form.password2.errors %}<p id="error">{{ form.password2.errors|removetags:"ul li" }}</p>{% endif %}</div>
+                        <div>ایمیل:{% if form.email.errors %}<p id="error">{{ form.email.errors|removetags:"ul li" }}</p>{% endif %}</div>
+                    {% endcomment %}
                 </form>
             </div>
         </div>
