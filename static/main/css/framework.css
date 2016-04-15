@@ -75,6 +75,10 @@ a,
   color: #07D;
   text-decoration: none;
   cursor: pointer;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 a:hover,
@@ -274,7 +278,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 15px 0;
   font-family: mirza, ubuntu;
   font-weight: normal;
-  color: 282421;
+  color: #282421;
   text-transform: none;
 }
 
@@ -8565,7 +8569,7 @@ a.uk-thumbnail:focus {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   /* 4 */
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.9);
   /* 5 */
   opacity: 0;
   -webkit-transition: opacity 0.15s linear;

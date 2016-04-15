@@ -6,8 +6,6 @@ nav.tm-navbar {
 ul.tm-navbar-nav > li > a {
     color: #2379a3;
 
-    @include transition(0.3s all);
-
     i { font-size: 14px; }
 
     &:hover,

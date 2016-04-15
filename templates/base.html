@@ -37,14 +37,13 @@
                 <div class="uk-container uk-container-center">
                     <ul class="tm-navbar-nav uk-navbar-nav">
                         <li>
-                            <a href="{% url 'login' %}">
-                                <i class="uk-icon-sign-in"></i>
-                            </a>
+                            <a data-uk-modal="{target:'#search-modal'}"><i class="uk-icon-search"></i></a>
                         </li>
                         <li>
-                            <a href="{% url 'register' %}">
-                                <i class="uk-icon-user"></i>
-                            </a>
+                            <a href="{% url 'login' %}"><i class="uk-icon-sign-in"></i></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'register' %}"><i class="uk-icon-user"></i></a>
                         </li>
                         <li>
                             <a href="">چالشگاه</a>
@@ -93,6 +92,26 @@
             </div>
         </footer>
 
+        <div class="uk-modal" id="search-modal">
+            <div class="uk-height-1-1">
+                <div class="uk-container uk-container-center">
+                    <div class="tm-search-block uk-block">
+                        <div class="uk-flex uk-flex-middle uk-flex-space-between uk-width-1-1">
+                            <h2 class="uk-h1"><i class="uk-icon-search uk-margin-left"></i>جستجو</h2>
+                            <a class="uk-close uk-close-alt uk-modal-close uk-float-left"></a>
+                        </div>
+                        <form class="uk-form" data-uk-search>
+                            <input type="search" autofocus dir="auto">
+                            <div class="uk-dropdown uk-dropdown-search">
+                                <ul class="uk-nav uk-nav-search"></ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% block modal %}{% endblock %}
+
         <!-- jQuery -->
         <script src="{% static 'main/js/jquery-2.2.3.min.js' %}"></script>
 
@@ -100,5 +119,8 @@
         <script src="{% static 'main/js/uikit.min.js' %}"></script>
         <script src="{% static 'main/js/components/sticky.min.js' %}"></script>
         {% block uikit %}{% endblock %}
+
+        <!-- Plugins And Scripts -->
+        <script src="{% static 'main/js/script.js' %}"></script>
     </body>
 </html>
