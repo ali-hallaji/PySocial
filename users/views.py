@@ -17,6 +17,7 @@ from forms import RegisterUsersForm
 
 # PySocial Import
 from core import cursor
+from func_tools import super_user
 from core.mail_functions import welcome_mail
 from pysocial import settings
 
@@ -205,9 +206,16 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
     doc['date_joined'] = doc['date_joined'].replace(tzinfo=None)
     doc['social_name'] = sl.account.provider
     doc['social_auth'] = True
-    doc['groups_name'] = [
-        'Member',
-    ]
+
+    if user.username not in super_user:
+        doc['groups_name'] = [
+            'Member',
+        ]
+
+    else:
+        doc['groups_name'] = [
+            'root',
+        ]
 
     if sl:
         # Extract first / last names from social nets and store on User record
@@ -265,12 +273,13 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
         )
 
         if update.raw_result.get('updatedExisting', None):
+            if update.raw_result.get('upserted', None):
 
-            if doc['email']:
-                try:
-                    welcome_mail([doc['email'], ])
-                except:
-                    pass
+                if doc['email']:
+                    try:
+                        welcome_mail([doc['email'], ])
+                    except:
+                        pass
 
             logger.debug("User: {0}, Data: {1}".format(doc['username'], doc))
 
@@ -278,4 +287,3 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
             msg = "User authenticate faild! "
             msg += "User: {0}, Data: {1}".format(doc['username'], doc)
             logger.warning(msg)
-

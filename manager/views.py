@@ -1,6 +1,7 @@
 # Python Import
-import os
 import logging
+import os
+
 from bson.objectid import ObjectId
 
 # Django import
@@ -14,19 +15,21 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
 # PySocial import
-from pysocial.settings import BASE_DIR
 from core import cursor
-from core.func_tools import handle_uploaded_file
 from core.acl_general_funcs import get_all_view_names
+from core.acl_general_funcs import has_perm_view
+from core.func_tools import handle_uploaded_file
 from forms import BoxForm
 from forms import GroupForm
 from forms import HomeForm
 from forms import UserForm
+from pysocial.settings import BASE_DIR
 
 logger = logging.getLogger(__name__)
 
 
 @login_required
+@has_perm_view()
 def edit_home(request):
     kwargs = {}
 
@@ -54,6 +57,7 @@ def edit_home(request):
 
 
 @login_required
+@has_perm_view()
 def define_group(request):
     kwargs = {}
     all_views = get_all_view_names()
@@ -86,6 +90,7 @@ def define_group(request):
 
 
 @login_required
+@has_perm_view()
 def group_list(request):
     kwargs = {}
     kwargs['data'] = list(cursor.acl_group.find())
@@ -94,6 +99,7 @@ def group_list(request):
 
 
 @login_required
+@has_perm_view()
 def edit_group(request, _id):
     kwargs = {}
 
@@ -136,6 +142,7 @@ def edit_group(request, _id):
 @login_required
 @csrf_exempt
 @require_POST
+@has_perm_view()
 def delete_group(request, _id):
     remove = cursor.acl_group.delete_one({'_id': ObjectId(_id)})
     return JsonResponse(remove, safe=False)
@@ -144,6 +151,7 @@ def delete_group(request, _id):
 @login_required
 @csrf_exempt
 @require_POST
+@has_perm_view()
 def delete_user(request, username):
     kwargs = {}
     user = get_object_or_404(User, username=username)
@@ -155,6 +163,7 @@ def delete_user(request, username):
 
 
 @login_required
+@has_perm_view()
 def user_list(request):
     kwargs = {}
     projection = {
@@ -169,6 +178,7 @@ def user_list(request):
 
 
 @login_required
+@has_perm_view()
 def edit_user(request, _id):
     kwargs = {}
     criteria = {'_id': ObjectId(_id)}
@@ -230,6 +240,7 @@ def edit_user(request, _id):
 
 
 @login_required
+@has_perm_view()
 def add_box(request):
     kwargs = {}
 
@@ -258,6 +269,7 @@ def add_box(request):
 
 
 @login_required
+@has_perm_view()
 def box_list(request):
     kwargs = {}
 
@@ -269,6 +281,7 @@ def box_list(request):
 @login_required
 @csrf_exempt
 @require_POST
+@has_perm_view()
 def delete_box(request, _id):
     kwargs = {}
 
@@ -285,6 +298,7 @@ def delete_box(request, _id):
 
 
 @login_required
+@has_perm_view()
 def edit_box(request, _id):
     kwargs = {}
 

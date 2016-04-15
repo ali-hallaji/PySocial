@@ -61,6 +61,7 @@ DATABASE_NAME: pysocial
 
 [host]
 ON_PYSOCIAL: true
+SITE_ID: 1
 
 
 [secrets]
