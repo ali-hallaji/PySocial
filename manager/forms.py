@@ -16,7 +16,8 @@ class HomeForm(forms.Form):
     kind = forms.CharField(
         label='Kind of Body',
     )
-    order = forms.IntegerField(label='order', required=False,)
+    icon = forms.CharField(label='icon', required=False)
+    order = forms.IntegerField(label='order', required=False)
 
 
 class GroupForm(forms.Form):
