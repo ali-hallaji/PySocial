@@ -35,26 +35,28 @@
     <section>
         <div class="uk-block">
             <div class="uk-container uk-container-center">
-                <h2 class="uk-text-center uk-margin-large-bottom">بینش پای سوشیال از آینده</h2>
+                <h2 class="uk-text-center uk-margin-large-bottom">پای سوشیال</h2>
                 <ul class="tm-home-widget-list uk-grid uk-grid-width-1-2" data-uk-grid-margin data-uk-grid-match="{target:'.uk-panel'}">
-                    <li>
-                        <div class="uk-panel">
-                            <div>
-                                <i class="uk-icon-database"></i>
-                                <h2>بیگ دیتا</h2>
+                    {% for doc in roadmap %}
+                        <li>
+                            <div class="uk-panel">
+                                <div>
+                                    <i class="uk-icon-database"></i>
+                                    <h2>{{ doc.title }}</h2>
+                                </div>
+                                {{ doc.body }}
                             </div>
-                            <p>کلان‌داده (به انگلیسی: Big data) اصطلاحی است که به مجموعهٔ داده‌هایی اطلاق می‌شود که مدیریت، کنترل و پردازش آنها فراتر از توانایی ابزارهای نرم‌افزاری در یک زمان قابل تحمل و مورد انتظار است.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="uk-panel">
-                            <div>
-                                <i class="uk-icon-cloud"></i>
-                                <h2>رایانش ابری</h2>
+                        </li>
+                        <li>
+                            <div class="uk-panel">
+                                <div>
+                                    <i class="uk-icon-database"></i>
+                                    <h2>{{ doc.title }}</h2>
+                                </div>
+                                {{ doc.body }}
                             </div>
-                            <p>رایانش ابری (به انگلیسی: Cloud Computing) مدل رایانشی بر پایهٔ شبکه‌های رایانه‌ای مانند اینترنت است که الگویی تازه برای عرضه، مصرف و تحویل خدمات رایانشی (شامل زیرساخت، نرم‌افزار، بستر، و سایر منابع رایانشی) با به کارگیری شبکه ارائه می‌کند. «رایانش ابری» از ترکیب دو کلمه رایانش و ابر ایجاد شده است.</p>
-                        </div>
-                    </li>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
