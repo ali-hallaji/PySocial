@@ -56,48 +56,14 @@
         <div class="uk-slidenav-position" data-uk-slider="{center:true}">
             <div class="uk-slider-container">
                 <ul class="uk-slider uk-slider-fullscreen uk-grid-width-medium-1-3 uk-grid-width-large-1-4 uk-contrast" id="tm-slider">
-                    <li class="uk-flex uk-flex-center uk-flex-middle uk-text-center" style="background: url(/static/main/img/placeholder_200x100.svg) 50% 50%;">
-                        <div class="uk-panel-space uk-overlay-background">
-                            <h2>python</h2>
-                            <p>با گسترش زبان برنامه نویسی شما به پایتون احتایج پیادا خواهدی کرد برای یادگیری شروع کنید</p>
-                        </div>
-                    </li>
-                    <li class="uk-flex uk-flex-center uk-flex-middle uk-text-center" style="background: url(/static/main/img/placeholder_200x100.svg) 50% 50%;">
-                        <div class="uk-panel-space uk-overlay-background">
-                            <h2>python</h2>
-                            <p>با گسترش زبان برنامه نویسی شما به پایتون احتایج پیادا خواهدی کرد برای یادگیری شروع کنید</p>
-                        </div>
-                    </li>
-                    <li class="uk-flex uk-flex-center uk-flex-middle uk-text-center" style="background: url(/static/main/img/placeholder_200x100.svg) 50% 50%;">
-                        <div class="uk-panel-space uk-overlay-background">
-                            <h2>python</h2>
-                            <p>با گسترش زبان برنامه نویسی شما به پایتون احتایج پیادا خواهدی کرد برای یادگیری شروع کنید</p>
-                        </div>
-                    </li>
-                    <li class="uk-flex uk-flex-center uk-flex-middle uk-text-center" style="background: url(/static/main/img/placeholder_200x100.svg) 50% 50%;">
-                        <div class="uk-panel-space uk-overlay-background">
-                            <h2>python</h2>
-                            <p>با گسترش زبان برنامه نویسی شما به پایتون احتایج پیادا خواهدی کرد برای یادگیری شروع کنید</p>
-                        </div>
-                    </li>
-                    <li class="uk-flex uk-flex-center uk-flex-middle uk-text-center" style="background: url(/static/main/img/placeholder_200x100.svg) 50% 50%;">
-                        <div class="uk-panel-space uk-overlay-background">
-                            <h2>python</h2>
-                            <p>با گسترش زبان برنامه نویسی شما به پایتون احتایج پیادا خواهدی کرد برای یادگیری شروع کنید</p>
-                        </div>
-                    </li>
-                    <li class="uk-flex uk-flex-center uk-flex-middle uk-text-center" style="background: url(/static/main/img/placeholder_200x100.svg) 50% 50%;">
-                        <div class="uk-panel-space uk-overlay-background">
-                            <h2>python</h2>
-                            <p>با گسترش زبان برنامه نویسی شما به پایتون احتایج پیادا خواهدی کرد برای یادگیری شروع کنید</p>
-                        </div>
-                    </li>
-                    <li class="uk-flex uk-flex-center uk-flex-middle uk-text-center" style="background: url(/static/main/img/placeholder_200x100.svg) 50% 50%;">
-                        <div class="uk-panel-space uk-overlay-background">
-                            <h2>python</h2>
-                            <p>با گسترش زبان برنامه نویسی شما به پایتون احتایج پیادا خواهدی کرد برای یادگیری شروع کنید</p>
-                        </div>
-                    </li>
+                    {% for box in boxs %}
+                        <li class="uk-flex uk-flex-center uk-flex-middle uk-text-center" style="background: url({{ box|get_path_pic_box }}) 50% 50%;">
+                            <div class="uk-panel-space uk-overlay-background">
+                                <h2>{{ box.title }}</h2>
+                                {{ box.description|safe }}
+                            </div>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
             <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slider-item="next"></a>
