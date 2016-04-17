@@ -26,11 +26,11 @@ def get_user_data(request):
                 user['picture'] = path
 
             else:
-                user['picture'] = None
+                user['picture'] = '/media/avatars/default.png'
 
         else:
             if not user.get('picture', None):
-                user['picture'] = None
+                user['picture'] = '/media/avatars/default.png'
 
     else:
         user = None

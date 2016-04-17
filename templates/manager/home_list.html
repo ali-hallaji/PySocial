@@ -1,0 +1,40 @@
+{% extends 'manager/base.html' %}
+{% load staticfiles %}
+{% block title %}Home List{% endblock %}
+{% block content %}
+    <h3>Home list</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                {% for key, value in data.0.items %}
+                    <th>{{ key }}</th>
+                {% endfor %}
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+                <tr data-id="{{ item.id }}">
+                    <td></td>
+                    {% for key, value in item.items %}
+                        {% if key != 'id' %}
+                            <td>{{ value }}</td>
+                        {% endif %}
+                    {% endfor %}
+                    <td>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                {% for key, value in data.0.items %}
+                    <td></td>
+                {% endfor %}
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}
+

@@ -30,30 +30,66 @@ logger = logging.getLogger(__name__)
 
 @login_required
 @has_perm_view()
-def edit_home(request):
+def add_home(request):
     kwargs = {}
 
     if request.method == 'POST':
         kwargs['form'] = HomeForm(request.POST)
 
+        if kwargs['form'].is_valid():
+            data = kwargs['form'].cleaned_data
+
+            result = cursor.home.insert(data)
+
+            if result:
+                return HttpResponseRedirect('/manager/home_list')
+
     else:
-        news = cursor.home.find_one({'_type': 'news'})
-        body = cursor.home.find_one({'_type': 'body'})
-        data = {}
 
-        if news:
-            data['news'] = news['news']
-        else:
-            data['news'] = None
-
-        if body:
-            data['body'] = body['body']
-        else:
-            data['body'] = None
-
-        kwargs['form'] = HomeForm(data)
+        kwargs['form'] = HomeForm()
 
     return render(request, 'manager/edit_home.html', kwargs)
+
+
+@login_required
+@has_perm_view()
+def edit_home(request, _id):
+    kwargs = {}
+    criteria = {'_id': ObjectId(_id)}
+    home = cursor.home.find_one(criteria)
+
+    if not home:
+        kwargs['not_exists'] = True
+        return render(request, 'manager/edit_home.html', kwargs)
+
+    if request.method == 'POST':
+        kwargs['form'] = HomeForm(request.POST)
+
+        if kwargs['form'].is_valid():
+            data = kwargs['form'].cleaned_data
+
+            update = cursor.home.update_one(
+                {'_id': home['_id']},
+                {'$set': data}
+            )
+
+            if update.raw_result.get('updatedExisting', None):
+                return HttpResponseRedirect('/manager/home_list')
+
+    else:
+
+        kwargs['form'] = HomeForm(home)
+
+    return render(request, 'manager/edit_home.html', kwargs)
+
+
+@login_required
+@has_perm_view()
+def home_list(request):
+    kwargs = {}
+    kwargs['data'] = list(cursor.home.find())
+
+    return render(request, 'manager/home_list.html', kwargs)
 
 
 @login_required

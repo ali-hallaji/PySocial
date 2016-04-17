@@ -7,16 +7,16 @@ from core import cursor
 
 
 class HomeForm(forms.Form):
+    title = forms.CharField(label='Title')
     body = forms.CharField(
         label='body',
         required=False,
         widget=CKEditorWidget()
     )
-    news = forms.CharField(
-        label='news',
-        required=False,
-        widget=CKEditorWidget()
+    kind = forms.CharField(
+        label='Kind of Body',
     )
+    order = forms.IntegerField(label='order', required=False,)
 
 
 class GroupForm(forms.Form):

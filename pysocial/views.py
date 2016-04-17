@@ -7,10 +7,18 @@ from core import cursor
 
 def home(request):
     kwargs = {}
-    news = cursor.home.find_one({'_type': 'news'})
+    news = cursor.home.find_one({'kind': 'news'})
+    what = cursor.home.find_one({'kind': 'what'})
+    roadmap = cursor.home.find({'kind': 'roadmap'})
 
     if news:
         kwargs['news'] = news['news']
+
+    if what:
+        kwargs['what'] = what['body']
+
+    if roadmap:
+        kwargs['roadmap'] = list(roadmap)
 
     return render(request, 'home.html', kwargs)
 
