@@ -18,6 +18,7 @@ from django.views.decorators.http import require_POST
 from core import cursor
 from core.acl_general_funcs import get_all_view_names
 from core.acl_general_funcs import has_perm_view
+from core.func_tools import find_pic_by_id
 from core.func_tools import handle_uploaded_file
 from forms import BoxForm
 from forms import GroupForm
@@ -292,7 +293,9 @@ def add_box(request):
             if result:
                 if box_pic:
                     path = BASE_DIR
-                    path += '/media/dashboard/box/{0}.jpg'.format(str(result))
+                    _format = os.path.splitext(request.FILES['box_pic'].name)
+                    path += '/media/dashboard/box/{0}'.format(str(result))
+                    path += '{0}'.format(_format)
 
                     handle_uploaded_file(path, request.FILES['box_pic'])
 
@@ -325,10 +328,11 @@ def delete_box(request, _id):
     kwargs['mongodb_remove'] = mongodb_remove.raw_result
 
     path = BASE_DIR
-    path += '/media/dashboard/box/{0}.jpg'.format(_id)
+    path += '/media/dashboard/box/'
+    path_file = find_pic_by_id(_id, path)
 
-    if os.path.exists(path):
-        os.remove(path)
+    if os.path.exists(path_file):
+        os.remove(path_file)
 
     return JsonResponse(kwargs, safe=False)
 
@@ -358,7 +362,9 @@ def edit_box(request, _id):
             if result.raw_result.get('updatedExisting', None):
                 if box_pic:
                     path = BASE_DIR
-                    path += '/media/dashboard/box/{0}.jpg'.format(_id)
+                    _format = os.path.splitext(request.FILES['box_pic'].name)
+                    path += '/media/dashboard/box/{0}'.format(_id)
+                    path += '{0}'.format(_format)
 
                     handle_uploaded_file(path, request.FILES['box_pic'])
 
