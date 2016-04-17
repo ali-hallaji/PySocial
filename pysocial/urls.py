@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include('users.urls')),
     url(r'^manager/', include('manager.urls')),
+    url(r'^dashboard/', include('dashboard.urls')),
     url(r'^home/$', home, name="home"),
     url(
         r'^$',

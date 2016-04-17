@@ -85,7 +85,7 @@
                 <ul class="uk-grid uk-grid-width-small-1-1 uk-grid-width-large-1-2">
                     {% for box in boxs %}
                         <li>
-                            <a href="" title="">
+                            <a href="/dashboard/content/{{ box.title }}/{{ box|mongo_id }}" title="{{ box.title }}">
                                 <div class="tm-panel-courses uk-panel uk-flex uk-flex-middle">
                                     <img src="{{ box|get_path_pic_box }}" width="90">
                                     <h3>{{ box.title }}</h3>
