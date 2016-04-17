@@ -70,7 +70,7 @@ class UserForm(forms.Form):
 class BoxForm(forms.Form):
     title = forms.CharField(label='Title')
     title_fa = forms.CharField(label='Title Fa')
-    sort = forms.IntegerField(label='Box Order')
+    order = forms.IntegerField(label='Box Order')
     description = forms.CharField(
         label='Description',
         required=False,
