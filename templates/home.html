@@ -44,7 +44,7 @@
                                     <i class="uk-icon-database"></i>
                                     <h2>{{ doc.title }}</h2>
                                 </div>
-                                {{ doc.body }}
+                                {{ doc.body|safe }}
                             </div>
                         </li>
                     {% endfor %}
