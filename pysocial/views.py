@@ -1,3 +1,6 @@
+# Python Import
+from pymongo import ASCENDING
+
 # Django Import
 from django.shortcuts import render
 
@@ -9,7 +12,7 @@ def home(request):
     kwargs = {}
     news = cursor.home.find_one({'kind': 'news'})
     what = cursor.home.find_one({'kind': 'what'})
-    roadmap = cursor.home.find({'kind': 'roadmap'})
+    roadmap = cursor.home.find({'kind': 'roadmap'}).sort('order', ASCENDING)
 
     if news:
         kwargs['news'] = news['news']
