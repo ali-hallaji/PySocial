@@ -46,3 +46,29 @@ ul.tm-home-widget-list p {
   text-align: justify;
   margin-top: 10px;
 }
+
+div.tm-panel-courses {
+  background-color: #EAF2F6;
+  border: 1px solid #D1DFE7;
+  -webkit-transition: 0.3s all linear;
+  -moz-transition: 0.3s all linear;
+  transition: 0.3s all linear;
+}
+div.tm-panel-courses img {
+  margin: -15px -15px -15px 10px;
+}
+div.tm-panel-courses h3 {
+  margin: 0;
+  color: #003c5a;
+}
+div.tm-panel-courses i {
+  margin: 0 auto 0 20px;
+  color: #003c5a;
+}
+div.tm-panel-courses:hover {
+  background-color: #003c5a;
+  border-color: #003c5a;
+}
+div.tm-panel-courses:hover * {
+  color: #fff;
+}

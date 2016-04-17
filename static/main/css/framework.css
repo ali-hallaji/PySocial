@@ -84,7 +84,7 @@ a,
 a:hover,
 .uk-link:hover {
   color: #059;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* Text-level semantics

@@ -41,3 +41,31 @@ ul.tm-home-widget-list {
         margin-top: 10px;
     }
 }
+
+div.tm-panel-courses {
+    background-color: #EAF2F6;
+    border: 1px solid #D1DFE7;
+
+    @include transition(.3s all linear);
+
+    img {
+        margin: -15px -15px -15px 10px;
+    }
+
+    h3 {
+        margin: 0;
+        color: #003c5a;
+    }
+
+    i {
+        margin: 0 auto 0 20px;
+        color: #003c5a;
+    }
+
+    &:hover {
+        background-color: #003c5a;
+        border-color: #003c5a;
+
+        * { color: #fff; }
+    }
+}
