@@ -1,5 +1,9 @@
 {% extends 'manager/base.html' %}
-{% block title %}Edit Home Page{% endblock %}
+    {% if 'edit' in request.get_full_path %}
+        Edit Home Page
+    {% else %}
+        Insert Home Page
+    {% endif %}
 {% load staticfiles %}
 {% block extrahead %}
     <script src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
@@ -8,9 +12,14 @@
 
 {% block content %}
     <form method='POST'>
-
+        {% csrf_token %}
         {{ form.as_ul }}
-        <button type="submit">Edit</button>
+
+        {% if 'edit' in request.get_full_path %}
+            <button type="submit">Edit</button>
+        {% else %}
+            <button type="submit">Insert</button>
+        {% endif %}
     </form>
     {% if error and error.errors %}
         {% for key, value in error.errors.items %}

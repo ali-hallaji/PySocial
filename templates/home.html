@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}home{% endblock %}
+{% block title %}PySocial{% endblock %}
+{% load func_tools %}
 {% block extrastyle %}
     <link rel="stylesheet" href="{% static 'main/css/home.css' %}">
 {% endblock %}
@@ -11,20 +12,20 @@
                 <div class="uk-container uk-container-center">
                     <div class="uk-contrast uk-text-center">
                         <h1>پای سوشیال</h1>
-                        <h1>PySocial</h1>
+                        <h1>PySocial{{ user_data }}</h1>
                         <p></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <section>
         <div class="uk-block uk-block-default">
             <div class="uk-container uk-container-center">
                 <div class="uk-grid uk-flex-middle" data-uk-grid-margin>
                     <div class="uk-width-small-1-1 uk-width-large-1-2">
-                        <h2>چرا زبان پایتون تا این اندازه محبوب شده ؟</h2>
-                        <p>پایتون یک زبان برنامه نویسی اسکریپتی همه منظوره برای نوشتن برنامه‌ها به صورت مستقل از سکو هست که توسط Guido van Rossum در سال ۱۹۸۹ نوشته شده. اگه در این چند سال اخیر محبوبیت زبان‌های برنامه نویسی را بررسی کنید متوجه محبوبیت روز افزون خواهید شد</p>
+                        {{ what|safe }}
                     </div>
                     <div class="uk-width-small-1-1 uk-width-large-1-2 uk-text-center">
                         <img src="{% static "main/img/page01_img02.png" %}" alt="">
@@ -33,33 +34,27 @@
             </div>
         </div>
     </section>
+
     <section>
         <div class="uk-block">
             <div class="uk-container uk-container-center">
-                <h2 class="uk-text-center uk-margin-large-bottom">بینش پای سوشیال از آینده</h2>
+                <h2 class="uk-text-center uk-margin-large-bottom">پای سوشیال</h2>
                 <ul class="tm-home-widget-list uk-grid uk-grid-small-1-1 uk-grid-medium-1-2 uk-grid-width-large-1-2" data-uk-grid-margin data-uk-grid-match="{target:'.uk-panel'}">
+                    {% for doc in roadmap %}
                     <li>
                         <div class="uk-panel">
                             <div>
-                                <i class="uk-icon-database"></i>
-                                <h2>بیگ دیتا</h2>
+                                <i class="{{ doc.icon }}"></i>
+                                <h2>{{ doc.title }}</h2>
                             </div>
-                            <p>کلان‌داده (به انگلیسی: Big data) اصطلاحی است که به مجموعهٔ داده‌هایی اطلاق می‌شود که مدیریت، کنترل و پردازش آنها فراتر از توانایی ابزارهای نرم‌افزاری در یک زمان قابل تحمل و مورد انتظار است.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="uk-panel">
-                            <div>
-                                <i class="uk-icon-cloud"></i>
-                                <h2>رایانش ابری</h2>
-                            </div>
-                            <p>رایانش ابری (به انگلیسی: Cloud Computing) مدل رایانشی بر پایهٔ شبکه‌های رایانه‌ای مانند اینترنت است که الگویی تازه برای عرضه، مصرف و تحویل خدمات رایانشی (شامل زیرساخت، نرم‌افزار، بستر، و سایر منابع رایانشی) با به کارگیری شبکه ارائه می‌کند. «رایانش ابری» از ترکیب دو کلمه رایانش و ابر ایجاد شده است.</p>
-                        </div>
-                    </li>
+                            {{ doc.body|safe }}
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
     </section>
+
     <section>
         <div class="uk-block uk-block-large uk-block-secondary">
             <div class="uk-container uk-container-center uk-text-center">
@@ -83,28 +78,23 @@
             </div>
         </div>
     </section>
+
     <section>
         <div class="uk-container uk-container-center">
             <div class="uk-block uk-block-large">
                 <ul class="uk-grid uk-grid-width-small-1-1 uk-grid-width-large-1-2">
-                    <li>
-                        <a href="" title="">
-                            <div class="tm-panel-courses uk-panel uk-flex uk-flex-middle">
-                                <img src="{% static "main/img/python.png" %}" width="90">
-                                <h3>python</h3>
-                                <i class="uk-icon-chevron-left"></i>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/" title="">
-                            <div class="tm-panel-courses uk-panel uk-flex uk-flex-middle">
-                                <img src="{% static "main/img/python.png" %}" width="90">
-                                <h3>پایتون</h3>
-                                <i class="uk-icon-chevron-left"></i>
-                            </div>
-                        </a>
-                    </li>
+                    {% for box in boxs %}
+                        <li>
+                            <a href="" title="">
+                                <div class="tm-panel-courses uk-panel uk-flex uk-flex-middle">
+                                    <img src="{{ box|get_path_pic_box }}" width="90">
+                                    <h3>{{ box.title }}</h3>
+                                    {{ box.description|safe }}
+                                    <i class="uk-icon-chevron-left"></i>
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

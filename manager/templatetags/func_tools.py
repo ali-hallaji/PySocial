@@ -43,10 +43,10 @@ def get_path_pic_box(value):
         _id = value
 
     path = BASE_DIR + '/media/dashboard/box/'
-    file_name = find_pic_by_id(_id, path)
+    path_file = find_pic_by_id(_id, path)
 
-    if file_name:
-        path += file_name
+    if path_file:
+        path += path_file
         path = '/media' + path.split('media')[1]
 
     else:
