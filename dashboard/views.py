@@ -53,7 +53,12 @@ def content(request, dashboard, _id):
     )
 
     for author in authors:
-        author_list.append(users[author['user_id']])
+
+        try:
+            author_list.append(users[author['user_id']])
+
+        except KeyError:
+            continue
 
     # Get profile picture for author
     kwargs['authors'] = []
