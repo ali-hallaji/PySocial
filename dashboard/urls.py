@@ -8,7 +8,7 @@ from views import lesson
 
 urlpatterns = [
     url(
-        r'^content/(?P<dashboard>[\w\d]+)/(?P<_id>[\w\d]+)/$',
+        r'^content/(?P<dashboard>[a-zA-Z\s]*)/(?P<_id>[\w\d]+)/$',
         content,
         name="content"
     ),
