@@ -1,10 +1,39 @@
 {% extends "base.html" %}
+{% load static %}
+{% load func_tools %}
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'main/css/content.css' %}">
+{% endblock %}
 {% block content %}
     <div class="uk-block uk-block-default">
         <div class="uk-container uk-container-center">
-            {% for doc in contents %}
-            {{ doc }}
-            {% endfor %}
+            <div class="uk-grid">
+                <div class="uk-width-small-1-1 uk-width-large-2-3">
+                    <h1>{{ box.title_fa }}</h1>
+                    <hr>
+                    {{ box.likes }}
+                </div>
+                <div class="uk-width-small-1-1 uk-width-large-1-3">
+                    <img src="{{ box.picture }}" alt="{{ box.title_fa }}">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="uk-block">
+        <div class="uk-container uk-container-center">
+            <h2>توضیحات بخش </h2>
+            <p>{{ box.description|safe }}</p>
+            <ul class="tm-list-lessons uk-list">
+                {% for doc in contents %}
+                    <span class="uk-button">ورود</span>
+                    <li>
+                        <a href="{% url "lesson" box.title doc|mongo_id %}">
+                            <span id="">{{ forloop.counter }}</span>
+                            {{ doc.title }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock content %}

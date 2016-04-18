@@ -17,3 +17,9 @@
     src:url("#{$ubuntu-font-path}Ubuntu-R.ttf") format("truetype");
     font-weight: normal;
 }
+
+@font-face {
+    font-family: $ubuntub-font;
+    src:url("#{$ubuntu-font-path}Ubuntu-B.ttf") format("truetype");
+    font-weight: normal;
+}
