@@ -48,7 +48,8 @@ DATABASE_PASSWORD: xxxxxxxxxxxx
 DATABASE_HOST: localhost
 DATABASE_PORT: 27017
 DATABASE_NAME: PySocial
-DATABASE_URL: mongodb://localhost:27017
+DATABASE_URL: mongodb://pysocial:27017
+DATABASE_LOCAL: mongodb://localhost:27017
 
 
 [django_db]
@@ -74,6 +75,7 @@ TEMPLATE_DEBUG: true
 VIEW_TEST: true
 INTERNAL_IPS: 127.0.0.1
 SKIP_CSRF_MIDDLEWARE: true
+DEBUG_TOOLBAR: false
 
 
 [email]

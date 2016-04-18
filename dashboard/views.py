@@ -10,7 +10,7 @@ from core import cursor
 
 def content(request, dashboard, _id):
     kwargs = {}
-    kwargs['contents'] = cursor.contents.find({'box_id': ObjectId(_id)})
+    kwargs['contents'] = list(cursor.contents.find({'box_id': ObjectId(_id)}))
     return render(request, 'dashboard/content.html', kwargs)
 
 
