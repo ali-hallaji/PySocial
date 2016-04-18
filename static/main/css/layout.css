@@ -58,10 +58,13 @@ div.tm-search-block a.uk-close-alt {
   background: #fff;
 }
 
-hr {
-  border-color: #3f3935;
+footer > div.uk-block {
+  background-color: #28384A;
+}
+footer > div.uk-block * {
+  color: rgba(255, 255, 255, 0.5);
 }
 
-a {
-  color: #aebdc1;
+hr {
+  border-color: rgba(255, 255, 255, 0.5);
 }

@@ -53,13 +53,21 @@ div.tm-panel-courses {
   -webkit-transition: 0.3s all linear;
   -moz-transition: 0.3s all linear;
   transition: 0.3s all linear;
+  -moz-border-radius-topleft: 50px;
+  -webkit-border-top-left-radius: 50px;
+  border-top-left-radius: 50px;
+  -moz-border-radius-bottomleft: 50px;
+  -webkit-border-bottom-left-radius: 50px;
+  border-bottom-left-radius: 50px;
 }
 div.tm-panel-courses img {
-  margin: -15px -15px -15px 10px;
+  margin: -20px -15px -20px 10px;
 }
 div.tm-panel-courses h3 {
   margin: 0;
   color: #003c5a;
+  font-size: 1.5em;
+  text-transform: capitalize;
 }
 div.tm-panel-courses i {
   margin: 0 auto 0 20px;

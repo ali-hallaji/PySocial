@@ -47,14 +47,18 @@ div.tm-panel-courses {
     border: 1px solid #D1DFE7;
 
     @include transition(.3s all linear);
+    @include border-top-left-radius(50px);
+    @include border-bottom-left-radius(50px);
 
     img {
-        margin: -15px -15px -15px 10px;
+        margin: -20px -15px -20px 10px;
     }
 
     h3 {
         margin: 0;
         color: #003c5a;
+        font-size: 1.5em;
+        text-transform: capitalize;
     }
 
     i {
