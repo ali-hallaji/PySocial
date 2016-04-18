@@ -34,7 +34,7 @@ MONGO_DB_NAME = config.get('mongodb', 'DATABASE_NAME')
 if ON_PYSOCIAL_HOST:
     MONGO_DB_URL = config.get('mongodb', 'DATABASE_URL')
 else:
-    MONGO_DB_URL = "mongodb://localhost:27017"
+    MONGO_DB_URL = config.get('mongodb', 'DATABASE_LOCAL')
 
 
 # Quick-start development settings - unsuitable for production

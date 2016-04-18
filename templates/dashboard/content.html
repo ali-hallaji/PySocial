@@ -1,3 +1,10 @@
-{% for doc in contents %}
-{{ doc }}
-{% endfor %}
+{% extends "base.html" %}
+{% block content %}
+    <div class="uk-block uk-block-default">
+        <div class="uk-container uk-container-center">
+            {% for doc in contents %}
+            {{ doc }}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
