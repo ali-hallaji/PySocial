@@ -75,6 +75,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.linkedin_oauth2',
 ]
 
+
+if config.getboolean('debug', 'DEBUG_TOOLBAR'):
+    INSTALLED_APPS.append('debug_toolbar')
+
+
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -84,6 +89,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'pysocial.urls'
