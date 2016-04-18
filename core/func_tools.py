@@ -19,13 +19,17 @@ def handle_uploaded_file(path, _file):
 
 
 def find_pic_by_id(name, path):
-    list_pic = os.listdir(path)
+    try:
+        list_pic = os.listdir(path)
 
-    for pic in list_pic:
-        if name in pic:
-            return pic
+        for pic in list_pic:
+            if name in pic:
+                return pic
 
-    else:
+        else:
+            return False
+
+    except:
         return False
 
 
