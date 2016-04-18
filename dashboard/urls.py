@@ -13,7 +13,7 @@ urlpatterns = [
         name="content"
     ),
     url(
-        r'^lesson/(?P<dashboard>[\w\d]+)/(?P<_id>[\w\d]+)/$',
+        r'^lesson/(?P<dashboard>[a-zA-Z\s]*)/(?P<_id>[\w\d]+)/$',
         lesson,
         name="lesson"
     ),
