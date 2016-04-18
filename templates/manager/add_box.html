@@ -9,8 +9,9 @@
 {% load staticfiles %}
 {% load func_tools %}
 {% block extrahead %}
+    <script src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+    <script src="{% static "ckeditor/ckeditor-init.js" %}"></script>
 {% endblock %}
-
 {% block content %}
     {% if not not_exists %}
         <form  enctype="multipart/form-data" method="POST">

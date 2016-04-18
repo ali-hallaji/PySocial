@@ -21,7 +21,6 @@ from views import user_list
 urlpatterns = [
     url(r'^user_list/$', user_list, name="user_list"),
     url(r'^home_list/$', home_list, name="home_list"),
-    url(r'^edit_home/(?P<_id>[\w\d]+)/$', edit_home, name="edit_home"),
     url(r'^define_group/$', define_group, name="define_group"),
     url(r'^group_list/$', group_list, name="group_list"),
     url(r'^add_box/$', add_box, name="add_box"),
@@ -29,6 +28,7 @@ urlpatterns = [
     url(r'^box_list/$', box_list, name="box_list"),
     url(r'^edit_group/(?P<_id>[\w\d]+)/$', edit_group, name="edit_group"),
     url(r'^edit_box/(?P<_id>[\w\d]+)/$', edit_box, name="edit_box"),
+    url(r'^edit_home/(?P<_id>[\w\d]+)/$', edit_home, name="edit_home"),
     url(
         r'^edit_user/(?P<_id>[\w\d]+)/$',
         edit_user,
@@ -45,7 +45,7 @@ urlpatterns = [
         name="delete_box"
     ),
     url(
-        r'^delete_user/(?P<username>[\w\d]+)/$',
+        r'^delete_user/(?P<username>[a-zA-Z\s]*)/$',
         delete_user,
         name="delete_user"
     ),

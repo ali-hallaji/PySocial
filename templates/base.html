@@ -1,7 +1,10 @@
 {% load static %}
+{% load google_analytics %}
+{% load analytical %}
 <!DOCTYPE html>
 <html lang="en-us" dir="rtl">
     <head>
+        {% analytical_head_top %}
         <meta charset="utf-8">
         <meta name="robots" content="NONE,NOARCHIVE">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,8 +21,11 @@
         <!-- Fav Icons -->
         <link rel="shortcut icon" href="{% static "main/img/social_logo.png" %}" type="image/x-icon">
         <link rel="apple-touch-icon-precomposed" href="{% static "main/img/social_logo.png" %}">
+        {% google_analytics %}
+        {% analytical_head_bottom %}
     </head>
     <body>
+        {% analytical_body_top %}
         {% block body %}
             {% if messages %}
                 <div>
@@ -61,7 +67,6 @@
                 </div>
             </nav>
         </header>
-
         {% block content %}{% endblock %}
 
         <footer>
@@ -122,5 +127,6 @@
 
         <!-- Plugins And Scripts -->
         <script src="{% static 'main/js/script.js' %}"></script>
+        {% analytical_body_bottom %}
     </body>
 </html>

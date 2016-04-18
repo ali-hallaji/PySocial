@@ -14,7 +14,16 @@ def get_user_data(request):
         criteria = {
             'username': request.user.username
         }
-        user = cursor.users.find_one(criteria)
+        projection = {
+            'username': 1,
+            'first_name': 1,
+            'last_name': 1,
+            'last_login': 1,
+            'groups_name': 1,
+            'email': 1,
+            'date_joined': 1
+        }
+        user = cursor.users.find_one(criteria, projection)
 
         if not user.get('social_auth', None):
             path = BASE_DIR + '/media/avatars/'
