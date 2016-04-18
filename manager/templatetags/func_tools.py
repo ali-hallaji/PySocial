@@ -6,6 +6,7 @@ from django import template
 
 # PySocial Import
 from core.func_tools import find_pic_by_id
+from core.func_tools import path_pic_box
 from pysocial.settings import BASE_DIR
 
 
@@ -35,21 +36,4 @@ def box_exist_file(value):
 @register.filter("get_path_pic_box")
 def get_path_pic_box(value):
 
-    if isinstance(value, dict):
-        _id = str(value['_id'])
-    elif isinstance(value, str):
-        _id = value
-    elif isinstance(value, unicode):
-        _id = value
-
-    path = BASE_DIR + '/media/dashboard/box/'
-    path_file = find_pic_by_id(_id, path)
-
-    if path_file:
-        path += path_file
-        path = '/media' + path.split('media')[1]
-
-    else:
-        path = '/static/main/img/default.png'
-
-    return path
+    return path_pic_box(value)
