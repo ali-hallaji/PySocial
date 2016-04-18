@@ -295,7 +295,7 @@ def add_box(request):
                     path = BASE_DIR
                     _format = os.path.splitext(request.FILES['box_pic'].name)
                     path += '/media/dashboard/box/{0}'.format(str(result))
-                    path += '{0}'.format(_format)
+                    path += '{0}'.format(_format[1])
 
                     handle_uploaded_file(path, request.FILES['box_pic'])
 
@@ -364,7 +364,8 @@ def edit_box(request, _id):
                     path = BASE_DIR
                     _format = os.path.splitext(request.FILES['box_pic'].name)
                     path += '/media/dashboard/box/{0}'.format(_id)
-                    path += '{0}'.format(_format)
+                    path += '{0}'.format(_format[1])
+                    print path
 
                     handle_uploaded_file(path, request.FILES['box_pic'])
 
