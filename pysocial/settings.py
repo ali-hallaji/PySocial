@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'analytical',
+    'webmaster_verification',
     'captcha',
     'ckeditor',
     'ckeditor_uploader',
@@ -189,13 +190,21 @@ MAILGUN_ACCESS_KEY = config.get('email', 'MAILGUN_KEY')
 MAILGUN_SERVER_NAME = config.get('email', 'MAILGUN_URL')
 
 
-# Analytics
+# Analytics & WEBMASTER
 GOOGLE_ANALYTICS_PROPERTY_ID = config.get('analytic', 'TRACK_ID')
 GOOGLE_ANALYTICS_SITE_SPEED = True
 INTERNAL_IPS = (
     '127.0.0.1',
     'localhost',
 )
+
+WEBMASTER_VERIFICATION = {
+    'bing': config.get('analytic', 'bing'),
+    'google': config.get('analytic', 'google'),
+    'alexa': config.get('analytic', 'alexa'),
+    # 'majestic': '<majestic verification code>',
+    # 'yandex': '<yandex verification code>',
+}
 
 
 # Logging Configurations

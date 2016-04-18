@@ -90,6 +90,14 @@ DIR = /var/log/pysocial/
 LOG_FORMAT = %(asctime)s] %(levelname)s [%(name)s:%(filename)s:%(funcName)s:%(lineno)s] %(message)s
 DATE_FORMAT = %Y-%m-%d %H:%M:%S
 
+
+
+[analytic]
+TRACK_ID: UA-XXXXXX-1
+bing: XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+google: XXXXXXXXXXX
+alexa: XXXXXXXXXXXXXXXXXXXX
+
 ```
 
 Migrate your database for models:
