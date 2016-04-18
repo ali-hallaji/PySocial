@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'analytical',
     'captcha',
     'ckeditor',
     'ckeditor_uploader',
@@ -186,6 +187,15 @@ EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
 DEFAULT_FROM_EMAIL = 'PySocial <info@pysocial.com>'
 MAILGUN_ACCESS_KEY = config.get('email', 'MAILGUN_KEY')
 MAILGUN_SERVER_NAME = config.get('email', 'MAILGUN_URL')
+
+
+# Analytics
+GOOGLE_ANALYTICS_PROPERTY_ID = config.get('analytic', 'TRACK_ID')
+GOOGLE_ANALYTICS_SITE_SPEED = True
+INTERNAL_IPS = (
+    '127.0.0.1',
+    'localhost',
+)
 
 
 # Logging Configurations
