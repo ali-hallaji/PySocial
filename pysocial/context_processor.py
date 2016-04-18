@@ -4,8 +4,7 @@
 
 # PySocial Import
 from core import cursor
-from core.func_tools import find_pic_by_id
-from pysocial.settings import BASE_DIR
+from core.func_tools import avatar_maker
 
 
 def get_user_data(request):
@@ -25,21 +24,7 @@ def get_user_data(request):
         }
         user = cursor.users.find_one(criteria, projection)
 
-        if not user.get('social_auth', None):
-            path = BASE_DIR + '/media/avatars/'
-            file_name = find_pic_by_id(str(user['_id']), path)
-
-            if file_name:
-                path += file_name
-                path = '/media' + path.split('media')[1]
-                user['picture'] = path
-
-            else:
-                user['picture'] = '/media/avatars/default.png'
-
-        else:
-            if not user.get('picture', None):
-                user['picture'] = '/media/avatars/default.png'
+        user = avatar_maker(user)
 
     else:
         user = None
