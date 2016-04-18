@@ -82,14 +82,16 @@
     <section>
         <div class="uk-container uk-container-center">
             <div class="uk-block uk-block-large">
-                <ul class="uk-grid uk-grid-width-small-1-1 uk-grid-width-large-1-2">
+                <ul class="uk-grid uk-grid-width-small-1-1 uk-grid-width-large-1-2" data-uk-grid-margin="{cls:'uk-margin-large-top'}">
                     {% for box in boxs %}
                         <li>
-                            <a href="" title="">
+                            <a href="">
                                 <div class="tm-panel-courses uk-panel uk-flex uk-flex-middle">
-                                    <img src="{{ box|get_path_pic_box }}" width="90">
+                                    <img src="{{ box|get_path_pic_box }}" alt="{{ box.title }}" width="90">
                                     <h3>{{ box.title }}</h3>
-                                    {{ box.description|safe }}
+                                    {% comment %}
+                                        {{ box.description|safe }}
+                                    {% endcomment %}
                                     <i class="uk-icon-chevron-left"></i>
                                 </div>
                             </a>
