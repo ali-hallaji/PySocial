@@ -59,7 +59,10 @@ def content(request, dashboard, _id):
     kwargs['authors'] = []
 
     for author in author_list:
-        kwargs['authors'].append(avatar_maker(author))
+        author = avatar_maker(author)
+
+        if author not in kwargs['authors']:
+            kwargs['authors'].append(author)
 
     return render(request, 'dashboard/content.html', kwargs)
 
