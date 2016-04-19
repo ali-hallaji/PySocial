@@ -7,13 +7,19 @@
 {% block content %}
     <div class="uk-block uk-block-default">
         <div class="uk-container uk-container-center">
-            <div class="uk-grid">
-                <div class="uk-width-small-1-1 uk-width-large-2-3">
-                    <h1>{{ box.title_fa }}</h1>
-                    <hr>
-                    {{ box.likes }}
+            <div class="uk-grid uk-flex-middle">
+                <div class="uk-flex-item-auto">
+                    <div class="tm-panel-header-content uk-panel uk-flex uk-flex-column uk-flex-space-between">
+                        <h1 class="uk-heading-large">{{ box.title_fa }}</h1>
+                        <hr>
+                        <ul class="tm-subnav-content uk-subnav">
+                            <li><i class="uk-icon-thumbs-up"></i>{{ box.likes }} لایک</li>
+                            <li><i class="uk-icon-book"></i>{{ box.likes }} درس</li>
+                            <li><i class="uk-icon-users"></i>{{ box.likes }} بازدید</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="uk-width-small-1-1 uk-width-large-1-3">
+                <div class="uk-hidden-small">
                     <img src="{{ box.picture }}" alt="{{ box.title_fa }}">
                 </div>
             </div>
@@ -24,29 +30,44 @@
         <div class="uk-grid">
             <div class="uk-width-large-1-3">
                 <h2>نویسندگان</h2>
-                {% for author in authors %}
-                    {{ author.first_name }}
-                    {{ author.last_name }}
-                    <img width="32" src="{{ author.picture }}" alt="{{ author.first_name }} {{ author.last_name }}">
-                {% endfor %}
+                <ul class="tm-list-authors uk-list uk-list-striped">
+                    {% for author in authors %}
+                        <li>
+                            <img class="uk-align-right uk-margin-bottom-remove" width="64" height="64" src="{{ author.picture }}" alt="{{ author.first_name }} {{ author.last_name }}">
+                            <a href=""><h4>{{ author.first_name }} {{ author.last_name }}</h4></a>
+                            <p class="uk-text-truncate">این متن جهت تست می باشد.</p>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
             <div class="uk-width-large-2-3">
-                <div class="uk-panel">
-                    <div class="uk-accordion" data-uk-accordion>
-                        <h2 class="uk-accordion-title">توضیحات</h2>
-                        <p>{{ box.description|safe }}</p>
+                <h2>توضیحات</h2>
+                <p>{{ box.description|safe }}</p>
+                <div class="tm-panel-course uk-panel">
+                    <div class="uk-accordion" data-uk-accordion="{toggle:'.toggle-btn'}">
+                        <div class="header">
+                            <h2><span>1</span>توضیحات</h2>
+                            <p>{{ box.description|safe }}</p>
+                        </div>
+                        <hr>
                         <div class="uk-accordion-content">
                             <ul class="tm-list-lessons uk-list">
                                 {% for doc in contents %}
-                                    <span class="uk-button">ورود</span>
                                     <li>
                                         <a href="{% url "lesson" box.title doc|mongo_id %}">
-                                            <span id="">{{ forloop.counter }}</span>
+                                            <span class="badge">{{ forloop.counter }}.</span>
                                             {{ doc.title }}
+                                            <span class="tm-btn-1 uk-button uk-button-small">ورود</span>
                                         </a>
                                     </li>
                                 {% endfor %}
                             </ul>
+                        </div>
+                        <div class="footer uk-clearfix">
+                            <div class="toggle-btn uk-float-left" data-uk-toggle="{target:'.toggle-class'}">
+                                <a class="toggle-class">پنهان کردن لیست <i class="uk-icon-chevron-up"></i></a>
+                                <a class="toggle-class uk-hidden">نمایش لیست <i class="uk-icon-chevron-down"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -56,5 +77,5 @@
     </div>
 {% endblock content %}
 {% block uikit %}
-    <script src="{% static "main/js/accordion.min.js" %}"></script>
+    <script src="{% static "main/js/components/accordion.min.js" %}"></script>
 {% endblock uikit %}
