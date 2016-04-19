@@ -77,7 +77,7 @@ a:hover {
  */
 a,
 .uk-link {
-  color: #07D;
+  color: #666;
   text-decoration: none;
   cursor: pointer;
   -moz-transition: all 0.3s ease;
@@ -88,7 +88,7 @@ a,
 
 a:hover,
 .uk-link:hover {
-  color: #059;
+  color: #3a3a3a;
   text-decoration: none;
 }
 
@@ -2151,11 +2151,11 @@ ul.uk-nav-sub {
  * Nested items
  */
 .uk-nav-side ul a {
-  color: #07D;
+  color: #666;
 }
 
 .uk-nav-side ul a:hover {
-  color: #059;
+  color: #3a3a3a;
 }
 
 /* Modifier `uk-nav-dropdown`
@@ -2198,11 +2198,11 @@ ul.uk-nav-sub {
  * Nested items
  */
 .uk-nav-dropdown ul a {
-  color: #07D;
+  color: #666;
 }
 
 .uk-nav-dropdown ul a:hover {
-  color: #059;
+  color: #3a3a3a;
 }
 
 /* Modifier `uk-nav-navbar`
@@ -2245,11 +2245,11 @@ ul.uk-nav-sub {
  * Nested items
  */
 .uk-nav-navbar ul a {
-  color: #07D;
+  color: #666;
 }
 
 .uk-nav-navbar ul a:hover {
-  color: #059;
+  color: #3a3a3a;
 }
 
 /* Modifier `uk-nav-offcanvas`
@@ -2454,11 +2454,11 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
  * Link colors
  */
 .uk-navbar-content > a:not([class]) {
-  color: #07D;
+  color: #666;
 }
 
 .uk-navbar-content > a:not([class]):hover {
-  color: #059;
+  color: #3a3a3a;
 }
 
 /* Sub-objects: `uk-navbar-brand`
@@ -2613,7 +2613,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
  */
 .uk-subnav > * > :hover,
 .uk-subnav > * > :focus {
-  color: #07D;
+  color: #666;
   text-decoration: none;
 }
 
@@ -2621,7 +2621,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
  * Active
  */
 .uk-subnav > .uk-active > * {
-  color: #07D;
+  color: #666;
 }
 
 /* Modifier: 'subnav-line'
@@ -2889,7 +2889,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   padding: 8px 12px 8px 12px;
   border: 1px solid transparent;
   border-bottom-width: 0;
-  color: #07D;
+  color: #666;
   text-decoration: none;
 }
 
@@ -2908,7 +2908,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-tab > li.uk-open > a {
   border-color: #f5f5f5;
   background: #f5f5f5;
-  color: #059;
+  color: #3a3a3a;
   /* 2 */
   outline: none;
 }
@@ -3627,7 +3627,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-form input[type="tel"],
 .uk-form input[type="color"] {
   /* 1 */
-  height: 30px;
+  height: 28px;
   /* 2 */
   max-width: 100%;
   /* 3 */
@@ -3754,7 +3754,7 @@ select.uk-form-small,
 textarea.uk-form-small,
 input[type].uk-form-small,
 input:not([type]).uk-form-small {
-  height: 25px;
+  height: 23px;
   padding: 3px 3px;
   font-size: 10px;
 }
@@ -3763,7 +3763,7 @@ select.uk-form-large,
 textarea.uk-form-large,
 input[type].uk-form-large,
 input:not([type]).uk-form-large {
-  height: 40px;
+  height: 38px;
   padding: 8px 6px;
   font-size: 14px;
 }
@@ -4026,9 +4026,9 @@ select.uk-form-width-mini {
   background: #003c5a;
   vertical-align: middle;
   /* 8 */
-  line-height: 30px;
+  line-height: 28px;
   /* 9 */
-  min-height: 30px;
+  min-height: 28px;
   /* 10 */
   font-size: 1rem;
   /* 11 */
@@ -4037,10 +4037,10 @@ select.uk-form-width-mini {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  -moz-transition: linear 0.3s;
-  -o-transition: linear 0.3s;
-  -webkit-transition: linear 0.3s;
-  transition: linear 0.3s;
+  -moz-transition: linear 0.2s;
+  -o-transition: linear 0.2s;
+  -webkit-transition: linear 0.2s;
+  transition: linear 0.2s;
 }
 
 .uk-button:not(:disabled) {
@@ -4055,7 +4055,7 @@ select.uk-form-width-mini {
  */
 .uk-button:hover,
 .uk-button:focus {
-  background-color: #054767;
+  background-color: #0C577C;
   color: #fff;
   /* 2 */
   outline: none;
@@ -4066,7 +4066,7 @@ select.uk-form-width-mini {
 /* Active */
 .uk-button:active,
 .uk-button.uk-active {
-  background-color: #054767;
+  background-color: #0C577C;
   color: #393d40;
 }
 
@@ -4162,14 +4162,14 @@ select.uk-form-width-mini {
 
 /* Color */
 .uk-button-link {
-  color: #07D;
+  color: #666;
 }
 
 .uk-button-link:hover,
 .uk-button-link:focus,
 .uk-button-link:active,
 .uk-button-link.uk-active {
-  color: #059;
+  color: #3a3a3a;
   text-decoration: underline;
 }
 
@@ -4188,20 +4188,20 @@ select.uk-form-width-mini {
   min-height: 20px;
   padding: 0 6px;
   line-height: 20px;
-  font-size: 9px;
-}
-
-.uk-button-small {
-  min-height: 25px;
-  padding: 0 10px;
-  line-height: 25px;
   font-size: 10px;
 }
 
+.uk-button-small {
+  min-height: 23px;
+  padding: 0 10px;
+  line-height: 23px;
+  font-size: 12px;
+}
+
 .uk-button-large {
-  min-height: 40px;
+  min-height: 38px;
   padding: 0 15px;
-  line-height: 40px;
+  line-height: 38px;
   font-size: 14px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;

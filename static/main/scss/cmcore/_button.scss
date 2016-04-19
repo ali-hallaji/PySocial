@@ -17,15 +17,15 @@ $button-mini-line-height:                       $global-height-mini;
 $button-small-line-height:                      $global-height-small;
 $button-large-line-height:                      $global-height-large;
 
-$button-mini-font-size:                         round(($global-font-size * 0.78)); // 11px / 12px
-$button-small-font-size:                        round(($global-font-size * 0.85)); // 12px / 14px
-$button-large-font-size:                        round(($global-font-size * 1.14)); // 16px / 18px
+$button-mini-font-size:                         10px;
+$button-small-font-size:                        12px;
+$button-large-font-size:                        14px;
 
 $button-background:                             #003c5a;
 $button-color:                                  $global-contrast-color;
-$button-hover-background:                       #054767;
+$button-hover-background:                       #0C577C;
 $button-hover-color:                            $global-contrast-color;
-$button-active-background:                      #054767;
+$button-active-background:                      #0C577C;
 $button-active-color:                           $global-color;
 
 $button-primary-background:                     $global-primary-background;
@@ -57,7 +57,7 @@ $button-link-disabled-color:                    $global-muted-color;
 
 @mixin hook-button() {
     @include border-radius(3px);
-    @include transition(0.3s linear);
+    @include transition(0.2s linear);
 }
 
 @mixin hook-button-hover() {}

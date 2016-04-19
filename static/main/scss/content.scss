@@ -1,32 +1,126 @@
 @import "style";
 
+div.tm-panel-header-content {
+
+    h1 {
+        font-family: $mirzab-font, $ubuntub-font;
+        color: #3AC;
+    }
+
+    hr {
+        margin-top: 100px;
+        border-width: 2px;
+        border-color: #DAEBF3;
+    }
+}
+
+ul.tm-subnav-content {
+
+    li {
+        padding-left: 2rem;
+        color: #3AC;
+
+        i {
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            margin-left: 10px;
+            background-color: #3AC;
+            color: #EAF2F6;
+
+            @include border-radius(50%);
+        }
+    }
+
+    & > * > :hover { color: #EAF2F6; }
+}
+
+div.tm-panel-course {
+    border: 1px solid #ebf4f7;
+    padding: 1rem 2rem;
+
+    .header {
+
+        h2 { font-family: $mirzab-font, $ubuntub-font; }
+
+        span {
+            color: #3AC;
+            border: 3px solid #3AC;
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            text-align: center;
+            box-sizing: border-box;
+            margin-left: 1rem;
+            line-height: 2rem;
+            font-size: 1.5rem;
+
+            @include border-radius(50%);
+        }
+    }
+
+    .footer {
+        background-color: #ebf4f7;
+        padding: 1rem 2rem;
+        margin: 0 -2rem -1rem -2rem;
+
+        a { color: #3AC; }
+    }
+
+    hr {
+        border-color: #ebf4f7;
+        margin-left: -2rem;
+        margin-right: -2rem;
+        margin-bottom: 0;
+    }
+}
+
 ul.tm-list-lessons {
+    margin-top: 10px;
 
     > li {
         padding: 10px 0;
         border-bottom: 1px solid #EAF2F6;
 
+        &:last-child { border-bottom: 0; }
+
         > a {
             color: #3a3a3a;
             font-family: $mirzab-font, $ubuntub-font;
             font-size: 14px;
+            line-height: 25px;
+            display: flex;
         }
 
-        span:not([class]) {
+        span.badge {
             color: #E76E33;
             text-align: center;
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+            margin-left: 10px;
         }
 
-        span.btn {
-            padding: 0 15px;
-            height: 23px;
-            line-height: 23px;
-            border-radius: 3px;
-            color: #E76E33;
-            border: 1px solid #E76E33;
-            float: left;
+        span.tm-btn-1 {
+            margin-right: auto;
         }
+    }
+}
+
+ul.tm-list-authors {
+
+    img {
+        width: 64px;
+        height: 64px;
+    }
+
+    h4 {
+        margin: 0;
+        line-height: 2;
+    }
+
+    p {
+        margin-top: 10px;
+        color: #999;
     }
 }

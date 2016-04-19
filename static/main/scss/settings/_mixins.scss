@@ -11,7 +11,7 @@
         background: $btn-background;
         color: $btn-color;
 
-        @if $btn-border { border: $btn-border; }
+        @if $btn-border { border: 1px solid $btn-border; }
         @if $btn-hover == hover {
             &:hover,
             &:focus,
