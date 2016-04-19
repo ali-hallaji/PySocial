@@ -443,7 +443,6 @@ def add_parent(request):
 
         if kwargs['form'].is_valid():
             data = kwargs['form'].cleaned_data
-            data['parent_name'] = data.pop('name')
             data['settings_type'] = 'Parents'
             result = cursor.settings.insert(data)
 
@@ -474,7 +473,6 @@ def edit_parent(request, _id):
         if kwargs['form'].is_valid():
             data = kwargs['form'].cleaned_data
             data['settings_type'] = 'Parents'
-            data['parent_name'] = data.pop('name')
             _update = {'$set': data}
             update = cursor.settings.update_one(criteria, _update)
 

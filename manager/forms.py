@@ -126,7 +126,7 @@ class ContentForm(forms.Form):
 
 
 class ParentForm(forms.Form):
-    name = forms.CharField(label='Parent Name')
+    parent_name = forms.CharField(label='Parent Name')
     description = forms.CharField(
         label='Description',
         required=False,
