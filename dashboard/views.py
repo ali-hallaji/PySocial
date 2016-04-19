@@ -1,4 +1,5 @@
 # Python Import
+import re
 from bson.objectid import ObjectId
 
 # Django Import
@@ -35,12 +36,21 @@ def content(request, dashboard, _id):
     # Get all contents
     criteria = {'box_id': ObjectId(_id)}
     kwargs['contents'] = list(cursor.contents.find(criteria))
-    distinct_parent = cursor.contents.distinct('parent', criteria)
+    distinct_parent = []
+
+    for content in kwargs['contents']:
+        if content.get('parent', None):
+            if content['parent'] not in distinct_parent:
+                distinct_parent.append(content['parent'])
 
     kwargs['parents'] = []
 
     for parent in distinct_parent:
-        criteria = {'settings_type': 'Parents', 'parent_name': parent}
+        print parent
+        criteria = {
+            'settings_type': 'Parents',
+            'parent_name': {'$regex': parent}
+        }
         desc = cursor.settings.find_one(criteria)
 
         if not desc:
@@ -50,7 +60,6 @@ def content(request, dashboard, _id):
 
         title = parent.split('|')[1]
         kwargs['parents'].append((parent, desc, title))
-
 
     # Get all boxs
     kwargs['box'] = cursor.box.find_one({'title': dashboard})
