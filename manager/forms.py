@@ -104,12 +104,18 @@ class ContentForm(forms.Form):
             },
             {
                 'parent_name': 1,
+                'box': 1,
                 '_id': 0
             }
         )
 
         for doc in parent:
-            parents.append((doc['parent_name'], doc['parent_name']))
+            parents.append(
+                (
+                    doc['parent_name'],
+                    "{0} | {1}".format(doc['parent_name'], doc['parent_name'])
+                )
+            )
 
         super(ContentForm, self).__init__(*args, **kwargs)
         self.fields['box_id'] = forms.ChoiceField(
