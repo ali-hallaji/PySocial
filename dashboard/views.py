@@ -34,6 +34,7 @@ def content(request, dashboard, _id):
 
     # Get all contents
     kwargs['contents'] = list(cursor.contents.find({'box_id': ObjectId(_id)}))
+    kwargs['distinct_parent'] = cursor.contents.distinct('parent')
 
     # Get all boxs
     kwargs['box'] = cursor.box.find_one({'title': dashboard})

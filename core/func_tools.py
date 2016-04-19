@@ -73,3 +73,12 @@ def avatar_maker(user):
             user['picture'] = '/media/avatars/default.png'
 
     return user
+
+
+def list_of_seq_unique_by_key(seq, key):
+    # Remove everything with a duplicate value for key 'key'
+    seen = set()
+    seen_add = seen.add
+    result = [x for x in seq if x[key] not in seen and not seen_add(x[key])]
+
+    return result
