@@ -132,3 +132,18 @@ class ParentForm(forms.Form):
         required=False,
         widget=CKEditorWidget()
     )
+
+    def __init__(self, *args, **kwargs):
+        # Get box name
+        boxs = []
+        box = list(cursor.box.find({}, {'title': 1}))
+
+        for doc in box:
+            boxs.append((doc['title'], doc['title']))
+
+        super(ContentForm, self).__init__(*args, **kwargs)
+        self.fields['box'] = forms.ChoiceField(
+            label='Choose your Box',
+            required=True,
+            choices=boxs
+        )
