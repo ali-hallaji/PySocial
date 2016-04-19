@@ -43,26 +43,24 @@
             <div class="uk-width-large-2-3">
                 <h2>توضیحات</h2>
                 <p>{{ box.description|safe }}</p>
-                {% for parent in distinct_parent %}
+                {% for parent in parents %}
                     <div class="tm-panel-course uk-panel">
                         <div class="uk-accordion" data-uk-accordion="{toggle:'.toggle-btn'}">
                             <div class="header">
-                                <h2><span>{{ forloop.counter }}</span>{{ parent }}</h2>
-                                <p>این متن تست میباشد</p>
+                                <h2><span>{{ forloop.counter }}</span>{{ parent.2 }}</h2>
+                                {{ parent.1|safe }}
                             </div>
                             <hr>
                             <div class="uk-accordion-content">
                                 <ul class="tm-list-lessons uk-list">
-                                    {% for doc in contents %}
-                                        {% if doc.parent == parent %}
-                                            <li>
-                                                <a href="{% url "lesson" box.title doc|mongo_id %}">
-                                                    <span class="badge">{{ forloop.counter }}.</span>
-                                                    {{ doc.title }}
-                                                    <span class="tm-btn-1 uk-button uk-button-small">ورود</span>
-                                                </a>
-                                            </li>
-                                        {% endif %}
+                                    {% for doc in parent.3 %}
+                                        <li>
+                                            <a href="{% url "lesson" box.title doc|mongo_id %}">
+                                            <span class="badge">{{ forloop.counter }}.</span>
+                                            {{ doc.title }}
+                                            <span class="tm-btn-1 uk-button uk-button-small">ورود</span>
+                                            </a>
+                                        </li>
                                     {% endfor %}
                                 </ul>
                             </div>

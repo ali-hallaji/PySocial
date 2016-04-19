@@ -35,10 +35,10 @@ def content(request, dashboard, _id):
 
     # Get all contents
     criteria = {'box_id': ObjectId(_id)}
-    kwargs['contents'] = list(cursor.contents.find(criteria))
+    contents = list(cursor.contents.find(criteria))
     distinct_parent = []
 
-    for content in kwargs['contents']:
+    for content in contents:
         if content.get('parent', None):
             if content['parent'] not in distinct_parent:
                 distinct_parent.append(content['parent'])
@@ -46,7 +46,6 @@ def content(request, dashboard, _id):
     kwargs['parents'] = []
 
     for parent in distinct_parent:
-        print parent
         criteria = {
             'settings_type': 'Parents',
             'parent_name': {'$regex': parent}
@@ -58,8 +57,14 @@ def content(request, dashboard, _id):
         else:
             desc = desc['description']
 
-        title = parent.split('|')[1]
-        kwargs['parents'].append((parent, desc, title))
+        title = parent.split('|')[1] 
+
+        countent_list = []
+        for content in contents:
+            if content['parent'] == parent:
+                countent_list.append(content)
+
+        kwargs['parents'].append((parent, desc, title, countent_list))
 
     # Get all boxs
     kwargs['box'] = cursor.box.find_one({'title': dashboard})
