@@ -33,8 +33,24 @@ def content(request, dashboard, _id):
         users[user['_id']] = user
 
     # Get all contents
-    kwargs['contents'] = list(cursor.contents.find({'box_id': ObjectId(_id)}))
-    kwargs['distinct_parent'] = cursor.contents.distinct('parent')
+    criteria = {'box_id': ObjectId(_id)}
+    kwargs['contents'] = list(cursor.contents.find(criteria))
+    distinct_parent = cursor.contents.distinct('parent', criteria)
+
+    kwargs['parents'] = []
+
+    for parent in distinct_parent:
+        criteria = {'settings_type': 'Parents', 'parent_name': parent}
+        desc = cursor.settings.find_one(criteria)
+
+        if not desc:
+            continue
+        else:
+            desc = desc['description']
+
+        title = parent.split('|')[1]
+        kwargs['parents'].append((parent, desc, title))
+
 
     # Get all boxs
     kwargs['box'] = cursor.box.find_one({'title': dashboard})
