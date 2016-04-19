@@ -85,7 +85,7 @@ class ContentForm(forms.Form):
         widget=CKEditorWidget()
     )
     title = forms.CharField(label='Title')
-    published = forms.BooleanField(label='Published')
+    published = forms.BooleanField(label='Published', required=False)
     order = forms.IntegerField(label='Order')
 
     def __init__(self, *args, **kwargs):
@@ -132,6 +132,10 @@ class ContentForm(forms.Form):
             required=True,
             choices=parents
         )
+
+    def clean(self):
+        if not self.cleaned_data.get('published', None):
+            self.cleaned_data['published'] = False
 
 
 class ParentForm(forms.Form):
