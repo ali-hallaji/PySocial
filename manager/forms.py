@@ -141,7 +141,7 @@ class ParentForm(forms.Form):
         for doc in box:
             boxs.append((doc['title'], doc['title']))
 
-        super(ContentForm, self).__init__(*args, **kwargs)
+        super(ParentForm, self).__init__(*args, **kwargs)
         self.fields['box'] = forms.ChoiceField(
             label='Choose your Box',
             required=True,
