@@ -22,6 +22,11 @@
   src: url("../fonts/ubuntu/Ubuntu-R.ttf") format("truetype");
   font-weight: normal;
 }
+@font-face {
+  font-family: ubuntub;
+  src: url("../fonts/ubuntu/Ubuntu-B.ttf") format("truetype");
+  font-weight: normal;
+}
 /* Theme */
 /* UiKit */
 /* ========================================================================
@@ -4198,9 +4203,9 @@ select.uk-form-width-mini {
   padding: 0 15px;
   line-height: 40px;
   font-size: 14px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }
 
 /* Sub-object `uk-button-group`

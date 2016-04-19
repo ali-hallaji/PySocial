@@ -112,7 +112,7 @@ $button-link-disabled-color:                    $global-muted-color;
 // ========================================================================
 
 @mixin hook-button-large() {
-    @include border-radius(3px);
+    @include border-radius(5px);
 }
 
 

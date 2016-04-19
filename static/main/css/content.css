@@ -1,0 +1,31 @@
+/*====================================
+=            Style Codes.            =
+====================================*/
+/* Compass */
+/* Bourbon */
+/* Settings */
+/* Modules */
+ul.tm-list-lessons > li {
+  padding: 10px 0;
+  border-bottom: 1px solid #EAF2F6;
+}
+ul.tm-list-lessons > li > a {
+  color: #3a3a3a;
+  font-family: Mirzab, ubuntub;
+  font-size: 14px;
+}
+ul.tm-list-lessons > li span:not([class]) {
+  color: #E76E33;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+ul.tm-list-lessons > li span.btn {
+  padding: 0 15px;
+  height: 23px;
+  line-height: 23px;
+  border-radius: 3px;
+  color: #E76E33;
+  border: 1px solid #E76E33;
+  float: left;
+}
