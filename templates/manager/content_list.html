@@ -1,23 +1,21 @@
 {% extends 'manager/base.html' %}
 {% load staticfiles %}
 {% load func_tools %}
-{% block title %}User List{% endblock %}
+{% block title %}Content List{% endblock %}
 {% block content %}
-    <h3>user list</h3>
+    <h3>Content list</h3>
     <table>
         <thead>
             <tr>
                 <th>#</th>
-                {% for key, value in users.0.items %}
-                    {% if key != 'id' %}
-                        <th>{{ key }}</th>
-                    {% endif %}
+                {% for key, value in contents.0.items %}
+                    <th>{{ key }}</th>
                 {% endfor %}
                 <th>action</th>
             </tr>
         </thead>
         <tbody>
-            {% for item in users %}
+            {% for item in contents %}
                 <tr data-id="{{ item.id }}">
                     <td></td>
                     {% for key, value in item.items %}
@@ -26,7 +24,7 @@
                         {% endif %}
                     {% endfor %}
                     <td>
-                        <a href="/manager/edit_user/{{ item|mongo_id }}">Edit</a>
+                        <a href="/manager/edit_content/{{ item|mongo_id }}">Edit</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -34,11 +32,10 @@
         <tfoot>
             <tr>
                 <td></td>
-                {% for key, value in users.0.items %}
+                {% for key, value in contents.0.items %}
                     <td></td>
                 {% endfor %}
             </tr>
         </tfoot>
     </table>
 {% endblock %}
-

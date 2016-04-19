@@ -1,0 +1,38 @@
+{% extends 'manager/base.html' %}
+{% block title %}
+    {% if 'edit' in request.get_full_path %}
+        Edit Parent
+    {% else %}
+        Add Parent
+    {% endif %}
+{% endblock %}
+{% load staticfiles %}
+{% block extrahead %}
+    <script src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+    <script src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+{% endblock %}
+{% block content %}
+    {% if not not_exists %}
+        <form  enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            <h1><strong>Add Parent</strong></h1>
+            {{ form.as_ul }}
+
+            {% if 'edit' in request.get_full_path %}
+                <hr>
+                <button type="submit">Edit</button>
+            {% else %}
+                <hr>
+                <button type="submit">Add</button>
+            {% endif %}
+        </form>
+    {% else %}
+        چنین نامی موجود نمیباشد
+    {% endif %}
+    {% if error and error.errors %}
+        {% for key, value in error.errors.items %}
+            {{ key }}: {{ value}}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+

@@ -21,8 +21,10 @@ from core.acl_general_funcs import has_perm_view
 from core.func_tools import find_pic_by_id
 from core.func_tools import handle_uploaded_file
 from forms import BoxForm
+from forms import ContentForm
 from forms import GroupForm
 from forms import HomeForm
+from forms import ParentForm
 from forms import UserForm
 from pysocial.settings import BASE_DIR
 
@@ -49,7 +51,7 @@ def add_home(request):
 
         kwargs['form'] = HomeForm()
 
-    return render(request, 'manager/edit_home.html', kwargs)
+    return render(request, 'manager/home.html', kwargs)
 
 
 @login_required
@@ -61,7 +63,7 @@ def edit_home(request, _id):
 
     if not home:
         kwargs['not_exists'] = True
-        return render(request, 'manager/edit_home.html', kwargs)
+        return render(request, 'manager/home.html', kwargs)
 
     if request.method == 'POST':
         kwargs['form'] = HomeForm(request.POST)
@@ -81,7 +83,7 @@ def edit_home(request, _id):
 
         kwargs['form'] = HomeForm(home)
 
-    return render(request, 'manager/edit_home.html', kwargs)
+    return render(request, 'manager/home.html', kwargs)
 
 
 @login_required
@@ -123,7 +125,7 @@ def define_group(request):
     else:
         kwargs['form'] = GroupForm(views_name=all_views)
 
-    return render(request, 'manager/define_group.html', kwargs)
+    return render(request, 'manager/group.html', kwargs)
 
 
 @login_required
@@ -145,7 +147,7 @@ def edit_group(request, _id):
 
     if not group:
         kwargs['not_exists'] = True
-        return render(request, 'manager/define_group.html', kwargs)
+        return render(request, 'manager/group.html', kwargs)
 
     all_views = get_all_view_names()
 
@@ -173,7 +175,7 @@ def edit_group(request, _id):
     else:
         kwargs['form'] = GroupForm(group, views_name=all_views)
 
-    return render(request, 'manager/define_group.html', kwargs)
+    return render(request, 'manager/group.html', kwargs)
 
 
 @login_required
@@ -304,7 +306,7 @@ def add_box(request):
     else:
         kwargs['form'] = BoxForm()
 
-    return render(request, 'manager/add_box.html', kwargs)
+    return render(request, 'manager/box.html', kwargs)
 
 
 @login_required
@@ -348,7 +350,7 @@ def edit_box(request, _id):
 
     if not box:
         kwargs['not_exists'] = True
-        return render(request, 'manager/add_box.html', kwargs)
+        return render(request, 'manager/box.html', kwargs)
 
     if request.method == 'POST':
         kwargs['form'] = BoxForm(request.POST, request.FILES)
@@ -357,15 +359,14 @@ def edit_box(request, _id):
             data = kwargs['form'].cleaned_data
             box_pic = data.pop('box_pic')
 
-            result = cursor.box.update_one(criteria, {'$set': data})
+            update = cursor.box.update_one(criteria, {'$set': data})
 
-            if result.raw_result.get('updatedExisting', None):
+            if update.raw_result.get('updatedExisting', None):
                 if box_pic:
                     path = BASE_DIR
                     _format = os.path.splitext(request.FILES['box_pic'].name)
                     path += '/media/dashboard/box/{0}'.format(_id)
                     path += '{0}'.format(_format[1])
-                    print path
 
                     handle_uploaded_file(path, request.FILES['box_pic'])
 
@@ -374,4 +375,125 @@ def edit_box(request, _id):
     else:
         kwargs['form'] = BoxForm(box)
 
-    return render(request, 'manager/add_box.html', kwargs)
+    return render(request, 'manager/box.html', kwargs)
+
+
+@login_required
+@has_perm_view()
+def add_content(request):
+    kwargs = {}
+
+    if request.method == 'POST':
+        kwargs['form'] = ContentForm(request.POST)
+
+        if kwargs['form'].is_valid():
+            data = kwargs['form'].cleaned_data
+            result = cursor.contents.insert(data)
+
+            if result:
+                return HttpResponseRedirect('/manager/content_list')
+
+    else:
+        kwargs['form'] = ContentForm()
+
+    return render(request, 'manager/content.html', kwargs)
+
+
+@login_required
+@has_perm_view()
+def edit_content(request, _id):
+    kwargs = {}
+
+    criteria = {'_id': ObjectId(_id)}
+    content = cursor.contents.find_one(criteria)
+
+    if request.method == 'POST':
+        kwargs['form'] = ContentForm(request.POST)
+
+        if kwargs['form'].is_valid():
+            data = kwargs['form'].cleaned_data
+            _update = {'$set': data}
+            update = cursor.contents.update_one(criteria, _update)
+
+            if update.raw_result.get('updatedExisting', None):
+                return HttpResponseRedirect('/manager/content_list')
+
+    else:
+        kwargs['form'] = ContentForm(content)
+
+    return render(request, 'manager/content.html', kwargs)
+
+
+@login_required
+@has_perm_view()
+def content_list(request):
+    kwargs = {}
+    kwargs['contents'] = list(cursor.contents.find())
+
+    return render(request, 'manager/content_list.html', kwargs)
+
+
+@login_required
+@has_perm_view()
+def add_parent(request):
+    kwargs = {}
+
+    if request.method == 'POST':
+        kwargs['form'] = ParentForm(request.POST)
+
+        if kwargs['form'].is_valid():
+            data = kwargs['form'].cleaned_data
+            data['parent_name'] = data.pop('name')
+            data['settings_type'] = 'Parents'
+            result = cursor.settings.insert(data)
+
+            if result:
+                return HttpResponseRedirect('/manager/parent_list')
+
+    else:
+        kwargs['form'] = ParentForm()
+
+    return render(request, 'manager/parent.html', kwargs)
+
+
+@login_required
+@has_perm_view()
+def edit_parent(request, _id):
+    kwargs = {}
+
+    criteria = {'_id': ObjectId(_id)}
+    parent = cursor.settings.find_one(criteria)
+
+    if not parent:
+        kwargs['not_exists'] = True
+        return render(request, 'manager/parent.html', kwargs)
+
+    if request.method == 'POST':
+        kwargs['form'] = ParentForm(request.POST)
+
+        if kwargs['form'].is_valid():
+            data = kwargs['form'].cleaned_data
+            data['settings_type'] = 'Parents'
+            data['parent_name'] = data.pop('name')
+            _update = {'$set': data}
+            update = cursor.settings.update_one(criteria, _update)
+
+            if update.raw_result.get('updatedExisting', None):
+                return HttpResponseRedirect('/manager/parent_list')
+
+    else:
+        kwargs['form'] = ParentForm(parent)
+
+    return render(request, 'manager/parent.html', kwargs)
+
+
+@login_required
+@has_perm_view()
+def parent_list(request):
+    kwargs = {}
+
+    kwargs['parents'] = list(
+        cursor.settings.find({'settings_type': 'Parents'})
+    )
+
+    return render(request, 'manager/parent_list.html', kwargs)

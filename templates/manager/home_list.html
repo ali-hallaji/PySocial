@@ -1,5 +1,6 @@
 {% extends 'manager/base.html' %}
 {% load staticfiles %}
+{% load func_tools %}
 {% block title %}Home List{% endblock %}
 {% block content %}
     <h3>Home list</h3>
@@ -23,6 +24,7 @@
                         {% endif %}
                     {% endfor %}
                     <td>
+                        <a href="/manager/edit_home/{{ item|mongo_id }}">Edit</a>
                     </td>
                 </tr>
             {% endfor %}

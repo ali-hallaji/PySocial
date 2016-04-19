@@ -77,3 +77,58 @@ class BoxForm(forms.Form):
         widget=CKEditorWidget()
     )
     box_pic = forms.FileField(label='Box Image', required=False)
+
+
+class ContentForm(forms.Form):
+    description = forms.CharField(
+        label='Description',
+        widget=CKEditorWidget()
+    )
+    title = forms.CharField(label='Title')
+    published = forms.BooleanField(label='Published')
+    order = forms.IntegerField(label='Order')
+
+    def __init__(self, *args, **kwargs):
+        # Get box name
+        boxs = []
+        box = list(cursor.box.find({}, {'title': 1}))
+
+        for doc in box:
+            boxs.append((doc['_id'], doc['title']))
+
+        # Get parent name
+        parents = []
+        parent = cursor.settings.find(
+            {
+                'settings_type': 'Parents'
+            },
+            {
+                'parent_name': 1,
+                '_id': 0
+            }
+        )
+
+        for doc in parent:
+            parents.append((doc['parent_name'], doc['parent_name']))
+
+        super(ContentForm, self).__init__(*args, **kwargs)
+        self.fields['box_id'] = forms.ChoiceField(
+            label='Choose your Box',
+            required=True,
+            choices=boxs
+        )
+
+        self.fields['parent'] = forms.ChoiceField(
+            label='Choose your parent name',
+            required=True,
+            choices=parents
+        )
+
+
+class ParentForm(forms.Form):
+    name = forms.CharField(label='Parent Name')
+    description = forms.CharField(
+        label='Description',
+        required=False,
+        widget=CKEditorWidget()
+    )

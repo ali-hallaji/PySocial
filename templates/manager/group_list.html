@@ -1,6 +1,7 @@
 {% extends 'manager/base.html' %}
 {% block title %}Group List{% endblock %}
 {% load staticfiles %}
+{% load func_tools %}
 {% block extrahead %}
 {% endblock %}
 
@@ -34,6 +35,9 @@
                             {% endif %}
                         {% endif %}
                     {% endfor %}
+                    <td>
+                        <a href="/manager/edit_group/{{ item|mongo_id }}">Edit</a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
