@@ -43,34 +43,38 @@
             <div class="uk-width-large-2-3">
                 <h2>توضیحات</h2>
                 <p>{{ box.description|safe }}</p>
-                <div class="tm-panel-course uk-panel">
-                    <div class="uk-accordion" data-uk-accordion="{toggle:'.toggle-btn'}">
-                        <div class="header">
-                            <h2><span>1</span>توضیحات</h2>
-                            <p>{{ box.description|safe }}</p>
-                        </div>
-                        <hr>
-                        <div class="uk-accordion-content">
-                            <ul class="tm-list-lessons uk-list">
-                                {% for doc in contents %}
-                                    <li>
-                                        <a href="{% url "lesson" box.title doc|mongo_id %}">
-                                            <span class="badge">{{ forloop.counter }}.</span>
-                                            {{ doc.title }}
-                                            <span class="tm-btn-1 uk-button uk-button-small">ورود</span>
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="footer uk-clearfix">
-                            <div class="toggle-btn uk-float-left" data-uk-toggle="{target:'.toggle-class'}">
-                                <a class="toggle-class">پنهان کردن لیست <i class="uk-icon-chevron-up"></i></a>
-                                <a class="toggle-class uk-hidden">نمایش لیست <i class="uk-icon-chevron-down"></i></a>
+                {% for parent in distinct_parent %}
+                    <div class="tm-panel-course uk-panel">
+                        <div class="uk-accordion" data-uk-accordion="{toggle:'.toggle-btn'}">
+                            <div class="header">
+                                <h2><span>{{ forloop.counter }}</span>{{ parent }}</h2>
+                                <p>این متن تست میباشد</p>
+                            </div>
+                            <hr>
+                            <div class="uk-accordion-content">
+                                <ul class="tm-list-lessons uk-list">
+                                    {% for doc in contents %}
+                                        {% if doc.parent == parent %}
+                                            <li>
+                                                <a href="{% url "lesson" box.title doc|mongo_id %}">
+                                                    <span class="badge">{{ forloop.counter }}.</span>
+                                                    {{ doc.title }}
+                                                    <span class="tm-btn-1 uk-button uk-button-small">ورود</span>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="footer uk-clearfix">
+                                <div class="toggle-btn uk-float-left" data-uk-toggle="{target:'.toggle-class'}">
+                                    <a class="toggle-class">پنهان کردن لیست <i class="uk-icon-chevron-up"></i></a>
+                                    <a class="toggle-class uk-hidden">نمایش لیست <i class="uk-icon-chevron-down"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
         </div>
