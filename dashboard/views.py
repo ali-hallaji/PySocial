@@ -109,11 +109,12 @@ def lesson(request, dashboard, _id):
     kwargs['lesson'] = cursor.lessons.find_one({'content_id': ObjectId(_id)})
 
     criteria = {'_id': kwargs['lesson']['user_id']}
-    kwargs['author'] = cursor.users.find_one(criteria)
+    kwargs['author'] = avatar_maker(cursor.users.find_one(criteria))
 
     criteria = {'_id': kwargs['lesson']['content_id']}
     kwargs['content'] = cursor.contents.find_one(criteria)
 
-    kwargs['box_name'] = kwargs['content']['parent'].split('|')[0]
+    kwargs['box_name_en'] = kwargs['content']['parent'].split('|')[0]
+    kwargs['box_name_fa'] = kwargs['content']['parent'].split('|')[1]
 
     return render(request, 'dashboard/lesson.html', kwargs)
