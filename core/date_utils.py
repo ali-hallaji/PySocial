@@ -60,6 +60,11 @@ def gregorian_to_jalali(_date):
     """
         Convert Gregorian date to Jalali date into Template
     """
+    if isinstance(_date, datetime.datetime):
+        with_time = True
+    elif isinstance(_date, datetime.date):
+        with_time = False
+
     if isinstance(_date, str):
         _date = parser.parse(_date)
 
@@ -67,4 +72,18 @@ def gregorian_to_jalali(_date):
     month = _date.month
     day = _date.day
     date = jdatetime.GregorianToJalali(year, month, day)
-    return '{0}/{1}/{2}'.format(date.jyear, date.jmonth, date.jday)
+
+    if with_time:
+        _datetime = '{0}/{1}/{2}'.format(date.jyear, date.jmonth, date.jday)
+        _datetime += ' {0}:{1}:{2}'.format(
+            _date.hour,
+            _date.minute,
+            _date.second
+        )
+
+        return _datetime
+
+    else:
+        _date = '{0}/{1}/{2}'.format(date.jyear, date.jmonth, date.jday)
+
+        return _date
