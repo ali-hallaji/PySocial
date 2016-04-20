@@ -7,6 +7,7 @@ from django import template
 # PySocial Import
 from core.func_tools import find_pic_by_id
 from core.func_tools import path_pic_box
+from core.date_utils import gregorian_to_jalali
 from pysocial.settings import BASE_DIR
 
 
@@ -37,3 +38,8 @@ def box_exist_file(value):
 def get_path_pic_box(value):
 
     return path_pic_box(value)
+
+
+@register.filter("to_jalali")
+def to_jalali(value):
+    return gregorian_to_jalali(value)

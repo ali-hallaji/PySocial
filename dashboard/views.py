@@ -35,6 +35,8 @@ def content(request, dashboard, _id):
     # Get all contents
     criteria = {'box_id': ObjectId(_id)}
     contents = list(cursor.contents.find(criteria))
+    kwargs['len_contents'] = len(contents)
+
     distinct_parent = []
 
     for content in contents:
@@ -105,4 +107,8 @@ def content(request, dashboard, _id):
 def lesson(request, dashboard, _id):
     kwargs = {}
     kwargs['lesson'] = cursor.lessons.find_one({'content_id': ObjectId(_id)})
+
+    criteria = {'_id': kwargs['lesson']['user_id']}
+    kwargs['author'] = cursor.users.find_one(criteria)
+
     return render(request, 'dashboard/lesson.html', kwargs)
