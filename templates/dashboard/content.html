@@ -27,7 +27,7 @@
     </div>
     <div class="uk-block">
         <div class="uk-container uk-container-center">
-        <div class="uk-grid">
+        <div class="uk-grid" data-uk-grid-margin>
             <div class="uk-width-large-1-3">
                 <h2>نویسندگان</h2>
                 <ul class="tm-list-authors uk-list uk-list-striped">
@@ -43,9 +43,9 @@
             <div class="uk-width-large-2-3">
                 <h2>توضیحات</h2>
                 <p>{{ box.description|safe }}</p>
-                {% for parent in parents %}
-                    <div class="tm-panel-course uk-panel">
-                        <div class="uk-accordion" data-uk-accordion="{toggle:'.toggle-btn'}">
+                <div class="uk-accordion" data-uk-accordion="{toggle:'.toggle-btn'}" data-uk-margin="{cls:'uk-margin-large'}">
+                    {% for parent in parents %}
+                        <div class="tm-panel-course uk-panel">
                             <div class="header">
                                 <h2><span>{{ forloop.counter }}</span>{{ parent.2 }}</h2>
                                 {{ parent.1|safe }}
@@ -58,21 +58,21 @@
                                             <a href="{% url "lesson" box.title doc|mongo_id %}">
                                             <span class="badge">{{ forloop.counter }}.</span>
                                             {{ doc.title }}
-                                            <span class="tm-btn-1 uk-button uk-button-small">ورود</span>
+                                            <span class="tm-btn-1 uk-button uk-button-small uk-hidden-small">ورود</span>
                                             </a>
                                         </li>
                                     {% endfor %}
                                 </ul>
                             </div>
                             <div class="footer uk-clearfix">
-                                <div class="toggle-btn uk-float-left" data-uk-toggle="{target:'.toggle-class'}">
-                                    <a class="toggle-class">پنهان کردن لیست <i class="uk-icon-chevron-up"></i></a>
-                                    <a class="toggle-class uk-hidden">نمایش لیست <i class="uk-icon-chevron-down"></i></a>
+                                <div class="toggle-btn uk-float-left" data-uk-toggle="{target:'.toggle-class-{{ forloop.counter }}'}">
+                                    <a class="toggle-class-{{ forloop.counter }}">پنهان کردن لیست <i class="uk-icon-chevron-up"></i></a>
+                                    <a class="toggle-class-{{ forloop.counter }} uk-hidden">نمایش لیست <i class="uk-icon-chevron-down"></i></a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
         </div>
