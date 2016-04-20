@@ -1,2 +1,6 @@
 {% extends "base.html" %}
-{{ lesson }}
+{% load func_tools %}
+{% block content %}
+    {{ lesson.created_date }}
+    {{ lesson.body|safe }}
+{% endblock content %}
