@@ -111,4 +111,9 @@ def lesson(request, dashboard, _id):
     criteria = {'_id': kwargs['lesson']['user_id']}
     kwargs['author'] = cursor.users.find_one(criteria)
 
+    criteria = {'_id': kwargs['lesson']['content_id']}
+    kwargs['content'] = cursor.contents.find_one(criteria)
+
+    kwargs['box_name'] = kwargs['content']['parent'].split('|')[0]
+
     return render(request, 'dashboard/lesson.html', kwargs)

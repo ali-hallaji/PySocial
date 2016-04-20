@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load func_tools %}
 {% block content %}
-    {{ lesson.created_date }}
+    {{ lesson.created|to_jalali }}
     {{ lesson.body|safe }}
 {% endblock content %}
