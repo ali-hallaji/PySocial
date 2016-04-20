@@ -1,5 +1,4 @@
 # Python Import
-import re
 from bson.objectid import ObjectId
 
 # Django Import
@@ -57,7 +56,7 @@ def content(request, dashboard, _id):
         else:
             desc = desc['description']
 
-        title = parent.split('|')[1] 
+        title = parent.split('|')[1]
 
         countent_list = []
         for content in contents:
@@ -105,5 +104,5 @@ def content(request, dashboard, _id):
 
 def lesson(request, dashboard, _id):
     kwargs = {}
-    kwargs['lesson'] = cursor.lessons.find_one({'_id': ObjectId(_id)})
+    kwargs['lesson'] = cursor.lessons.find_one({'content_id': ObjectId(_id)})
     return render(request, 'dashboard/lesson.html', kwargs)
