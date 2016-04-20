@@ -5,6 +5,16 @@
 /* Bourbon */
 /* Settings */
 /* Modules */
+.tm-btn-1 {
+  background: #fff;
+  color: #3AC;
+  border: 1px solid #3AC;
+}
+.tm-btn-1:hover, .tm-btn-1:focus, .tm-btn-1:active {
+  color: #fff;
+  background: #3AC;
+}
+
 /* Layout */
 nav.tm-navbar {
   background: #003c5a;
@@ -64,7 +74,6 @@ footer > div.uk-block {
 footer > div.uk-block * {
   color: rgba(255, 255, 255, 0.5);
 }
-
-hr {
+footer > div.uk-block hr {
   border-color: rgba(255, 255, 255, 0.5);
 }
