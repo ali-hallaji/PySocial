@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% load func_tools %}
 {% block content %}
-    {{ lesson.created|to_jalali }}
-    {{ lesson.body|safe }}
+    <div class="uk-container uk-container-center">
+        <h1 class="uk-heading-large">{{ box_name }}</h1>
+        <h2>{{ content.title }}</h2>
+        <p>{{ content.description|safe }}</p>
+        {{ author.first_name }}
+        {{ author.last_name }}
+        <hr>
+        {{ lesson.created|to_jalali }}
+        {{ lesson.body|safe }}
+    </div>
 {% endblock content %}
