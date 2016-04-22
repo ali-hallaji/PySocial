@@ -12,7 +12,7 @@ CAPTCHA_BACKGROUND_COLOR = '#ffffff'
 
 
 # Ckeditor Configuration
-CKEDITOR_JQUERY_URL = BASE_DIR + '/static/main/js/jquery-2.2.2.min.js'
+CKEDITOR_JQUERY_URL = BASE_DIR + '/static/main/js/jquery-2.2.3.min.js'
 CKEDITOR_UPLOAD_PATH = BASE_DIR + "/media/ckeditor/uploads/"
 CKEDITOR_CONFIGS = {
     'default': {
