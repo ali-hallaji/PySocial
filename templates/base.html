@@ -38,6 +38,7 @@
                 </div>
             {% endif %}
         {% endblock %}
+        {{ get_user_data }}
         <header data-uk-sticky="{media: 767, clsinactive: 'test', top: '.uk-sticky-placeholder + *',animation: 'uk-animation-slide-top'}">
             <nav class="tm-navbar uk-navbar">
                 <div class="uk-container uk-container-center">
@@ -67,6 +68,7 @@
                 </div>
             </nav>
         </header>
+
         {% block content %}{% endblock %}
 
         <footer>
