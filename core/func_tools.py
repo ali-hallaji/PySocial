@@ -56,7 +56,8 @@ def path_pic_box(value):
 
 
 def avatar_maker(user):
-    if not user.get('social_auth', None):
+
+    if user and not user.get('social_auth', None):
         path = BASE_DIR + '/media/avatars/'
         file_name = find_pic_by_id(str(user['_id']), path)
 
@@ -69,7 +70,7 @@ def avatar_maker(user):
             user['picture'] = '/media/avatars/default.png'
 
     else:
-        if not user.get('picture', None):
+        if user and not user.get('picture', None):
             user['picture'] = '/media/avatars/default.png'
 
     return user
