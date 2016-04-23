@@ -38,7 +38,9 @@
                 </div>
             {% endif %}
         {% endblock %}
-        {{ get_user_data }}
+        {{ user_data.first_name }}
+        {{ user_data.last_name }}
+        <img src="{{ user_data.picture }}" alt="{{ user_data.first_name }} {{ user_data.last_name }}">
         <header data-uk-sticky="{media: 767, clsinactive: 'test', top: '.uk-sticky-placeholder + *',animation: 'uk-animation-slide-top'}">
             <nav class="tm-navbar uk-navbar">
                 <div class="uk-container uk-container-center">

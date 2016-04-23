@@ -24,7 +24,9 @@
         <div class="uk-block uk-block-default">
             <div class="uk-container uk-container-center">
                 <div class="uk-grid uk-flex-middle" data-uk-grid-margin>
-                    <div class="uk-width-small-1-1 uk-width-large-1-2">{{ what|safe }}</div>
+                    <div class="uk-width-small-1-1 uk-width-large-1-2">
+                        {{ what|safe }}
+                    </div>
                     <div class="uk-width-small-1-1 uk-width-large-1-2 uk-text-center">
                         <img src="{% static "main/img/page01_img02.png" %}" alt="">
                     </div>
@@ -57,7 +59,6 @@
         </div>
     </section>
 
-
     <section>
         <div class="uk-block uk-block-large uk-block-secondary uk-contrast">
             <div class="uk-container uk-container-center uk-text-center">
@@ -88,20 +89,20 @@
                 <h2 class="uk-text-center uk-margin-large-bottom">پای سوشیال</h2>
                 <ul class="tm-home-widget-list uk-grid uk-grid-small-1-1 uk-grid-medium-1-2 uk-grid-width-large-1-2" data-uk-grid-margin data-uk-grid-match="{target:'.uk-panel'}">
                     {% for doc in roadmap %}
-                    <li>
-                        <div class="uk-panel">
-                            <div>
-                                <i class="{{ doc.icon }}"></i>
-                                <h2>{{ doc.title }}</h2>
+                        <li>
+                            <div class="uk-panel">
+                                <div>
+                                    <i class="{{ doc.icon }}"></i>
+                                    <h2>{{ doc.title }}</h2>
+                                </div>
+                                {{ doc.body|safe }}
                             </div>
-                            {{ doc.body|safe }}
                         </li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
     </section>
-
     <!-- <p>{{ news }}</p> -->
 {% endblock %}
 {% block uikit %}
