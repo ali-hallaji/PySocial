@@ -12,6 +12,8 @@ $panel-title-font-size:                         round(($global-font-size * 1.28)
 $panel-title-line-height:                       round(($panel-title-font-size * 1.32)); // 24px / 26px
 $panel-title-color:                             $global-color;
 
+$panel-box-secondary-background:                rgba(0,0,0,0.7);
+
 $panel-box-padding:                             $global-margin;
 $panel-box-color:                               $global-color;
 $panel-box-title-color:                         $global-color;

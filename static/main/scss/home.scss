@@ -73,3 +73,22 @@ div.tm-panel-courses {
         * { color: #fff; }
     }
 }
+
+div.tm-panel-new-course {
+
+    img {
+        margin-top: -79px;
+        width: 128px;
+    }
+
+    h3 {
+        font-family: $mirzab-font, $ubuntub-font;
+        border-bottom: 2px solid #FF7A39;
+        padding-bottom: 10px;
+    }
+
+    p {
+        color: rgba(255,255,255,0.7);
+        line-height: 2;
+    }
+}
