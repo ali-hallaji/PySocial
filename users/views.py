@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Python import
 import logging
-
+from bson.objectid import ObjectId
 from pymongo.errors import DuplicateKeyError
 
 # Django Import
@@ -287,3 +287,9 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
             msg = "User authenticate faild! "
             msg += "User: {0}, Data: {1}".format(doc['username'], doc)
             logger.warning(msg)
+
+
+def profile(request, _id):
+    kwargs = {}
+    kwargs['user'] = cursor.users.find_one({'_id': ObjectId(_id)})
+    return render(request, 'users/profile.html', kwargs)
