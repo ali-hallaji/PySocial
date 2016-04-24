@@ -80,6 +80,9 @@ INSTALLED_APPS = [
 
 if config.getboolean('debug', 'DEBUG_TOOLBAR'):
     INSTALLED_APPS.append('debug_toolbar')
+    DEBUG_TOOLBAR_CONFIG = {
+        'JQUERY_URL': '',
+    }
 
 
 MIDDLEWARE_CLASSES = [
