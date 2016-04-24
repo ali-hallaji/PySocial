@@ -15,8 +15,8 @@
 //     }
 // });
 
-var sticky = UIkit.sticky('header', {
-    media: '767',
-    top: '.uk-sticky-placeholder + *',
-    animation: 'uk-animation-slide-top'
-});
+// var sticky = UIkit.sticky('header', {
+//     media: 767,
+//     top: ".uk-sticky-placeholder + *",
+//     animation: "uk-animation-slide-top"
+// });
