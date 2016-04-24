@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Python import
 import logging
+
 from bson.objectid import ObjectId
 from pymongo.errors import DuplicateKeyError
 
@@ -17,8 +18,9 @@ from forms import RegisterUsersForm
 
 # PySocial Import
 from core import cursor
-from func_tools import super_user
+from core.func_tools import avatar_maker
 from core.mail_functions import welcome_mail
+from func_tools import super_user
 from pysocial import settings
 
 logger = logging.getLogger(__name__)
@@ -292,4 +294,8 @@ def social_auth_handler(request, user, sociallogin=None, **kwargs):
 def profile(request, _id):
     kwargs = {}
     kwargs['user'] = cursor.users.find_one({'_id': ObjectId(_id)})
+
+    if kwargs['user']:
+        kwargs['user'] = avatar_maker(kwargs['user'])
+
     return render(request, 'users/profile.html', kwargs)

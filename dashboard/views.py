@@ -25,6 +25,7 @@ def content(request, dashboard, _id):
             'last_name': 1,
             'first_name': 1,
             'social_auth': 1,
+            'banner': 1,
             'picture': 1
         }
     )
