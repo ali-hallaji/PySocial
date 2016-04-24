@@ -62,13 +62,12 @@
                         <a href="{% provider_login_url "github" %}"><i class="uk-icon-github-square"></i></a>
                     </div>
 
-                    {% comment %}
-                        <div>نام کاربری: {% if form.username.errors %}<p id="error">{{ form.username.errors|removetags:"ul li" }}</p>{% endif %}</div>
-                        {% if duplicate_username %}نام کاربری شما در سیستم موجود می باشد، لطفا نام کاربری دیگری را امتحان نمایید.{% endif %}
-                        <div>گذر واژه:{% if form.password1.errors %}<p id="error">{{ form.password1.errors|removetags:"ul li" }}</p>{% endif %}</div>
-                        <div>تکرار گذر واژه:{% if form.password2.errors %}<p id="error">{{ form.password2.errors|removetags:"ul li" }}</p>{% endif %}</div>
-                        <div>ایمیل:{% if form.email.errors %}<p id="error">{{ form.email.errors|removetags:"ul li" }}</p>{% endif %}</div>
-                    {% endcomment %}
+                    {% if duplicate_username %}نام کاربری شما در سیستم موجود می باشد، لطفا نام کاربری دیگری را امتحان نمایید.{% endif %}
+                    {% if error and error.errors %}
+                        {% for key, value in error.errors.items %}
+                            {{ key }}: {{ value}}
+                        {% endfor %}
+                    {% endif %}
                 </form>
             </div>
         </div>

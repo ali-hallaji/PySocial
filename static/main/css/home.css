@@ -5,6 +5,16 @@
 /* Bourbon */
 /* Settings */
 /* Modules */
+.tm-btn-1 {
+  background: #fff;
+  color: #3AC;
+  border: 1px solid #3AC;
+}
+.tm-btn-1:hover, .tm-btn-1:focus, .tm-btn-1:active {
+  color: #fff;
+  background: #3AC;
+}
+
 ul.tm-home-widget-list div.uk-panel {
   padding: 10px;
   background-color: #f1f1f1;

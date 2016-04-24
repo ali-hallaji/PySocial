@@ -37,6 +37,25 @@ ul.tm-navbar-nav > li > a:hover, ul.tm-navbar-nav > li > a:focus, ul.tm-navbar-n
   width: 100%;
 }
 
+div.tm-user-panel-nav {
+  padding: 5px;
+  background-color: rgba(255, 255, 225, 0.1);
+}
+div.tm-user-panel-nav p {
+  background: #D6E6EE;
+  padding: 10px;
+}
+div.tm-user-panel-nav i {
+  margin: 0 10px;
+}
+div.tm-user-panel-nav a {
+  color: #fff;
+}
+div.tm-user-panel-nav ul > li > a {
+  color: #003c5a;
+  line-height: 2;
+}
+
 div.tm-search-block h2 {
   color: #fff;
 }

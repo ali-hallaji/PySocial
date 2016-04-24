@@ -20,3 +20,22 @@ ul.tm-navbar-nav > li > a {
     position: absolute;
     width: 100%;
 }
+
+div.tm-user-panel-nav {
+    padding: 5px;
+    background-color: rgba(255,255,225,.1);
+
+    p {
+        background: #D6E6EE;
+        padding: 10px;
+    }
+
+    i { margin: 0 10px; }
+
+    a { color: #fff; }
+
+    ul > li > a {
+        color: #003c5a;
+        line-height: 2;
+    }
+}

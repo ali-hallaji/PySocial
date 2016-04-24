@@ -8,8 +8,10 @@
 // ========================================================================
 
 $dropdown-z-index:                              $global-z-index + 20;
-$dropdown-color:                                $global-color;
-$dropdown-divider-border:                       $global-border;
+$dropdown-padding:                              10px;
+$dropdown-background:                           #edf4f8;
+$dropdown-color:                                #003c5a;
+$dropdown-divider-border:                       #003c5a;
 
 $dropdown-navbar-color:                         $global-color;
 
@@ -17,7 +19,9 @@ $dropdown-navbar-color:                         $global-color;
 // Component
 // ========================================================================
 
-@mixin hook-dropdown() {}
+@mixin hook-dropdown() {
+    border: 1px solid #D6E6EE;
+}
 
 
 // Modifier: `uk-dropdown-navbar`
