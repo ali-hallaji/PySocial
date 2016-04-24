@@ -1,4 +1,5 @@
 {% load static %}
+{% load func_tools %}
 {% load google_analytics %}
 {% load analytical %}
 <!DOCTYPE html>
@@ -38,7 +39,7 @@
                 </div>
             {% endif %}
         {% endblock %}
-        <header data-uk-sticky="{media: 767, clsinactive: 'test', top: '.uk-sticky-placeholder + *',animation: 'uk-animation-slide-top'}">
+        <header>
             <nav class="tm-navbar uk-navbar">
                 <div class="uk-container uk-container-center">
                     <ul class="tm-navbar-nav uk-navbar-nav">
@@ -52,8 +53,8 @@
                                         </a>
                                         <div class="uk-dropdown uk-dropdown-flip">
                                             <p>{{ user_data.first_name }} {{ user_data.last_name }}, سلام</p>
-                                            <ul class="uk-list uk-list-line">
-                                                <li>حساب کاربری</li>
+                                            <ul class="uk-list uk-list-line uk-margin-bottom-remove">
+                                                <li><a href="{% url "user_profile" user_data|mongo_id %}">حساب کاربری</a></li>
                                                 <li><a href="">ارسال گزارش اشکالات</a></li>
                                                 <li><a href="{% url "logout" %}">خروج</a></li>
                                             </ul>

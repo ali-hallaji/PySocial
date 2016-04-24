@@ -28,6 +28,7 @@ div.tm-user-panel-nav {
     p {
         background: #D6E6EE;
         padding: 10px;
+        margin: -5px;
     }
 
     i { margin: 0 10px; }
@@ -37,5 +38,8 @@ div.tm-user-panel-nav {
     ul > li > a {
         color: #003c5a;
         line-height: 2;
+        display: block;
+
+        &:hover { color: #fc8f44; }
     }
 }
