@@ -38,40 +38,42 @@
                 </div>
             {% endif %}
         {% endblock %}
-        {% if request.user.is_authenticated %}
-        {% endif %}
         <header data-uk-sticky="{media: 767, clsinactive: 'test', top: '.uk-sticky-placeholder + *',animation: 'uk-animation-slide-top'}">
             <nav class="tm-navbar uk-navbar">
                 <div class="uk-container uk-container-center">
                     <ul class="tm-navbar-nav uk-navbar-nav">
-                        <li>
-                            <div class="tm-user-panel-nav uk-flex uk-flex-middle">
-                                <div data-uk-dropdown="{mode:'click'}">
-                                    <a class="uk-flex uk-flex-middle">
-                                        <img width="32" src="{{ user_data.picture }}" alt="{{ user_data.first_name }} {{ user_data.last_name }}">
-                                        <i class="uk-icon-caret-down"></i>
-                                    </a>
-                                    <div class="uk-dropdown uk-dropdown-flip">
-                                        <p>{{ user_data.first_name }} {{ user_data.last_name }}, سلام</p>
-                                        <ul class="uk-list uk-list-line">
-                                            <li>حساب کاربری</li>
-                                            <li><a href="">ارسال گزارش اشکالات</a></li>
-                                            <li><a href="{% url "logout" %}">خروج</a></li>
-                                        </ul>
+                        {% if request.user.is_authenticated %}
+                            <li>
+                                <div class="tm-user-panel-nav uk-flex uk-flex-middle">
+                                    <div data-uk-dropdown="{mode:'click'}">
+                                        <a class="uk-flex uk-flex-middle">
+                                            <img width="32" src="{{ user_data.picture }}" alt="{{ user_data.first_name }} {{ user_data.last_name }}">
+                                            <i class="uk-icon-caret-down"></i>
+                                        </a>
+                                        <div class="uk-dropdown uk-dropdown-flip">
+                                            <p>{{ user_data.first_name }} {{ user_data.last_name }}, سلام</p>
+                                            <ul class="uk-list uk-list-line">
+                                                <li>حساب کاربری</li>
+                                                <li><a href="">ارسال گزارش اشکالات</a></li>
+                                                <li><a href="{% url "logout" %}">خروج</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
+                                    <a href=""><i class="uk-icon-bell"></i></a>
                                 </div>
-                                <a href=""><i class="uk-icon-bell"></i></a>
-                            </div>
-                        </li>
+                            </li>
+                        {% endif %}
                         <li>
                             <a data-uk-modal="{target:'#search-modal'}"><i class="uk-icon-search"></i></a>
                         </li>
-                        <li>
-                            <a href="{% url 'login' %}"><i class="uk-icon-sign-in"></i></a>
-                        </li>
-                        <li>
-                            <a href="{% url 'register' %}"><i class="uk-icon-user"></i></a>
-                        </li>
+                        {% if not request.user.is_authenticated %}
+                            <li>
+                                <a href="{% url 'login' %}"><i class="uk-icon-sign-in"></i></a>
+                            </li>
+                            <li>
+                                <a href="{% url 'register' %}"><i class="uk-icon-user"></i></a>
+                            </li>
+                        {% endif %}
                         <li>
                             <a href="">چالشگاه</a>
                         </li>
