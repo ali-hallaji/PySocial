@@ -49,3 +49,10 @@ class RegisterUsersForm(forms.Form):
                 'password1',
                 'رمز عبورهای وارد شده، یکسان نمی باشد.'
             )
+
+    def __init__(self, *args, **kwargs):
+        super(RegisterUsersForm, self).__init__(*args, **kwargs)
+
+        for field in self.fields:
+            if self.fields[field].required:
+                self.fields[field].widget.attrs['required'] = 'required'

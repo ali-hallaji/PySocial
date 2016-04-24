@@ -19,6 +19,13 @@ class HomeForm(forms.Form):
     icon = forms.CharField(label='icon', required=False)
     order = forms.IntegerField(label='order', required=False)
 
+    def __init__(self, *args, **kwargs):
+        super(HomeForm, self).__init__(*args, **kwargs)
+
+        for field in self.fields:
+            if self.fields[field].required:
+                self.fields[field].widget.attrs['required'] = 'required'
+
 
 class GroupForm(forms.Form):
     group_name = forms.CharField(label='Group Name', max_length=100)
@@ -33,6 +40,10 @@ class GroupForm(forms.Form):
             choices=[(x, x) for x in views_name],
             required=False
         )
+
+        for field in self.fields:
+            if self.fields[field].required:
+                self.fields[field].widget.attrs['required'] = 'required'
 
 
 class UserForm(forms.Form):
@@ -66,6 +77,10 @@ class UserForm(forms.Form):
             choices=groups_list
         )
 
+        for field in self.fields:
+            if self.fields[field].required:
+                self.fields[field].widget.attrs['required'] = 'required'
+
 
 class BoxForm(forms.Form):
     title = forms.CharField(label='Title')
@@ -77,6 +92,13 @@ class BoxForm(forms.Form):
         widget=CKEditorWidget()
     )
     box_pic = forms.FileField(label='Box Image', required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(BoxForm, self).__init__(*args, **kwargs)
+
+        for field in self.fields:
+            if self.fields[field].required:
+                self.fields[field].widget.attrs['required'] = 'required'
 
 
 class ContentForm(forms.Form):
@@ -133,6 +155,10 @@ class ContentForm(forms.Form):
             choices=parents
         )
 
+        for field in self.fields:
+            if self.fields[field].required:
+                self.fields[field].widget.attrs['required'] = 'required'
+
     def clean(self):
         if not self.cleaned_data.get('published', None):
             self.cleaned_data['published'] = False
@@ -160,3 +186,7 @@ class ParentForm(forms.Form):
             required=True,
             choices=boxs
         )
+
+        for field in self.fields:
+            if self.fields[field].required:
+                self.fields[field].widget.attrs['required'] = 'required'
