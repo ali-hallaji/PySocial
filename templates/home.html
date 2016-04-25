@@ -65,7 +65,7 @@
                 <p class="uk-margin-large-bottom uk-text-muted uk-text-large">در این قسمت با خلاصه جدیدترین درس های هر بخش آشنا خواهید شد که براحتی میتوانید مراجعه کنید</p>
                 <div class="uk-margin-large-top uk-display-inline-block" data-uk-slideset="{small: 1, medium: 2, large: 4, animation: 'slide-horizontal', duration: 200}">
                     <div class="uk-slidenav-position">
-                        <ul class="uk-slideset uk-grid">
+                        <ul class="uk-slideset uk-grid" data-uk-grid-match="{target:'.tm-panel-new-course'}">
                             {% for lesson in last_lesson %}
                                 <li>
                                     <div class="tm-panel-new-course uk-panel uk-panel-box uk-panel-box-secondary">
