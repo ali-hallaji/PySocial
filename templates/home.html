@@ -41,9 +41,9 @@
         <div class="uk-container uk-container-center">
             <div class="uk-block uk-block-large">
                 <h2 class="uk-text-center uk-margin-large-bottom">داشبورد دانش</h2>
-                <ul class="uk-grid uk-grid-width-small-1-1 uk-grid-width-large-1-2" data-uk-grid-margin="{cls:'uk-margin-large-top'}">
+                <ul class="uk-grid uk-grid-width-small-1-1 uk-grid-width-large-1-2">
                     {% for box in boxs %}
-                        <li>
+                        <li class="uk-margin-large-bottom">
                             <a href="/dashboard/content/{{ box.title }}/{{ box|mongo_id }}" title="{{ box.title }}">
                                 <div data-uk-scrollspy="{cls:'uk-animation-scale-up'}" class="tm-panel-courses uk-panel uk-flex uk-flex-middle">
                                     <img src="{{ box|get_path_pic_box }}" alt="{{ box.title }}" width="90">
@@ -63,73 +63,19 @@
             <div class="uk-container uk-container-center uk-text-center">
                 <h2><b>جدید ترین درس ها</b></h2>
                 <p class="uk-margin-large-bottom uk-text-muted uk-text-large">در این قسمت با خلاصه جدیدترین درس های هر بخش آشنا خواهید شد که براحتی میتوانید مراجعه کنید</p>
-                <div class="uk-margin-large-top uk-display-inline-block" data-uk-slideset="{small: 1, medium: 2, large: 4, animation: 'slide-vertical', duration: 1000}">
+                <div class="uk-margin-large-top uk-display-inline-block" data-uk-slideset="{small: 1, medium: 2, large: 4, animation: 'slide-horizontal', duration: 200}">
                     <div class="uk-slidenav-position">
                         <ul class="uk-slideset uk-grid">
-                            <li>
-                                <div class="tm-panel-new-course uk-panel uk-panel-box uk-panel-box-secondary">
-                                    <img width="128" src="http://pysocial.com/media/dashboard/box/56fd12f086318e0cc9200d62.png" alt="">
-                                    <h3>شی گرایی در محیط</h3>
-                                    <p>یک شیوه برنامه نویسی است که ساختار یا بلوک اصلی اجزای آن، شی‌ها می‌باشند. در واقع در این شیوه برنامه نویسی، برنامه به شیء گرایش پیدا می‌کند. به این معنا که داده‌ها و توابعی که قرار است بر روی این داده‌ها عمل کنند ...</p>
-                                    <a class="uk-button uk-button-primary" href="">دیدن این بخش</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="tm-panel-new-course uk-panel uk-panel-box uk-panel-box-secondary">
-                                    <img width="128" src="http://pysocial.com/media/dashboard/box/56fd12f086318e0cc9200d61.png" alt="">
-                                    <h3>شی گرایی در محیط</h3>
-                                    <p>یک شیوه برنامه نویسی است که ساختار یا بلوک اصلی اجزای آن، شی‌ها می‌باشند. در واقع در این شیوه برنامه نویسی، برنامه به شیء گرایش پیدا می‌کند. به این معنا که داده‌ها و توابعی که قرار است بر روی این داده‌ها عمل کنند ...</p>
-                                    <a class="uk-button uk-button-primary" href="">دیدن این بخش</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="tm-panel-new-course uk-panel uk-panel-box uk-panel-box-secondary">
-                                    <img width="128" src="http://pysocial.com/media/dashboard/box/56fd12f086318e0cc9200d60.png" alt="">
-                                    <h3>شی گرایی در محیط</h3>
-                                    <p>یک شیوه برنامه نویسی است که ساختار یا بلوک اصلی اجزای آن، شی‌ها می‌باشند. در واقع در این شیوه برنامه نویسی، برنامه به شیء گرایش پیدا می‌کند. به این معنا که داده‌ها و توابعی که قرار است بر روی این داده‌ها عمل کنند ...</p>
-                                    <a class="uk-button uk-button-primary" href="">دیدن این بخش</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="tm-panel-new-course uk-panel uk-panel-box uk-panel-box-secondary">
-                                    <img width="128" src="http://pysocial.com/media/dashboard/box/56fd12f086318e0cc9200d62.png" alt="">
-                                    <h3>شی گرایی در محیط</h3>
-                                    <p>یک شیوه برنامه نویسی است که ساختار یا بلوک اصلی اجزای آن، شی‌ها می‌باشند. در واقع در این شیوه برنامه نویسی، برنامه به شیء گرایش پیدا می‌کند. به این معنا که داده‌ها و توابعی که قرار است بر روی این داده‌ها عمل کنند ...</p>
-                                    <a class="uk-button uk-button-primary" href="">دیدن این بخش</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="tm-panel-new-course uk-panel uk-panel-box uk-panel-box-secondary">
-                                    <img width="128" src="http://pysocial.com/media/dashboard/box/56fd12f086318e0cc9200d62.png" alt="">
-                                    <h3>شی گرایی در محیط</h3>
-                                    <p>یک شیوه برنامه نویسی است که ساختار یا بلوک اصلی اجزای آن، شی‌ها می‌باشند. در واقع در این شیوه برنامه نویسی، برنامه به شیء گرایش پیدا می‌کند. به این معنا که داده‌ها و توابعی که قرار است بر روی این داده‌ها عمل کنند ...</p>
-                                    <a class="uk-button uk-button-primary" href="">دیدن این بخش</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="tm-panel-new-course uk-panel uk-panel-box uk-panel-box-secondary">
-                                    <img width="128" src="http://pysocial.com/media/dashboard/box/56fd12f086318e0cc9200d62.png" alt="">
-                                    <h3>شی گرایی در محیط</h3>
-                                    <p>یک شیوه برنامه نویسی است که ساختار یا بلوک اصلی اجزای آن، شی‌ها می‌باشند. در واقع در این شیوه برنامه نویسی، برنامه به شیء گرایش پیدا می‌کند. به این معنا که داده‌ها و توابعی که قرار است بر روی این داده‌ها عمل کنند ...</p>
-                                    <a class="uk-button uk-button-primary" href="">دیدن این بخش</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="tm-panel-new-course uk-panel uk-panel-box uk-panel-box-secondary">
-                                    <img width="128" src="http://pysocial.com/media/dashboard/box/56fd12f086318e0cc9200d62.png" alt="">
-                                    <h3>شی گرایی در محیط</h3>
-                                    <p>یک شیوه برنامه نویسی است که ساختار یا بلوک اصلی اجزای آن، شی‌ها می‌باشند. در واقع در این شیوه برنامه نویسی، برنامه به شیء گرایش پیدا می‌کند. به این معنا که داده‌ها و توابعی که قرار است بر روی این داده‌ها عمل کنند ...</p>
-                                    <a class="uk-button uk-button-primary" href="">دیدن این بخش</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="tm-panel-new-course uk-panel uk-panel-box uk-panel-box-secondary">
-                                    <img width="128" src="http://pysocial.com/media/dashboard/box/56fd12f086318e0cc9200d62.png" alt="">
-                                    <h3>شی گرایی در محیط</h3>
-                                    <p>یک شیوه برنامه نویسی است که ساختار یا بلوک اصلی اجزای آن، شی‌ها می‌باشند. در واقع در این شیوه برنامه نویسی، برنامه به شیء گرایش پیدا می‌کند. به این معنا که داده‌ها و توابعی که قرار است بر روی این داده‌ها عمل کنند ...</p>
-                                    <a class="uk-button uk-button-primary" href="">دیدن این بخش</a>
-                                </div>
-                            </li>
+                            {% for lesson in last_lesson %}
+                                <li>
+                                    <div class="tm-panel-new-course uk-panel uk-panel-box uk-panel-box-secondary">
+                                        <img width="128" src="http://pysocial.com/media/dashboard/box/56fd12f086318e0cc9200d62.png" alt="">
+                                        <h3>{{ lesson.content_title }}</h3>
+                                        <p>{{ lesson.description|safe }}</p>
+                                        <a class="uk-button uk-button-primary" href="{% url "lesson" lesson.box_name_en lesson|mongo_id %}">دیدن این بخش</a>
+                                    </div>
+                                </li>
+                            {% endfor %}
                         </ul>
                         <ul class="uk-slideset-nav uk-dotnav uk-flex-center uk-margin-large-top"></ul>
                     </div>
