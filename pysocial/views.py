@@ -42,20 +42,19 @@ def home(request):
         for doc in last_lesson:
             id_list.append(doc['content_id'])
 
-        content = cursor.contents.find({'_id': {'$in': id_list}})
+        all_content = list(cursor.contents.find({'_id': {'$in': id_list}}))
         final_last_content = []
 
         for doc in last_lesson:
             doc['picture'] = path_pic_box(str(doc['box_id']))
 
-            for doc2 in content:
+            for doc2 in all_content:
                 if doc['content_id'] == doc2['_id']:
                     doc['description'] = doc2['description']
                     doc['content_title'] = doc2['title']
-                    doc['parent'] = doc2['parent']
-                    doc['box_name_en'] = doc['parent'].split('|')[0]
+                    doc['box_name_en'] = doc2['parent'].split('|')[0]
 
-            final_last_content.append(doc)
+                    final_last_content.append(doc)
 
         kwargs['last_lesson'] = final_last_content
 
