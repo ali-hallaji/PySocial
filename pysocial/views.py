@@ -49,7 +49,7 @@ def home(request):
 
             for doc2 in all_content:
                 if doc['content_id'] == doc2['_id']:
-                    doc['picture'] = path_pic_box(str(doc['box_id']))
+                    doc['picture'] = path_pic_box(str(doc2['box_id']))
                     doc['description'] = doc2['description']
                     doc['content_title'] = doc2['title']
                     doc['box_name_en'] = doc2['parent'].split('|')[0]
