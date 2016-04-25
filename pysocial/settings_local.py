@@ -78,3 +78,4 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 # Cusome config
 last_lesson_qty = 8
+search_limit_count = 4

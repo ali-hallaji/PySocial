@@ -1,14 +1,20 @@
 # Python Import
+import re
+
 from pymongo import ASCENDING
 from pymongo import DESCENDING
 
 # Django Import
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 
 # PySocial Import
 from core import cursor
 from core.func_tools import path_pic_box
-from settings import last_lesson_qty as llq
+from core.json_utils import MongoJsonResponse
+from settings import last_lesson_qty
+from settings import search_limit_count
 
 
 def home(request):
@@ -25,7 +31,7 @@ def home(request):
         ).sort(
             'created',
             DESCENDING
-        ).limit(llq)
+        ).limit(last_lesson_qty)
     )
 
     if news:
@@ -68,6 +74,82 @@ def home(request):
         kwargs['last_lesson'] = final_last_content
 
     return render(request, 'home.html', kwargs)
+
+
+@require_POST
+@csrf_exempt
+def search(request):
+    kwargs = {}
+    search = request.POST.get('search', None)
+
+    if search:
+        search = re.compile(search, re.IGNORECASE)
+        user_criteria = {
+            '$or': [
+                {'username': search},
+                {'first_name': search},
+                {'last_name': search}
+            ]
+        }
+        user_projection = {
+            'username': 1,
+            'first_name': 1,
+            'last_name': 1
+        }
+        kwargs['users'] = list(cursor.users.find(
+                user_criteria,
+                user_projection
+            ).limit(
+                search_limit_count
+            )
+        )
+
+        box_criteria = {
+            '$or': [
+                {'title': search},
+                {'title_fa': search},
+                {'description': search}
+            ]
+        }
+        kwargs['boxs'] = list(cursor.box.find(box_criteria).limit(
+            search_limit_count
+        ))
+
+        content_criteria = {
+            '$or': [
+                {'title': search},
+                {'description': search}
+            ]
+        }
+        content_projection = {
+            'description': 1,
+            'box_id': 1
+        }
+        kwargs['contents'] = list(cursor.contents.find(
+                content_criteria,
+                content_projection
+            ).limit(
+                search_limit_count
+            )
+        )
+
+        lesson_criteria = {
+            'body': search
+        }
+        lesson_projection = {
+            'content_id': 1,
+            'body': 1,
+            'box_id': 1
+        }
+        kwargs['lessons'] = list(cursor.lessons.find(
+                lesson_criteria,
+                lesson_projection
+            ).limit(
+                search_limit_count
+            )
+        )
+
+    return MongoJsonResponse(kwargs)
 
 
 def under_construction(request):
