@@ -81,6 +81,9 @@ div.tm-panel-course hr {
   margin-right: -2rem;
   margin-bottom: 0;
 }
+div.tm-panel-course.uk-active {
+  background-color: #F7FDFF;
+}
 
 ul.tm-list-lessons {
   margin-top: 10px;
