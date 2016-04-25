@@ -61,6 +61,7 @@ def home(request):
                     new_doc['box_name_en'] = doc2['parent'].split('|')[0]
                     new_doc['box_name_fa'] = doc2['parent'].split('|')[1]
                     new_doc['parent'] = doc2['parent']
+                    new_doc['content_id'] = doc['content_id']
 
                     final_last_content.append(new_doc)
 

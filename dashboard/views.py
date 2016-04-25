@@ -3,6 +3,7 @@ from bson.objectid import ObjectId
 
 # Django Import
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 
 # PySocial Import
 from core import cursor
@@ -109,6 +110,10 @@ def lesson(request, dashboard, _id):
     kwargs = {}
     kwargs['lesson'] = cursor.lessons.find_one({'content_id': ObjectId(_id)})
 
+    if kwargs['lesson']:
+        if not kwargs['lesson']['published']:
+            return HttpResponseRedirect('/dashboard/lesson/no_publish')
+
     criteria = {'_id': kwargs['lesson']['user_id']}
     kwargs['author'] = avatar_maker(cursor.users.find_one(criteria))
 
@@ -119,3 +124,7 @@ def lesson(request, dashboard, _id):
     kwargs['box_name_fa'] = kwargs['content']['parent'].split('|')[1]
 
     return render(request, 'dashboard/lesson.html', kwargs)
+
+
+def no_publish(request):
+    return render(request, 'dashboard/no_publish.html')

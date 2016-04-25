@@ -72,7 +72,7 @@
                                         <img width="128" src="{{ lesson.picture }}" alt="{{ lesson.parent }}">
                                         <h3>{{ lesson.content_title }}</h3>
                                         <p>{{ lesson.description|safe }}</p>
-                                        <a class="uk-button uk-button-primary" href="{% url "lesson" lesson.box_name_en lesson|mongo_id %}">دیدن این بخش</a>
+                                        <a class="uk-button uk-button-primary" href="{% url "lesson" lesson.box_name_en lesson|mongo_id:'content_id' %}">دیدن این بخش</a>
                                     </div>
                                 </li>
                             {% endfor %}
