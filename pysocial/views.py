@@ -6,8 +6,9 @@ from pymongo import DESCENDING
 from django.shortcuts import render
 
 # PySocial Import
-from settings import last_lesson_qty
 from core import cursor
+from core.func_tools import path_pic_box
+from settings import last_lesson_qty as llq
 
 
 def home(request):
@@ -18,7 +19,10 @@ def home(request):
     what = cursor.home.find_one({'kind': 'what'})
     roadmap = cursor.home.find({'kind': 'roadmap'}).sort('order', ASCENDING)
     boxs = cursor.box.find().sort('order', ASCENDING)
-    last_lesson = cursor.lessons.find().sort('created', DESCENDING)
+    last_lesson = list(cursor.lessons.find({}, {'body': 0}).sort(
+        'created',
+        DESCENDING
+    ).limit(llq))
 
     if news:
         kwargs['news'] = news['body']
@@ -33,7 +37,25 @@ def home(request):
         kwargs['boxs'] = list(boxs)
 
     if last_lesson:
-        kwargs['last_lesson'] = list(last_lesson.limit(last_lesson_qty))
+        id_list = []
+
+        for doc in last_lesson:
+            id_list.append(doc['content_id'])
+
+        content = cursor.contents.find({'_id': {'$in': id_list}})
+        final_last_content = []
+
+        for doc in last_lesson:
+            doc['picture'] = path_pic_box(str(doc['box_id']))
+
+            for doc2 in content:
+                if doc['content_id'] == doc2['_id']:
+                    doc['content'] = doc2['description']
+                    doc['content_title'] = doc2['title']
+
+            final_last_content.append(doc)
+
+        kwargs['last_lesson'] = final_last_content
 
     return render(request, 'home.html', kwargs)
 
