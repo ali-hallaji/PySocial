@@ -11,9 +11,11 @@
             <div class="uk-position-absolute uk-position-bottom uk-height-1-1" style="background: url(/static/main/img/header_wall.png) 50% 50%; background-size: cover;">
                 <div class="uk-container uk-container-center">
                     <div class="uk-contrast uk-text-center">
-                        <h1>پای سوشیال</h1>
-                        <h1>PySocial</h1>
-                        <p></p>
+                        <div class="uk-block uk-block-large">
+                            <h1>پای سوشیال</h1>
+                            <h1>PySocial</h1>
+                            <p></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -43,12 +45,9 @@
                     {% for box in boxs %}
                         <li>
                             <a href="/dashboard/content/{{ box.title }}/{{ box|mongo_id }}" title="{{ box.title }}">
-                                <div class="tm-panel-courses uk-panel uk-flex uk-flex-middle">
+                                <div data-uk-scrollspy="{cls:'uk-animation-scale-up'}" class="tm-panel-courses uk-panel uk-flex uk-flex-middle">
                                     <img src="{{ box|get_path_pic_box }}" alt="{{ box.title }}" width="90">
                                     <h3>{{ box.title }}</h3>
-                                    {% comment %}
-                                        {{ box.description|safe }}
-                                    {% endcomment %}
                                     <i class="uk-icon-chevron-left"></i>
                                 </div>
                             </a>
@@ -59,14 +58,14 @@
         </div>
     </section>
 
-    <section>
+    <section id="new-course">
         <div class="uk-block uk-block-large uk-block-secondary uk-contrast">
             <div class="uk-container uk-container-center uk-text-center">
                 <h2><b>جدید ترین درس ها</b></h2>
                 <p class="uk-margin-large-bottom uk-text-muted uk-text-large">در این قسمت با خلاصه جدیدترین درس های هر بخش آشنا خواهید شد که براحتی میتوانید مراجعه کنید</p>
-                <div class="uk-margin-large-top uk-display-inline-block" data-uk-slideset="{default: 4, animation: 'slide-vertical', duration: 200}">
+                <div class="uk-margin-large-top uk-display-inline-block" data-uk-slideset="{small: 1, medium: 2, large: 4, animation: 'slide-vertical', duration: 1000}">
                     <div class="uk-slidenav-position">
-                        <ul class="uk-slideset uk-grid uk-grid-width-1-4">
+                        <ul class="uk-slideset uk-grid">
                             <li>
                                 <div class="tm-panel-new-course uk-panel uk-panel-box uk-panel-box-secondary">
                                     <img width="128" src="http://pysocial.com/media/dashboard/box/56fd12f086318e0cc9200d62.png" alt="">
@@ -141,11 +140,11 @@
 
     <section>
         <div class="uk-block">
-            <div class="uk-container uk-container-center">
+            <div class="uk-container uk-container-center uk-nbfc">
                 <h2 class="uk-text-center uk-margin-large-bottom">پای سوشیال</h2>
-                <ul class="tm-home-widget-list uk-grid uk-grid-small-1-1 uk-grid-medium-1-2 uk-grid-width-large-1-2" data-uk-grid-margin data-uk-grid-match="{target:'.uk-panel'}">
+                <ul class="tm-home-widget-list uk-grid uk-grid-small-1-1 uk-grid-medium-1-2 uk-grid-width-large-1-2" data-uk-grid-margin data-uk-grid-match="{target:'.uk-panel'}" data-uk-scrollspy="{cls:'uk-animation-slide-bottom', target:'.tm-home-widget-list-items'}">
                     {% for doc in roadmap %}
-                        <li>
+                        <li class="tm-home-widget-list-items">
                             <div class="uk-panel">
                                 <div>
                                     <i class="{{ doc.icon }}"></i>
