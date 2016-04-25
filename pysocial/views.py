@@ -49,12 +49,13 @@ def home(request):
 
             for doc2 in all_content:
                 if doc['content_id'] == doc2['_id']:
-                    doc['picture'] = path_pic_box(str(doc2['box_id']))
-                    doc['description'] = doc2['description']
-                    doc['content_title'] = doc2['title']
-                    doc['box_name_en'] = doc2['parent'].split('|')[0]
+                    new_doc = doc.copy()
+                    new_doc['picture'] = path_pic_box(str(doc2['box_id']))
+                    new_doc['description'] = doc2['description']
+                    new_doc['content_title'] = doc2['title']
+                    new_doc['box_name_en'] = doc2['parent'].split('|')[0]
 
-                    final_last_content.append(doc)
+                    final_last_content.append(new_doc)
 
         kwargs['last_lesson'] = final_last_content
 
