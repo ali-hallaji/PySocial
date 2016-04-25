@@ -50,8 +50,10 @@ def home(request):
 
             for doc2 in content:
                 if doc['content_id'] == doc2['_id']:
-                    doc['content'] = doc2['description']
+                    doc['description'] = doc2['description']
                     doc['content_title'] = doc2['title']
+                    doc['parent'] = doc2['parent']
+                    doc['box_name_en'] = doc['parent'].split('|')[0]
 
             final_last_content.append(doc)
 
