@@ -11,6 +11,7 @@ from django.views.decorators.http import require_POST
 
 # PySocial Import
 from core import cursor
+from core.func_tools import avatar_maker
 from core.func_tools import path_pic_box
 from core.json_utils import MongoJsonResponse
 from settings import last_lesson_qty
@@ -96,24 +97,17 @@ def search(request):
             'first_name': 1,
             'last_name': 1
         }
-        kwargs['users'] = list(cursor.users.find(
+        users = list(cursor.users.find(
                 user_criteria,
                 user_projection
             ).limit(
                 search_limit_count
             )
         )
+        kwargs['users'] = []
 
-        box_criteria = {
-            '$or': [
-                {'title': search},
-                {'title_fa': search},
-                {'description': search}
-            ]
-        }
-        kwargs['boxs'] = list(cursor.box.find(box_criteria).limit(
-            search_limit_count
-        ))
+        for user in users:
+            kwargs['users'].append(avatar_maker(user))
 
         content_criteria = {
             '$or': [
