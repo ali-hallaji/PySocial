@@ -19,10 +19,14 @@ def home(request):
     what = cursor.home.find_one({'kind': 'what'})
     roadmap = cursor.home.find({'kind': 'roadmap'}).sort('order', ASCENDING)
     boxs = cursor.box.find().sort('order', ASCENDING)
-    last_lesson = list(cursor.lessons.find({}, {'body': 0}).sort(
-        'created',
-        DESCENDING
-    ).limit(llq))
+    last_lesson = list(cursor.lessons.find(
+            {'published': True},
+            {'body': 0}
+        ).sort(
+            'created',
+            DESCENDING
+        ).limit(llq)
+    )
 
     if news:
         kwargs['news'] = news['body']
