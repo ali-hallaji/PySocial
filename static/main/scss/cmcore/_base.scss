@@ -111,4 +111,8 @@ $base-pre-line-height:                          round(($base-pre-font-size * 1.4
 // Miscellaneous
 // ========================================================================
 
-@mixin hook-base-misc() {}
+@mixin hook-base-misc() {
+
+    b,
+    strong { font-family: $mirzab-font, $ubuntub-font; }
+}

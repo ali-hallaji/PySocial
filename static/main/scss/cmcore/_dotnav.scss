@@ -10,12 +10,11 @@
 $dotnav-width:                                   25px;
 $dotnav-height:                                  5px;
 
+
 // Component
 // ========================================================================
 
-@mixin hook-dotnav-item() {
-    background: red;
-}
+@mixin hook-dotnav-item() { @include border-radius(0); }
 
 @mixin hook-dotnav-item-hover() {}
 
