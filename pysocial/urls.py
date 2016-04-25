@@ -23,7 +23,7 @@ from django.contrib import admin
 import settings
 
 from views import home
-from views import under_construction
+# from views import under_construction
 
 
 urlpatterns = [
@@ -35,12 +35,12 @@ urlpatterns = [
     url(r'^manager/', include('manager.urls')),
     url(r'^dashboard/', include('dashboard.urls')),
     url(r'', include('webmaster_verification.urls')),
-    url(r'^home/$', home, name="home"),
-    url(
-        r'^$',
-        under_construction,
-        name="under_construction"
-    )
+    url(r'^$', home, name="home"),
+    # url(
+    #     r'^$',
+    #     under_construction,
+    #     name="under_construction"
+    # )
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
