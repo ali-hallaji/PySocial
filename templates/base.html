@@ -64,26 +64,15 @@
                                 </div>
                             </li>
                         {% endif %}
-                        <li>
-                            <a data-uk-modal="{target:'#search-modal'}"><i class="uk-icon-search"></i></a>
-                        </li>
+                        <li><a data-uk-modal="{target:'#search-modal'}"><i class="uk-icon-search"></i></a></li>
                         {% if not request.user.is_authenticated %}
-                            <li>
-                                <a href="{% url 'login' %}"><i class="uk-icon-sign-in"></i></a>
-                            </li>
-                            <li>
-                                <a href="{% url 'register' %}"><i class="uk-icon-user"></i></a>
-                            </li>
+                            <li><a href="{% url 'login' %}"><i class="uk-icon-sign-in"></i></a></li>
+                            <li><a href="{% url 'register' %}"><i class="uk-icon-user"></i></a></li>
                         {% endif %}
-                        <li>
-                            <a href="">چالشگاه</a>
-                        </li>
-                        <li>
-                            <a href="">درباره ما</a>
-                        </li>
-                        <li>
-                            <a href="">تماس باما</a>
-                        </li>
+                        <li><a href="#dasboard" data-uk-smooth-scroll="{offset: 60}">داشبورد دانش</a></li>
+                        <li><a href="">جدید ترین درس ها</a></li>
+                        <li><a href="">چالشگاه</a></li>
+                        <li><a href="">تماس باما</a></li>
                     </ul>
                     <a class="uk-navbar-brand" href="/">
                         <img src="{% static 'main/img/logo2.png' %}" width="130" alt="پای سوشیال">
