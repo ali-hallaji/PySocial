@@ -23,6 +23,7 @@ from django.contrib import admin
 import settings
 
 from views import home
+from views import search
 # from views import under_construction
 
 
@@ -34,6 +35,7 @@ urlpatterns = [
     url(r'^users/', include('users.urls')),
     url(r'^manager/', include('manager.urls')),
     url(r'^dashboard/', include('dashboard.urls')),
+    url(r'^search/$', search, name='search'),
     url(r'', include('webmaster_verification.urls')),
     url(r'^$', home, name="home"),
     # url(

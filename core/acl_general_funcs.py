@@ -113,6 +113,7 @@ def get_all_view_names(urlpatterns=None):
         'sql_select',
         'password_change_done',
         'login',
+        'view',
         'sql_explain',
         'ImageUploadView',
         'RedirectView',
