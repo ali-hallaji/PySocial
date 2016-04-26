@@ -1,4 +1,5 @@
 # Python Import
+import re
 from bson.objectid import ObjectId
 
 # Django Import
@@ -49,9 +50,13 @@ def content(request, dashboard, _id):
     kwargs['parents'] = []
 
     for parent in distinct_parent:
+        parent_fa = parent.split('|')[1]
+        box = parent.split('|')[0]
+        # parent_fa = re.compile(parent_fa, re.IGNORECASE)
         criteria = {
             'settings_type': 'Parents',
-            'parent_name': {'$regex': parent}
+            'parent_name': parent_fa,
+            'box': box
         }
         desc = cursor.settings.find_one(criteria)
 
