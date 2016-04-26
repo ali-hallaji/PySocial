@@ -101,15 +101,14 @@ MIDDLEWARE_CLASSES = [
 ROOT_URLCONF = 'pysocial.urls'
 
 
-TEMPLATE_LOADERS = [
-    'django.template.loaders.app_directories.Loader',
-]
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(SETTINGS_PATH, 'templates'),
+        ],
+        'TEMPLATE_LOADERS': [
+            'django.template.loaders.app_directories.Loader',
         ],
         'APP_DIRS': True,
         'OPTIONS': {

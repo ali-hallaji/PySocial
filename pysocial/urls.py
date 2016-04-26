@@ -35,7 +35,7 @@ urlpatterns = [
     url(r'^users/', include('users.urls')),
     url(r'^manager/', include('manager.urls')),
     url(r'^dashboard/', include('dashboard.urls')),
-    url(r'^robots\.txt$', include('robots.urls')),
+    url(r'^robots\.txt', include('robots.urls')),
     url(r'^search/$', search, name='search'),
     url(r'', include('webmaster_verification.urls')),
     url(r'^$', home, name="home"),
