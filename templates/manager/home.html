@@ -1,9 +1,11 @@
 {% extends 'manager/base.html' %}
+{% block title %}
     {% if 'edit' in request.get_full_path %}
         Edit Home Page
     {% else %}
         Insert Home Page
     {% endif %}
+{% endblock %}
 {% load staticfiles %}
 {% block extrahead %}
     <script src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>

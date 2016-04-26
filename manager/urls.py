@@ -20,11 +20,13 @@ from views import edit_parent
 from views import edit_user
 from views import group_list
 from views import home_list
+from views import home_manager
 from views import parent_list
 from views import user_list
 
 
 urlpatterns = [
+    url(r'^home/$', home_manager, name="home_manager"),
     url(r'^user_list/$', user_list, name="user_list"),
     url(r'^home_list/$', home_list, name="home_list"),
     url(r'^box_list/$', box_list, name="box_list"),
