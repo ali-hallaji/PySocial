@@ -107,9 +107,6 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(SETTINGS_PATH, 'templates'),
         ],
-        'TEMPLATE_LOADERS': [
-            'django.template.loaders.app_directories.Loader',
-        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,6 +117,9 @@ TEMPLATES = [
                 'pysocial.context_processor.get_user_data',
             ],
         },
+        'loaders': [
+            'django.template.loaders.app_directories.Loader',
+        ],
     },
 ]
 
