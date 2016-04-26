@@ -117,9 +117,6 @@ TEMPLATES = [
                 'pysocial.context_processor.get_user_data',
             ],
         },
-        'loaders': [
-            'django.template.loaders.app_directories.Loader',
-        ],
     },
 ]
 
