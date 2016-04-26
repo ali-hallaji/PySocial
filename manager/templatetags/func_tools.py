@@ -45,4 +45,7 @@ def get_path_pic_box(value):
 
 @register.filter("to_jalali")
 def to_jalali(value):
-    return gregorian_to_jalali(value)
+    if value:
+        return gregorian_to_jalali(value)
+    else:
+        return None
