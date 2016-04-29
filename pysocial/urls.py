@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include('users.urls')),
+    url(r'^forum/', include('forum.urls')),
     url(r'^manager/', include('manager.urls')),
     url(r'^dashboard/', include('dashboard.urls')),
     url(r'^robots\.txt', include('robots.urls')),

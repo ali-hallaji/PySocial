@@ -186,6 +186,7 @@ INSTALLED_APPS += [
     'users',
     'manager',
     'dashboard',
+    'forum',
 ]
 
 # Email Configurations
