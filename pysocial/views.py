@@ -139,7 +139,7 @@ def search(request):
         for k, v in kwargs.items():
             collect_array.append({k: v})
 
-    return MongoJsonResponse(collect_array)
+    return MongoJsonResponse(collect_array, safe=False)
 
 
 def under_construction(request):
