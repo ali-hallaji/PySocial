@@ -495,3 +495,9 @@ def parent_list(request):
     )
 
     return render(request, 'manager/parent_list.html', kwargs)
+
+
+@login_required
+@has_perm_view()
+def home_manager(request):
+    return render(request, 'manager/home_manager.html')

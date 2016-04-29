@@ -14,14 +14,14 @@
 /* Settings */
 @import "settings/settings";
 
-/* Fonts */
-@import "../fonts/fonts";
-
 /* Theme */
 @import "cmcore/uikit";
 
 /* UiKit */
 @import "uikit";
+
+/* Fonts */
+@import "../fonts/fonts";
 
 /* Components */
 @import "components/accordion";

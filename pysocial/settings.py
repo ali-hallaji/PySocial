@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'analytical',
     'webmaster_verification',
+    'robots',
     'captcha',
     'ckeditor',
     'ckeditor_uploader',
@@ -98,6 +99,7 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'pysocial.urls'
+
 
 TEMPLATES = [
     {

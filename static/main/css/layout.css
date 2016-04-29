@@ -61,6 +61,11 @@ div.tm-user-panel-nav ul > li > a:hover {
   color: #fc8f44;
 }
 
+body.tm-body-main .uk-sticky-placeholder {
+  position: absolute;
+  width: 100%;
+}
+
 div.tm-search-block h2 {
   color: #fff;
 }

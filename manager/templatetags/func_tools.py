@@ -15,8 +15,11 @@ register = template.Library()
 
 
 @register.filter("mongo_id")
-def mongo_id(value):
-    return str(value['_id'])
+def mongo_id(value, key=None):
+    if not key:
+        return str(value['_id'])
+    else:
+        return str(value[key])
 
 
 @register.filter("box_exist_file")
@@ -42,4 +45,7 @@ def get_path_pic_box(value):
 
 @register.filter("to_jalali")
 def to_jalali(value):
-    return gregorian_to_jalali(value)
+    if value:
+        return gregorian_to_jalali(value)
+    else:
+        return None

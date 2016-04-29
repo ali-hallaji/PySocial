@@ -6,27 +6,6 @@
 /* Variable */
 /* Mixin */
 /* Settings */
-/* Fonts */
-@font-face {
-  font-family: Mirza;
-  src: url("../fonts/mirza/Mirza.woff") format("woff"), url("../fonts/mirza/Mirza.ttf") format("truetype");
-  font-weight: normal;
-}
-@font-face {
-  font-family: Mirzab;
-  src: url("../fonts/mirza/Mirza-Bold.woff") format("woff"), url("../fonts/mirza/Mirza-Bold.ttf") format("truetype");
-  font-weight: normal;
-}
-@font-face {
-  font-family: ubuntu;
-  src: url("../fonts/ubuntu/Ubuntu-R.ttf") format("truetype");
-  font-weight: normal;
-}
-@font-face {
-  font-family: ubuntub;
-  src: url("../fonts/ubuntu/Ubuntu-B.ttf") format("truetype");
-  font-weight: normal;
-}
 /* Theme */
 /* UiKit */
 /* ========================================================================
@@ -478,6 +457,11 @@ iframe {
     width: device-width;
   }
 }
+b,
+strong {
+  font-family: Mirzab, ubuntub;
+}
+
 /* ========================================================================
    Component: Grid
  ========================================================================== */
@@ -1637,7 +1621,7 @@ iframe {
  * Sub-modifier: `uk-panel-box-secondary`
  */
 .uk-panel-box-secondary {
-  background-color: #eee;
+  background-color: rgba(0, 0, 0, 0.7);
   color: #444;
 }
 
@@ -8946,7 +8930,7 @@ a.uk-thumbnail:focus {
 /* Color modifiers
  ========================================================================== */
 .uk-text-muted {
-  color: #999 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .uk-text-primary {
@@ -10178,6 +10162,27 @@ a.uk-thumbnail:focus {
     page-break-after: avoid;
   }
 }
+/* Fonts */
+@font-face {
+  font-family: Mirza;
+  src: url("../fonts/mirza/Mirza.woff") format("woff"), url("../fonts/mirza/Mirza.ttf") format("truetype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: Mirzab;
+  src: url("../fonts/mirza/Mirza-Bold.woff") format("woff"), url("../fonts/mirza/Mirza-Bold.ttf") format("truetype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: ubuntu;
+  src: url("../fonts/ubuntu/Ubuntu-R.ttf") format("truetype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: ubuntub;
+  src: url("../fonts/ubuntu/Ubuntu-B.ttf") format("truetype");
+  font-weight: normal;
+}
 /* Components */
 /* ========================================================================
    Component: Accordion
@@ -10189,8 +10194,8 @@ a.uk-thumbnail:focus {
   margin-bottom: 15px;
   padding: 5px 15px;
   background: #eee;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 15px;
+  line-height: 20px;
   cursor: pointer;
 }
 
@@ -10252,7 +10257,7 @@ a.uk-thumbnail:focus {
  * Items
  */
 .uk-nav-autocomplete > li > a {
-  color: #444;
+  color: #393d40;
 }
 
 /*
@@ -10260,7 +10265,7 @@ a.uk-thumbnail:focus {
  * 1. Remove default focus style
  */
 .uk-nav-autocomplete > li.uk-active > a {
-  background: #00a8e6;
+  background: #fc8f44;
   color: #fff;
   /* 1 */
   outline: none;
@@ -10327,12 +10332,12 @@ a.uk-thumbnail:focus {
  * Previous and next navigation
  */
 .uk-datepicker-nav a {
-  color: #444;
+  color: #393d40;
   text-decoration: none;
 }
 
 .uk-datepicker-nav a:hover {
-  color: #444;
+  color: #393d40;
 }
 
 .uk-datepicker-previous {
@@ -10383,7 +10388,7 @@ a.uk-thumbnail:focus {
   width: 26px;
   line-height: 24px;
   text-align: center;
-  color: #444;
+  color: #393d40;
   text-decoration: none;
 }
 
@@ -10402,7 +10407,7 @@ a.uk-datepicker-table-muted {
 .uk-datepicker-table a:hover,
 .uk-datepicker-table a:focus {
   background-color: #ddd;
-  color: #444;
+  color: #393d40;
   /* 2 */
   outline: none;
 }
@@ -10410,14 +10415,14 @@ a.uk-datepicker-table-muted {
 /* OnClick */
 .uk-datepicker-table a:active {
   background-color: #ccc;
-  color: #444;
+  color: #393d40;
 }
 
 /*
  * Active
  */
 .uk-datepicker-table a.uk-active {
-  background: #00a8e6;
+  background: #fc8f44;
   color: #fff;
 }
 
@@ -10484,14 +10489,17 @@ a.uk-datepicker-table-muted {
 .uk-dotnav > * > * {
   display: block;
   box-sizing: content-box;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 5px;
   border-radius: 50%;
   background: rgba(50, 50, 50, 0.1);
   /* 1 */
   text-indent: 100%;
   overflow: hidden;
   white-space: nowrap;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
 }
 
 /*
@@ -10702,9 +10710,9 @@ a.uk-datepicker-table-muted {
   position: absolute;
   top: 50%;
   right: 10px;
-  margin-top: -6px;
-  font-size: 13px;
-  line-height: 13px;
+  margin-top: -5px;
+  font-size: 11px;
+  line-height: 11px;
   color: #999;
 }
 
@@ -10801,7 +10809,7 @@ a.uk-datepicker-table-muted {
   padding: 0 15px;
   line-height: 40px;
   /* 2 */
-  color: #444;
+  color: #393d40;
   font-size: 11px;
   cursor: pointer;
 }
@@ -10814,7 +10822,7 @@ a.uk-datepicker-table-muted {
 .uk-htmleditor-navbar-nav > li:hover > a,
 .uk-htmleditor-navbar-nav > li > a:focus {
   background-color: #f5f5f5;
-  color: #444;
+  color: #393d40;
   outline: none;
   /* 2 */
 }
@@ -10822,13 +10830,13 @@ a.uk-datepicker-table-muted {
 /* OnClick */
 .uk-htmleditor-navbar-nav > li > a:active {
   background-color: #ddd;
-  color: #444;
+  color: #393d40;
 }
 
 /* Active */
 .uk-htmleditor-navbar-nav > li.uk-active > a {
   background-color: #f5f5f5;
-  color: #444;
+  color: #393d40;
 }
 
 /* Sub-object: `uk-htmleditor-navbar-flip`
@@ -11150,8 +11158,8 @@ a.uk-datepicker-table-muted {
   padding: 15px;
   background: #444;
   color: #fff;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 19px;
   cursor: pointer;
 }
 
@@ -11199,10 +11207,10 @@ a.uk-datepicker-table-muted {
  ========================================================================== */
 .uk-placeholder {
   margin-bottom: 15px;
-  padding: 20px;
+  padding: 15px;
   border: 1px dashed #ddd;
   background: #fafafa;
-  color: #444;
+  color: #393d40;
 }
 
 /*
@@ -11260,13 +11268,13 @@ a.uk-datepicker-table-muted {
 .uk-progress-bar {
   width: 0;
   height: 100%;
-  background: #00a8e6;
+  background: #fc8f44;
   float: left;
   /* 1 */
   -webkit-transition: width 0.6s ease;
   transition: width 0.6s ease;
   /* 2 */
-  font-size: 12px;
+  font-size: 10px;
   color: #fff;
   text-align: center;
 }
@@ -11286,7 +11294,7 @@ a.uk-datepicker-table-muted {
 /* Color modifiers
  ========================================================================== */
 .uk-progress-success .uk-progress-bar {
-  background-color: #8cc14c;
+  background-color: #48ac58;
 }
 
 .uk-progress-warning .uk-progress-bar {
@@ -11353,7 +11361,7 @@ a.uk-datepicker-table-muted {
   top: 0;
   left: 0;
   width: 30px;
-  line-height: 30px;
+  line-height: 28px;
   text-align: center;
   font-family: FontAwesome;
   font-size: 14px;
@@ -11409,12 +11417,12 @@ a.uk-datepicker-table-muted {
   border-radius: 0;
   /* 4 */
   font: inherit;
-  color: #444;
+  color: #393d40;
   /* 5 */
   -webkit-appearance: none;
   /* 6 */
   width: 120px;
-  height: 30px;
+  height: 28px;
   padding: 0 0 0 30px;
   border: 1px solid transparent;
   background: transparent;
@@ -11453,7 +11461,7 @@ a.uk-datepicker-table-muted {
   width: 300px;
   margin-top: 0;
   background: #f5f5f5;
-  color: #444;
+  color: #393d40;
 }
 
 .uk-open > .uk-dropdown-search {
@@ -11475,7 +11483,7 @@ a.uk-datepicker-table-muted {
  * Items
  */
 .uk-nav-search > li > a {
-  color: #444;
+  color: #393d40;
 }
 
 /*
@@ -11483,7 +11491,7 @@ a.uk-datepicker-table-muted {
  * 1. Remove default focus style
  */
 .uk-nav-search > li.uk-active > a {
-  background: #00a8e6;
+  background: #fc8f44;
   color: #fff;
   /* 1 */
   outline: none;
@@ -11507,11 +11515,11 @@ a.uk-datepicker-table-muted {
  * Nested items
  */
 .uk-nav-search ul a {
-  color: #07D;
+  color: #666;
 }
 
 .uk-nav-search ul a:hover {
-  color: #059;
+  color: #3a3a3a;
 }
 
 /* Search in offcanvas
@@ -12026,8 +12034,8 @@ a.uk-datepicker-table-muted {
   /* 4 */
   background: #333;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 10px;
+  line-height: 15px;
 }
 
 /* Triangle

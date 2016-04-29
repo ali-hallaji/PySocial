@@ -90,3 +90,17 @@ div.tm-panel-courses:hover {
 div.tm-panel-courses:hover * {
   color: #fff;
 }
+
+div.tm-panel-new-course img {
+  margin-top: -79px;
+  width: 128px;
+}
+div.tm-panel-new-course h3 {
+  font-family: Mirzab, ubuntub;
+  border-bottom: 2px solid #FF7A39;
+  padding-bottom: 10px;
+}
+div.tm-panel-new-course p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 2;
+}

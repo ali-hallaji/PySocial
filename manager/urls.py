@@ -20,19 +20,21 @@ from views import edit_parent
 from views import edit_user
 from views import group_list
 from views import home_list
+from views import home_manager
 from views import parent_list
 from views import user_list
 
 
 urlpatterns = [
+    url(r'^home/$', home_manager, name="home_manager"),
     url(r'^user_list/$', user_list, name="user_list"),
     url(r'^home_list/$', home_list, name="home_list"),
     url(r'^box_list/$', box_list, name="box_list"),
     url(r'^parent_list/$', parent_list, name="parent_list"),
     url(r'^group_list/$', group_list, name="group_list"),
     url(r'^content_list/$', content_list, name="content_list"),
-    url(r'^define_group/$', define_group, name="define_group"),
     url(r'^add_box/$', add_box, name="add_box"),
+    url(r'^add_group/$', define_group, name="add_group"),
     url(r'^add_content/$', add_content, name="add_content"),
     url(r'^add_home/$', add_home, name="add_home"),
     url(r'^add_parent/$', add_parent, name="add_parent"),

@@ -43,7 +43,7 @@
             <div class="uk-width-large-2-3">
                 <h2>توضیحات</h2>
                 <p>{{ box.description|safe }}</p>
-                <div class="uk-accordion" data-uk-accordion="{toggle:'.toggle-btn'}" data-uk-margin="{cls:'uk-margin-large'}">
+                <div class="tm-accordion-content uk-accordion" data-uk-accordion="{toggle:'.toggle-btn', clsactive:'test'}" data-uk-margin="{cls:'uk-margin-large'}">
                     {% for parent in parents %}
                         <div class="tm-panel-course uk-panel">
                             <div class="header">
@@ -66,8 +66,8 @@
                             </div>
                             <div class="footer uk-clearfix">
                                 <div class="toggle-btn uk-float-left" data-uk-toggle="{target:'.toggle-class-{{ forloop.counter }}'}">
-                                    <a class="toggle-class-{{ forloop.counter }}">پنهان کردن لیست <i class="uk-icon-chevron-up"></i></a>
-                                    <a class="toggle-class-{{ forloop.counter }} uk-hidden">نمایش لیست <i class="uk-icon-chevron-down"></i></a>
+                                    <a class="toggle-class-{{ forloop.counter }} uk-hidden">پنهان کردن لیست <i class="uk-icon-chevron-up"></i></a>
+                                    <a class="toggle-class-{{ forloop.counter }}">نمایش لیست <i class="uk-icon-chevron-down"></i></a>
                                 </div>
                             </div>
                         </div>

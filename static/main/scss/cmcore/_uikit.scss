@@ -1,56 +1,75 @@
-// UIkit
-// ========================================================================
-
-@import "uikit.scss";
-
-
 // Theme
 // ========================================================================
 
 // SCSS related
-@import "variables.scss";
+@import "variables";
 
 // Defaults
-@import "base.scss";
+@import "base";
 
 // Layout
-@import "grid.scss";
-@import "panel.scss";
-@import "block.scss";
-@import "article.scss";
-@import "comment.scss";
+@import "grid";
+@import "panel";
+@import "block";
+@import "article";
+@import "comment";
 
 // Navs
-@import "nav.scss";
-@import "navbar.scss";
-@import "subnav.scss";
-@import "breadcrumb.scss";
-@import "pagination.scss";
-@import "tab.scss";
-@import "thumbnav.scss";
+@import "nav";
+@import "navbar";
+@import "subnav";
+@import "breadcrumb";
+@import "pagination";
+@import "tab";
+@import "thumbnav";
 
 // Elements
-@import "list.scss";
-@import "description-list.scss";
-@import "table.scss";
-@import "form.scss";
+@import "list";
+@import "description-list";
+@import "table";
+@import "form";
 
 // Common
-@import "button.scss";
-@import "icon.scss";
-@import "close.scss";
-@import "badge.scss";
-@import "alert.scss";
-@import "thumbnail.scss";
-@import "overlay.scss";
-@import "column.scss";
+@import "button";
+@import "icon";
+@import "close";
+@import "badge";
+@import "alert";
+@import "thumbnail";
+@import "overlay";
+@import "column";
 
 // JavaScript
-@import "dropdown.scss";
-@import "modal.scss";
-@import "offcanvas.scss";
+@import "dropdown";
+@import "modal";
+@import "offcanvas";
 
 // Need to be loaded last
-@import "text.scss";
-@import "utility.scss";
-@import "contrast.scss";
+@import "text";
+@import "utility";
+@import "contrast";
+
+// Theme
+// ========================================================================
+
+// Navs
+@import "dotnav";
+@import "slidenav";
+
+// Common
+@import "form-advanced";
+@import "form-password";
+@import "placeholder";
+@import "progress";
+
+// JavaScript
+@import "accordion";
+@import "autocomplete";
+@import "datepicker";
+@import "htmleditor";
+@import "notify";
+@import "search";
+@import "nestable";
+@import "sortable";
+@import "sticky";
+@import "tooltip";
