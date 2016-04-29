@@ -14,7 +14,7 @@ div.tm-search-block {
         i { font-size: 2rem; }
     }
 
-    input[type="search"] {
+    input[type="text"] {
         width: 100%;
         height: 100px;
         line-height: 100px;
@@ -38,4 +38,22 @@ div.tm-search-block {
     }
 
     a.uk-close-alt { background: #fff; }
+}
+
+div.tm-panel-saerch > h3 {
+    padding: 5px;
+}
+
+ul.tm-list-result > li {
+    margin-bottom: 5px;
+
+    &:last-child { margin-bottom: 0; }
+
+    > a {
+        color: #fff;
+        padding: 5px;
+        background-color: rgba(0, 0, 0, 0.7);
+
+        &:hover { background-color: rgba(33, 150, 243, 0.15); }
+    }
 }

@@ -60,7 +60,7 @@ $base-pre-line-height:                          round(($base-pre-font-size * 1.4
 // ========================================================================
 
 @mixin hook-base-link() {
-    @include transition(.3s all ease);
+    @include transition(.3s all);
 }
 
 @mixin hook-base-link-hover() {}
