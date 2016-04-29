@@ -111,7 +111,7 @@
             </div>
         </footer>
 
-        <div class="uk-modal" id="search-modal">
+        <div class="uk-modal" id="search-modal" data-uk-check-display>
             <div class="uk-height-1-1">
                 <div class="uk-container uk-container-center">
                     <div class="tm-search-block uk-block">
@@ -119,12 +119,72 @@
                             <h2 class="uk-h1"><i class="uk-icon-search uk-margin-left"></i>جستجو</h2>
                             <a class="uk-close uk-close-alt uk-modal-close uk-float-left"></a>
                         </div>
-                        <form class="uk-form" data-uk-search>
-                            <input type="search" autofocus dir="auto">
-                            <div class="uk-dropdown uk-dropdown-search">
-                                <ul class="uk-nav uk-nav-search"></ul>
+                        <div class="uk-autocomplete uk-form uk-width-1-1" data-uk-autocomplete="{source:'{% static "main/data.json" %}'}">
+                            <input type="text">
+                            {% verbatim %}
+                                <script type="text/autocomplete">
+                                    {{~items}}
+                                        {{#each items.users}}
+                                            {{@key}}: {{this}}
+                                        {{/each}}
+                                    {{/items}}
+                                </script>
+                            {% endverbatim %}
+                        </div>
+                        <div class="uk-block uk-contrast">
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-small-1-1 uk-width-medium-1-2 uk-width-large-1-3">
+                                    <div class="tm-panel-saerch uk-panel">
+                                        <h3 class="uk-panel-title"><i class="uk-icon-users uk-margin-small-left"></i><b>کاربران</b></h3>
+                                        <ul class="tm-list-result uk-list" data-uk-margin>
+                                            <li>
+                                                <a class="uk-flex uk-flex-middle" href="/">
+                                                    <img class="uk-margin-small-left uk-border-circle" width="64" src="http://pysocial.com/media/avatars/default.png" alt="">
+                                                    میلاد میدانشاهی
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="uk-flex uk-flex-middle" href="/">
+                                                    <img class="uk-margin-small-left uk-border-circle" width="64" src="http://pysocial.com/media/avatars/default.png" alt="">
+                                                    میلاد میدانشاهی
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="uk-flex uk-flex-middle" href="/">
+                                                    <img class="uk-margin-small-left uk-border-circle" width="64" src="http://pysocial.com/media/avatars/default.png" alt="">
+                                                    میلاد میدانشاهی
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="uk-width-small-1-1 uk-width-medium-1-2 uk-width-large-2-3">
+                                    <div class="tm-panel-saerch uk-panel">
+                                        <h3 class="uk-panel-title"><i class="uk-icon-file-text uk-margin-small-left"></i><b>مطالب مربوطه</b></h3>
+                                        <ul class="tm-list-result uk-list" data-uk-margin>
+                                            <li>
+                                                <a class="uk-flex uk-flex-middle" href="/">
+                                                    <img class="uk-margin-small-left uk-flex-item-1" width="64" src="http://pysocial.com/media/dashboard/box/56fd12f086318e0cc9200d63.png" alt="">
+                                                    برنامه ها کمی مثل تفکر هستند. اگر شما قدرت تفکر نداشتید، شاید فقط روی زمین می نشستید، و هیچ کاری انجام نمی دادید. فکر اینکه "از روی زمین بلند شو" یک فرمان است، که به بدن شما دستور ایستادن را می دهد. طبق این روال برنامه ها به کامپیوترها دستور می دهند.
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="uk-flex uk-flex-middle" href="/">
+                                                    <img class="uk-margin-small-left uk-flex-item-1" width="64" src="http://pysocial.com/media/dashboard/box/56fd12f086318e0cc9200d62.png" alt="">
+                                                    برنامه ها کمی مثل تفکر هستند. اگر شما قدرت تفکر نداشتید، شاید فقط روی زمین می نشستید، و هیچ کاری انجام نمی دادید. فکر اینکه "از روی زمین بلند شو" یک فرمان است، که به بدن شما دستور ایستادن را می دهد. طبق این روال برنامه ها به کامپیوترها دستور می دهند.
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="uk-flex uk-flex-middle" href="/">
+                                                    <img class="uk-margin-small-left uk-flex-item-1" width="64" src="http://pysocial.com/media/dashboard/box/56fd12f086318e0cc9200d60.png" alt="">
+                                                    برنامه ها کمی مثل تفکر هستند. اگر شما قدرت تفکر نداشتید، شاید فقط روی زمین می نشستید، و هیچ کاری انجام نمی دادید. فکر اینکه "از روی زمین بلند شو" یک فرمان است، که به بدن شما دستور ایستادن را می دهد. طبق این روال برنامه ها به کامپیوترها دستور می دهند.
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -137,6 +197,7 @@
         <!-- UIkit -->
         <script src="{% static 'main/js/uikit.min.js' %}"></script>
         <script src="{% static 'main/js/components/sticky.min.js' %}"></script>
+        <script src="{% static 'main/js/components/autocomplete.js' %}"></script>
         {% block uikit %}{% endblock %}
 
         <!-- Plugins And Scripts -->
