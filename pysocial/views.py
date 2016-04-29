@@ -97,13 +97,8 @@ def search(request):
             'first_name': 1,
             'last_name': 1
         }
-        users = list(cursor.users.find(
-                user_criteria,
-                user_projection
-            ).limit(
-                search_limit_count
-            )
-        )
+        users = cursor.users.find(user_criteria, user_projection)
+        users = list(users.limit(search_limit_count))
         kwargs['users'] = []
 
         for user in users:
@@ -119,13 +114,11 @@ def search(request):
             'description': 1,
             'box_id': 1
         }
-        kwargs['contents'] = list(cursor.contents.find(
-                content_criteria,
-                content_projection
-            ).limit(
-                search_limit_count
-            )
+        contents = cursor.contents.find(
+            content_criteria,
+            content_projection
         )
+        kwargs['contents'] = list(contents.limit(search_limit_count))
 
         lesson_criteria = {
             'body': search
@@ -135,15 +128,18 @@ def search(request):
             'body': 1,
             'box_id': 1
         }
-        kwargs['lessons'] = list(cursor.lessons.find(
-                lesson_criteria,
-                lesson_projection
-            ).limit(
-                search_limit_count
-            )
+        lessons = cursor.lessons.find(
+            lesson_criteria,
+            lesson_projection
         )
+        kwargs['lessons'] = list(lessons.limit(search_limit_count))
 
-    return MongoJsonResponse(kwargs)
+        collect_array = []
+
+        for k, v in kwargs.items():
+            collect_array.append({k: v})
+
+    return MongoJsonResponse(collect_array)
 
 
 def under_construction(request):
