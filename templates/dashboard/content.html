@@ -33,9 +33,10 @@
                 <ul class="tm-list-authors uk-list uk-list-striped">
                     {% for author in authors %}
                         <li>
-                            <img class="uk-align-right uk-margin-bottom-remove" width="64" height="64" src="{{ author.picture }}" alt="{{ author.first_name }} {{ author.last_name }}">
-                            <a href=""><h4>{{ author.first_name }} {{ author.last_name }}</h4></a>
-                            <p class="uk-text-truncate">این متن جهت تست می باشد.</p>
+                            <a class="uk-flex uk-flex-middle" href="{% url 'user_profile' author|mongo_id %}">
+                                <img class="uk-align-right uk-margin-bottom-remove" width="64" height="64" src="{{ author.picture }}" alt="{% if author.first_name %}{{ author.first_name }} {{ author.last_name }}{% else %}{{ author.username }}{% endif %}">
+                                <h4>{% if author.first_name %}{{ author.first_name }} {{ author.last_name }}{% else %}{{ author.username }}{% endif %}</h4>
+                            </a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -43,7 +44,7 @@
             <div class="uk-width-large-3-4">
                 <h2><strong>توضیحات</strong></h2>
                 <p>{{ box.description|safe }}</p>
-                <div class="tm-accordion-content uk-accordion" data-uk-accordion="{toggle:'.toggle-btn', clsactive:'test'}" data-uk-margin="{cls:'uk-margin-large'}">
+                <div class="tm-accordion-content uk-accordion" data-uk-accordion="{toggle:'.toggle-btn', clsactive:'uk-active'}" data-uk-margin="{cls:'uk-margin-large'}">
                     {% for parent in parents %}
                         <div class="tm-panel-course uk-panel">
                             <div class="header">

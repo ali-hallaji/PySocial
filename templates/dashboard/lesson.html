@@ -1,5 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
 {% load func_tools %}
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'main/css/lesson.css' %}">
+{% endblock %}
 {% block content %}
     <div class="uk-container uk-container-center">
         <div class="uk-block">
@@ -14,16 +18,42 @@
                             <p class="uk-text-large uk-text-primary">{{ author.username }}</p>
                         {% endif %}
                     </div>
+                    <ul class="tm-list-share-lessons uk-list">
+                        <li>
+                            <a class="uk-flex uk-flex-middle uk-animation-shake uk-animation-hover" href="">
+                                <b>اشتراک گذاری در شبکه جیمیل پلاس</b>
+                                <i class="uk-icon-google-plus uk-icon-large"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uk-flex uk-flex-middle uk-animation-shake uk-animation-hover" href="">
+                                <b>اشتراک گذاری در شبکه لینکدین</b>
+                                <i class="uk-icon-linkedin uk-icon-large"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uk-flex uk-flex-middle uk-animation-shake uk-animation-hover" href="">
+                                <b>اشتراک گذاری در شبکه فیس بوک</b>
+                                <i class="uk-icon-facebook-f uk-icon-large"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="uk-width-small-1-1 uk-width-large-3-4">
                     <h2><strong>{{ content.title }}</strong></h2>
-                    <div class="uk-flex uk-flex-middle uk-flex-space-between">
-                        <span><i class="uk-icon-file-text-o"></i> {{ content.description|removetags:"p" }}</span>
-                        <span><i class="uk-icon-calendar"></i> {{ lesson.created|to_jalali }}</span>
+                    <div class="tm-lesson-navigation">
+                        <div class="uk-grid" data-uk-margin="{cls:'uk-margin-top'}">
+                            <div class="uk-width-small-1-1 uk-width-medium-1-1 uk-width-large-1-2">
+                                <span><i class="uk-icon-file-text-o"></i> مبحث: {{ content.description|removetags:"p" }}</span>
+                            </div>
+                            <div class="uk-width-small-1-1 uk-width-medium-1-1 uk-width-large-1-2 uk-text-left uk-visible-large">
+                                <span><i class="uk-icon-calendar"></i> تاریخ انتشار: {{ lesson.created|to_jalali }}</span>
+                            </div>
+                            <div class="uk-width-small-1-1 uk-width-medium-1-1 uk-width-large-1-2 uk-hidden-large">
+                                <span><i class="uk-icon-calendar"></i> تاریخ انتشار: {{ lesson.created|to_jalali }}</span>
+                            </div>
+                        </div>
                     </div>
-                    {{ author.first_name }}
-                    {{ author.last_name }}
-                    <hr>
                     {{ lesson.body|safe }}
                 </div>
             </div>

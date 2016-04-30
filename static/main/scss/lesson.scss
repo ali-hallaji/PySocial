@@ -1,0 +1,47 @@
+@import "style";
+
+div.tm-lesson-navigation {
+    background: #EAF2F6;
+    padding: 9px;
+    color: #3AC;
+    line-height: 1;
+    border-bottom: 2px solid #3AC;
+}
+
+ul.tm-list-share-lessons > li {
+    margin-bottom: 10px;
+
+    &:first-child a {
+        background-color: #ED5C49;
+
+        // &:hover { background-color: #D13A26; }
+    }
+
+    &:nth-child(2) a {
+        background-color: #006699;
+
+        // &:hover { background-color: #03537B; }
+    }
+
+    &:nth-child(3) a {
+        background-color: #3B5998;
+
+        // &:hover { background-color: #2E477B; }
+    }
+
+    a {
+        padding-right: 10px;
+        height: 45px;
+        color: #fff;
+    }
+
+    i {
+        width: 2em;
+        height: 100%;
+        line-height: 1.5;
+        text-align: center;
+        margin-right: auto;
+        color: rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.1);
+    }
+}

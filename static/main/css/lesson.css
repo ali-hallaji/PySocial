@@ -1,0 +1,51 @@
+/*====================================
+=            Style Codes.            =
+====================================*/
+/* Compass */
+/* Bourbon */
+/* Settings */
+/* Modules */
+.tm-btn-1 {
+  background: #fff;
+  color: #3AC;
+  border: 1px solid #3AC;
+}
+.tm-btn-1:hover, .tm-btn-1:focus, .tm-btn-1:active {
+  color: #fff;
+  background: #3AC;
+}
+
+div.tm-lesson-navigation {
+  background: #EAF2F6;
+  padding: 9px;
+  color: #3AC;
+  line-height: 1;
+  border-bottom: 2px solid #3AC;
+}
+
+ul.tm-list-share-lessons > li {
+  margin-bottom: 10px;
+}
+ul.tm-list-share-lessons > li:first-child a {
+  background-color: #ED5C49;
+}
+ul.tm-list-share-lessons > li:nth-child(2) a {
+  background-color: #006699;
+}
+ul.tm-list-share-lessons > li:nth-child(3) a {
+  background-color: #3B5998;
+}
+ul.tm-list-share-lessons > li a {
+  padding-right: 10px;
+  height: 45px;
+  color: #fff;
+}
+ul.tm-list-share-lessons > li i {
+  width: 2em;
+  height: 100%;
+  line-height: 1.5;
+  text-align: center;
+  margin-right: auto;
+  color: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.1);
+}
