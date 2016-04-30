@@ -134,12 +134,7 @@ def search(request):
         )
         kwargs['lessons'] = list(lessons.limit(search_limit_count))
 
-        collect_array = []
-
-        for k, v in kwargs.items():
-            collect_array.append({k: v})
-
-    return MongoJsonResponse(collect_array, safe=False)
+    return MongoJsonResponse(kwargs, safe=False)
 
 
 def under_construction(request):
