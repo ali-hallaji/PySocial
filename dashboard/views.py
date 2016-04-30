@@ -116,6 +116,8 @@ def lesson(request, dashboard, _id):
     kwargs['lesson'] = cursor.lessons.find_one({'content_id': ObjectId(_id)})
 
     if kwargs['lesson']:
+        kwargs['lesson']['created'] = kwargs['lesson']['created'].date()
+
         if not kwargs['lesson']['published']:
             return HttpResponseRedirect('/dashboard/lesson/no_publish')
 

@@ -28,8 +28,8 @@
     <div class="uk-block">
         <div class="uk-container uk-container-center">
         <div class="uk-grid" data-uk-grid-margin>
-            <div class="uk-width-large-1-3">
-                <h2>نویسندگان</h2>
+            <div class="uk-width-large-1-4">
+                <h2><strong>نویسندگان</strong></h2>
                 <ul class="tm-list-authors uk-list uk-list-striped">
                     {% for author in authors %}
                         <li>
@@ -40,14 +40,14 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div class="uk-width-large-2-3">
-                <h2>توضیحات</h2>
+            <div class="uk-width-large-3-4">
+                <h2><strong>توضیحات</strong></h2>
                 <p>{{ box.description|safe }}</p>
                 <div class="tm-accordion-content uk-accordion" data-uk-accordion="{toggle:'.toggle-btn', clsactive:'test'}" data-uk-margin="{cls:'uk-margin-large'}">
                     {% for parent in parents %}
                         <div class="tm-panel-course uk-panel">
                             <div class="header">
-                                <h2><span>{{ forloop.counter }}</span>{{ parent.2 }}</h2>
+                                <h3 class="uk-panel-title"><span>{{ forloop.counter }}</span><strong>{{ parent.2 }}</strong></h3>
                                 {{ parent.1|safe }}
                             </div>
                             <hr>
@@ -58,7 +58,7 @@
                                             <a href="{% url "lesson" box.title doc|mongo_id %}">
                                             <span class="badge">{{ forloop.counter }}.</span>
                                             {{ doc.title }}
-                                            <span class="tm-btn-1 uk-button uk-button-small uk-hidden-small">ورود</span>
+                                            <span class="tm-btn-1 uk-button uk-button-small uk-hidden-small uk-float-left">ورود</span>
                                             </a>
                                         </li>
                                     {% endfor %}

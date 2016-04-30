@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{% static 'main/css/home.css' %}">
 {% endblock %}
 {% block content %}
-    <section>
+    <section id="main-slide">
         <div class="uk-block uk-padding-remove uk-block-primary uk-height-viewport uk-position-relative">
             <div class="uk-position-absolute uk-position-bottom uk-height-1-1" style="background: url(/static/main/img/header_wall.png) 50% 50%; background-size: cover;">
                 <div class="uk-container uk-container-center">
@@ -59,11 +59,11 @@
     </section>
 
     <section id="new-course">
-        <div class="uk-block uk-block-large uk-block-secondary uk-contrast">
+        <div class="uk-block uk-block-large uk-block-secondary uk-contrast uk-nbfc">
             <div class="uk-container uk-container-center uk-text-center">
                 <h2><b>جدید ترین درس ها</b></h2>
                 <p class="uk-margin-large-bottom uk-text-muted uk-text-large">در این قسمت با خلاصه جدیدترین درس های هر بخش آشنا خواهید شد که براحتی میتوانید مراجعه کنید</p>
-                <div class="uk-margin-large-top uk-display-inline-block" data-uk-slideset="{small: 1, medium: 2, large: 4, animation: 'slide-horizontal', duration: 200}">
+                <div class="uk-margin-large-top uk-display-inline-block uk-width-1-1" data-uk-slideset="{small: 1, medium: 2, large: 4, animation: 'slide-horizontal', duration: 200}">
                     <div class="uk-slidenav-position">
                         <ul class="uk-slideset uk-grid" data-uk-grid-match="{target:'.tm-panel-new-course'}">
                             {% for lesson in last_lesson %}

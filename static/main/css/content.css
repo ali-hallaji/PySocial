@@ -49,9 +49,6 @@ div.tm-panel-course {
   border: 1px solid #ebf4f7;
   padding: 1rem 2rem;
 }
-div.tm-panel-course .header h2 {
-  font-family: Mirzab, ubuntub;
-}
 div.tm-panel-course .header span {
   color: #3AC;
   border: 3px solid #3AC;
@@ -100,7 +97,6 @@ ul.tm-list-lessons > li > a {
   font-family: Mirzab, ubuntub;
   font-size: 14px;
   line-height: 25px;
-  display: flex;
 }
 ul.tm-list-lessons > li span.badge {
   color: #E76E33;

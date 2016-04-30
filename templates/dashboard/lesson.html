@@ -2,13 +2,31 @@
 {% load func_tools %}
 {% block content %}
     <div class="uk-container uk-container-center">
-        <h1 class="uk-heading-large">{{ box_name }}</h1>
-        <h2>{{ content.title }}</h2>
-        <p>{{ content.description|safe }}</p>
-        {{ author.first_name }}
-        {{ author.last_name }}
-        <hr>
-        {{ lesson.created|to_jalali }}
-        {{ lesson.body|safe }}
+        <div class="uk-block">
+            <div class="uk-grid">
+                <div class="uk-visible-large uk-width-large-1-4">
+                    <div class="uk-text-center">
+                        <h2 class="uk-text-right"><strong>نویسنده</strong></h2>
+                        <img class="uk-border-circle" width="200" src="{{ author.picture }}" alt="{% if author.first_name %}{{ author.first_name }} {{ author.last_name }}{% else %}{{ author.username }}{% endif %}">
+                        {% if author.first_name %}
+                            <p class="uk-text-large uk-text-primary">{{ author.first_name }} {{ author.last_name }}</p>
+                        {% else %}
+                            <p class="uk-text-large uk-text-primary">{{ author.username }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="uk-width-small-1-1 uk-width-large-3-4">
+                    <h2><strong>{{ content.title }}</strong></h2>
+                    <div class="uk-flex uk-flex-middle uk-flex-space-between">
+                        <span><i class="uk-icon-file-text-o"></i> {{ content.description|removetags:"p" }}</span>
+                        <span><i class="uk-icon-calendar"></i> {{ lesson.created|to_jalali }}</span>
+                    </div>
+                    {{ author.first_name }}
+                    {{ author.last_name }}
+                    <hr>
+                    {{ lesson.body|safe }}
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock content %}

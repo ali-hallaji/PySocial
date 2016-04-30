@@ -9,6 +9,8 @@
 
 body { background-color: #f6f8f8; }
 
+form { padding: 0 20px; }
+
 p#tm-user-links {
 
     a {
@@ -21,9 +23,10 @@ p#tm-user-links {
 }
 
 div.tm-social-links {
-    text-align: center;
-    border: 1px solid #f1f1f1;
     padding: 30px;
+    text-align: center;
+    border: 1px solid #E9F0F0;
+    background-color: #F3F6F6;
 
     @include border-radius(5px);
 

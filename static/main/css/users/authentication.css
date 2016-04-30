@@ -15,6 +15,10 @@ body {
   background-color: #f6f8f8;
 }
 
+form {
+  padding: 0 20px;
+}
+
 p#tm-user-links a {
   color: #003c5a;
 }
@@ -29,9 +33,10 @@ p#tm-user-links i {
 }
 
 div.tm-social-links {
-  text-align: center;
-  border: 1px solid #f1f1f1;
   padding: 30px;
+  text-align: center;
+  border: 1px solid #E9F0F0;
+  background-color: #F3F6F6;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;

@@ -42,8 +42,6 @@ div.tm-panel-course {
 
     .header {
 
-        h2 { font-family: $mirzab-font, $ubuntub-font; }
-
         span {
             color: #3AC;
             border: 3px solid #3AC;
@@ -92,7 +90,6 @@ ul.tm-list-lessons {
             font-family: $mirzab-font, $ubuntub-font;
             font-size: 14px;
             line-height: 25px;
-            display: flex;
         }
 
         span.badge {
