@@ -11452,7 +11452,7 @@ a.uk-datepicker-table-muted {
 /* Focus + Active */
 .uk-search-field:focus,
 .uk-search.uk-active .uk-search-field {
-  width: 180px;
+  width: 100%;
 }
 
 /* Dropdown modifier: `uk-dropdown-search`
