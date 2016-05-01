@@ -89,9 +89,14 @@ def truncate_word(text, n):
     return ' '.join(text.split()[:n])
 
 
-def truncate_val_dict(_dict, n):
+def truncate_val_dict(_list, n):
 
-    for k, v in _dict.items():
-        _dict[k] = truncate_word(v, n)
+    new_list = []
 
-    return _dict
+    for _dict in _list:
+        for k, v in _dict.items():
+            _dict[k] = truncate_word(v, n)
+
+        new_list.append(_dict)
+
+    return new_list
