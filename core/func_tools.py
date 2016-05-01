@@ -94,8 +94,12 @@ def truncate_val_dict(_list, n):
     new_list = []
 
     for _dict in _list:
+
         for k, v in _dict.items():
-            _dict[k] = truncate_word(v, n)
+            try:
+                _dict[k] = truncate_word(v, n)
+            except:
+                pass
 
         new_list.append(_dict)
 
