@@ -87,7 +87,7 @@ def list_of_seq_unique_by_key(seq, key):
 
 
 def truncate_word(text, n):
-    return ' '.join(text.split()[:n])
+    return ' '.join(cleanhtml(text).split()[:n])
 
 
 def truncate_val_dict(_list, n):
@@ -97,8 +97,9 @@ def truncate_val_dict(_list, n):
     for _dict in _list:
 
         for k, v in _dict.items():
-            if isinstance(v, str or unicode or chr or unichr):
-                _dict[k] = truncate_word(cleanhtml(v), n)
+
+            if isinstance(v, unicode) or isinstance(v, str):
+                _dict[k] = truncate_word(v, n)
 
         new_list.append(_dict)
 
