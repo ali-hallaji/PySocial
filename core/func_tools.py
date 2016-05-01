@@ -5,6 +5,7 @@ import os
 # Django Import
 
 # PySocial Import
+from core import cursor
 from pysocial.settings import BASE_DIR
 
 
@@ -110,3 +111,33 @@ def cleanhtml(raw_html):
     cleanr = re.compile('<.*?>')
     cleantext = re.sub(cleanr, '', raw_html)
     return cleantext
+
+
+def set_href(_list, _type):
+    new_list = []
+
+    for doc in _list:
+        if _type == 'users':
+            doc['href'] = '/users/profile/{0}'.format(str(doc['_id']))
+
+        elif _type == 'contents':
+            try:
+                box = doc['parent'].split('|')[0]
+                doc['href'] = '/dashboard/content'
+                doc['href'] += '/{0}/{1}'.format(box, str(doc['_id']))
+
+            except:
+                pass
+
+        elif _type == 'lessons':
+            try:
+                box = cursor.box.find_one({'_id': doc['box_id']})['title']
+                doc['href'] = '/dashboard/lesson'
+                doc['href'] += '/{0}/{1}'.format(box, str(doc['_id']))
+
+            except:
+                pass
+
+        new_list.append(doc)
+
+    return new_list
