@@ -11,6 +11,8 @@ from django.views.decorators.http import require_POST
 
 # PySocial Import
 from core import cursor
+from pysocial.settings import num_truncate_search
+from core.func_tools import truncate_val_dict
 from core.func_tools import avatar_maker
 from core.func_tools import path_pic_box
 from core.json_utils import MongoJsonResponse
@@ -118,7 +120,8 @@ def search(request):
             content_criteria,
             content_projection
         )
-        kwargs['contents'] = list(contents.limit(search_limit_count))
+        contents = list(contents.limit(search_limit_count))
+        kwargs['contents'] = truncate_val_dict(contents, num_truncate_search)
 
         lesson_criteria = {
             'body': search
@@ -132,7 +135,8 @@ def search(request):
             lesson_criteria,
             lesson_projection
         )
-        kwargs['lessons'] = list(lessons.limit(search_limit_count))
+        lessons = list(lessons.limit(search_limit_count))
+        kwargs['lessons'] = truncate_val_dict(lessons, num_truncate_search)
 
     return MongoJsonResponse(kwargs, safe=False)
 

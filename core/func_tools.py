@@ -83,3 +83,15 @@ def list_of_seq_unique_by_key(seq, key):
     result = [x for x in seq if x[key] not in seen and not seen_add(x[key])]
 
     return result
+
+
+def truncate_word(text, n):
+    return ' '.join(text.split()[:n])
+
+
+def truncate_val_dict(_dict, n):
+
+    for k, v in _dict.items():
+        _dict[k] = truncate_word(v, n)
+
+    return _dict
