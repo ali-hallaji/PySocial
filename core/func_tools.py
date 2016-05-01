@@ -1,4 +1,5 @@
 # Python Import
+import re
 import os
 
 # Django Import
@@ -96,11 +97,15 @@ def truncate_val_dict(_list, n):
     for _dict in _list:
 
         for k, v in _dict.items():
-            try:
-                _dict[k] = truncate_word(v, n)
-            except:
-                pass
+            if isinstance(v, str or unicode or chr or unichr):
+                _dict[k] = truncate_word(cleanhtml(v), n)
 
         new_list.append(_dict)
 
     return new_list
+
+
+def cleanhtml(raw_html):
+    cleanr = re.compile('<.*?>')
+    cleantext = re.sub(cleanr, '', raw_html)
+    return cleantext
