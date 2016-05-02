@@ -124,6 +124,13 @@ div.tm-dropdown-search-result {
   animation: 0 !important;
 }
 
+div.tm-no-result {
+  padding: 10px;
+  text-align: center;
+  font-family: Mirzab;
+  background: rgba(255, 255, 255, 0.15);
+}
+
 footer > div.uk-block {
   background-color: #28384A;
 }

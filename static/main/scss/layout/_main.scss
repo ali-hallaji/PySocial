@@ -59,3 +59,10 @@ div.tm-dropdown-search-result {
 
     @include animation(0 !important);
 }
+
+div.tm-no-result {
+    padding: 10px;
+    text-align: center;
+    font-family: $mirzab-font;
+    background: rgba(255, 255, 255, 0.15);
+}
