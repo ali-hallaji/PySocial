@@ -51,3 +51,11 @@ ul.tm-list-result > li {
         &:hover { background-color: rgba(33, 150, 243, 0.15); }
     }
 }
+
+div.tm-dropdown-search-result {
+    background: transparent;
+    border: 0;
+    width: 100%;
+
+    @include animation(0 !important);
+}

@@ -115,6 +115,15 @@ ul.tm-list-result > li > a:hover {
   background-color: rgba(33, 150, 243, 0.15);
 }
 
+div.tm-dropdown-search-result {
+  background: transparent;
+  border: 0;
+  width: 100%;
+  -webkit-animation: 0 !important;
+  -moz-animation: 0 !important;
+  animation: 0 !important;
+}
+
 footer > div.uk-block {
   background-color: #28384A;
 }
