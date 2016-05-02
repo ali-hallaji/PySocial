@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% load func_tools %}
+{% block title %}
+    {{ content.title }} | {{ box_name_en }} | {{ box_name_fa }}
+{% endblock %}
 {% block extrastyle %}
     <link rel="stylesheet" href="{% static 'main/css/lesson.css' %}">
 {% endblock %}
@@ -20,19 +23,19 @@
                     </div>
                     <ul class="tm-list-share-lessons uk-list">
                         <li>
-                            <a class="uk-flex uk-flex-middle uk-animation-shake uk-animation-hover" href="">
+                            <a class="uk-flex uk-flex-middle uk-animation-shake uk-animation-hover" href="https://plus.google.com/share?url=http://www.PySocial.com{{ request.get_full_path|urlencode }}">
                                 <b>اشتراک گذاری در شبکه جیمیل پلاس</b>
                                 <i class="uk-icon-google-plus uk-icon-large"></i>
                             </a>
                         </li>
                         <li>
-                            <a class="uk-flex uk-flex-middle uk-animation-shake uk-animation-hover" href="">
+                            <a class="uk-flex uk-flex-middle uk-animation-shake uk-animation-hover" href="http://www.linkedin.com/shareArticle?url=http://www.PySocial.com{{ request.get_full_path|urlencode }}&title={{ content.title }}&summary={{ content.title|truncatewords:4 }}&source=http://PySocial.com">
                                 <b>اشتراک گذاری در شبکه لینکدین</b>
                                 <i class="uk-icon-linkedin uk-icon-large"></i>
                             </a>
                         </li>
                         <li>
-                            <a class="uk-flex uk-flex-middle uk-animation-shake uk-animation-hover" href="">
+                            <a class="uk-flex uk-flex-middle uk-animation-shake uk-animation-hover" href="http://www.facebook.com/sharer/sharer.php?u=http://www.PySocial.com{{ request.get_full_path|urlencode }}">
                                 <b>اشتراک گذاری در شبکه فیس بوک</b>
                                 <i class="uk-icon-facebook-f uk-icon-large"></i>
                             </a>

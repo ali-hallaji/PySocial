@@ -133,7 +133,7 @@ def set_href(_list, _type):
             try:
                 box = cursor.box.find_one({'_id': doc['box_id']})['title']
                 doc['href'] = '/dashboard/lesson'
-                doc['href'] += '/{0}/{1}'.format(box, str(doc['_id']))
+                doc['href'] += '/{0}/{1}'.format(box, str(doc['content_id']))
 
             except:
                 pass

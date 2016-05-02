@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% load func_tools %}
+{% block title %}
+    آموزش {{ box.title }} | {{ box.title_fa }}
+{% endblock %}
 {% block extrastyle %}
     <link rel="stylesheet" href="{% static 'main/css/content.css' %}">
 {% endblock %}
