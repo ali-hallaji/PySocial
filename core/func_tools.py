@@ -1,9 +1,11 @@
 # Python Import
+import re
 import os
 
 # Django Import
 
 # PySocial Import
+from core import cursor
 from pysocial.settings import BASE_DIR
 
 
@@ -83,3 +85,59 @@ def list_of_seq_unique_by_key(seq, key):
     result = [x for x in seq if x[key] not in seen and not seen_add(x[key])]
 
     return result
+
+
+def truncate_word(text, n):
+    return ' '.join(cleanhtml(text).split()[:n])
+
+
+def truncate_val_dict(_list, n):
+
+    new_list = []
+
+    for _dict in _list:
+
+        for k, v in _dict.items():
+
+            if isinstance(v, unicode) or isinstance(v, str):
+                _dict[k] = truncate_word(v, n)
+
+        new_list.append(_dict)
+
+    return new_list
+
+
+def cleanhtml(raw_html):
+    cleanr = re.compile('<.*?>')
+    cleantext = re.sub(cleanr, '', raw_html)
+    return cleantext
+
+
+def set_href(_list, _type):
+    new_list = []
+
+    for doc in _list:
+        if _type == 'users':
+            doc['href'] = '/users/profile/{0}'.format(str(doc['_id']))
+
+        elif _type == 'contents':
+            try:
+                box = doc['parent'].split('|')[0]
+                doc['href'] = '/dashboard/content'
+                doc['href'] += '/{0}/{1}'.format(box, str(doc['_id']))
+
+            except:
+                pass
+
+        elif _type == 'lessons':
+            try:
+                box = cursor.box.find_one({'_id': doc['box_id']})['title']
+                doc['href'] = '/dashboard/lesson'
+                doc['href'] += '/{0}/{1}'.format(box, str(doc['_id']))
+
+            except:
+                pass
+
+        new_list.append(doc)
+
+    return new_list

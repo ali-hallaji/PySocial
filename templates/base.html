@@ -152,7 +152,7 @@
 
                                 var $this = this, opts = this.options;
 
-                                this.dropdown.append(this.template({"items": (data || []), "msgResultsHeader":opts.msgResultsHeader, "msgMoreResults": opts.msgMoreResults, "msgNoResults": opts.msgNoResults}));
+                                this.dropdown.removeClass().append(this.template({"items": (data || []), "msgResultsHeader":opts.msgResultsHeader, "msgMoreResults": opts.msgMoreResults, "msgNoResults": opts.msgNoResults}));
                                 this.show();
                             },
                             template:   '<div class="uk-block uk-contrast">\

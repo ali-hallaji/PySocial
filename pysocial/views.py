@@ -13,7 +13,10 @@ from django.views.decorators.http import require_POST
 from core import cursor
 from core.func_tools import avatar_maker
 from core.func_tools import path_pic_box
+from core.func_tools import set_href
+from core.func_tools import truncate_val_dict
 from core.json_utils import MongoJsonResponse
+from pysocial.settings import num_truncate_search
 from settings import last_lesson_qty
 from settings import search_limit_count
 
@@ -26,14 +29,10 @@ def home(request):
     what = cursor.home.find_one({'kind': 'what'})
     roadmap = cursor.home.find({'kind': 'roadmap'}).sort('order', ASCENDING)
     boxs = cursor.box.find().sort('order', ASCENDING)
-    last_lesson = list(cursor.lessons.find(
-            {'published': True},
-            {'body': 0}
-        ).sort(
-            'created',
-            DESCENDING
-        ).limit(last_lesson_qty)
-    )
+
+    last_lesson = cursor.lessons.find({'published': True}, {'body': 0})
+    last_lesson = last_lesson.sort('created', DESCENDING).limit(last_lesson_qty)
+    last_lesson = list(last_lesson)
 
     if news:
         kwargs['news'] = news['body']
@@ -104,6 +103,8 @@ def search(request):
         for user in users:
             kwargs['users'].append(avatar_maker(user))
 
+        kwargs['users'] = set_href(kwargs['users'], 'users')
+
         content_criteria = {
             '$or': [
                 {'title': search},
@@ -112,13 +113,18 @@ def search(request):
         }
         content_projection = {
             'description': 1,
-            'box_id': 1
+            'box_id': 1,
+            'parent': 1
         }
         contents = cursor.contents.find(
             content_criteria,
             content_projection
         )
-        kwargs['contents'] = list(contents.limit(search_limit_count))
+        contents = list(contents.limit(search_limit_count))
+        kwargs['contents'] = set_href(
+            truncate_val_dict(contents, num_truncate_search),
+            'contents'
+        )
 
         lesson_criteria = {
             'body': search
@@ -132,7 +138,11 @@ def search(request):
             lesson_criteria,
             lesson_projection
         )
-        kwargs['lessons'] = list(lessons.limit(search_limit_count))
+        lessons = list(lessons.limit(search_limit_count))
+        kwargs['lessons'] = set_href(
+            truncate_val_dict(lessons, num_truncate_search),
+            'lessons'
+        )
 
     return MongoJsonResponse(kwargs, safe=False)
 
