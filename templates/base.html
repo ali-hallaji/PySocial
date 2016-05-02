@@ -108,7 +108,7 @@
                             <a class="uk-close uk-close-alt uk-modal-close uk-float-left"></a>
                         </div>
                         <form class="uk-search uk-width-1-1" data-uk-search="{source:'{% url "search" %}'}">
-                            <input class="uk-search-field" type="search" placeholder="">
+                            <input class="uk-search-field" type="search" autofocus>
                             <div class="tm-dropdown-search-result uk-dropdown uk-dropdown-search"></div>
                         </form>
                     </div>
@@ -167,6 +167,7 @@
                                                                         <a class="uk-flex uk-flex-middle" href="/">\
                                                                             <img class="uk-margin-small-left uk-border-circle" width="64" src="{{$item.picture}}" alt="{{$item.username}}">\
                                                                             {{$item.first_name}} {{$item.last_name}}\
+                                                                            {{$item.username}}\
                                                                         </a>\
                                                                     </li>\
                                                                 {{/items}}\
@@ -182,7 +183,7 @@
                                                                 {{~items.lessons}}\
                                                                     <li>\
                                                                         <a class="uk-flex uk-flex-middle" href="{{{$item.href}}}">\
-                                                                            <img class="uk-margin-small-left uk-flex-item-1" width="64" src="/media/dashboard/box/{{$item.box_id}}.png" alt="">\
+                                                                            <img class="uk-margin-left uk-flex-item-none" width="64" src="/media/dashboard/box/{{$item.box_id}}.png" alt="">\
                                                                             {{{$item.body}}}\
                                                                         </a>\
                                                                     </li>\
