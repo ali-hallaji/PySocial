@@ -1,29 +1,29 @@
 header.tm-active-navabr {
 
-    nav.tm-navbar {
-        background: #003c5a;
+    nav.tm-navbar { background: #003c5a; }
 
-        ul.tm-navbar-nav > li > a {
-            color: #2379a3;
+    ul.tm-navbar-nav > li > a {
+        color: #2379a3;
 
-            &:hover,
-            &:focus,
-            &:active { color: #ebebeb; }
+        &:hover,
+        &:focus,
+        &:active {
+            color: #fff;
+            border-bottom: 1px solid #fff;
         }
     }
 }
 
-nav.tm-navbar {
-    background: transparent;
-    padding: 10px 0;
+nav.tm-navbar { padding: 10px 0; }
 
-    ul.tm-navbar-nav > li > a {
-        color: #fff;
+ul.tm-navbar-nav > li > a {
+    color: #fff;
 
-        i { font-size: 14px; }
+    i { font-size: 14px; }
 
-        &:hover { border-bottom: 1px solid #fff; }
-    }
+    &:hover,
+    &:focus,
+    &:active { border-bottom: 1px solid #2379a3; }
 }
 
 div.tm-user-panel-nav {

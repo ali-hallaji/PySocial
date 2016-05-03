@@ -1,14 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 {% load func_tools %}
-{% block title %}
-    آموزش {{ box.title }} | {{ box.title_fa }}
-{% endblock %}
+{% block title %}آموزش {{ box.title }} | {{ box.title_fa }}{% endblock %}
 {% block extrastyle %}
     <link rel="stylesheet" href="{% static 'main/css/content.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="uk-block uk-block-default">
+    <div class="uk-block uk-block-large uk-block-primary" style="margin-top: -60px;">
         <div class="uk-container uk-container-center">
             <div class="uk-grid uk-flex-middle">
                 <div class="uk-flex-item-auto">

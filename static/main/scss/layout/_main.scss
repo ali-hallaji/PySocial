@@ -43,6 +43,11 @@ ul.tm-list-result > li {
 
     &:last-child { margin-bottom: 0; }
 
+    img {
+        width: 64px;
+        height: 64px;
+    }
+
     > a {
         color: #fff;
         padding: 5px;

@@ -7,7 +7,8 @@
 // Variables
 // ========================================================================
 
-$navbar-color:                                  $global-color;
+$navbar-background:                             transparent;
+$navbar-color:                                  #fff;
 $navbar-link-color:                             $global-link-color;
 $navbar-link-hover-color:                       $global-link-hover-color;
 
@@ -16,7 +17,8 @@ $navbar-nav-color:                              $global-contrast-color;
 $navbar-nav-font-size:                          $global-font-size;
 $navbar-nav-font-family:                        $global-font-family;
 $navbar-nav-hover-background:                   transparent;
-$navbar-nav-hover-color:                        $global-color;
+$navbar-nav-onclick-background:                 transparent;
+$navbar-nav-hover-color:                        #2379a3;
 $navbar-nav-onclick-color:                      $global-color;
 $navbar-nav-active-color:                       $global-color;
 

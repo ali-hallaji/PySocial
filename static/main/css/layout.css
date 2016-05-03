@@ -19,25 +19,26 @@
 header.tm-active-navabr nav.tm-navbar {
   background: #003c5a;
 }
-header.tm-active-navabr nav.tm-navbar ul.tm-navbar-nav > li > a {
+header.tm-active-navabr ul.tm-navbar-nav > li > a {
   color: #2379a3;
 }
-header.tm-active-navabr nav.tm-navbar ul.tm-navbar-nav > li > a:hover, header.tm-active-navabr nav.tm-navbar ul.tm-navbar-nav > li > a:focus, header.tm-active-navabr nav.tm-navbar ul.tm-navbar-nav > li > a:active {
-  color: #ebebeb;
+header.tm-active-navabr ul.tm-navbar-nav > li > a:hover, header.tm-active-navabr ul.tm-navbar-nav > li > a:focus, header.tm-active-navabr ul.tm-navbar-nav > li > a:active {
+  color: #fff;
+  border-bottom: 1px solid #fff;
 }
 
 nav.tm-navbar {
-  background: transparent;
   padding: 10px 0;
 }
-nav.tm-navbar ul.tm-navbar-nav > li > a {
+
+ul.tm-navbar-nav > li > a {
   color: #fff;
 }
-nav.tm-navbar ul.tm-navbar-nav > li > a i {
+ul.tm-navbar-nav > li > a i {
   font-size: 14px;
 }
-nav.tm-navbar ul.tm-navbar-nav > li > a:hover {
-  border-bottom: 1px solid #fff;
+ul.tm-navbar-nav > li > a:hover, ul.tm-navbar-nav > li > a:focus, ul.tm-navbar-nav > li > a:active {
+  border-bottom: 1px solid #2379a3;
 }
 
 div.tm-user-panel-nav {
@@ -108,6 +109,10 @@ ul.tm-list-result > li {
 }
 ul.tm-list-result > li:last-child {
   margin-bottom: 0;
+}
+ul.tm-list-result > li img {
+  width: 64px;
+  height: 64px;
 }
 ul.tm-list-result > li > a {
   color: #fff;

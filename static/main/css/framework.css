@@ -2300,8 +2300,8 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
    Component: Navbar
  ========================================================================== */
 .uk-navbar {
-  background: #eee;
-  color: #393d40;
+  background: transparent;
+  color: #fff;
 }
 
 /*
@@ -2369,14 +2369,14 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-navbar-nav > li > a:focus,
 .uk-navbar-nav > li.uk-open > a {
   background-color: transparent;
-  color: #393d40;
+  color: #2379a3;
   /* 3 */
   outline: none;
 }
 
 /* OnClick */
 .uk-navbar-nav > li > a:active {
-  background-color: #ddd;
+  background-color: transparent;
   color: #393d40;
 }
 
