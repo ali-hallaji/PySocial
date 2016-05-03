@@ -32,6 +32,8 @@ $form-large-font-size:                          round(($global-font-size * 1.14)
 
 $form-blank-border:                             $global-border;
 
+$form-horizontal-controls-margin-right:         215px;
+
 $form-icon-font-size:                           $global-font-size;
 $form-icon-color:                               $global-muted-color;
 
@@ -80,10 +82,19 @@ $form-icon-color:                               $global-muted-color;
 
 @mixin hook-form-stacked-label() {}
 
-@mixin hook-form-horizontal-label() {}
+@mixin hook-form-horizontal-label() { float: right; }
 
 
 // Miscellaneous
 // ========================================================================
 
-@mixin hook-form-misc() {}
+@mixin hook-form-misc() {
+
+    @media (min-width: $breakpoint-large) {
+
+        .uk-form-horizontal .uk-form-controls {
+            margin-left: 0;
+            margin-right: $form-horizontal-controls-margin-right;
+        }
+    }
+}

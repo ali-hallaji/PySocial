@@ -15,12 +15,10 @@
   background: #3AC;
 }
 
-div.tm-lesson-navigation {
-  background: #EAF2F6;
-  padding: 9px;
-  color: #3AC;
-  line-height: 1;
-  border-bottom: 2px solid #3AC;
+div.tm-post-info span {
+  display: block;
+  color: #a3a3a3;
+  margin-bottom: 5px;
 }
 
 ul.tm-list-share-lessons > li {

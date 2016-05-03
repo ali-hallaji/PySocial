@@ -1,24 +1,29 @@
-nav.tm-navbar {
-    background: #003c5a;
-    padding: 10px 0;
-}
+header.tm-active-navabr {
 
-ul.tm-navbar-nav > li > a {
-    color: #2379a3;
+    nav.tm-navbar {
+        background: #003c5a;
 
-    i { font-size: 14px; }
+        ul.tm-navbar-nav > li > a {
+            color: #2379a3;
 
-    &:hover,
-    &:focus,
-    &:active {
-        color: #ebebeb;
-        background: transparent;
+            &:hover,
+            &:focus,
+            &:active { color: #ebebeb; }
+        }
     }
 }
 
-.tm-navbar-inactive {
-    position: absolute;
-    width: 100%;
+nav.tm-navbar {
+    background: transparent;
+    padding: 10px 0;
+
+    ul.tm-navbar-nav > li > a {
+        color: #fff;
+
+        i { font-size: 14px; }
+
+        &:hover { border-bottom: 1px solid #fff; }
+    }
 }
 
 div.tm-user-panel-nav {

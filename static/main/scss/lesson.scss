@@ -1,33 +1,22 @@
 @import "style";
 
-div.tm-lesson-navigation {
-    background: #EAF2F6;
-    padding: 9px;
-    color: #3AC;
-    line-height: 1;
-    border-bottom: 2px solid #3AC;
+div.tm-post-info {
+
+    span {
+        display: block;
+        color: #a3a3a3;
+        margin-bottom: 5px;
+    }
 }
 
 ul.tm-list-share-lessons > li {
     margin-bottom: 10px;
 
-    &:first-child a {
-        background-color: #ED5C49;
+    &:first-child a { background-color: #ED5C49; }
 
-        // &:hover { background-color: #D13A26; }
-    }
+    &:nth-child(2) a { background-color: #006699; }
 
-    &:nth-child(2) a {
-        background-color: #006699;
-
-        // &:hover { background-color: #03537B; }
-    }
-
-    &:nth-child(3) a {
-        background-color: #3B5998;
-
-        // &:hover { background-color: #2E477B; }
-    }
+    &:nth-child(3) a { background-color: #3B5998; }
 
     a {
         padding-right: 10px;

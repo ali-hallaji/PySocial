@@ -27,7 +27,7 @@
     </head>
     <body class="tm-body-main">
         {% analytical_body_top %}
-        <header data-uk-sticky="{media: 767, top: '.uk-sticky-placeholder + *', animation: 'uk-animation-slide-top'}">
+        <header data-uk-sticky="{media: 767, top: '.uk-sticky-placeholder + *', clsactive:'tm-active-navabr uk-position-z-index', animation: 'uk-animation-slide-top'}">
             <nav class="tm-navbar uk-navbar uk-position-relative uk-position-z-index">
                 <div class="uk-container uk-container-center">
                     <ul class="tm-navbar-nav uk-navbar-nav">
@@ -174,7 +174,7 @@
                                                             </ul>\
                                                         {{/end}}\
                                                         {{^items.users.length}}\
-                                                            <div class="tm-no-result">هیچ کاربری یافت نشد</div>\
+                                                            <div class="tm-no-result">کاربری یافت نشد</div>\
                                                         {{/end}}\
                                                     </div>\
                                                 </div>\

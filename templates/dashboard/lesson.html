@@ -14,12 +14,14 @@
                 <div class="uk-visible-large uk-width-large-1-4">
                     <div class="uk-text-center">
                         <h2 class="uk-text-right"><strong>نویسنده</strong></h2>
-                        <img class="uk-border-circle" width="200" src="{{ author.picture }}" alt="{% if author.first_name %}{{ author.first_name }} {{ author.last_name }}{% else %}{{ author.username }}{% endif %}">
-                        {% if author.first_name %}
-                            <p class="uk-text-large uk-text-primary">{{ author.first_name }} {{ author.last_name }}</p>
-                        {% else %}
-                            <p class="uk-text-large uk-text-primary">{{ author.username }}</p>
-                        {% endif %}
+                        <a href="{% url "user_profile" author|mongo_id %}">
+                            <img class="uk-border-circle" width="200" src="{{ author.picture }}" alt="{% if author.first_name %}{{ author.first_name }} {{ author.last_name }}{% else %}{{ author.username }}{% endif %}">
+                            {% if author.first_name %}
+                                <p class="uk-text-large uk-text-primary">{{ author.first_name }} {{ author.last_name }}</p>
+                            {% else %}
+                                <p class="uk-text-large uk-text-primary">{{ author.username }}</p>
+                            {% endif %}
+                        </a>
                     </div>
                     <ul class="tm-list-share-lessons uk-list">
                         <li>
@@ -44,18 +46,9 @@
                 </div>
                 <div class="uk-width-small-1-1 uk-width-large-3-4">
                     <h2><strong>{{ content.title }}</strong></h2>
-                    <div class="tm-lesson-navigation">
-                        <div class="uk-grid" data-uk-margin="{cls:'uk-margin-top'}">
-                            <div class="uk-width-small-1-1 uk-width-medium-1-1 uk-width-large-1-2">
-                                <span><i class="uk-icon-file-text-o"></i> مبحث: {{ content.description|removetags:"p" }}</span>
-                            </div>
-                            <div class="uk-width-small-1-1 uk-width-medium-1-1 uk-width-large-1-2 uk-text-left uk-visible-large">
-                                <span><i class="uk-icon-calendar"></i> تاریخ انتشار: {{ lesson.created|to_jalali }}</span>
-                            </div>
-                            <div class="uk-width-small-1-1 uk-width-medium-1-1 uk-width-large-1-2 uk-hidden-large">
-                                <span><i class="uk-icon-calendar"></i> تاریخ انتشار: {{ lesson.created|to_jalali }}</span>
-                            </div>
-                        </div>
+                    <div class="tm-post-info">
+                        <span class="tm-post-info">{{ lesson.created|to_jalali }} | {{ content.description|removetags:"p" }}</span>
+                        <hr class="uk-margin-top-remove uk-margin-large-bottom">
                     </div>
                     {{ lesson.body|safe }}
                 </div>

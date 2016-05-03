@@ -1,4 +1,70 @@
 {% extends "base.html" %}
+{% load static %}
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'main/css/users/profile.css' %}">
+{% endblock %}
 {% block content %}
-    {{ user }}
+    <div class="tm-baner-user uk-nbfc uk-position-absolute uk-position-top">
+        {% if user.picture == '/media/avatars/default.png' %}
+            <div class="uk-cover-background" style="background-image: url('{% static "main/img/defaultbaner.jpg" %}');"></div>
+        {% else %}
+            <div class="uk-cover-background" style="background-image: url('{{ user.picture }}');"></div>
+        {% endif %}
+    </div>
+    <div class="uk-container uk-container-center">
+        <div class="tm-panel-user uk-panel uk-panel-box uk-width-4-5 uk-container-center">
+            <div class="uk-grid">
+                <div class="uk-width-small-1-1 uk-width-medium-2-4 uk-width-large-1-4">
+                    <img src="{{ user.picture }}" alt="{{ user.first_name }} {{ user.last_name }}">
+                    {% if 'root' in user.groups_name %}
+                        <span class="tm-user-badge uk-width-1-1 uk-margin-top">ادمین</span>
+                    {% elif 'author' in user.groups_name %}
+                        <span class="tm-user-badge uk-width-1-1 uk-margin-top">نویسنده</span>
+                    {% elif 'Member' in user.groups_name %}
+                        <span class="tm-user-badge uk-width-1-1 uk-margin-top">کاربر</span>
+                    {% endif %}
+                </div>
+                <div class="uk-width-small-1-1 uk-width-medium-2-4 uk-width-large-3-4">
+                    <h2 class="uk-heading-large"><strong>{{ user.username }}</strong></h2>
+                    {{ user.banner }}
+                    <hr>
+                    <div class="tm-form-user-profile uk-form-horizontal">
+                        <div class="uk-form-row uk-margin-small-top">
+                            <label class="uk-form-label">نام</label>
+                            <div class="uk-form-controls uk-form-controls-condensed">{{ user.first_name }}</div>
+                        </div>
+                        <div class="uk-form-row uk-margin-small-top">
+                            <label class="uk-form-label">نام خانوادگی</label>
+                            <div class="uk-form-controls uk-form-controls-condensed">{{ user.last_name }}</div>
+                        </div>
+                        <div class="uk-form-row uk-margin-small-top">
+                            <label class="uk-form-label">ایمیل</label>
+                            <div class="uk-form-controls uk-form-controls-condensed">{{ user.email }}</div>
+                        </div>
+                        <div class="uk-form-row uk-margin-small-top">
+                            <label class="uk-form-label">تاریخ ثبت نام</label>
+                            <div class="uk-form-controls uk-form-controls-condensed">{{ user.date_joined }}</div>
+                        </div>
+                        <div class="uk-form-row uk-margin-small-top">
+                            <label class="uk-form-label">آخرین ورود</label>
+                            <div class="uk-form-controls uk-form-controls-condensed">{{ user.last_login }}</div>
+                        </div>
+                        <div class="uk-form-row uk-margin-small-top">
+                            <label class="uk-form-label">لقب</label>
+                            <div class="uk-form-controls uk-form-controls-condensed">{{ user.nick_name }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tm-panel-user-footer">
+                <div class="social-buttons uk-clearfix uk-flex uk-flex-center">
+                    <a href="#" class="social-button facebook"><i class="fa uk-icon-facebook"></i></a>
+                    <a href="#" class="social-button twitter"><i class="fa uk-icon-twitter"></i></a>
+                    <a href="#" class="social-button google"><i class="fa uk-icon-google"></i></a>
+                    <a href="#" class="social-button dribbble"><i class="fa uk-icon-dribbble"></i></a>
+                    <a href="#" class="social-button skype"><i class="fa uk-icon-skype"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
