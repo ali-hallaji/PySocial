@@ -8576,6 +8576,10 @@ a.uk-thumbnail:focus {
   /* 7 */
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  direction: ltr;
+}
+.uk-modal > * {
+  direction: rtl;
 }
 
 /*

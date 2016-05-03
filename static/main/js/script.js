@@ -1,25 +1,20 @@
+// set direction on modal
+$.UIkit.langdirection = UIkit.$html.attr("dir") == "rtl" ? "left" : "right";
+
 // $('.uk-modal').on({
 
 //     'show.uk.modal': function(){
 //         $('body').css({
-//             'padding-left': '',
+//             'padding-left': '0px',
 //             'padding-right': '15px'
 //         });
 //     },
 
 //     'hide.uk.modal': function(){
-//         $('body').css({
-//             'padding-left': '',
-//             'padding-right': '15px'
-//         });
+//         $('body').removeAttr('style');
 //     }
 // });
 
-// var sticky = UIkit.sticky('header', {
-//     media: 767,
-//     top: ".uk-sticky-placeholder + *",
-//     animation: "uk-animation-slide-top"
-// });
 
 // $('.tm-accordion-content').on({
 

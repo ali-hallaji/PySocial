@@ -22,7 +22,11 @@ $modal-caption-color:                           $global-contrast-color;
 // Component
 // ========================================================================
 
-@mixin hook-modal() {}
+@mixin hook-modal() {
+    direction: ltr;
+
+    > * { direction: rtl; }
+}
 
 
 // Sub-object: `uk-modal-dialog`
