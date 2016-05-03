@@ -22,11 +22,8 @@
         <!-- Fav Icons -->
         <link rel="shortcut icon" href="{% static "main/img/social_logo.png" %}" type="image/x-icon">
         <link rel="apple-touch-icon-precomposed" href="{% static "main/img/social_logo.png" %}">
-        {% google_analytics %}
-        {% analytical_head_bottom %}
     </head>
     <body class="tm-body-main">
-        {% analytical_body_top %}
         <header data-uk-sticky="{media: 767, top: '.uk-sticky-placeholder + *', clsactive:'tm-active-navabr uk-position-z-index', animation: 'uk-animation-slide-top'}">
             <nav class="tm-navbar uk-navbar uk-position-relative uk-position-z-index">
                 <div class="uk-container uk-container-center">
@@ -132,6 +129,9 @@
 
         <!-- jQuery -->
         <script src="{% static 'main/js/jquery-2.2.3.min.js' %}"></script>
+        {% google_analytics %}
+        {% analytical_head_bottom %}
+        {% analytical_body_top %}
 
         <!-- UIkit -->
         <script src="{% static 'main/js/uikit.min.js' %}"></script>
