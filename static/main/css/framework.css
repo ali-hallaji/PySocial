@@ -7274,7 +7274,7 @@ a.uk-thumbnail:focus {
 /* Modifier `uk-overlay-background`
  ========================================================================== */
 .uk-overlay-background {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(46, 65, 98, 0.5);
 }
 
 /* Modifier `uk-overlay-image`

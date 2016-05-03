@@ -15,7 +15,12 @@
         <div class="tm-panel-user uk-panel uk-panel-box uk-width-4-5 uk-container-center">
             <div class="uk-grid">
                 <div class="uk-width-small-1-1 uk-width-medium-2-4 uk-width-large-1-4">
-                    <img src="{{ user.picture }}" alt="{{ user.first_name }} {{ user.last_name }}">
+                    <figure class="uk-overlay uk-overlay-hover">
+                        <img src="{{ user.picture }}" alt="{{ user.first_name }} {{ user.last_name }}">
+                        <figcaption class="uk-overlay-panel uk-overlay-background uk-flex uk-flex-center uk-flex-middle  uk-text-center uk-overlay-slide-bottom">
+                            <a><i class="uk-icon-camera uk-icon-large"></i></a>
+                        </figcaption>
+                    </figure>
                     {% if 'root' in user.groups_name %}
                         <span class="tm-user-badge uk-width-1-1 uk-margin-top">ادمین</span>
                     {% elif 'author' in user.groups_name %}
