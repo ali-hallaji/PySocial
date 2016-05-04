@@ -68,6 +68,19 @@ UIkit.on('beforeready.uk.dom', function(){
 // set direction on modal
 $.UIkit.langdirection = UIkit.$html.attr("dir") == "rtl" ? "left" : "right";
 
+// notifucation function
+function uikitNotify(message, icon, status, timeout, pos){
+    UIkit.notify({
+        message : " <div class='uk-flex uk-flex-middle'>\
+                        <i class='uk-icon-"+ icon +"'></i>\
+                        "+ message +"\
+                    </div>",
+        status  : typeof status == 'undefined'?'info':status,
+        timeout : typeof timeout == 'undefined'?5000:timeout,
+        pos     : typeof pos == 'undefined'?'top-center':pos
+    });
+}
+
 // $('.tm-accordion-content').on({
 
 //     'toggle.uk.acordion': function (event, active, toggle, content) {
@@ -85,18 +98,3 @@ $('.toggle-btn.uk-active').children('a:not(.uk-hidden)').html('پنهان کرد
 $('.toggle-btn').on('click', function() {
     $('.toggle-btn.uk-active').children('a:not(.uk-hidden)').html('پنهان کردن لیست <i class="uk-icon-chevron-up"></i>');
 });
-
-// croper confige
-// var image = document.getElementById('image');
-// var cropper = new Cropper(image, {
-//     aspectRatio: 16 / 9,
-//     crop: function(e) {
-//         console.log(e.detail.x);
-//         console.log(e.detail.y);
-//         console.log(e.detail.width);
-//         console.log(e.detail.height);
-//         console.log(e.detail.rotate);
-//         console.log(e.detail.scaleX);
-//         console.log(e.detail.scaleY);
-//     }
-// });

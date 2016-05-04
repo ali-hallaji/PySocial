@@ -66,6 +66,22 @@ span.tm-user-badge {
   color: #fff;
 }
 
+div.tm-placeholder {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  left: 30px;
+}
+div.tm-placeholder i {
+  color: #cacacf;
+  font-size: 5em;
+}
+
+div.cropper-container {
+  width: 500px;
+  max-height: 350px;
+}
+
 .social-button {
   float: left;
   width: 60px;

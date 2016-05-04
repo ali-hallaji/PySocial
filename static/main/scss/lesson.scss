@@ -5,7 +5,6 @@ div.tm-post-info {
     span {
         display: block;
         color: #a3a3a3;
-        margin-bottom: 5px;
     }
 }
 
@@ -18,10 +17,14 @@ ul.tm-list-share-lessons > li {
 
     &:nth-child(3) a { background-color: #3B5998; }
 
+    &:nth-child(4) a { background-color: #5EA9DD; }
+
     a {
         padding-right: 10px;
         height: 45px;
         color: #fff;
+
+        &:hover > i { color: #fff; }
     }
 
     i {
@@ -32,5 +35,7 @@ ul.tm-list-share-lessons > li {
         margin-right: auto;
         color: rgba(0, 0, 0, 0.3);
         background: rgba(0, 0, 0, 0.1);
+
+        @include transition(.5s ease);
     }
 }

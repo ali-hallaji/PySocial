@@ -43,6 +43,21 @@ span.tm-user-badge {
     color: #fff;
 }
 
+div.tm-placeholder {
+
+    @include position(absolute, null 30px 30px 30px);
+
+    i {
+        color: #cacacf;
+        font-size: 5em;
+    }
+}
+
+div.cropper-container {
+    width: 500px;
+    max-height: 350px;
+}
+
 // variables
 $transition: all 0.35s cubic-bezier(0.310, -0.105, 0.430, 1.590);
 $size: 60px;

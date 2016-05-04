@@ -76,14 +76,16 @@
     </div>
     <div id="image-upload" class="uk-offcanvas">
         <div class="uk-offcanvas-bar uk-offcanvas-bar-flip">
-            <div id="upload-drop" class="tm-placeholder uk-placeholder uk-text-center">
-                <i class="uk-icon-image uk-icon-large"></i>
-                <p>عکس مورد نظر خودرا در اینجا رها کنید</p>
-                <a class="uk-form-file uk-button">انتخاب<input id="upload-select" name="profile_picture" type="file"></a>
+            <div class="cropper-container">
+                <img id="edit_user_image" src="{{ user.picture }}" alt="">
             </div>
-
             <div id="progressbar" class="uk-progress uk-hidden">
                 <div class="uk-progress-bar" style="width: 0%;">...</div>
+            </div>
+            <div id="upload-drop" class="tm-placeholder uk-placeholder uk-text-center uk-margin-remove">
+                <i class="uk-icon-image"></i>
+                <p>عکس مورد نظر خودرا در اینجا رها کنید</p>
+                <a class="uk-form-file uk-button">انتخاب<input id="upload-select" name="profile_picture" type="file"></a>
             </div>
         </div>
     </div>
@@ -107,7 +109,9 @@
 
                 allow : '*.(jpg|jpeg|gif|png)', // allow only images
 
-                loadstart: function() {
+                type: 'json',
+
+                loadstart: function(event) {
                     bar.css("width", "0%").text("0%");
                     progressbar.removeClass("uk-hidden");
                 },
@@ -117,20 +121,55 @@
                     bar.css("width", percent+"%").text(percent+"%");
                 },
 
-                allcomplete: function(response) {
+                beforeAll: function(files) {
+                    console.log(files);
+                },
+
+                before: function(settings, files) {
+                    console.log(settings);
+                    console.log(files);
+                },
+
+                allcomplete: function(response, xhr) {
 
                     bar.css("width", "100%").text("100%");
 
                     setTimeout(function(){
                         progressbar.addClass("uk-hidden");
-                    }, 250);
+                    }, 1000);
 
-                    alert("Upload Completed")
+                    uikitNotify('عکس مورد نظر با موفقیت آپلود شد', 'check', 'success');
                 }
             };
 
             var select = UIkit.uploadSelect($("#upload-select"), settings),
                 drop   = UIkit.uploadDrop($("#upload-drop"), settings);
+        });
+
+        $('.uk-offcanvas').on({
+            'show.uk.offcanvas': function() {
+                var image = document.getElementById('edit_user_image');
+                var cropper = new Cropper(image, {
+                    aspectRatio: 1 / 1,
+                    viewMode: 2,
+                    responsive: true,
+                    center: true,
+                    movable: true,
+                    autoCrop: true,
+                    crop: function(e) {
+                        // console.log(e.detail.x);
+                        // console.log(e.detail.y);
+                        // console.log(e.detail.width);
+                        // console.log(e.detail.height);
+                        // console.log(e.detail.rotate);
+                        // console.log(e.detail.scaleX);
+                        // console.log(e.detail.scaleY);
+                    }
+                });
+            },
+
+            'hide.uk.offcanvas': function() {
+            }
         });
 
     </script>
