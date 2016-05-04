@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
+{% load func_tools %}
 {% block extrastyle %}
     <link rel="stylesheet" href="{% static 'main/css/users/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/cropper.css' %}">
 {% endblock %}
 {% block content %}
     <div class="tm-baner-user uk-nbfc uk-position-absolute uk-position-top">
@@ -18,7 +20,7 @@
                     <figure class="uk-overlay uk-overlay-hover">
                         <img src="{{ user.picture }}" alt="{{ user.first_name }} {{ user.last_name }}">
                         <figcaption class="uk-overlay-panel uk-overlay-background uk-flex uk-flex-center uk-flex-middle  uk-text-center uk-overlay-slide-bottom">
-                            <a><i class="uk-icon-camera uk-icon-large"></i></a>
+                            <a href="#image-upload" data-uk-offcanvas><i class="uk-icon-camera uk-icon-large"></i></a>
                         </figcaption>
                     </figure>
                     {% if 'root' in user.groups_name %}
@@ -48,11 +50,11 @@
                         </div>
                         <div class="uk-form-row uk-margin-small-top">
                             <label class="uk-form-label">تاریخ ثبت نام</label>
-                            <div class="uk-form-controls uk-form-controls-condensed">{{ user.date_joined }}</div>
+                            <div class="uk-form-controls uk-form-controls-condensed">{{ user.date_joined|to_jalali }}</div>
                         </div>
                         <div class="uk-form-row uk-margin-small-top">
                             <label class="uk-form-label">آخرین ورود</label>
-                            <div class="uk-form-controls uk-form-controls-condensed">{{ user.last_login }}</div>
+                            <div class="uk-form-controls uk-form-controls-condensed">{{ user.last_login|to_jalali }}</div>
                         </div>
                         <div class="uk-form-row uk-margin-small-top">
                             <label class="uk-form-label">لقب</label>
@@ -72,4 +74,64 @@
             </div>
         </div>
     </div>
+    <div id="image-upload" class="uk-offcanvas">
+        <div class="uk-offcanvas-bar uk-offcanvas-bar-flip">
+            <div id="upload-drop" class="tm-placeholder uk-placeholder uk-text-center">
+                <i class="uk-icon-image uk-icon-large"></i>
+                <p>عکس مورد نظر خودرا در اینجا رها کنید</p>
+                <a class="uk-form-file uk-button">انتخاب<input id="upload-select" type="file"></a>
+            </div>
+
+            <div id="progressbar" class="uk-progress uk-hidden">
+                <div class="uk-progress-bar" style="width: 0%;">...</div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
+{% block uikit %}
+    <script src="{% static 'main/js/components/upload.min.js' %}"></script>
+{% endblock %}
+{% block js_plugins %}
+    <script src="{% static 'main/js/cropper.min.js' %}"></script>
+{% endblock %}
+{% block js_code %}
+    <script>
+
+        $(function(){
+
+            var progressbar = $("#progressbar"),
+                bar         = progressbar.find('.uk-progress-bar'),
+                settings    = {
+
+                action: '/', // upload url
+
+                allow : '*.(jpg|jpeg|gif|png)', // allow only images
+
+                loadstart: function() {
+                    bar.css("width", "0%").text("0%");
+                    progressbar.removeClass("uk-hidden");
+                },
+
+                progress: function(percent) {
+                    percent = Math.ceil(percent);
+                    bar.css("width", percent+"%").text(percent+"%");
+                },
+
+                allcomplete: function(response) {
+
+                    bar.css("width", "100%").text("100%");
+
+                    setTimeout(function(){
+                        progressbar.addClass("uk-hidden");
+                    }, 250);
+
+                    alert("Upload Completed")
+                }
+            };
+
+            var select = UIkit.uploadSelect($("#upload-select"), settings),
+                drop   = UIkit.uploadDrop($("#upload-drop"), settings);
+        });
+
+    </script>
+{% endblock %}
