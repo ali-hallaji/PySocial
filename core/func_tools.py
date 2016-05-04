@@ -20,12 +20,12 @@ def handle_uploaded_file(path, _file):
             destination.write(chunk)
 
 
-def find_pic_by_id(name, path):
+def find_pic_by_id(_id, path):
     try:
         list_pic = os.listdir(path)
 
         for pic in list_pic:
-            if name in pic:
+            if _id in pic:
                 return pic
 
         else:
@@ -33,6 +33,30 @@ def find_pic_by_id(name, path):
 
     except:
         return False
+
+
+def count_pic_by_id(_id, path):
+    try:
+        list_pic = os.listdir(path)
+
+        count = 0
+        for pic in list_pic:
+
+            if _id in pic:
+                count += 1
+
+        return count
+
+    except:
+        return 0
+
+
+def remove_all_pic_by_id(_id, path):
+    count = count_pic_by_id(_id, path)
+
+    for i in range(1, count + 1):
+        remove_path = path + '/' + find_pic_by_id(_id, path)
+        os.remove(remove_path)
 
 
 def path_pic_box(value):

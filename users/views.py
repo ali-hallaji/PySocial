@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Python import
 import logging
+import os
 
 from bson.objectid import ObjectId
 from pymongo.errors import DuplicateKeyError
@@ -14,14 +15,20 @@ from django.db import IntegrityError
 from django.dispatch import receiver
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 from forms import RegisterUsersForm
 
 # PySocial Import
 from core import cursor
 from core.func_tools import avatar_maker
+from core.func_tools import handle_uploaded_file
+from core.func_tools import remove_all_pic_by_id
+from core.json_utils import MongoJsonResponse
 from core.mail_functions import welcome_mail
 from func_tools import super_user
 from pysocial import settings
+from pysocial.settings import BASE_DIR
 
 logger = logging.getLogger(__name__)
 
@@ -299,3 +306,17 @@ def profile(request, _id):
         kwargs['user'] = avatar_maker(kwargs['user'])
 
     return render(request, 'users/profile.html', kwargs)
+
+
+@login_required
+@require_POST
+@csrf_exempt
+def upload_profile_picture(request, _id):
+    path = BASE_DIR
+    remove_all_pic_by_id(_id, BASE_DIR + '/media/avatars')
+    _format = os.path.splitext(request.FILES['files[]'].name)
+    path += '/media/avatars/{0}'.format(_id)
+    path += '{0}'.format(_format[1])
+    handle_uploaded_file(path, request.FILES['files[]'])
+
+    return MongoJsonResponse(True, safe=False)

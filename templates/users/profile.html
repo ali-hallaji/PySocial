@@ -79,7 +79,7 @@
             <div id="upload-drop" class="tm-placeholder uk-placeholder uk-text-center">
                 <i class="uk-icon-image uk-icon-large"></i>
                 <p>عکس مورد نظر خودرا در اینجا رها کنید</p>
-                <a class="uk-form-file uk-button">انتخاب<input id="upload-select" type="file"></a>
+                <a class="uk-form-file uk-button">انتخاب<input id="upload-select" name="profile_picture" type="file"></a>
             </div>
 
             <div id="progressbar" class="uk-progress uk-hidden">
@@ -103,7 +103,7 @@
                 bar         = progressbar.find('.uk-progress-bar'),
                 settings    = {
 
-                action: '/', // upload url
+                action: '/users/profile/upload_picture/{{ user|mongo_id }}/', // upload url
 
                 allow : '*.(jpg|jpeg|gif|png)', // allow only images
 
