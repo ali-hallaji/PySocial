@@ -16,10 +16,15 @@ register = template.Library()
 
 @register.filter("mongo_id")
 def mongo_id(value, key=None):
-    if not key:
-        return str(value['_id'])
-    else:
-        return str(value[key])
+    try:
+        if not key:
+            return str(value['_id'])
+
+        else:
+            return str(value[key])
+
+    except:
+        return value
 
 
 @register.filter("box_exist_file")
