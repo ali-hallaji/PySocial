@@ -46,3 +46,22 @@ div.tm-social-links {
     }
 
 }
+
+div#captcha {
+
+    input {
+        width: 100%;
+        height: 38px;
+        padding: 8px 6px;
+        font-size: 14px;
+
+        @include order(1);
+    }
+
+    a { margin: 0 10px; }
+
+    img {
+        width: 100px;
+        height: 40px;
+    }
+}

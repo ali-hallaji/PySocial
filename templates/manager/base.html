@@ -1,27 +1,57 @@
 <!DOCTYPE html>
-{% load staticfiles %}
-<html lang="en-us" dir='rtl'>
+{% load static %}
+<html lang="fa-ir" dir='rtl'>
     <head>
         <title>{% block title %}{% endblock %}</title>
-        <script type="text/javascript" src="{% static "main/js/jquery-2.2.3.min.js" %}"></script>
-        {% block extrastyle %}{% endblock %}
         {% block extrahead %}{% endblock %}
         {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="{% static 'main/css/framework.css' %}">
+        <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'main/css/manager/manager.css' %}">
+        {% block extrastyle %}{% endblock %}
+
+        <!-- Fav Icons -->
+        <link rel="shortcut icon" href="{% static "main/img/social_logo.png" %}" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" href="{% static "main/img/social_logo.png" %}">
     </head>
 
     <body>
-        <!-- Container -->
-        <div id="container">
-            <!-- Content -->
-            <div id="content">
+        <div class="uk-flex uk-height-1-1">
+            <aside>
+                <ul class="uk-nav">
+                    <li><a href="/manager/box_list">لیست باکس ها</a></li>
+                    <li><a href="/manager/add_box">ایجاد باکس</a></li>
+                    <li><a href="/manager/content_list">لیست فهرست ها</a></li>
+                    <li><a href="/manager/add_content">ایجاد فهرست</a></li>
+                    <li><a href="/manager/user_list">لیست کاربرها</a></li>
+                    <li><a href="/manager/group_list">لیست گروه ها</a></li>
+                    <li><a href="/manager/add_group">ایجاد گروه</a></li>
+                    <li><a href="/manager/parent_list">لیست ریشه ها</a></li>
+                    <li><a href="/manager/add_parent">ایجاد ریشه</a></li>
+                    <li><a href="/manager/home_list">لیست نوشته های صفحه خانه</a></li>
+                    <li><a href="/manager/add_home">اجاد مطلب برای صفحه خانه</a></li>
+                </ul>
+            </aside>
+            <section class="uk-width-1-1">
                 {% block content %}{% endblock %}
-            </div>
-            <!-- END Content -->
-
-            {% block footer %}<div id="footer"></div>{% endblock %}
+            </section>
         </div>
-        <!-- END Container -->
+        {% block footer %}{% endblock %}
 
+        <!-- jQuery -->
+        <script src="{% static 'main/js/jquery-2.2.3.min.js' %}"></script>
+
+        <!-- UIkit -->
+        <script src="{% static 'main/js/uikit.min.js' %}"></script>
+        <script src="{% static 'main/js/components/notify.min.js' %}"></script>
+        <script src="{% static 'main/js/components/search.min.js' %}"></script>
+        {% block uikit %}{% endblock %}
+
+        <!-- Plugins And Scripts -->
+        {% block js_plugins %}{% endblock %}
+        <script src="{% static 'main/js/script.js' %}"></script>
+        {% block js_code %}{% endblock %}
     </body>
-    {% block meta_js %}{% endblock %}
 </html>

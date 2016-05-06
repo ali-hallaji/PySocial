@@ -56,3 +56,19 @@ div.tm-social-links a i {
 div.tm-social-links a i:hover {
   color: #748e95;
 }
+
+div#captcha input {
+  width: 100%;
+  height: 38px;
+  padding: 8px 6px;
+  font-size: 14px;
+  -webkit-order: 1;
+  order: 1;
+}
+div#captcha a {
+  margin: 0 10px;
+}
+div#captcha img {
+  width: 100px;
+  height: 40px;
+}

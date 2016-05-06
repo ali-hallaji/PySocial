@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl" class="uk-height-1-1">
+    <head>
+        <title>PySocial | {% block title_page %}{% endblock title_page %}</title>
+        <meta property="og:site_name" content="PySocial">
+        <meta property="og:url" content="http://pysocial.com">
+        <meta name="description" content="Login into PySocial.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static 'main/css/framework.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'main/css/users/authentication.css' %}">
+    </head>
+    <body class="uk-height-1-1">
+        {% block content %}{% endblock content %}
+
+        <!-- jQuery -->
+        <script src="{% static 'main/js/jquery-2.2.3.min.js' %}"></script>
+
+        <!-- UIkit -->
+        <script src="{% static 'main/js/uikit.min.js' %}"></script>
+        <script src="{% static 'main/js/components/notify.min.js' %}"></script>
+        <script src="{% static 'main/js/components/search.min.js' %}"></script>
+        {% block uikit %}{% endblock %}
+
+        <!-- Plugins And Scripts -->
+        {% block js_plugins %}{% endblock %}
+        <script src="{% static 'main/js/script.js' %}"></script>
+        {% block js_code %}{% endblock %}
+    </body>
+</html>
