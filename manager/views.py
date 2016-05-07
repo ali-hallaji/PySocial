@@ -32,7 +32,7 @@ logger = logging.getLogger(__name__)
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def add_home(request):
     kwargs = {}
 
@@ -55,7 +55,7 @@ def add_home(request):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def edit_home(request, _id):
     kwargs = {}
     criteria = {'_id': ObjectId(_id)}
@@ -87,7 +87,7 @@ def edit_home(request, _id):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def home_list(request):
     kwargs = {}
     kwargs['data'] = list(cursor.home.find())
@@ -96,7 +96,7 @@ def home_list(request):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def define_group(request):
     kwargs = {}
     all_views = get_all_view_names()
@@ -129,7 +129,7 @@ def define_group(request):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def group_list(request):
     kwargs = {}
     kwargs['data'] = list(cursor.acl_group.find())
@@ -138,7 +138,7 @@ def group_list(request):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def edit_group(request, _id):
     kwargs = {}
 
@@ -181,7 +181,7 @@ def edit_group(request, _id):
 @login_required
 @csrf_exempt
 @require_POST
-# @has_perm_view()
+@has_perm_view()
 def delete_group(request, _id):
     remove = cursor.acl_group.delete_one({'_id': ObjectId(_id)})
     return JsonResponse(remove, safe=False)
@@ -190,7 +190,7 @@ def delete_group(request, _id):
 @login_required
 @csrf_exempt
 @require_POST
-# @has_perm_view()
+@has_perm_view()
 def delete_user(request, username):
     kwargs = {}
     user = get_object_or_404(User, username=username)
@@ -202,7 +202,7 @@ def delete_user(request, username):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def user_list(request):
     kwargs = {}
     projection = {
@@ -217,7 +217,7 @@ def user_list(request):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def edit_user(request, _id):
     kwargs = {}
     criteria = {'_id': ObjectId(_id)}
@@ -279,7 +279,7 @@ def edit_user(request, _id):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def add_box(request):
     kwargs = {}
 
@@ -310,7 +310,7 @@ def add_box(request):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def box_list(request):
     kwargs = {}
 
@@ -322,7 +322,7 @@ def box_list(request):
 @login_required
 @csrf_exempt
 @require_POST
-# @has_perm_view()
+@has_perm_view()
 def delete_box(request, _id):
     kwargs = {}
 
@@ -340,7 +340,7 @@ def delete_box(request, _id):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def edit_box(request, _id):
     kwargs = {}
 
@@ -379,7 +379,7 @@ def edit_box(request, _id):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def add_content(request):
     kwargs = {}
 
@@ -400,7 +400,7 @@ def add_content(request):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def edit_content(request, _id):
     kwargs = {}
 
@@ -425,7 +425,7 @@ def edit_content(request, _id):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def content_list(request):
     kwargs = {}
     kwargs['contents'] = list(cursor.contents.find())
@@ -434,7 +434,7 @@ def content_list(request):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def add_parent(request):
     kwargs = {}
 
@@ -456,7 +456,7 @@ def add_parent(request):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def edit_parent(request, _id):
     kwargs = {}
 
@@ -486,7 +486,7 @@ def edit_parent(request, _id):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def parent_list(request):
     kwargs = {}
 
@@ -498,6 +498,6 @@ def parent_list(request):
 
 
 @login_required
-# @has_perm_view()
+@has_perm_view()
 def home_manager(request):
     return render(request, 'manager/home_manager.html')
