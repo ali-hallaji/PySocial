@@ -6,7 +6,10 @@
     <link rel="stylesheet" href="{% static 'main/css/content.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="uk-block uk-block-large uk-block-primary" style="margin-top: -60px;">
+    <div class="tm-baner-user uk-nbfc uk-position-absolute uk-position-top">
+        <div class="uk-cover-background" style="background-image: url('{{ box.picture }}');"></div>
+    </div>
+    <div class="uk-block uk-block-large uk-block-primary">
         <div class="uk-container uk-container-center">
             <div class="uk-grid uk-flex-middle">
                 <div class="uk-flex-item-auto">
