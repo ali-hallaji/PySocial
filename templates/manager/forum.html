@@ -1,34 +1,38 @@
 {% extends 'manager/base.html' %}
 {% block title %}
     {% if 'edit' in request.get_full_path %}
-        Edit Group
+        Edit Forum
     {% else %}
-        Define Group
+        Add Forum
     {% endif %}
 {% endblock %}
 {% load staticfiles %}
 {% block extrahead %}
+    <script src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+    <script src="{% static "ckeditor/ckeditor-init.js" %}"></script>
 {% endblock %}
-
 {% block content %}
     {% if not not_exists %}
-        <form method="POST">
+        <form  enctype="multipart/form-data" method="POST">
             {% csrf_token %}
             {% if 'edit' in request.get_full_path %}
-                <h1><strong>Edit Group</strong></h1>
+                <h1><strong>Edit Forum</strong></h1>
             {% else %}
-                <h1><strong>Add Group</strong></h1>
+                <h1><strong>Add Forum</strong></h1>
             {% endif %}
+             <input type="file" name="forum_pic">
             {{ form.as_ul }}
-            <hr>
+
             {% if 'edit' in request.get_full_path %}
+                <hr>
                 <button type="submit">Edit</button>
             {% else %}
-                <button type="submit">Insert</button>
+                <hr>
+                <button type="submit">Add</button>
             {% endif %}
         </form>
     {% else %}
-        چنین گروهی موجود نمیباشد
+        چنین فصلی موجود نمیباشد
     {% endif %}
     {% if error and error.errors %}
         {% for key, value in error.errors.items %}

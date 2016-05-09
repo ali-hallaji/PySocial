@@ -15,7 +15,11 @@
     {% if not not_exists %}
         <form  enctype="multipart/form-data" method="POST">
             {% csrf_token %}
-            <h1><strong>Add Content</strong></h1>
+            {% if 'edit' in request.get_full_path %}
+                <h1><strong>Edit Content</strong></h1>
+            {% else %}
+                <h1><strong>Add Content</strong></h1>
+            {% endif %}
             {{ form.as_ul }}
 
             {% if 'edit' in request.get_full_path %}
