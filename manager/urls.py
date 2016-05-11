@@ -5,6 +5,7 @@ from django.conf.urls import url
 from views import add_box
 from views import add_content
 from views import add_home
+from views import add_forum
 from views import add_parent
 from views import box_list
 from views import content_list
@@ -13,6 +14,7 @@ from views import delete_box
 from views import delete_group
 from views import delete_user
 from views import edit_box
+from views import edit_forum
 from views import edit_content
 from views import edit_group
 from views import edit_home
@@ -20,6 +22,7 @@ from views import edit_parent
 from views import edit_user
 from views import group_list
 from views import home_list
+from views import forum_list
 from views import home_manager
 from views import parent_list
 from views import user_list
@@ -28,6 +31,7 @@ from views import user_list
 urlpatterns = [
     url(r'^home/$', home_manager, name="home_manager"),
     url(r'^user_list/$', user_list, name="user_list"),
+    url(r'^forum_list/$', forum_list, name='forum_list'),
     url(r'^home_list/$', home_list, name="home_list"),
     url(r'^box_list/$', box_list, name="box_list"),
     url(r'^parent_list/$', parent_list, name="parent_list"),
@@ -35,6 +39,7 @@ urlpatterns = [
     url(r'^content_list/$', content_list, name="content_list"),
     url(r'^add_box/$', add_box, name="add_box"),
     url(r'^add_group/$', define_group, name="add_group"),
+    url(r'^add_forum/$', add_forum, name='add_forum'),
     url(r'^add_content/$', add_content, name="add_content"),
     url(r'^add_home/$', add_home, name="add_home"),
     url(r'^add_parent/$', add_parent, name="add_parent"),
@@ -50,6 +55,11 @@ urlpatterns = [
         r'^edit_user/(?P<_id>[\w\d]+)/$',
         edit_user,
         name="edit_user"
+    ),
+    url(
+        r'^edit_forum/(?P<_id>[\w\d]+)/$',
+        edit_forum,
+        name="edit_forum"
     ),
     url(
         r'^edit_parent/(?P<_id>[\w\d]+)/$',

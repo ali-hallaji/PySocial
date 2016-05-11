@@ -3,6 +3,7 @@ import logging
 import os
 
 from bson.objectid import ObjectId
+from pymongo import ASCENDING
 
 # Django import
 from django.contrib.auth.decorators import login_required
@@ -22,6 +23,7 @@ from core.func_tools import find_pic_by_id
 from core.func_tools import handle_uploaded_file
 from forms import BoxForm
 from forms import ContentForm
+from forms import ForumForm
 from forms import GroupForm
 from forms import HomeForm
 from forms import ParentForm
@@ -501,3 +503,79 @@ def parent_list(request):
 @has_perm_view()
 def home_manager(request):
     return render(request, 'manager/home_manager.html')
+
+
+@login_required
+@has_perm_view()
+def add_forum(request):
+    kwargs = {}
+
+    if request.method == 'POST':
+        kwargs['form'] = ForumForm(request.POST)
+
+        if kwargs['form'].is_valid():
+            data = kwargs['form'].cleaned_data
+            forum_pic = request.FILES.get('forum_pic', None)
+
+            result = cursor.forum.insert(data)
+
+            if result:
+                if forum_pic:
+                    path = BASE_DIR
+                    _format = os.path.splitext(request.FILES['forum_pic'].name)
+                    path += '/media/forum/{0}'.format(str(result))
+                    path += '{0}'.format(_format[1])
+
+                    handle_uploaded_file(path, request.FILES['forum_pic'])
+
+                return HttpResponseRedirect('/manager/forum_list')
+
+    else:
+        kwargs['form'] = ForumForm()
+
+    return render(request, 'manager/forum.html', kwargs)
+
+
+@login_required
+@has_perm_view()
+def forum_list(request):
+    kwargs = {}
+    kwargs['forums'] = list(cursor.forum.find().sort('sort', ASCENDING))
+    return render(request, 'manager/forum_list.html', kwargs)
+
+
+@login_required
+@has_perm_view()
+def edit_forum(request, _id):
+    kwargs = {}
+
+    criteria = {'_id': ObjectId(_id)}
+    forum = cursor.forum.find_one(criteria)
+
+    if not forum:
+        kwargs['not_exists'] = True
+        return render(request, 'manager/forum.html', kwargs)
+
+    if request.method == 'POST':
+        kwargs['form'] = ForumForm(request.POST)
+
+        if kwargs['form'].is_valid():
+            data = kwargs['form'].cleaned_data
+            forum_pic = request.FILES.get('forum_pic', None)
+            update = cursor.forum.update_one(criteria, {'$set': data})
+
+            if update.raw_result.get('updatedExisting', None):
+                if forum_pic:
+                    path = BASE_DIR
+                    _format = os.path.splitext(request.FILES['forum_pic'].name)
+                    path += '/media/forum/{0}'.format(_id)
+                    path += '{0}'.format(_format[1])
+
+                    handle_uploaded_file(path, request.FILES['forum_pic'])
+
+                return HttpResponseRedirect('/manager/forum_list')
+
+    else:
+        kwargs['form'] = ForumForm(forum)
+
+    return render(request, 'manager/forum.html', kwargs)

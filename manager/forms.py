@@ -190,3 +190,13 @@ class ParentForm(forms.Form):
         for field in self.fields:
             if self.fields[field].required:
                 self.fields[field].widget.attrs['required'] = 'required'
+
+
+class ForumForm(forms.Form):
+    sort = forms.IntegerField(label='sort')
+    description = forms.CharField(
+        label='description',
+        widget=forms.Textarea()
+    )
+    title = forms.CharField(label='title')
+    title_en = forms.CharField(label='title en')
