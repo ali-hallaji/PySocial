@@ -130,6 +130,8 @@ def lesson(request, dashboard, _id):
     kwargs['box_name_en'] = kwargs['content']['parent'].split('|')[0]
     kwargs['box_name_fa'] = kwargs['content']['parent'].split('|')[1]
 
+    kwargs['box_pic'] = path_pic_box(str(kwargs['lesson']['box_id']))
+
     return render(request, 'dashboard/lesson.html', kwargs)
 
 

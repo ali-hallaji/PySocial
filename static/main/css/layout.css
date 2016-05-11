@@ -16,8 +16,8 @@
 }
 
 /* Layout */
-header.tm-active-navabr nav.tm-navbar {
-  background: #003c5a;
+header.uk-navbar-attached {
+  background-color: #003c5a;
 }
 header.tm-active-navabr ul.tm-navbar-nav > li > a {
   color: #2379a3;

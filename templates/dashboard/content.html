@@ -6,29 +6,31 @@
     <link rel="stylesheet" href="{% static 'main/css/content.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="tm-baner-user uk-nbfc uk-position-absolute uk-position-top">
-        <div class="uk-cover-background" style="background-image: url('{{ box.picture }}');"></div>
-    </div>
-    <div class="uk-block uk-block-large uk-block-primary">
-        <div class="uk-container uk-container-center">
-            <div class="uk-grid uk-flex-middle">
-                <div class="uk-flex-item-auto">
-                    <div class="tm-panel-header-content uk-panel uk-flex uk-flex-column uk-flex-space-between">
-                        <h1 class="uk-heading-large">{{ box.title_fa }}</h1>
-                        <hr>
-                        <ul class="tm-subnav-content uk-subnav">
-                            <li><i class="uk-icon-thumbs-up"></i>{{ box.likes }} لایک</li>
-                            <li><i class="uk-icon-book"></i>{{ len_contents }} درس</li>
-                            <li><i class="uk-icon-users"></i>{{ box.likes }} بازدید</li>
-                        </ul>
+    <section class="tm-main-section-panel">
+        <div class="tm-baner-content uk-nbfc uk-position-absolute uk-position-top">
+            <div class="uk-cover-background" style="background-image: url('{{ box.picture }}');"></div>
+        </div>
+        <div class="uk-block uk-block-large">
+            <div class="uk-container uk-container-center">
+                <div class="uk-grid uk-flex-middle">
+                    <div class="uk-flex-item-auto">
+                        <div class="tm-panel-header-content uk-panel uk-flex uk-flex-column uk-flex-space-between uk-contrast">
+                            <h1 class="uk-heading-large">{{ box.title_fa }}</h1>
+                            <hr>
+                            <ul class="tm-subnav-content uk-subnav">
+                                <li><i class="uk-icon-thumbs-up"></i>{{ box.likes }} لایک</li>
+                                <li><i class="uk-icon-book"></i>{{ len_contents }} درس</li>
+                                <li><i class="uk-icon-users"></i>{{ box.likes }} بازدید</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="uk-hidden-small">
-                    <img src="{{ box.picture }}" alt="{{ box.title_fa }}">
+                    <div class="uk-hidden-small">
+                        <img src="{{ box.picture }}" alt="{{ box.title_fa }}">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <div class="uk-block">
         <div class="uk-container uk-container-center">
         <div class="uk-grid" data-uk-grid-margin>

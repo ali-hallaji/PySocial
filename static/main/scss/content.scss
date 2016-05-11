@@ -1,16 +1,36 @@
 @import "style";
 
+section.tm-main-section-panel { height: 456px; }
+
+div.tm-baner-content {
+
+    &:after {
+        content: '';
+        background-color: rgba(44,51,64,0.5);
+
+        @include position(absolute, 0 0 0 0);
+    }
+}
+
+div.uk-cover-background {
+    height: 576px;
+    margin: -30px;
+    background-size: 80%;
+    background-color: #003c5a;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    @include filter(blur(10px));
+}
+
 div.tm-panel-header-content {
 
-    h1 {
-        font-family: $mirzab-font, $ubuntub-font;
-        color: #3AC;
-    }
+    h1 { font-family: $mirzab-font, $ubuntub-font; }
 
     hr {
         margin-top: 100px;
         border-width: 2px;
-        border-color: #DAEBF3;
+        border-color: #3AC;
     }
 }
 
@@ -18,7 +38,6 @@ ul.tm-subnav-content {
 
     li {
         padding-left: 2rem;
-        color: #3AC;
 
         i {
             width: 25px;

@@ -1,15 +1,18 @@
-header.tm-active-navabr {
+header {
 
-    nav.tm-navbar { background: #003c5a; }
+    &.uk-navbar-attached { background-color: #003c5a; }
 
-    ul.tm-navbar-nav > li > a {
-        color: #2379a3;
+    &.tm-active-navabr {
 
-        &:hover,
-        &:focus,
-        &:active {
-            color: #fff;
-            border-bottom: 1px solid #fff;
+        ul.tm-navbar-nav > li > a {
+            color: #2379a3;
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: #fff;
+                border-bottom: 1px solid #fff;
+            }
         }
     }
 }

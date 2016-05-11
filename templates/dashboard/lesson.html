@@ -8,60 +8,70 @@
     <link rel="stylesheet" href="{% static 'main/css/lesson.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="uk-block uk-block-large uk-block-primary uk-contrast">
-        <div class="uk-container uk-container-center">
-            <h2><strong>{{ content.title }}</strong></h2>
-            <div class="tm-post-info">
-                <span class="tm-post-info uk-text-primary">{{ lesson.created|to_jalali }} | {{ content.description|removetags:"p" }}</span>
+    <section class="tm-main-section-panel">
+        <div class="tm-baner-content uk-nbfc uk-position-absolute uk-position-top">
+            <div class="uk-cover-background" style="background-image: url('{{ box_pic }}');"></div>
+        </div>
+        <div class="uk-block uk-contrast">
+            <div class="uk-container uk-container-center">
+                <div class="uk-flex uk-flex-middle uk-flex-center">
+                    <img class="uk-margin-left" src="{{ box_pic }}" alt="{{ box.title_fa }}">
+                    <div class="tm-post-info uk-width-1-1">
+                        <h2><strong>{{ content.title }}</strong></h2>
+                        <span class="tm-post-info uk-text-muted">{{ lesson.created|to_jalali }} | {{ content.description|removetags:"p" }}</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
     <div class="uk-container uk-container-center">
-        <div class="uk-grid">
-            <div class="uk-visible-large uk-width-large-1-4">
-                <div class="uk-text-center">
-                    <h2 class="uk-text-right"><strong>نویسنده</strong></h2>
-                    <a href="{% url "user_profile" author|mongo_id %}">
-                        <img class="uk-border-circle" width="200" src="{{ author.picture }}" alt="{% if author.first_name %}{{ author.first_name }} {{ author.last_name }}{% else %}{{ author.username }}{% endif %}">
-                        {% if author.first_name %}
-                            <p class="uk-text-large uk-text-primary">{{ author.first_name }} {{ author.last_name }}</p>
-                        {% else %}
-                            <p class="uk-text-large uk-text-primary">{{ author.username }}</p>
-                        {% endif %}
-                    </a>
+        <div class="uk-block">
+            <div class="uk-grid">
+                <div class="uk-visible-large uk-width-large-1-4">
+                    <div class="uk-text-center">
+                        <h2 class="uk-text-right"><strong>نویسنده</strong></h2>
+                        <a href="{% url "user_profile" author|mongo_id %}">
+                            <img class="uk-border-circle" width="200" src="{{ author.picture }}" alt="{% if author.first_name %}{{ author.first_name }} {{ author.last_name }}{% else %}{{ author.username }}{% endif %}">
+                            {% if author.first_name %}
+                                <p class="uk-text-large uk-text-primary">{{ author.first_name }} {{ author.last_name }}</p>
+                            {% else %}
+                                <p class="uk-text-large uk-text-primary">{{ author.username }}</p>
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div>
+                        <h5 class="uk-text-right"><i class="uk-icon-share-alt uk-icon-small uk-margin-small-left"></i> این درس را با دوستانتان به اشتراک بگذارید</h5>
+                        <ul class="tm-list-share-lessons uk-list">
+                            <li>
+                                <a class="uk-flex uk-flex-middle" href="https://plus.google.com/share?url=http://www.PySocial.com{{ request.get_full_path|urlencode }}">
+                                    <b>اشتراک گذاری در شبکه جیمیل پلاس</b>
+                                    <i class="uk-icon-google-plus uk-icon-large"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="uk-flex uk-flex-middle" href="http://www.linkedin.com/shareArticle?url=http://www.PySocial.com{{ request.get_full_path|urlencode }}&title={{ content.title }}&summary={{ content.title|truncatewords:4 }}&source=http://PySocial.com">
+                                    <b>اشتراک گذاری در شبکه لینکدین</b>
+                                    <i class="uk-icon-linkedin uk-icon-large"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="uk-flex uk-flex-middle" href="http://www.facebook.com/sharer/sharer.php?u=http://www.PySocial.com{{ request.get_full_path|urlencode }}">
+                                    <b>اشتراک گذاری در شبکه فیس بوک</b>
+                                    <i class="uk-icon-facebook-f uk-icon-large"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="uk-flex uk-flex-middle" href="http://www.facebook.com/sharer/sharer.php?u=http://www.PySocial.com{{ request.get_full_path|urlencode }}">
+                                    <b>اشتراک گذاری در شبکه توییتر</b>
+                                    <i class="uk-icon-twitter uk-icon-large"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div>
-                    <h5 class="uk-text-right"><i class="uk-icon-share-alt uk-icon-small uk-margin-small-left"></i> این درس را با دوستانتان به اشتراک بگذارید</h5>
-                    <ul class="tm-list-share-lessons uk-list">
-                        <li>
-                            <a class="uk-flex uk-flex-middle" href="https://plus.google.com/share?url=http://www.PySocial.com{{ request.get_full_path|urlencode }}">
-                                <b>اشتراک گذاری در شبکه جیمیل پلاس</b>
-                                <i class="uk-icon-google-plus uk-icon-large"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="uk-flex uk-flex-middle" href="http://www.linkedin.com/shareArticle?url=http://www.PySocial.com{{ request.get_full_path|urlencode }}&title={{ content.title }}&summary={{ content.title|truncatewords:4 }}&source=http://PySocial.com">
-                                <b>اشتراک گذاری در شبکه لینکدین</b>
-                                <i class="uk-icon-linkedin uk-icon-large"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="uk-flex uk-flex-middle" href="http://www.facebook.com/sharer/sharer.php?u=http://www.PySocial.com{{ request.get_full_path|urlencode }}">
-                                <b>اشتراک گذاری در شبکه فیس بوک</b>
-                                <i class="uk-icon-facebook-f uk-icon-large"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="uk-flex uk-flex-middle" href="http://www.facebook.com/sharer/sharer.php?u=http://www.PySocial.com{{ request.get_full_path|urlencode }}">
-                                <b>اشتراک گذاری در شبکه توییتر</b>
-                                <i class="uk-icon-twitter uk-icon-large"></i>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="uk-width-small-1-1 uk-width-large-3-4">
+                    <article>{{ lesson.body|safe }}</article>
                 </div>
-            </div>
-            <div class="uk-width-small-1-1 uk-width-large-3-4">
-                {{ lesson.body|safe }}
             </div>
         </div>
     </div>

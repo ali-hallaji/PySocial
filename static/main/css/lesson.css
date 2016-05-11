@@ -15,6 +15,25 @@
   background: #3AC;
 }
 
+section.tm-main-section-panel {
+  height: 356px;
+}
+
+div.tm-baner-content:after {
+  content: '';
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAH0lEQVQIW2NkQAU+jEh8HwYGhi0wATAHJAkSgHNAAgBV7gNRbmnIiQAAAABJRU5ErkJggg=="), linear-gradient(to left, #21abc7, #616db3);
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAH0lEQVQIW2NkQAU+jEh8HwYGhi0wATAHJAkSgHNAAgBV7gNRbmnIiQAAAABJRU5ErkJggg=="), linear-gradient(to left, #21abc7, #616db3);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+div.uk-cover-background {
+  height: 416px;
+}
+
 div.tm-post-info span {
   display: block;
   color: #a3a3a3;
