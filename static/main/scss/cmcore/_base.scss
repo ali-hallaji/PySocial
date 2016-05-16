@@ -45,8 +45,9 @@ $base-blockquote-line-height:                   round(($base-blockquote-font-siz
 
 $base-code-font-size:                           round(($global-font-size * 0.85)); // 12px / 14px
 
+$base-pre-padding:                              0;
 $base-pre-color:                                $global-color;
-$base-pre-font-size:                            round(($global-font-size * 0.85)); // 12px / 14px
+$base-pre-font-size:                            16px; // 12px / 14px
 $base-pre-line-height:                          round(($base-pre-font-size * 1.46)); // 18px / 20px
 
 
@@ -105,7 +106,9 @@ $base-pre-line-height:                          round(($base-pre-font-size * 1.4
 // Preformatted text
 // ========================================================================
 
-@mixin hook-base-pre() {}
+@mixin hook-base-pre() {
+	direction: ltr;
+}
 
 
 // Miscellaneous
