@@ -52,7 +52,7 @@
                 <p>{{ box.description|safe }}</p>
                 <div class="tm-accordion-content uk-accordion" data-uk-accordion="{toggle:'.toggle-btn', clsactive:'uk-active'}" data-uk-margin="{cls:'uk-margin-large'}">
                     {% for parent in parents %}
-                        <div class="tm-panel-course uk-panel">
+                        <div class="tm-panel-course uk-panel uk-panel-box">
                             <div class="header">
                                 <h3 class="uk-panel-title"><span>{{ forloop.counter }}</span><strong>{{ parent.2 }}</strong></h3>
                                 {{ parent.1|safe }}

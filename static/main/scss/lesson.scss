@@ -1,5 +1,7 @@
 @import "style";
 
+html { @include background(url('/static/main/img/bg.png')); }
+
 section.tm-main-section-panel { height: 356px; }
 
 div.tm-baner-content {

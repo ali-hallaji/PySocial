@@ -1,12 +1,14 @@
 @import "style";
 
+html { @include background(url('/static/main/img/bg.png')); }
+
 section.tm-main-section-panel { height: 456px; }
 
 div.tm-baner-content {
 
     &:after {
         content: '';
-        background-color: rgba(44,51,64,0.5);
+        background-color: rgba(44, 51, 64, .7);
 
         @include position(absolute, 0 0 0 0);
     }
@@ -56,6 +58,7 @@ ul.tm-subnav-content {
 }
 
 div.tm-panel-course {
+    
     border: 1px solid #ebf4f7;
     padding: 1rem 2rem;
 

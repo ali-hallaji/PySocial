@@ -4,7 +4,7 @@ body { background-color: #EFEFEF; }
 
 div.tm-baner-user:after {
     content: '';
-    background-color: rgba(44, 51, 64, 0.5);
+    background-color: rgba(44, 51, 64, .7);
 
     @include position(absolute, 0 0 0 0);
 }

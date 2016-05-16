@@ -15,6 +15,11 @@
   background: #3AC;
 }
 
+html {
+  background: url("/static/main/img/bg.png");
+  background: url("/static/main/img/bg.png");
+}
+
 section.tm-main-section-panel {
   height: 356px;
 }
