@@ -56,10 +56,16 @@ def last_persian_date(_date):
     return text
 
 
-def gregorian_to_jalali(_date):
+def gregorian_to_jalali(_date, format_split='-'):
     """
         Convert Gregorian date to Jalali date into Template
     """
+    if format_split == '-':
+        text_date = "{0:04d}-{1:02d}-{2:02d}"
+
+    elif format_split == '/':
+        text_date = "{0:04d}/{1:02d}/{2:02d}"
+
     if isinstance(_date, str):
         _date = _date.strip()
 
@@ -90,11 +96,7 @@ def gregorian_to_jalali(_date):
     date = jdatetime.GregorianToJalali(year, month, day)
 
     if with_time:
-        _datetime = '{0:04d}-{1:02d}-{2:02d}'.format(
-            date.jyear,
-            date.jmonth,
-            date.jday
-        )
+        _datetime = text_date.format(date.jyear, date.jmonth, date.jday)
         _datetime += ' {0:02d}:{1:02d}:{2:02d}'.format(
             _date.hour,
             _date.minute,
@@ -104,10 +106,6 @@ def gregorian_to_jalali(_date):
         return _datetime
 
     else:
-        _date = '{0:04d}-{1:02d}-{2:02d}'.format(
-            date.jyear,
-            date.jmonth,
-            date.jday
-        )
+        _date = text_date.format(date.jyear, date.jmonth, date.jday)
 
         return _date
