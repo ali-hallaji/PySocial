@@ -90,8 +90,12 @@ def gregorian_to_jalali(_date):
     date = jdatetime.GregorianToJalali(year, month, day)
 
     if with_time:
-        _datetime = '{0}/{1}/{2}'.format(date.jyear, date.jmonth, date.jday)
-        _datetime += ' {0}:{1}:{2}'.format(
+        _datetime = '{0:04d}-{1:02d}-{2:02d}'.format(
+            date.jyear,
+            date.jmonth,
+            date.jday
+        )
+        _datetime += ' {0:02d}:{1:02d}:{2:02d}'.format(
             _date.hour,
             _date.minute,
             _date.second
@@ -100,6 +104,10 @@ def gregorian_to_jalali(_date):
         return _datetime
 
     else:
-        _date = '{0}/{1}/{2}'.format(date.jyear, date.jmonth, date.jday)
+        _date = '{0:04d}-{1:02d}-{2:02d}'.format(
+            date.jyear,
+            date.jmonth,
+            date.jday
+        )
 
         return _date
