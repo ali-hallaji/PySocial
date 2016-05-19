@@ -61,10 +61,26 @@ def gregorian_to_jalali(_date):
         Convert Gregorian date to Jalali date into Template
     """
     if isinstance(_date, str):
-        _date = parser.parse(_date)
+        _date = _date.strip()
+
+        if len(_date) <= 11:
+            _date = parser.parse(_date).date()
+
+        else:
+            _date = parser.parse(_date)
+
+    if isinstance(_date, unicode):
+        _date = str(_date).strip()
+
+        if len(_date) <= 11:
+            _date = parser.parse(_date).date()
+
+        else:
+            _date = parser.parse(_date)
 
     if isinstance(_date, datetime.datetime):
         with_time = True
+
     elif isinstance(_date, datetime.date):
         with_time = False
 
