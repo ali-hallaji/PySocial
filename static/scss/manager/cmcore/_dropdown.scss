@@ -1,0 +1,42 @@
+//
+// Component: Dropdown
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$dropdown-z-index:                              $global-z-index + 20;
+$dropdown-padding:                              10px;
+$dropdown-background:                           #edf4f8;
+$dropdown-color:                                #003c5a;
+$dropdown-divider-border:                       #003c5a;
+
+$dropdown-navbar-color:                         $global-color;
+
+
+// Component
+// ========================================================================
+
+@mixin hook-dropdown() {
+    border: 1px solid #D6E6EE;
+}
+
+
+// Modifier: `uk-dropdown-navbar`
+// ========================================================================
+
+@mixin hook-dropdown-navbar() {}
+
+
+// Sub-object: `uk-dropdown-overlay`
+// ========================================================================
+
+@mixin hook-dropdown-overlay() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+@mixin hook-dropdown-misc() {}

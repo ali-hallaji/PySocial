@@ -1,0 +1,79 @@
+//
+// Component: Variables
+//
+// ========================================================================
+
+
+// Global variables
+// ========================================================================
+
+//
+// Text
+//
+
+$global-color:                                  #393d40;
+$global-muted-color:                            #999;
+
+$global-link-color:                             #666;
+$global-link-hover-color:                       #3a3a3a;
+
+$global-contrast-color:                         #fff;
+
+$global-font-size:                              12px;
+$global-line-height:                            20px;
+
+//
+// Backgrounds & Borders
+//
+
+$global-background:                             #fff;
+$global-border:                                 #ddd;
+
+$global-primary-background:                     #fc8f44;
+$global-success-background:                     #48ac58;
+$global-warning-background:                     #faa732;
+$global-danger-background:                      #da314b;
+
+//
+// Spacings
+//
+
+$global-margin:                                 15px;
+$global-margin-large:                           25px;
+$global-grid-gutter:                            25px;
+$global-grid-gutter-large:                      35px;
+$global-grid-gutter-xlarge:                     50px;
+
+//
+// Controls
+//
+
+$global-height:                                 28px;
+$global-height-mini:                            20px;
+$global-height-small:                           23px;
+$global-height-large:                           38px;
+
+//
+// Z-index
+//
+
+$global-z-index:                                1000;
+
+//
+// Fonts
+//
+
+$global-font-family:                            mirza, ubuntu;
+
+//
+// Breakpoints
+//
+$breakpoint-small:                               480px;
+$breakpoint-medium:                              768px;
+$breakpoint-large:                               960px;
+$breakpoint-xlarge:                              1220px;
+
+$breakpoint-mini-max:                            ($breakpoint-small - 1);
+$breakpoint-small-max:                           ($breakpoint-medium - 1);
+$breakpoint-medium-max:                          ($breakpoint-large - 1);
+$breakpoint-large-max:                           ($breakpoint-xlarge - 1);

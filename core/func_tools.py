@@ -76,7 +76,7 @@ def path_pic_box(value):
         path = '/media' + path.split('media')[1]
 
     else:
-        path = '/static/main/img/default.png'
+        path = '/static/img/default.png'
 
     return path
 

@@ -3,12 +3,12 @@
 {% block title %}PySocial{% endblock %}
 {% load func_tools %}
 {% block extrastyle %}
-    <link rel="stylesheet" href="{% static 'main/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/client/home.css' %}">
 {% endblock %}
 {% block content %}
     <section id="main-slide">
         <div class="uk-block uk-padding-remove uk-block-primary uk-height-viewport uk-position-relative">
-            <div class="uk-position-absolute uk-position-bottom uk-height-1-1" style="background: url(/static/main/img/header_wall.png) 50% 50%; background-size: cover;">
+            <div class="uk-position-absolute uk-position-bottom uk-height-1-1" style="background: url(/static/img/header_wall.png) 50% 50%; background-size: cover;">
                 <div class="uk-container uk-container-center">
                     <div class="uk-contrast uk-text-center">
                         <div class="uk-block uk-block-large">
@@ -29,7 +29,7 @@
                         {{ what|safe }}
                     </div>
                     <div class="uk-width-small-1-1 uk-width-large-1-2 uk-text-center">
-                        <img src="{% static "main/img/page01_img02.png" %}" alt="">
+                        <img src="{% static "img/page01_img02.png" %}" alt="">
                     </div>
                 </div>
             </div>
@@ -106,6 +106,6 @@
     <!-- <p>{{ news }}</p> -->
 {% endblock %}
 {% block uikit %}
-    <script src="{% static 'main/js/components/slider.min.js' %}"></script>
-    <script src="{% static 'main/js/components/slideset.min.js' %}"></script>
+    <script src="{% static 'js/components/slider.min.js' %}"></script>
+    <script src="{% static 'js/components/slideset.min.js' %}"></script>
 {% endblock %}

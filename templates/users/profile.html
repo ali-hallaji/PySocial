@@ -2,13 +2,13 @@
 {% load static %}
 {% load func_tools %}
 {% block extrastyle %}
-    <link rel="stylesheet" href="{% static 'main/css/users/profile.css' %}">
-    <link rel="stylesheet" href="{% static 'main/css/cropper.css' %}">
+    <link rel="stylesheet" href="{% static 'css/client/users/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/client/cropper.css' %}">
 {% endblock %}
 {% block content %}
     <div class="tm-baner-user uk-nbfc uk-position-absolute uk-position-top">
         {% if user.picture == '/media/avatars/default.png' %}
-            <div class="uk-cover-background" style="background-image: url('{% static "main/img/defaultbaner.jpg" %}');"></div>
+            <div class="uk-cover-background" style="background-image: url('{% static "img/defaultbaner.jpg" %}');"></div>
         {% else %}
             <div class="uk-cover-background" style="background-image: url('{{ user.picture }}');"></div>
         {% endif %}
@@ -91,10 +91,10 @@
     </div>
 {% endblock content %}
 {% block uikit %}
-    <script src="{% static 'main/js/components/upload.min.js' %}"></script>
+    <script src="{% static 'js/components/upload.min.js' %}"></script>
 {% endblock %}
 {% block js_plugins %}
-    <script src="{% static 'main/js/cropper.min.js' %}"></script>
+    <script src="{% static 'js/cropper.min.js' %}"></script>
 {% endblock %}
 {% block js_code %}
     <script>

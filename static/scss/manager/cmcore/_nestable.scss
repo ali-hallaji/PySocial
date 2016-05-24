@@ -1,0 +1,38 @@
+//
+// Component: Nestable
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$nestable-dragged-z-index:                      $global-z-index + 50;
+
+$nestable-placeholder-border:                   $global-border;
+
+
+// Component
+// ========================================================================
+
+@mixin hook-nestable() {}
+
+@mixin hook-nestable-item() {}
+
+@mixin hook-nestable-dragged() {}
+
+@mixin hook-nestable-placeholder() {}
+
+@mixin hook-nestable-empty() {}
+
+@mixin hook-nestable-handle() {}
+
+@mixin hook-nestable-toggle() {}
+
+@mixin hook-nestable-panel() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+@mixin hook-nestable-misc() {}

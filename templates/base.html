@@ -14,15 +14,15 @@
         <title>{% block title %}{% endblock %}</title>
 
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="{% static 'main/css/framework.css' %}">
-        <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'main/css/layout.css' %}">
-        <link rel="stylesheet" href="{% static 'main/css/monokai-sublime.css' %}">
+        <link rel="stylesheet" href="{% static 'css/client/framework.css' %}">
+        <link rel="stylesheet" href="{% static 'css/client/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/client/layout.css' %}">
+        <link rel="stylesheet" href="{% static 'css/client/monokai-sublime.css' %}">
         {% block extrastyle %}{% endblock %}
 
         <!-- Fav Icons -->
-        <link rel="shortcut icon" href="{% static "main/img/social_logo.png" %}" type="image/x-icon">
-        <link rel="apple-touch-icon-precomposed" href="{% static "main/img/social_logo.png" %}">
+        <link rel="shortcut icon" href="{% static "img/social_logo.png" %}" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" href="{% static "img/social_logo.png" %}">
     </head>
     <body class="tm-body-main">
         <header data-uk-sticky="{media: 767, top: '.uk-sticky-placeholder + *', clsactive:'uk-navbar-attached uk-position-z-index', animation: 'uk-animation-slide-top'}">
@@ -61,7 +61,7 @@
                         <li class="uk-hidden-small"><a href="">تماس باما</a></li>
                     </ul>
                     <a class="uk-navbar-brand" href="/">
-                        <img src="{% static 'main/img/logo2.png' %}" width="130" alt="پای سوشیال">
+                        <img src="{% static 'img/logo2.png' %}" width="130" alt="پای سوشیال">
                     </a>
                 </div>
             </nav>
@@ -88,7 +88,7 @@
                             </ul>
                         </div>
                         <div class="uk-width-small-1-2 uk-width-large-1-4">
-                            <img src="{% static "main/img/logo2.png" %}" alt="پای سوشیال" width="130">
+                            <img src="{% static "img/logo2.png" %}" alt="پای سوشیال" width="130">
                         </div>
                     </div>
                     <hr>
@@ -129,24 +129,24 @@
         {% endblock %}
 
         <!-- jQuery -->
-        <script src="{% static 'main/js/jquery-2.2.3.min.js' %}"></script>
+        <script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
         {% google_analytics %}
         {% analytical_head_bottom %}
         {% analytical_body_top %}
         {% analytical_body_bottom %}
 
         <!-- UIkit -->
-        <script src="{% static 'main/js/uikit.min.js' %}"></script>
-        <script src="{% static 'main/js/components/sticky.min.js' %}"></script>
-        <script src="{% static 'main/js/components/notify.min.js' %}"></script>
-        <script src="{% static 'main/js/components/search.js' %}"></script>
-        <script src="{% static 'main/js/components/autocomplete.js' %}"></script>
+        <script src="{% static 'js/uikit.min.js' %}"></script>
+        <script src="{% static 'js/components/sticky.min.js' %}"></script>
+        <script src="{% static 'js/components/notify.min.js' %}"></script>
+        <script src="{% static 'js/components/search.js' %}"></script>
+        <script src="{% static 'js/components/autocomplete.js' %}"></script>
         {% block uikit %}{% endblock %}
 
         <!-- Plugins And Scripts -->
         {% block js_plugins %}{% endblock %}
-        <script src="{% static 'main/js/highlight.pack.js' %}"></script>
-        <script src="{% static 'main/js/script.js' %}"></script>
+        <script src="{% static 'js/highlight.pack.js' %}"></script>
+        <script src="{% static 'js/script.js' %}"></script>
         <script>hljs.initHighlightingOnLoad();</script>
         {% block js_code %}{% endblock %}
     </body>

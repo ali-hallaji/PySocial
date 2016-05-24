@@ -1,0 +1,151 @@
+/*====================================
+=            Style Codes.            =
+====================================*/
+/* Compass */
+/* Bourbon */
+/* Settings */
+/* Modules */
+.tm-btn-1 {
+  background: #fff;
+  color: #3AC;
+  border: 1px solid #3AC;
+}
+.tm-btn-1:hover, .tm-btn-1:focus, .tm-btn-1:active {
+  color: #fff;
+  background: #3AC;
+}
+
+html {
+  background: url("/static/img/bg.png");
+  background: url("/static/img/bg.png");
+}
+
+section.tm-main-section-panel {
+  height: 456px;
+}
+
+div.tm-baner-content:after {
+  content: '';
+  background-color: rgba(44, 51, 64, 0.7);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+div.uk-cover-background {
+  height: 576px;
+  margin: -30px;
+  background-size: 80%;
+  background-color: #003c5a;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
+}
+
+div.tm-panel-header-content h1 {
+  font-family: Mirzab, ubuntub;
+}
+div.tm-panel-header-content hr {
+  margin-top: 100px;
+  border-width: 2px;
+  border-color: #3AC;
+}
+
+ul.tm-subnav-content li {
+  padding-left: 2rem;
+}
+ul.tm-subnav-content li i {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  margin-left: 10px;
+  background-color: #3AC;
+  color: #EAF2F6;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+ul.tm-subnav-content > * > :hover {
+  color: #EAF2F6;
+}
+
+div.tm-panel-course {
+  border: 1px solid #ebf4f7;
+  padding: 1rem 2rem;
+}
+div.tm-panel-course .header span {
+  color: #3AC;
+  border: 3px solid #3AC;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box;
+  margin-left: 1rem;
+  line-height: 2rem;
+  font-size: 1.5rem;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+div.tm-panel-course .footer {
+  background-color: #ebf4f7;
+  padding: 1rem 2rem;
+  margin: 0 -2rem -1rem -2rem !important;
+}
+div.tm-panel-course .footer a {
+  color: #3AC;
+}
+div.tm-panel-course hr {
+  border-color: #ebf4f7;
+  margin-left: -2rem;
+  margin-right: -2rem;
+  margin-bottom: 0;
+}
+div.tm-panel-course.uk-active {
+  background-color: #F7FDFF;
+}
+
+ul.tm-list-lessons {
+  margin-top: 10px;
+}
+ul.tm-list-lessons > li {
+  padding: 10px 0;
+  border-bottom: 1px solid #EAF2F6;
+}
+ul.tm-list-lessons > li:last-child {
+  border-bottom: 0;
+}
+ul.tm-list-lessons > li > a {
+  color: #3a3a3a;
+  font-family: Mirzab, ubuntub;
+  font-size: 14px;
+  line-height: 25px;
+}
+ul.tm-list-lessons > li span.badge {
+  color: #E76E33;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-left: 10px;
+}
+ul.tm-list-lessons > li span.tm-btn-1 {
+  margin-right: auto;
+}
+
+ul.tm-list-authors img {
+  width: 64px;
+  height: 64px;
+}
+ul.tm-list-authors h4 {
+  margin: 0;
+  line-height: 2;
+}
+ul.tm-list-authors p {
+  margin-top: 10px;
+  color: #999;
+}

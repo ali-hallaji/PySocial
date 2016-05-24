@@ -3,7 +3,7 @@
 {% load func_tools %}
 {% block title %}آموزش {{ box.title }} | {{ box.title_fa }}{% endblock %}
 {% block extrastyle %}
-    <link rel="stylesheet" href="{% static 'main/css/content.css' %}">
+    <link rel="stylesheet" href="{% static 'css/client/content.css' %}">
 {% endblock %}
 {% block content %}
     <section class="tm-main-section-panel">
@@ -86,5 +86,5 @@
     </div>
 {% endblock content %}
 {% block uikit %}
-    <script src="{% static "main/js/components/accordion.min.js" %}"></script>
+    <script src="{% static "js/components/accordion.min.js" %}"></script>
 {% endblock uikit %}

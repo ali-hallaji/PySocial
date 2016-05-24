@@ -1,0 +1,122 @@
+//
+// Component: Button
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$button-height:                                 $global-height;
+$button-mini-height:                            $global-height-mini;
+$button-small-height:                           $global-height-small;
+$button-large-height:                           $global-height-large;
+
+$button-line-height:                            $global-height;
+$button-mini-line-height:                       $global-height-mini;
+$button-small-line-height:                      $global-height-small;
+$button-large-line-height:                      $global-height-large;
+
+$button-mini-font-size:                         10px;
+$button-small-font-size:                        12px;
+$button-large-font-size:                        14px;
+
+$button-background:                             #003c5a;
+$button-color:                                  $global-contrast-color;
+$button-hover-background:                       #0C577C;
+$button-hover-color:                            $global-contrast-color;
+$button-active-background:                      #0C577C;
+$button-active-color:                           $global-color;
+
+$button-primary-background:                     $global-primary-background;
+$button-primary-color:                          $global-contrast-color;
+$button-primary-hover-background:               #F67A24;
+$button-primary-hover-color:                    $global-contrast-color;
+$button-primary-active-background:              #F67A24;
+$button-primary-active-color:                   $global-contrast-color;
+
+$button-success-background:                     $global-success-background;
+$button-success-color:                          $global-contrast-color;
+$button-success-hover-color:                    $global-contrast-color;
+$button-success-active-color:                   $global-contrast-color;
+
+$button-danger-background:                      $global-danger-background;
+$button-danger-color:                           $global-contrast-color;
+$button-danger-hover-color:                     $global-contrast-color;
+$button-danger-active-color:                    $global-contrast-color;
+
+$button-disabled-color:                         $global-muted-color;
+
+$button-link-color:                             $global-link-color;
+$button-link-hover-color:                       $global-link-hover-color;
+$button-link-disabled-color:                    $global-muted-color;
+
+
+// Component
+// ========================================================================
+
+@mixin hook-button() {
+    @include border-radius(3px);
+    @include transition(0.2s linear);
+}
+
+@mixin hook-button-hover() {}
+
+@mixin hook-button-active() {}
+
+
+// Color modifiers
+// ========================================================================
+
+//
+// Modifier: `uk-button-primary`
+//
+
+@mixin hook-button-primary() {}
+
+@mixin hook-button-primary-hover() {}
+@mixin hook-button-primary-active() {}
+
+//
+// Modifier: `uk-button-success`
+//
+
+@mixin hook-button-success() {}
+
+@mixin hook-button-success-hover() {}
+@mixin hook-button-success-active() {}
+
+//
+// Modifier: `uk-button-danger`
+//
+
+@mixin hook-button-danger() {}
+
+@mixin hook-button-danger-hover() {}
+@mixin hook-button-danger-active() {}
+
+
+// Disabled state
+// ========================================================================
+
+@mixin hook-button-disable() {}
+
+
+// Modifier: `uk-button-link`
+// ========================================================================
+
+@mixin hook-button-link() {}
+
+
+// Size modifiers
+// ========================================================================
+
+@mixin hook-button-large() {
+    @include border-radius(5px);
+}
+
+
+// Miscellaneous
+// ========================================================================
+
+@mixin hook-button-misc() {}

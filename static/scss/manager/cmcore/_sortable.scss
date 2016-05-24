@@ -1,0 +1,28 @@
+//
+// Component: Sortable
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$sortable-dragged-z-index:                      $global-z-index + 50;
+
+
+// Component
+// ========================================================================
+
+@mixin hook-sortable() {}
+
+@mixin hook-sortable-dragged() {}
+
+@mixin hook-sortable-placeholder() {}
+
+@mixin hook-sortable-over() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+@mixin hook-sortable-misc() {}

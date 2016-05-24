@@ -1,0 +1,47 @@
+//
+// Component: Block
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$block-default-background:                       #EAF2F6;
+$block-muted-background:                         #272727;
+$block-primary-background:                       #003C5A;
+$block-secondary-background:                     #E76E33;
+
+// Component
+// ========================================================================
+
+@mixin hook-block() {}
+
+
+// Color modifier
+// ========================================================================
+
+@mixin hook-block-default() {}
+
+@mixin hook-block-muted() {}
+
+@mixin hook-block-secondary() {}
+
+@mixin hook-block-primary() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+@mixin hook-block-misc() {
+
+    /*
+     * Adjust padding between equal colored blocks
+     */
+
+    .uk-block-default + .uk-block-default,
+    .uk-block-muted + .uk-block-muted,
+    .uk-block-primary + .uk-block-primary,
+    .uk-block-secondary + .uk-block-secondary { padding-top: 0; }
+
+}

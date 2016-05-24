@@ -1,0 +1,37 @@
+//
+// Component: Dotnav
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$dotnav-width:                                   25px;
+$dotnav-height:                                  5px;
+
+
+// Component
+// ========================================================================
+
+@mixin hook-dotnav-item() { @include border-radius(0); }
+
+@mixin hook-dotnav-item-hover() {}
+
+@mixin hook-dotnav-item-onclick() {}
+
+@mixin hook-dotnav-item-active() {}
+
+@mixin hook-dotnav-contrast-item() {}
+
+@mixin hook-dotnav-contrast-item-hover() {}
+
+@mixin hook-dotnav-contrast-item-onclick() {}
+
+@mixin hook-dotnav-contrast-item-active() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+@mixin hook-dotnav-misc() {}

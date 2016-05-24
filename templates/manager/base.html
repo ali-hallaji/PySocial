@@ -7,14 +7,14 @@
         {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="{% static 'main/css/framework.css' %}">
-        <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'main/css/manager/manager.css' %}">
+        <link rel="stylesheet" href="{% static 'css/client/css/framework.css' %}">
+        <link rel="stylesheet" href="{% static 'css/client/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/client/css/manager/manager.css' %}">
         {% block extrastyle %}{% endblock %}
 
         <!-- Fav Icons -->
-        <link rel="shortcut icon" href="{% static "main/img/social_logo.png" %}" type="image/x-icon">
-        <link rel="apple-touch-icon-precomposed" href="{% static "main/img/social_logo.png" %}">
+        <link rel="shortcut icon" href="{% static "css/client/img/social_logo.png" %}" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" href="{% static "css/client/img/social_logo.png" %}">
     </head>
 
     <body>
@@ -41,17 +41,17 @@
         {% block footer %}{% endblock %}
 
         <!-- jQuery -->
-        <script src="{% static 'main/js/jquery-2.2.3.min.js' %}"></script>
+        <script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
 
         <!-- UIkit -->
-        <script src="{% static 'main/js/uikit.min.js' %}"></script>
-        <script src="{% static 'main/js/components/notify.min.js' %}"></script>
-        <script src="{% static 'main/js/components/search.min.js' %}"></script>
+        <script src="{% static 'js/uikit.min.js' %}"></script>
+        <script src="{% static 'js/components/notify.min.js' %}"></script>
+        <script src="{% static 'js/components/search.min.js' %}"></script>
         {% block uikit %}{% endblock %}
 
         <!-- Plugins And Scripts -->
         {% block js_plugins %}{% endblock %}
-        <script src="{% static 'main/js/script.js' %}"></script>
+        <script src="{% static 'js/script.js' %}"></script>
         {% block js_code %}{% endblock %}
     </body>
 </html>
