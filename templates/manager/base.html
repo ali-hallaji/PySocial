@@ -7,19 +7,19 @@
         {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="{% static 'css/client/css/framework.css' %}">
-        <link rel="stylesheet" href="{% static 'css/client/css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'css/client/css/manager/manager.css' %}">
+        <link rel="stylesheet" href="{% static 'css/manager/framework.css' %}">
+        <link rel="stylesheet" href="{% static 'css/manager/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/manager/layout.css' %}">
         {% block extrastyle %}{% endblock %}
 
         <!-- Fav Icons -->
-        <link rel="shortcut icon" href="{% static "css/client/img/social_logo.png" %}" type="image/x-icon">
-        <link rel="apple-touch-icon-precomposed" href="{% static "css/client/img/social_logo.png" %}">
+        <link rel="shortcut icon" href="{% static "css/manager/img/social_logo.png" %}" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" href="{% static "css/manager/img/social_logo.png" %}">
     </head>
 
     <body>
         <div class="uk-flex uk-height-1-1">
-            <aside>
+            <aside id="sidebar-main">
                 <ul class="uk-nav">
                     <li><a href="/manager/box_list">لیست باکس ها</a></li>
                     <li><a href="/manager/add_box">ایجاد باکس</a></li>
@@ -31,7 +31,7 @@
                     <li><a href="/manager/parent_list">لیست ریشه ها</a></li>
                     <li><a href="/manager/add_parent">ایجاد ریشه</a></li>
                     <li><a href="/manager/home_list">لیست نوشته های صفحه خانه</a></li>
-                    <li><a href="/manager/add_home">اجاد مطلب برای صفحه خانه</a></li>
+                    <li><a href="/manager/add_home">ایجاد مطلب برای صفحه خانه</a></li>
                 </ul>
             </aside>
             <section class="uk-width-1-1">
