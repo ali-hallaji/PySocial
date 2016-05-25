@@ -18,26 +18,78 @@
     </head>
 
     <body>
-        <div class="uk-flex uk-height-1-1">
-            <aside id="sidebar-main">
-                <ul class="uk-nav">
-                    <li><a href="/manager/box_list">لیست باکس ها</a></li>
-                    <li><a href="/manager/add_box">ایجاد باکس</a></li>
-                    <li><a href="/manager/content_list">لیست فهرست ها</a></li>
-                    <li><a href="/manager/add_content">ایجاد فهرست</a></li>
-                    <li><a href="/manager/user_list">لیست کاربرها</a></li>
-                    <li><a href="/manager/group_list">لیست گروه ها</a></li>
-                    <li><a href="/manager/add_group">ایجاد گروه</a></li>
-                    <li><a href="/manager/parent_list">لیست ریشه ها</a></li>
-                    <li><a href="/manager/add_parent">ایجاد ریشه</a></li>
-                    <li><a href="/manager/home_list">لیست نوشته های صفحه خانه</a></li>
-                    <li><a href="/manager/add_home">ایجاد مطلب برای صفحه خانه</a></li>
-                </ul>
-            </aside>
-            <section class="uk-width-1-1">
-                {% block content %}{% endblock %}
-            </section>
+        <header id="header-main">
+            <nav class="tm-navbar-header uk-navbar">
+                <a id="toggler-aside" class="uk-float-right" href="#"><i class="uk-icon-chevron-right"></i></a>
+                <div class="uk-float-left">
+                    <ul class="uk-navbar-nav">
+                        <li><a href=""><i class="uk-icon-search"></i></a></li>
+                        <li><a href=""><i class="uk-icon-bell"></i></a></li>
+                        <li>
+                            <a id="user_action_image" href="">
+                                <img class="uk-border-circle" width="34" src="{{ user_data.picture }}" alt="{{ user_data.first_name }} {{ user_data.last_name }}">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <aside id="sidebar-main">
+            <div class="uk-panel uk-panel-space uk-overlay-background uk-text-center">
+                <a href="{% url "home_manager" %}">
+                    <img src="{% static 'img/logo2.png' %}" width="130" alt="پای سوشیال">
+                </a>
+            </div>
+            <ul class="tm-nav uk-nav uk-nav-parent-icon uk-margin-top uk-text-large" data-uk-nav>
+                <li class="uk-parent">
+                    <a href="#"><i class="uk-icon-justify uk-icon-cubes uk-margin-small-left"></i>باکس</a>
+                    <ul>
+                        <li><a href="/manager/box_list">لیست باکس ها</a></li>
+                        <li><a href="/manager/add_box">ایجاد باکس</a></li>
+                    </ul>
+                </li>
+                <li class="uk-parent">
+                    <a href="#"><i class="uk-icon-justify uk-icon-book uk-margin-small-left"></i>عناوین</a>
+                    <ul>
+                        <li><a href="/manager/content_list">لیست فهرست ها</a></li>
+                        <li><a href="/manager/add_content">ایجاد فهرست</a></li>
+                    </ul>
+                </li>
+                <li class="uk-parent">
+                    <a href="#"><i class="uk-icon-justify uk-icon-user uk-margin-small-left"></i>کاربران</a>
+                    <ul>
+                        <li><a href="/manager/user_list">لیست کاربرها</a></li>
+                    </ul>
+                </li>
+                <li class="uk-parent">
+                    <a href="#"><i class="uk-icon-justify uk-icon-users uk-margin-small-left"></i>گروه</a>
+                    <ul>
+                        <li><a href="/manager/group_list">لیست گروه ها</a></li>
+                        <li><a href="/manager/add_group">ایجاد گروه</a></li>
+                    </ul>
+                </li>
+                <li class="uk-parent">
+                    <a href="#"><i class="uk-icon-justify uk-icon-cubes uk-margin-small-left"></i>ریشه</a>
+                    <ul>
+                        <li><a href="/manager/parent_list">لیست ریشه ها</a></li>
+                        <li><a href="/manager/add_parent">ایجاد ریشه</a></li>
+                    </ul>
+                </li>
+                <li class="uk-parent">
+                    <a href="#"><i class="uk-icon-justify uk-icon-file-text uk-margin-small-left"></i>مطالب</a>
+                    <ul>
+                        <li><a href="/manager/home_list">لیست نوشته های صفحه خانه</a></li>
+                        <li><a href="/manager/add_home">ایجاد مطلب برای صفحه خانه</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <div>
+            {% block content %}{% endblock %}
         </div>
+
         {% block footer %}{% endblock %}
 
         <!-- jQuery -->
