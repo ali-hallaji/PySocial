@@ -1,7 +1,10 @@
+body { padding-top: 48px; }
+
 header#header-main {
     background-color: #EDF2F4;
     margin-right: 240px;
     border-bottom: 1px solid #E1E5EE;
+    z-index: 1011;
 
     @include position(fixed, 0 0 null 0);
 }
@@ -57,4 +60,8 @@ ul.tm-nav {
             color: #fff
         }
     }
+}
+
+div#content-main {
+    margin-right: 240px;
 }

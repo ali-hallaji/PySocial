@@ -23,7 +23,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   /* 3 */
-  background: #fff;
+  background: #ececec;
   color: #393d40;
 }
 
@@ -1606,8 +1606,14 @@ strong {
  * Sub-modifier: `uk-panel-box-primary`
  */
 .uk-panel-box-primary {
-  background-color: #ebf7fd;
-  color: #2d7091;
+  background-color: #fff;
+  color: #666;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.uk-panel-box-primary > :first-child {
+  margin: -15px -15px 15px -15px;
+  padding: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .uk-panel-box-primary-hover:hover {
@@ -2915,7 +2921,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-tab > li.uk-active > a {
   border-color: #ddd;
   border-bottom-color: transparent;
-  background: #fff;
+  background: #ececec;
   color: #393d40;
 }
 
@@ -3437,6 +3443,10 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   background: #EEE;
 }
 
+.uk-table th {
+  text-align: right;
+}
+
 /* ========================================================================
    Component: Form
  ========================================================================== */
@@ -3625,7 +3635,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   padding: 4px 6px;
   /* 4 */
   border: 1px solid #ddd;
-  background: #fff;
+  background: #ececec;
   color: #393d40;
   -webkit-transition: all linear 0.2s;
   transition: all linear 0.2s;
@@ -7130,7 +7140,7 @@ a.uk-badge:hover {
   /* 4 */
   padding: 4px;
   border: 1px solid #ddd;
-  background: #fff;
+  background: #ececec;
 }
 
 /*
@@ -7142,7 +7152,7 @@ a.uk-badge:hover {
 a.uk-thumbnail:hover,
 a.uk-thumbnail:focus {
   border-color: #aaaaaa;
-  background-color: #fff;
+  background-color: #ececec;
   /* 2 */
   text-decoration: none;
   /* 3 */
@@ -8623,7 +8633,7 @@ a.uk-thumbnail:focus {
   max-width: 100%;
   max-width: calc(100% - 20px);
   /* 3 */
-  background: #fff;
+  background: #ececec;
   /* 4 */
   opacity: 0;
   -webkit-transform: translateY(-100px);
@@ -8934,8 +8944,8 @@ a.uk-thumbnail:focus {
 }
 
 .uk-text-large {
-  font-size: 15px;
-  line-height: 20px;
+  font-size: 14px;
+  line-height: 18px;
   font-weight: normal;
 }
 
@@ -10876,7 +10886,7 @@ a.uk-datepicker-table-muted {
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  background: #fff;
+  background: #ececec;
 }
 
 /*

@@ -86,8 +86,10 @@
             </ul>
         </aside>
 
-        <div>
-            {% block content %}{% endblock %}
+        <div id="content-main">
+            <div class="uk-panel-space">
+                {% block content %}{% endblock %}
+            </div>
         </div>
 
         {% block footer %}{% endblock %}
@@ -103,7 +105,9 @@
 
         <!-- Plugins And Scripts -->
         {% block js_plugins %}{% endblock %}
-        <script src="{% static 'js/script.js' %}"></script>
+        <script src="{% static "js/datatable/jquery.dataTables.min.js" %}"></script>
+        <script src="{% static "js/datatable/dataTables.uikit.min.js" %}"></script>
+        <script src="{% static 'js/manager_script.js' %}"></script>
         {% block js_code %}{% endblock %}
     </body>
 </html>

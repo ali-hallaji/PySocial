@@ -30,4 +30,7 @@ $table-caption-font-size:                       round(($global-font-size * 0.85)
 // Miscellaneous
 // ========================================================================
 
-@mixin hook-table-misc() {}
+@mixin hook-table-misc() {
+
+    .uk-table th { text-align: right; }
+}

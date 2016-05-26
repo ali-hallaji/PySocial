@@ -14,6 +14,9 @@ $panel-title-color:                             $global-color;
 
 $panel-box-background:                          #fff;
 
+$panel-box-primary-background:                  #fff;
+$panel-box-primary-color:                       #666;
+
 $panel-box-secondary-background:                rgba(0,0,0,0.7);
 
 $panel-box-padding:                             $global-margin;
@@ -55,7 +58,15 @@ $panel-divider-border:                          $global-border;
 // Sub-modifier: `uk-panel-box-primary`
 //
 
-@mixin hook-panel-box-primary() {}
+@mixin hook-panel-box-primary() {
+    box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
+
+    > :first-child {
+        margin: -15px -15px 15px -15px;
+        padding: 15px;
+        border-bottom: 1px solid rgba(0,0,0,.12);
+    }
+}
 
 @mixin hook-panel-box-primary-hover() {}
 

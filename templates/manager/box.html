@@ -21,7 +21,7 @@
             {% else %}
                 <h1><strong>Add Box</strong></h1>
             {% endif %}
-            {{ form.as_ul }}
+            {{ form }}
 
             {% if 'edit' in request.get_full_path %}
                 {% if id|box_exist_file == 'True' %}
@@ -43,4 +43,3 @@
         {% endfor %}
     {% endif %}
 {% endblock %}
-

@@ -3,42 +3,50 @@
 {% load func_tools %}
 {% block title %}Box List{% endblock %}
 {% block content %}
-    <h3>Box list</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                {% for key, value in boxs.0.items %}
-                    <th>{{ key }}</th>
-                {% endfor %}
-                <th>image</th>
-                <th>action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in boxs %}
-                <tr data-id="{{ item.id }}">
-                    <td></td>
-                    {% for key, value in item.items %}
-                        {% if key != 'id' %}
-                            <td>{{ value }}</td>
+    <div class="uk-panel uk-panel-box uk-panel-box-primary">
+        <h3>فهرست باکس</h3>
+        <table class="uk-table uk-table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    {% for key, value in boxs.0.items %}
+                        {% if key != '_id' %}
+                            <th>{{ key }}</th>
                         {% endif %}
                     {% endfor %}
-                    <td><img src="{{ item|get_path_pic_box }}"></td>
-                    <td>
-                        <a href="/manager/edit_box/{{ item|mongo_id }}">Edit</a>
-                    </td>
+                    <th>image</th>
+                    <th>action</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td></td>
-                {% for key, value in boxs.0.items %}
-                    <td></td>
+            </thead>
+            <tbody>
+                {% for item in boxs %}
+                    <tr data-id="{{ item.id }}">
+                        <td></td>
+                        {% for key, value in item.items %}
+                            {% if key == 'description' %}
+                                <td>{{ value|striptags|truncatechars:100 }}</td>
+                            {% else %}
+                                {% if key != '_id' %}
+                                    <td>{{ value }}</td>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        <td><img src="{{ item|get_path_pic_box }}"></td>
+                        <td>
+                            <a href="/manager/edit_box/{{ item|mongo_id }}">Edit</a>
+                        </td>
+                    </tr>
                 {% endfor %}
-            </tr>
-        </tfoot>
-    </table>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    {% for key, value in boxs.0.items %}
+                        <td></td>
+                    {% endfor %}
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 {% endblock %}
 
