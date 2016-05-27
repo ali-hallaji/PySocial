@@ -1,15 +1,17 @@
-<!DOCTYPE html>
 {% load static %}
-<html lang="fa-ir" dir='rtl'>
+<!DOCTYPE html>
+<html>
     <head>
         <title>{% block title %}{% endblock %}</title>
         {% block extrahead %}{% endblock %}
         {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="{% static 'css/manager/framework.css' %}">
+        <link rel="stylesheet" href="{% static 'css/manager/waves.css' %}">
         <link rel="stylesheet" href="{% static 'css/manager/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/manager/framework.css' %}">
         <link rel="stylesheet" href="{% static 'css/manager/layout.css' %}">
+        <link rel="stylesheet" href="{% static 'css/manager/dataTables.uikit.css' %}">
         {% block extrastyle %}{% endblock %}
 
         <!-- Fav Icons -->
@@ -20,8 +22,8 @@
     <body>
         <header id="header-main">
             <nav class="tm-navbar-header uk-navbar">
-                <a id="toggler-aside" class="uk-float-right" href="#"><i class="uk-icon-chevron-right"></i></a>
-                <div class="uk-float-left">
+                <a id="toggler-aside" class="uk-float-left" href="#"><i class="uk-icon-chevron-left"></i></a>
+                <div class="uk-navbar-flip">
                     <ul class="uk-navbar-nav">
                         <li><a href=""><i class="uk-icon-search"></i></a></li>
                         <li><a href=""><i class="uk-icon-bell"></i></a></li>
@@ -43,44 +45,44 @@
             </div>
             <ul class="tm-nav uk-nav uk-nav-parent-icon uk-margin-top uk-text-large" data-uk-nav>
                 <li class="uk-parent">
-                    <a href="#"><i class="uk-icon-justify uk-icon-cubes uk-margin-small-left"></i>باکس</a>
+                    <a href="#"><i class="uk-icon-justify uk-icon-cubes uk-margin-small-right"></i>‌box</a>
                     <ul>
-                        <li><a href="/manager/box_list">لیست باکس ها</a></li>
-                        <li><a href="/manager/add_box">ایجاد باکس</a></li>
+                        <li><a href="/manager/box_list">box list</a></li>
+                        <li><a href="/manager/add_box">creat new box</a></li>
                     </ul>
                 </li>
                 <li class="uk-parent">
-                    <a href="#"><i class="uk-icon-justify uk-icon-book uk-margin-small-left"></i>عناوین</a>
+                    <a href="#"><i class="uk-icon-justify uk-icon-book uk-margin-small-right"></i>catalog</a>
                     <ul>
-                        <li><a href="/manager/content_list">لیست فهرست ها</a></li>
-                        <li><a href="/manager/add_content">ایجاد فهرست</a></li>
+                        <li><a href="/manager/content_list">catalog list</a></li>
+                        <li><a href="/manager/add_content">creat new catalog</a></li>
                     </ul>
                 </li>
                 <li class="uk-parent">
-                    <a href="#"><i class="uk-icon-justify uk-icon-user uk-margin-small-left"></i>کاربران</a>
+                    <a href="#"><i class="uk-icon-justify uk-icon-user uk-margin-small-right"></i>user</a>
                     <ul>
-                        <li><a href="/manager/user_list">لیست کاربرها</a></li>
+                        <li><a href="/manager/user_list">users list</a></li>
                     </ul>
                 </li>
                 <li class="uk-parent">
-                    <a href="#"><i class="uk-icon-justify uk-icon-users uk-margin-small-left"></i>گروه</a>
+                    <a href="#"><i class="uk-icon-justify uk-icon-users uk-margin-small-right"></i>group</a>
                     <ul>
-                        <li><a href="/manager/group_list">لیست گروه ها</a></li>
-                        <li><a href="/manager/add_group">ایجاد گروه</a></li>
+                        <li><a href="/manager/group_list">groups list</a></li>
+                        <li><a href="/manager/add_group">creat new group</a></li>
                     </ul>
                 </li>
                 <li class="uk-parent">
-                    <a href="#"><i class="uk-icon-justify uk-icon-cubes uk-margin-small-left"></i>ریشه</a>
+                    <a href="#"><i class="uk-icon-justify uk-icon-cubes uk-margin-small-right"></i>lesson</a>
                     <ul>
-                        <li><a href="/manager/parent_list">لیست ریشه ها</a></li>
-                        <li><a href="/manager/add_parent">ایجاد ریشه</a></li>
+                        <li><a href="/manager/parent_list">lessons list</a></li>
+                        <li><a href="/manager/add_parent">creat new lessons</a></li>
                     </ul>
                 </li>
                 <li class="uk-parent">
-                    <a href="#"><i class="uk-icon-justify uk-icon-file-text uk-margin-small-left"></i>مطالب</a>
+                    <a href="#"><i class="uk-icon-justify uk-icon-file-text uk-margin-small-right"></i>article</a>
                     <ul>
-                        <li><a href="/manager/home_list">لیست نوشته های صفحه خانه</a></li>
-                        <li><a href="/manager/add_home">ایجاد مطلب برای صفحه خانه</a></li>
+                        <li><a href="/manager/home_list">article in homepage</a></li>
+                        <li><a href="/manager/add_home">creat new article in homepage</a></li>
                     </ul>
                 </li>
             </ul>
@@ -107,6 +109,7 @@
         {% block js_plugins %}{% endblock %}
         <script src="{% static "js/datatable/jquery.dataTables.min.js" %}"></script>
         <script src="{% static "js/datatable/dataTables.uikit.min.js" %}"></script>
+        <script src="{% static "js/waves.min.js" %}"></script>
         <script src="{% static 'js/manager_script.js' %}"></script>
         {% block js_code %}{% endblock %}
     </body>

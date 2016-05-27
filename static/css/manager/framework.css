@@ -18,7 +18,7 @@
  */
 html {
   /* 1 */
-  font: normal 12px / 20px mirza, ubuntu;
+  font: normal 12px / 20px ubuntu, mirza;
   /* 2 */
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -59,10 +59,6 @@ a,
   color: #666;
   text-decoration: none;
   cursor: pointer;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
 }
 
 a:hover,
@@ -260,7 +256,7 @@ figure {
  ========================================================================== */
 h1, h2, h3, h4, h5, h6 {
   margin: 0 0 15px 0;
-  font-family: mirza, ubuntu;
+  font-family: ubuntu, mirza;
   font-weight: normal;
   color: #3d4451;
   text-transform: none;
@@ -384,7 +380,6 @@ pre {
   tab-size: 4;
   /* 1 */
   overflow: auto;
-  direction: ltr;
 }
 
 /* Selection pseudo-element
@@ -460,7 +455,7 @@ iframe {
 }
 b,
 strong {
-  font-family: Mirzab, ubuntub;
+  font-family: ubuntub, Mirzab;
 }
 
 /* ========================================================================
@@ -1613,7 +1608,8 @@ strong {
 .uk-panel-box-primary > :first-child {
   margin: -15px -15px 15px -15px;
   padding: 15px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid #E1E5EE;
+  text-transform: capitalize;
 }
 
 .uk-panel-box-primary-hover:hover {
@@ -1674,12 +1670,12 @@ strong {
 /* Modifier: `uk-panel-space`
  ========================================================================== */
 .uk-panel-space {
-  padding: 30px;
+  padding: 15px;
 }
 
 .uk-panel-space .uk-panel-badge {
-  top: 30px;
-  right: 30px;
+  top: 15px;
+  right: 15px;
 }
 
 /* Modifier: `uk-panel-divider`
@@ -2090,7 +2086,6 @@ ul.uk-nav-sub {
   float: right;
   font-family: FontAwesome;
   text-align: center;
-  float: left;
 }
 
 .uk-nav-parent-icon > .uk-parent.uk-open > a:after {
@@ -2121,7 +2116,7 @@ ul.uk-nav-sub {
 
 /* Active */
 .uk-nav-side > li.uk-active > a {
-  background: #fc8f44;
+  background: #02C39A;
   color: #fff;
 }
 
@@ -2166,7 +2161,7 @@ ul.uk-nav-sub {
  */
 .uk-nav-dropdown > li > a:hover,
 .uk-nav-dropdown > li > a:focus {
-  background: #fc8f44;
+  background: #02C39A;
   color: #fff;
   /* 2 */
   outline: none;
@@ -2213,7 +2208,7 @@ ul.uk-nav-sub {
  */
 .uk-nav-navbar > li > a:hover,
 .uk-nav-navbar > li > a:focus {
-  background: #fc8f44;
+  background: #02C39A;
   color: #fff;
   /* 2 */
   outline: none;
@@ -2304,11 +2299,6 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   color: #fff;
 }
 
-.uk-nav ul {
-  padding-left: 0;
-  padding-right: 15px;
-}
-
 /* ========================================================================
    Component: Navbar
  ========================================================================== */
@@ -2363,7 +2353,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   /* 2 */
   color: #fff;
   font-size: 12px;
-  font-family: mirza, ubuntu;
+  font-family: ubuntu, mirza;
   font-weight: normal;
 }
 
@@ -2533,13 +2523,6 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   float: right;
 }
 
-.uk-navbar-nav {
-  float: right;
-}
-.uk-navbar-nav > li {
-  float: right;
-}
-
 /* ========================================================================
    Component: Subnav
  ========================================================================== */
@@ -2660,7 +2643,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
  * `li` needed for higher specificity to override hover
  */
 .uk-subnav-pill > .uk-active > * {
-  background: #fc8f44;
+  background: #02C39A;
   color: #fff;
 }
 
@@ -2815,7 +2798,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
  * Active
  */
 .uk-pagination > .uk-active > span {
-  background: #fc8f44;
+  background: #02C39A;
   color: #fff;
 }
 
@@ -3443,8 +3426,12 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   background: #EEE;
 }
 
-.uk-table th {
-  text-align: right;
+th {
+  text-transform: capitalize;
+}
+
+.uk-table td {
+  vertical-align: middle;
 }
 
 /* ========================================================================
@@ -3634,8 +3621,8 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   /* 3 */
   padding: 4px 6px;
   /* 4 */
-  border: 1px solid #ddd;
-  background: #ececec;
+  border: 1px solid #EDF2F4;
+  background: #fcfcfc;
   color: #393d40;
   -webkit-transition: all linear 0.2s;
   transition: all linear 0.2s;
@@ -3660,10 +3647,11 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-form input[type="search"]:focus,
 .uk-form input[type="tel"]:focus,
 .uk-form input[type="color"]:focus {
-  border-color: #99baca;
+  border-color: #E1E5EE;
   outline: 0;
-  background: #f5fbfe;
+  background: #fcfcfc;
   color: #393d40;
+  box-shadow: 0 0 9px -3px #9DB4C0;
 }
 .uk-form select:disabled,
 .uk-form textarea:disabled,
@@ -3925,7 +3913,6 @@ select.uk-form-width-mini {
     width: 200px;
     margin-top: 5px;
     float: left;
-    float: right;
   }
 
   .uk-form-horizontal .uk-form-controls {
@@ -3983,12 +3970,6 @@ select.uk-form-width-mini {
   padding-right: 30px !important;
 }
 
-@media (min-width: 960px) {
-  .uk-form-horizontal .uk-form-controls {
-    margin-left: 0;
-    margin-right: 215px;
-  }
-}
 /* ========================================================================
    Component: Button
  ========================================================================== */
@@ -4084,21 +4065,21 @@ select.uk-form-width-mini {
  * Modifier: `uk-button-primary`
  */
 .uk-button-primary {
-  background-color: #fc8f44;
+  background-color: #02C39A;
   color: #fff;
 }
 
 /* Hover */
 .uk-button-primary:hover,
 .uk-button-primary:focus {
-  background-color: #F67A24;
+  background-color: #0DAF8C;
   color: #fff;
 }
 
 /* Active */
 .uk-button-primary:active,
 .uk-button-primary.uk-active {
-  background-color: #F67A24;
+  background-color: #0DAF8C;
   color: #fff;
 }
 
@@ -6988,7 +6969,7 @@ select.uk-form-width-mini {
 .uk-badge {
   display: inline-block;
   padding: 0 5px;
-  background: #fc8f44;
+  background: #02C39A;
   font-size: 9px;
   font-weight: bold;
   line-height: 12px;
@@ -10099,17 +10080,17 @@ a.uk-thumbnail:focus {
   color: #444;
 }
 .uk-contrast .uk-button-primary {
-  background-color: #fc8f44;
+  background-color: #02C39A;
   color: #fff;
 }
 .uk-contrast .uk-button-primary:hover,
 .uk-contrast .uk-button-primary:focus {
-  background-color: #F67A24;
+  background-color: #0DAF8C;
   color: #fff;
 }
 .uk-contrast .uk-button-primary:active,
 .uk-contrast .uk-button-primary.uk-active {
-  background-color: #F67A24;
+  background-color: #0DAF8C;
   color: #fff;
 }
 .uk-contrast .uk-icon-hover {
@@ -10293,7 +10274,7 @@ a.uk-thumbnail:focus {
  * 1. Remove default focus style
  */
 .uk-nav-autocomplete > li.uk-active > a {
-  background: #fc8f44;
+  background: #02C39A;
   color: #fff;
   /* 1 */
   outline: none;
@@ -10450,7 +10431,7 @@ a.uk-datepicker-table-muted {
  * Active
  */
 .uk-datepicker-table a.uk-active {
-  background: #fc8f44;
+  background: #02C39A;
   color: #fff;
 }
 
@@ -11308,7 +11289,7 @@ a.uk-datepicker-table-muted {
 .uk-progress-bar {
   width: 0;
   height: 100%;
-  background: #fc8f44;
+  background: #02C39A;
   float: left;
   /* 1 */
   -webkit-transition: width 0.6s ease;
@@ -11531,7 +11512,7 @@ a.uk-datepicker-table-muted {
  * 1. Remove default focus style
  */
 .uk-nav-search > li.uk-active > a {
-  background: #fc8f44;
+  background: #02C39A;
   color: #fff;
   /* 1 */
   outline: none;

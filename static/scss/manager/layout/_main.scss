@@ -2,7 +2,7 @@ body { padding-top: 48px; }
 
 header#header-main {
     background-color: #EDF2F4;
-    margin-right: 240px;
+    margin-left: 240px;
     border-bottom: 1px solid #E1E5EE;
     z-index: 1011;
 
@@ -15,17 +15,10 @@ aside#sidebar-main {
     width: 240px;
     background-color: #2A324B;
 
-    @include position(fixed, 0 0 0 null);
-
-    a {
-        padding: 10px 15px;
-        color: #E1E5EE;
-
-        &:hover { color: #fff; }
-    }
+    @include position(fixed, 0 null 0 0);
 }
 
-a#toggler-aside { margin: 14px 15px 14px 0; }
+a#toggler-aside { margin: 14px 0 14px 15px; }
 
 nav.tm-navbar-header {
 
@@ -38,6 +31,14 @@ nav.tm-navbar-header {
 }
 
 ul.tm-nav {
+    text-transform: capitalize;
+
+    a {
+        padding: 10px 15px;
+        color: #E1E5EE;
+
+        &:hover { color: #fff; }
+    }
 
     li {
         @include transition(.5s cubic-bezier(0.4, 0, 1, 1));
@@ -53,8 +54,8 @@ ul.tm-nav {
     .uk-icon-justify { width: 1.6em; }
 
     ul {
-        padding-right: 29px;
-    
+        padding-left: 29px;
+
         a {
             font-size: 12px;
             color: #fff
@@ -63,5 +64,11 @@ ul.tm-nav {
 }
 
 div#content-main {
-    margin-right: 240px;
+    margin-left: 240px;
+}
+
+div.tm-panel-footer {
+    background-color: #ededed;
+    padding: 15px;
+    margin: 30px -15px -15px -15px !important;
 }

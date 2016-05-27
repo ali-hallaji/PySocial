@@ -60,9 +60,7 @@ $base-pre-line-height:                          round(($base-pre-font-size * 1.4
 // Links
 // ========================================================================
 
-@mixin hook-base-link() {
-    @include transition(.3s all);
-}
+@mixin hook-base-link() {}
 
 @mixin hook-base-link-hover() {}
 
@@ -106,9 +104,7 @@ $base-pre-line-height:                          round(($base-pre-font-size * 1.4
 // Preformatted text
 // ========================================================================
 
-@mixin hook-base-pre() {
-	direction: ltr;
-}
+@mixin hook-base-pre() {}
 
 
 // Miscellaneous
@@ -117,5 +113,5 @@ $base-pre-line-height:                          round(($base-pre-font-size * 1.4
 @mixin hook-base-misc() {
 
     b,
-    strong { font-family: $mirzab-font, $ubuntub-font; }
+    strong { font-family: $ubuntub-font, $mirzab-font; }
 }

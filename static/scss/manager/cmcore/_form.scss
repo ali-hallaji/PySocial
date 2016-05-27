@@ -8,10 +8,12 @@
 // ========================================================================
 
 $form-height:                                   $global-height;
-$form-border:                                   $global-border;
-$form-background:                               $global-background;
+$form-border:                                   #EDF2F4;
+$form-background:                               #fcfcfc;
 $form-color:                                    $global-color;
 
+$form-focus-border:                             #E1E5EE;
+$form-focus-background:                         #fcfcfc;
 $form-focus-color:                              $global-color;
 
 $form-disabled-border:                          $global-border;
@@ -44,7 +46,9 @@ $form-icon-color:                               $global-muted-color;
 @mixin hook-form() { @include border-radius(3px); }
 
 // Focus state
-@mixin hook-form-focus() {}
+@mixin hook-form-focus() {
+    box-shadow: 0 0 9px -3px #9DB4C0;
+}
 
 // Disabled state
 @mixin hook-form-disabled() {}
@@ -82,19 +86,10 @@ $form-icon-color:                               $global-muted-color;
 
 @mixin hook-form-stacked-label() {}
 
-@mixin hook-form-horizontal-label() { float: right; }
+@mixin hook-form-horizontal-label() {}
 
 
 // Miscellaneous
 // ========================================================================
 
-@mixin hook-form-misc() {
-
-    @media (min-width: $breakpoint-large) {
-
-        .uk-form-horizontal .uk-form-controls {
-            margin-left: 0;
-            margin-right: $form-horizontal-controls-margin-right;
-        }
-    }
-}
+@mixin hook-form-misc() {}

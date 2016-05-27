@@ -62,11 +62,4 @@ $navbar-toggle-hover-color:                     $global-color;
 // Miscellaneous
 // ========================================================================
 
-@mixin hook-navbar-misc() {
-
-    .uk-navbar-nav {
-        float: right;
-
-        > li { float: right; }
-    }
-}
+@mixin hook-navbar-misc() {}

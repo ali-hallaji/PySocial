@@ -3,7 +3,7 @@
     {% if 'edit' in request.get_full_path %}
         Edit Content
     {% else %}
-        Add Content
+        Creat New Catalog
     {% endif %}
 {% endblock %}
 {% load staticfiles %}
@@ -13,22 +13,32 @@
 {% endblock %}
 {% block content %}
     {% if not not_exists %}
-        <form  enctype="multipart/form-data" method="POST">
+        <form class="uk-form uk-form-horizontal" enctype="multipart/form-data" method="POST">
             {% csrf_token %}
-            {% if 'edit' in request.get_full_path %}
-                <h1><strong>Edit Content</strong></h1>
-            {% else %}
-                <h1><strong>Add Content</strong></h1>
-            {% endif %}
-            {{ form.as_ul }}
+            <div class="uk-panel uk-panel-box uk-panel-box-primary">
+                {% if 'edit' in request.get_full_path %}
+                    <h3>Edit Content</h3>
+                {% else %}
+                    <h3>Creat New Catalog</h3>
+                {% endif %}
 
-            {% if 'edit' in request.get_full_path %}
-                <hr>
-                <button type="submit">Edit</button>
-            {% else %}
-                <hr>
-                <button type="submit">Add</button>
-            {% endif %}
+                {% for item in form %}
+                    <div class="uk-form-row">
+                        <label class="uk-form-label">{{ item.label }}</label>
+                        <div class="uk-form-controls">{{ item }}</div>
+                    </div>
+                {% endfor %}
+
+                {% if 'edit' in request.get_full_path %}
+                    <div class="tm-panel-footer">
+                        <button class="btn uk-button-primary" type="submit">Edit</button>
+                    </div>
+                {% else %}
+                    <div class="tm-panel-footer">
+                        <button class="btn uk-button-primary" type="submit">Add</button>
+                    </div>
+                {% endif %}
+            </div>
         </form>
     {% else %}
         چنین فصلی موجود نمیباشد

@@ -14,25 +14,34 @@
 {% endblock %}
 {% block content %}
     {% if not not_exists %}
-        <form  enctype="multipart/form-data" method="POST">
+        <form class="uk-form uk-form-horizontal" enctype="multipart/form-data" method="POST">
             {% csrf_token %}
-            {% if 'edit' in request.get_full_path %}
-                <h1><strong>Edit Box</strong></h1>
-            {% else %}
-                <h1><strong>Add Box</strong></h1>
-            {% endif %}
-            {{ form }}
+            <div class="uk-panel uk-panel-box uk-panel-box-primary">
 
-            {% if 'edit' in request.get_full_path %}
-                {% if id|box_exist_file == 'True' %}
-                    <img src="{{ id|get_path_pic_box }}">
+                {% if 'edit' in request.get_full_path %}
+                    <h3>Edit Box</h3>
+                {% else %}
+                    <h3>Add Box</h3>
                 {% endif %}
-                <hr>
-                <button type="submit">Edit</button>
-            {% else %}
-                <hr>
-                <button type="submit">Add</button>
-            {% endif %}
+
+                {% for item in form %}
+                    <div class="uk-form-row">
+                        <label class="uk-form-label">{{ item.label }}</label>
+                        <div class="uk-form-controls">{{ item }}</div>
+                    </div>
+                {% endfor %}
+
+                <div class="tm-panel-footer">
+                    {% if 'edit' in request.get_full_path %}
+                        {% if id|box_exist_file == 'True' %}
+                            <img src="{{ id|get_path_pic_box }}">
+                        {% endif %}
+                        <button class="btn uk-button-primary" type="submit">Edit</button>
+                    {% else %}
+                        <button class="btn uk-button-primary" type="submit">Add</button>
+                    {% endif %}
+                </div>
+            </div>
         </form>
     {% else %}
         چنین باکسی موجود نمیباشد

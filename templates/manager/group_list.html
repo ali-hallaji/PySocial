@@ -2,52 +2,52 @@
 {% block title %}Group List{% endblock %}
 {% load staticfiles %}
 {% load func_tools %}
-{% block extrahead %}
-{% endblock %}
-
 {% block content %}
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                {% for key, value in data.0.items %}
-                    {% if key != 'id' %}
-                        {% if key == 'views' %}
-                            <th>Check permission from core</th>
-                        {% else %}
-                            <th>{{ key }}</th>
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-                <th>action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in data %}
+    <div class="uk-panel uk-panel-box uk-panel-box-primary">
+        <h3>groups list</h3>
+        <table class="uk-table uk-table-striped">
+            <thead>
                 <tr>
-                    <td></td>
-                    {% for key, value in item.items %}
+                    <th>#</th>
+                    {% for key, value in data.0.items %}
                         {% if key != 'id' %}
-                            {% if key == 'visible_templatetags' or key == 'views' %}
-                                <td><strong title="{% for i in value %} {{ i }} <br> {% endfor %}">{{ value|length }} items</strong></td>
+                            {% if key == 'views' %}
+                                <th>Check permission from core</th>
                             {% else %}
-                                <td>{{ value|truncatewords:8 }}</td>
+                                <th>{{ key }}</th>
                             {% endif %}
                         {% endif %}
                     {% endfor %}
-                    <td>
-                        <a href="/manager/edit_group/{{ item|mongo_id }}">Edit</a>
-                    </td>
+                    <th>action</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td></td>
-                {% for key, value in data.0.items %}
-                    <td></td>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        {% for key, value in item.items %}
+                            {% if key != 'id' %}
+                                {% if key == 'visible_templatetags' or key == 'views' %}
+                                    <td><strong title="{% for i in value %} {{ i }} <br> {% endfor %}">{{ value|length }} items</strong></td>
+                                {% else %}
+                                    <td>{{ value|truncatewords:8 }}</td>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        <td>
+                            <a href="/manager/edit_group/{{ item|mongo_id }}">Edit</a>
+                        </td>
+                    </tr>
                 {% endfor %}
-            </tr>
-        </tfoot>
-    </table>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    {% for key, value in data.0.items %}
+                        <td></td>
+                    {% endfor %}
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 {% endblock %}

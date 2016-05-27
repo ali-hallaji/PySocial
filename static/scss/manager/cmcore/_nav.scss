@@ -78,7 +78,7 @@ $nav-offcanvas-nested-hover-color:              $offcanvas-panel-link-hover-colo
 // Modifier: `uk-nav-parent-icon`
 // ========================================================================
 
-@mixin hook-nav-parent-icon() { float: left; }
+@mixin hook-nav-parent-icon() {}
 
 
 // Modifier `uk-nav-side`
@@ -194,10 +194,4 @@ $nav-offcanvas-nested-hover-color:              $offcanvas-panel-link-hover-colo
 // Miscellaneous
 // ========================================================================
 
-@mixin hook-nav-misc() {
-
-    .uk-nav ul {
-        padding-left: 0;
-        padding-right: $nav-nested-padding-left;
-    }
-}
+@mixin hook-nav-misc() {}

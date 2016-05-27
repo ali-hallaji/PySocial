@@ -7,25 +7,32 @@
     {% endif %}
 {% endblock %}
 {% load staticfiles %}
-{% block extrahead %}
-{% endblock %}
-
 {% block content %}
     {% if not not_exists %}
-        <form method="POST">
+        <form class="uk-form uk-form-horizontal" method="POST">
             {% csrf_token %}
-            {% if 'edit' in request.get_full_path %}
-                <h1><strong>Edit Group</strong></h1>
-            {% else %}
-                <h1><strong>Add Group</strong></h1>
-            {% endif %}
-            {{ form.as_ul }}
-            <hr>
-            {% if 'edit' in request.get_full_path %}
-                <button type="submit">Edit</button>
-            {% else %}
-                <button type="submit">Insert</button>
-            {% endif %}
+            <div class="uk-panel uk-panel-box uk-panel-box-primary">
+                {% if 'edit' in request.get_full_path %}
+                    <h3>Edit Group</h3>
+                {% else %}
+                    <h3>Add Group</h3>
+                {% endif %}
+
+                {% for item in form %}
+                    <div class="uk-form-row">
+                        <label class="uk-form-label">{{ item.label }}</label>
+                        <div class="uk-form-controls">{{ item }}</div>
+                    </div>
+                {% endfor %}
+
+                <div class="tm-panel-footer">
+                    {% if 'edit' in request.get_full_path %}
+                        <button class="btn uk-button-primary" type="submit">Edit</button>
+                    {% else %}
+                        <button class="btn uk-button-primary" type="submit">Insert</button>
+                    {% endif %}
+                </div>
+            </div>
         </form>
     {% else %}
         چنین گروهی موجود نمیباشد

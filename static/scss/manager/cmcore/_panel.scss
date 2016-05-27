@@ -30,6 +30,8 @@ $panel-hover-hover-color:                       $global-color;
 $panel-header-title-border:                     $global-border;
 $panel-header-title-color:                      $global-color;
 
+$panel-space-padding:                           15px;
+
 $panel-divider-gutter:                          $global-grid-gutter;
 $panel-divider-gutter-large:                    $global-grid-gutter-large;
 $panel-divider-border:                          $global-border;
@@ -64,7 +66,8 @@ $panel-divider-border:                          $global-border;
     > :first-child {
         margin: -15px -15px 15px -15px;
         padding: 15px;
-        border-bottom: 1px solid rgba(0,0,0,.12);
+        border-bottom: 1px solid #E1E5EE;
+        text-transform: capitalize;
     }
 }
 
