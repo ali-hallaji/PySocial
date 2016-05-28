@@ -11,7 +11,7 @@
                     <tr>
                         <th>#</th>
                         {% for key, value in boxs.0.items %}
-                            {% if key != '_id' %}
+                            {% if key != '_id' and key != 'box_pic' %}
                                 <th>{{ key }}</th>
                             {% endif %}
                         {% endfor %}
@@ -25,26 +25,28 @@
                             <td>{{ forloop.counter }}</td>
                             {% for key, value in item.items %}
                                 {% if key == 'description' %}
-                                    <td>{{ value|striptags|truncatechars:100 }}</td>
+                                    <td>{{ value|striptags|safe|truncatechars:100 }}</td>
                                 {% else %}
-                                    {% if key != '_id' %}
+                                    {% if key != '_id' and key != 'box_pic' %}
                                         <td>{{ value }}</td>
                                     {% endif %}
                                 {% endif %}
                             {% endfor %}
-                            <td><img src="{{ item|get_path_pic_box }}"></td>
-                            <td>
-                                <a href="/manager/edit_box/{{ item|mongo_id }}">Edit</a>
-                            </td>
+                            <td><img width="40" src="{{ item|get_path_pic_box }}"></td>
+                            <td><a href="/manager/edit_box/{{ item|mongo_id }}">Edit</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td></td>
+                        <th>#</th>
                         {% for key, value in boxs.0.items %}
-                            <td></td>
+                            {% if key != '_id' and key != 'box_pic' %}
+                                <th>{{ key }}</th>
+                            {% endif %}
                         {% endfor %}
+                        <th>image</th>
+                        <th>action</th>
                     </tr>
                 </tfoot>
             </table>

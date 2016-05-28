@@ -7,21 +7,31 @@
     {% endif %}
 {% endblock %}
 {% load staticfiles %}
-{% block extrahead %}
-    <script src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
-    <script src="{% static "ckeditor/ckeditor-init.js" %}"></script>
-{% endblock %}
-
 {% block content %}
-    <form method='POST'>
+    <form class="uk-form uk-form-horizontal" method='POST'>
         {% csrf_token %}
-        {{ form.as_ul }}
+        <div class="uk-panel uk-panel-box uk-panel-box-primary">
+            {% if 'edit' in request.get_full_path %}
+                <h3>Edit Home Page</h3>
+            {% else %}
+                <h3>Insert Home Page</h3>
+            {% endif %}
 
-        {% if 'edit' in request.get_full_path %}
-            <button type="submit">Edit</button>
-        {% else %}
-            <button type="submit">Insert</button>
-        {% endif %}
+            {% for item in form %}
+                <div class="uk-form-row">
+                    <label class="uk-form-label">{{ item.label }}</label>
+                    <div class="uk-form-controls">{{ item }}</div>
+                </div>
+            {% endfor %}
+
+            <div class="tm-panel-footer">
+                {% if 'edit' in request.get_full_path %}
+                    <button class="btn uk-button-primary" type="submit">Edit</button>
+                {% else %}
+                    <button class="btn uk-button-primary" type="submit">Insert</button>
+                {% endif %}
+            </div>
+        </div>
     </form>
     {% if error and error.errors %}
         {% for key, value in error.errors.items %}

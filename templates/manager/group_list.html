@@ -10,7 +10,7 @@
                 <tr>
                     <th>#</th>
                     {% for key, value in data.0.items %}
-                        {% if key != 'id' %}
+                        {% if key != 'id' and key != '_id' %}
                             {% if key == 'views' %}
                                 <th>Check permission from core</th>
                             {% else %}
@@ -26,7 +26,7 @@
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         {% for key, value in item.items %}
-                            {% if key != 'id' %}
+                            {% if key != 'id' and key != '_id' %}
                                 {% if key == 'visible_templatetags' or key == 'views' %}
                                     <td><strong title="{% for i in value %} {{ i }} <br> {% endfor %}">{{ value|length }} items</strong></td>
                                 {% else %}
@@ -42,10 +42,17 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td></td>
+                    <th>#</th>
                     {% for key, value in data.0.items %}
-                        <td></td>
+                        {% if key != 'id' and key != '_id' %}
+                            {% if key == 'views' %}
+                                <th>Check permission from core</th>
+                            {% else %}
+                                <th>{{ key }}</th>
+                            {% endif %}
+                        {% endif %}
                     {% endfor %}
+                    <th>action</th>
                 </tr>
             </tfoot>
         </table>

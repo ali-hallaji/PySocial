@@ -8,10 +8,6 @@
 {% endblock %}
 {% load staticfiles %}
 {% load func_tools %}
-{% block extrahead %}
-    <script src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
-    <script src="{% static "ckeditor/ckeditor-init.js" %}"></script>
-{% endblock %}
 {% block content %}
     {% if not not_exists %}
         <form class="uk-form uk-form-horizontal" enctype="multipart/form-data" method="POST">
@@ -25,17 +21,26 @@
                 {% endif %}
 
                 {% for item in form %}
-                    <div class="uk-form-row">
-                        <label class="uk-form-label">{{ item.label }}</label>
-                        <div class="uk-form-controls">{{ item }}</div>
-                    </div>
+                    {% if item.label == 'Box Image' %}
+                        <div class="uk-form-row">
+                            <label class="uk-form-label">{{ item.label }}</label>
+                            <div class="uk-form-controls">
+                                {{ item }}
+                                {% if id|box_exist_file == 'True' %}
+                                    <img src="{{ id|get_path_pic_box }}">
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="uk-form-row">
+                            <label class="uk-form-label">{{ item.label }}</label>
+                            <div class="uk-form-controls">{{ item }}</div>
+                        </div>
+                    {% endif %}
                 {% endfor %}
 
                 <div class="tm-panel-footer">
                     {% if 'edit' in request.get_full_path %}
-                        {% if id|box_exist_file == 'True' %}
-                            <img src="{{ id|get_path_pic_box }}">
-                        {% endif %}
                         <button class="btn uk-button-primary" type="submit">Edit</button>
                     {% else %}
                         <button class="btn uk-button-primary" type="submit">Add</button>

@@ -15,8 +15,8 @@
         {% block extrastyle %}{% endblock %}
 
         <!-- Fav Icons -->
-        <link rel="shortcut icon" href="{% static "css/manager/img/social_logo.png" %}" type="image/x-icon">
-        <link rel="apple-touch-icon-precomposed" href="{% static "css/manager/img/social_logo.png" %}">
+        <link rel="shortcut icon" href="{% static "img/social_logo.png" %}" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" href="{% static "img/social_logo.png" %}">
     </head>
 
     <body>
@@ -110,7 +110,8 @@
         <script src="{% static "js/datatable/jquery.dataTables.min.js" %}"></script>
         <script src="{% static "js/datatable/dataTables.uikit.min.js" %}"></script>
         <script src="{% static "js/waves.min.js" %}"></script>
-        <script src="{% static 'js/manager_script.js' %}"></script>
+        <script src="{% static "ckeditor/ckeditor.js" %}"></script>
+        <script src="{% static "js/manager_script.js" %}"></script>
         {% block js_code %}{% endblock %}
     </body>
 </html>

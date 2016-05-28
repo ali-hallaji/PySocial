@@ -25,7 +25,9 @@ $pagination-disabled-color:                     $global-muted-color;
 // Items
 //
 
-@mixin hook-pagination-item() {}
+@mixin hook-pagination-item() {
+    @include border-radius(3px);
+}
 
 // Link
 @mixin hook-pagination-link() {}

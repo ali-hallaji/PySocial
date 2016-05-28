@@ -3,40 +3,51 @@
 {% load func_tools %}
 {% block title %}Home List{% endblock %}
 {% block content %}
-    <h3>Home list</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                {% for key, value in data.0.items %}
-                    <th>{{ key }}</th>
-                {% endfor %}
-                <th>action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in data %}
-                <tr data-id="{{ item.id }}">
-                    <td></td>
-                    {% for key, value in item.items %}
-                        {% if key != 'id' %}
-                            <td>{{ value }}</td>
+    <div class="uk-panel uk-panel-box uk-panel-box-primary">
+        <h3>Home list</h3>
+        <table class="uk-table uk-table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    {% for key, value in data.0.items %}
+                        {% if key != '_id' and key != 'pk' %}
+                            <th>{{ key }}</th>
                         {% endif %}
                     {% endfor %}
-                    <td>
-                        <a href="/manager/edit_home/{{ item|mongo_id }}">Edit</a>
-                    </td>
+                    <th>action</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td></td>
-                {% for key, value in data.0.items %}
-                    <td></td>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                    <tr data-id="{{ item.id }}">
+                        <td>{{ forloop.counter }}</td>
+                        {% for key, value in item.items %}
+                            {% if key == 'body' %}
+                                <td>{{ value|striptags|safe|truncatechars:100 }}</td>
+                            {% else %}
+                                {% if key != '_id' and key != 'pk' %}
+                                    <td>{{ value }}</td>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        <td>
+                            <a href="/manager/edit_home/{{ item|mongo_id }}">Edit</a>
+                        </td>
+                    </tr>
                 {% endfor %}
-            </tr>
-        </tfoot>
-    </table>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>#</th>
+                    {% for key, value in data.0.items %}
+                        {% if key != '_id' and key != 'pk' %}
+                            <th>{{ key }}</th>
+                        {% endif %}
+                    {% endfor %}
+                    <th>action</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 {% endblock %}
 

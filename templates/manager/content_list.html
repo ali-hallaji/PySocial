@@ -10,7 +10,7 @@
                 <tr>
                     <th>#</th>
                     {% for key, value in contents.0.items %}
-                        {% if key != '_id' %}
+                        {% if key != '_id' and key != 'box_id' and key != 'pk' %}
                             <th>{{ key }}</th>
                         {% endif %}
                     {% endfor %}
@@ -22,8 +22,12 @@
                     <tr data-id="{{ item.id }}">
                         <td>{{ forloop.counter }}</td>
                         {% for key, value in item.items %}
-                            {% if key != '_id' %}
-                                <td>{{ value }}</td>
+                            {% if key == 'description' %}
+                                <td>{{ value|striptags|safe|truncatechars:100 }}</td>
+                            {% else %}
+                                {% if key != '_id' and key != 'box_id' and key != 'pk' %}
+                                    <td>{{ value }}</td>
+                                {% endif %}
                             {% endif %}
                         {% endfor %}
                         <td>
@@ -34,10 +38,13 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td></td>
+                    <th></th>
                     {% for key, value in contents.0.items %}
-                        <td></td>
+                        {% if key != '_id' and key != 'box_id' and key != 'pk' %}
+                            <th>{{ key }}</th>
+                        {% endif %}
                     {% endfor %}
+                    <th></th>
                 </tr>
             </tfoot>
         </table>

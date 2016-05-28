@@ -22,8 +22,12 @@
                     <tr data-id="{{ item.id }}">
                         <td>{{ forloop.counter }}</td>
                         {% for key, value in item.items %}
-                            {% if key != '_id' %}
-                                <td>{{ value }}</td>
+                            {% if key == 'description' %}
+                                <td>{{ value|striptags|safe|truncatechars:100 }}</td>
+                            {% else %}
+                                {% if key != '_id' %}
+                                    <td>{{ value }}</td>
+                                {% endif %}
                             {% endif %}
                         {% endfor %}
                         <td>

@@ -316,7 +316,7 @@ def add_box(request):
 def box_list(request):
     kwargs = {}
 
-    kwargs['boxs'] = list(cursor.box.find())
+    kwargs['boxs'] = list(cursor.box.find({}, {'pk': 0, 'cssfile_lessons': 0, 'cssfile': 0}))
 
     return render(request, 'manager/box_list.html', kwargs)
 
