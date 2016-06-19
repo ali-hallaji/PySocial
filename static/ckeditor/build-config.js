@@ -13,10 +13,10 @@
  * (1) http://ckeditor.com/builder
  *     Visit online builder to build CKEditor from scratch.
  *
- * (2) http://ckeditor.com/builder/d3965b4ddf452c4b5a8ac3c1a66f7402
+ * (2) http://ckeditor.com/builder/ed1aa250963e3ddbfc4fb59ddada41f0
  *     Visit online builder to build CKEditor, starting with the same setup as before.
  *
- * (3) http://ckeditor.com/builder/download/d3965b4ddf452c4b5a8ac3c1a66f7402
+ * (3) http://ckeditor.com/builder/download/ed1aa250963e3ddbfc4fb59ddada41f0
  *     Straight download link to the latest version of CKEditor (Optimized) with the same setup as before.
  *
  * NOTE:
@@ -25,7 +25,7 @@
  */
 
 var CKBUILDER_CONFIG = {
-	skin: 'office2013',
+	skin: 'moono',
 	preset: 'full',
 	ignore: [
 		'.bender',

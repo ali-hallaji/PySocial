@@ -12,6 +12,7 @@
     {% if not not_exists %}
         <form class="uk-form uk-form-horizontal" enctype="multipart/form-data" method="POST">
             {% csrf_token %}
+            {{ form.description }}
             <div class="uk-panel uk-panel-box uk-panel-box-primary">
 
                 {% if 'edit' in request.get_full_path %}
@@ -31,7 +32,7 @@
                                 {% endif %}
                             </div>
                         </div>
-                    {% else %}
+                    {% elif item.label != 'Description' %}
                         <div class="uk-form-row">
                             <label class="uk-form-label">{{ item.label }}</label>
                             <div class="uk-form-controls">{{ item }}</div>
