@@ -19,7 +19,4 @@ from pysocial.settings import BASE_DIR
 
 
 def show_forum(request):
-    pass
-
-
-
+    return render(request, 'forum/show_forum.html')

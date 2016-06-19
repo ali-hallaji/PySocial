@@ -2370,7 +2370,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-navbar-nav > li > a:focus,
 .uk-navbar-nav > li.uk-open > a {
   background-color: transparent;
-  color: #2379a3;
+  color: #fff;
   /* 3 */
   outline: none;
 }

@@ -23,10 +23,6 @@ ul.tm-navbar-nav > li > a {
     color: #fff;
 
     i { font-size: 14px; }
-
-    &:hover,
-    &:focus,
-    &:active { border-bottom: 1px solid #2379a3; }
 }
 
 div.tm-user-panel-nav {
@@ -56,3 +52,43 @@ div.tm-user-panel-nav {
         &:hover { color: #fc8f44; }
     }
 }
+
+.cl-effect-1 {
+
+    & a.cl-ef::before,
+    & a.cl-ef::after {
+        display: inline-block;
+        opacity: 0;
+        -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+        -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+        transition: transform 0.3s, opacity 0.2s;
+    }
+
+    & a.cl-ef::before {
+        margin-left: 10px;
+        content: '[';
+        -webkit-transform: translateX(20px);
+        -moz-transform: translateX(20px);
+        transform: translateX(20px);
+    }
+
+    & a.cl-ef::after {
+        margin-right: 10px;
+        content: ']';
+        -webkit-transform: translateX(-20px);
+        -moz-transform: translateX(-20px);
+        transform: translateX(-20px);
+    }
+
+    & a.cl-ef:hover::before,
+    & a.cl-ef:hover::after,
+    & a.cl-ef:focus::before,
+    & a.cl-ef:focus::after {
+        opacity: 1;
+        -webkit-transform: translateX(0px);
+        -moz-transform: translateX(0px);
+        transform: translateX(0px);
+    }
+}
+
+

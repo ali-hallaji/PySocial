@@ -28,7 +28,7 @@
         <header data-uk-sticky="{media: 767, top: '.uk-sticky-placeholder + *', clsactive:'uk-navbar-attached uk-position-z-index', animation: 'uk-animation-slide-top'}">
             <nav class="tm-navbar uk-navbar uk-position-relative uk-position-z-index">
                 <div class="uk-container uk-container-center">
-                    <ul class="tm-navbar-nav uk-navbar-nav">
+                    <ul class="cl-effect-1 tm-navbar-nav uk-navbar-nav">
                         {% if request.user.is_authenticated %}
                             <li>
                                 <div class="tm-user-panel-nav uk-flex uk-flex-middle">
@@ -55,10 +55,10 @@
                             <li><a href="{% url 'login' %}"><i class="uk-icon-sign-in"></i></a></li>
                             <li><a href="{% url 'register' %}"><i class="uk-icon-user"></i></a></li>
                         {% endif %}
-                        <li class="uk-hidden-small"><a href="#dasboard" data-uk-smooth-scroll="{offset: 60}">داشبورد دانش</a></li>
-                        <li class="uk-hidden-small"><a href="#new-course" data-uk-smooth-scroll="{offset: 60}">جدید ترین درس ها</a></li>
-                        <li class="uk-hidden-small"><a href="">چالشگاه</a></li>
-                        <li class="uk-hidden-small"><a href="">تماس باما</a></li>
+                        <li class="uk-hidden-small"><a class="cl-ef" href="#dasboard" data-uk-smooth-scroll="{offset: 60}">داشبورد دانش</a></li>
+                        <li class="uk-hidden-small"><a class="cl-ef" href="#new-course" data-uk-smooth-scroll="{offset: 60}">جدید ترین درس ها</a></li>
+                        <li class="uk-hidden-small"><a class="cl-ef" href="{% url "show_forum" %}">چالشگاه</a></li>
+                        <li class="uk-hidden-small"><a class="cl-ef" href="">تماس باما</a></li>
                     </ul>
                     <a class="uk-navbar-brand" href="/">
                         <img src="{% static 'img/logo2.png' %}" width="130" alt="پای سوشیال">
