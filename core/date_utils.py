@@ -109,3 +109,10 @@ def gregorian_to_jalali(_date, format_split='-'):
         _date = text_date.format(date.jyear, date.jmonth, date.jday)
 
         return _date
+
+
+def jalali_to_gregorian(year, month, day):
+    gregorian = jdatetime.JalaliToGregorian(year, month, day)
+    gyear, gmonth, gday = gregorian.getGregorianList()
+    _date = datetime.date(gyear, gmonth, gday)
+    return _date
