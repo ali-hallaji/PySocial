@@ -1,0 +1,46 @@
+{% extends 'manager/base.html' %}
+{% block title %}
+    {% if 'edit' in request.get_full_path %}
+        Edit Lesson
+    {% else %}
+        Add Lesson
+    {% endif %}
+{% endblock %}
+{% load staticfiles %}
+{% block content %}
+    {% if not not_exists %}
+        <form class="uk-form uk-form-horizontal" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            <div class="uk-panel uk-panel-box uk-panel-box-primary">
+                {% if 'edit' in request.get_full_path %}
+                    <h3>Edit Lesson</h3>
+                {% else %}
+                    <h3>Add Lesson</h3>
+                {% endif %}
+
+                {% for item in form %}
+                    <div class="uk-form-row">
+                        <label class="uk-form-label">{{ item.label }}</label>
+                        <div class="uk-form-controls">{{ item }}</div>
+                    </div>
+                {% endfor %}
+
+                <div class="tm-panel-footer">
+                    {% if 'edit' in request.get_full_path %}
+                        <button class="btn uk-button-primary" type="submit">Edit</button>
+                    {% else %}
+                        <button class="btn uk-button-primary" type="submit">Add</button>
+                    {% endif %}
+                </div>
+            </div>
+        </form>
+    {% else %}
+        چنین نامی موجود نمیباشد
+    {% endif %}
+    {% if error and error.errors %}
+        {% for key, value in error.errors.items %}
+            {{ key }}: {{ value}}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+

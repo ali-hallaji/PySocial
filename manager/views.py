@@ -1,9 +1,11 @@
 # Python Import
+import datetime
 import logging
 import os
 
 from bson.objectid import ObjectId
 from pymongo import ASCENDING
+from pymongo import DESCENDING
 
 # Django import
 from django.contrib.auth.decorators import login_required
@@ -18,6 +20,7 @@ from django.views.decorators.http import require_POST
 # PySocial import
 from core import cursor
 from core.acl_general_funcs import get_all_view_names
+from core.date_utils import gregorian_to_jalali
 from core.acl_general_funcs import has_perm_view
 from core.func_tools import find_pic_by_id
 from core.func_tools import handle_uploaded_file
@@ -26,6 +29,7 @@ from forms import ContentForm
 from forms import ForumForm
 from forms import GroupForm
 from forms import HomeForm
+from forms import LessonForm
 from forms import ParentForm
 from forms import UserForm
 from pysocial.settings import BASE_DIR
@@ -579,3 +583,104 @@ def edit_forum(request, _id):
         kwargs['form'] = ForumForm(forum)
 
     return render(request, 'manager/forum.html', kwargs)
+
+
+@login_required
+@has_perm_view()
+def add_lesson(request):
+    kwargs = {}
+    user_id = cursor.users.find_one({'username': request.user.username})
+    if request.method == 'POST':
+        kwargs['form'] = LessonForm(request.POST)
+
+        if kwargs['form'].is_valid():
+            data = kwargs['form'].cleaned_data
+            data['content_id'] = ObjectId(data['content_id'])
+            data['box_id'] = ObjectId(data['box_id'])
+            data['user_id'] = user_id['_id']
+            data['created'] = datetime.datetime.now()
+            result = cursor.lessons.insert(data)
+
+            if result:
+                return HttpResponseRedirect('/manager/lesson_list')
+
+    else:
+        kwargs['form'] = LessonForm()
+
+    return render(request, 'manager/lesson.html', kwargs)
+
+
+@login_required
+@has_perm_view()
+def lesson_list(request):
+    kwargs = {}
+
+    users = {}
+    user = cursor.users.find({}, {'username': 1})
+    for doc in user:
+        users[doc['_id']] = doc['username']
+
+    boxs = {}
+    box = cursor.box.find({}, {'title': 1})
+    for doc in box:
+        boxs[doc['_id']] = doc['title']
+
+    contents = {}
+    content = cursor.contents.find({}, {'title': 1})
+    for doc in content:
+        contents[doc['_id']] = doc['title']
+
+    kwargs['lessons'] = list(cursor.lessons.find().sort('created', DESCENDING))
+    for doc in kwargs['lessons']:
+        doc['user_id'] = users[doc['user_id']]
+        doc['content_id'] = contents[doc['content_id']]
+        doc['box_id'] = boxs[doc['box_id']]
+        doc['created'] = gregorian_to_jalali(doc['created'])[:10]
+
+    return render(request, 'manager/lesson_list.html', kwargs)
+
+
+@login_required
+@has_perm_view()
+def edit_lesson(request, _id):
+    kwargs = {}
+
+    criteria = {'_id': ObjectId(_id)}
+    lesson = cursor.lessons.find_one(criteria)
+
+    if not lesson:
+        kwargs['not_exists'] = True
+        return render(request, 'manager/lesson.html', kwargs)
+
+    user_id = cursor.users.find_one({'username': request.user.username})
+    if request.method == 'POST':
+        kwargs['form'] = LessonForm(request.POST)
+
+        if kwargs['form'].is_valid():
+            data = kwargs['form'].cleaned_data
+            data['content_id'] = ObjectId(data['content_id'])
+            data['box_id'] = ObjectId(data['box_id'])
+            data['user_id'] = user_id['_id']
+            data['modified'] = datetime.datetime.now()
+            update = cursor.lessons.update_one(criteria, {'$set': data})
+
+            if update.raw_result.get('updatedExisting', None):
+                return HttpResponseRedirect('/manager/lesson_list')
+
+    else:
+        kwargs['form'] = LessonForm(lesson)
+
+    return render(request, 'manager/lesson.html', kwargs)
+
+
+@login_required
+@csrf_exempt
+@require_POST
+@has_perm_view()
+def delete_lesson(request, _id):
+    kwargs = {}
+
+    mongodb_remove = cursor.lessons.delete_one({'_id': ObjectId(_id)})
+    kwargs['mongodb_remove'] = mongodb_remove.raw_result
+
+    return JsonResponse(kwargs, safe=False)

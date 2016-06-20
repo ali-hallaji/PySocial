@@ -1,0 +1,57 @@
+{% extends 'manager/base.html' %}
+{% load staticfiles %}
+{% load func_tools %}
+{% block title %}Lesson List{% endblock %}
+{% block content %}
+    <h3>Lesson list</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                {% for key, value in lessons.0.items %}
+                    {% if key == 'id' %}
+                    {% elif key == '_id' %}
+                    {% elif key == 'demo' %}
+                    {% elif key == 'pk' %}
+                    {% elif key == 'author' %}
+                    {% elif key == 'nav_to_url' %}
+                    {% else %}
+                        <th>{{ key }}</th>
+                    {% endif %}
+                {% endfor %}
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in lessons %}
+                <tr data-id="{{ item.id }}">
+                    <td></td>
+                    {% for key, value in item.items %}
+                        {% if key == 'body' %}
+                            <td>{{ value|safe|truncatewords:7 }}</td>
+                        {% elif key == 'id' %}
+                        {% elif key == '_id' %}
+                        {% elif key == 'demo' %}
+                        {% elif key == 'pk' %}
+                        {% elif key == 'author' %}
+                        {% elif key == 'nav_to_url' %}
+                        {% else %}
+                            <td>{{ value }}</td>
+                        {% endif %}
+                    {% endfor %}
+                    <td>
+                        <a href="/manager/edit_lesson/{{ item|mongo_id }}">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                {% for key, value in lessons.0.items %}
+                    <td></td>
+                {% endfor %}
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}

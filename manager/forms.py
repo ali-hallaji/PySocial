@@ -1,3 +1,5 @@
+import datetime
+
 # Django Import
 from django import forms
 from ckeditor.widgets import CKEditorWidget
@@ -200,3 +202,43 @@ class ForumForm(forms.Form):
     )
     title = forms.CharField(label='title')
     title_en = forms.CharField(label='title en')
+
+
+class LessonForm(forms.Form):
+    body = forms.CharField(
+        label='Body',
+        widget=CKEditorWidget()
+    )
+    published = forms.BooleanField(label='Published', initial=False)
+
+    def __init__(self, *args, **kwargs):
+        boxs = []
+        box = list(cursor.box.find({}, {'title': 1}))
+
+        for doc in box:
+            boxs.append((doc['_id'], doc['title']))
+
+        contents = []
+        content = list(cursor.contents.find({}, {'title': 1, 'box_id': 1}))
+
+        for doc in content:
+            for item in boxs:
+                if doc['box_id'] == item[0]:
+                    contents.append(
+                        (
+                            doc['_id'],
+                            (item[1] + " | " + doc['title'])
+                        )
+                    )
+
+        super(LessonForm, self).__init__(*args, **kwargs)
+        self.fields['box_id'] = forms.ChoiceField(
+            label='Choose your Box',
+            required=True,
+            choices=boxs
+        )
+        self.fields['content_id'] = forms.ChoiceField(
+            label='Choose your Content',
+            required=True,
+            choices=contents
+        )
