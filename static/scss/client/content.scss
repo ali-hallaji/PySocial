@@ -107,7 +107,7 @@ ul.tm-list-lessons {
 
         &:last-child { border-bottom: 0; }
 
-        &.not-published {
+        &.unpublished {
             background-color: rgba(0,0,0,0.02);
 
             & > a {

@@ -120,17 +120,17 @@ ul.tm-list-lessons > li {
 ul.tm-list-lessons > li:last-child {
   border-bottom: 0;
 }
-ul.tm-list-lessons > li.not-published {
+ul.tm-list-lessons > li.unpublished {
   background-color: rgba(0, 0, 0, 0.02);
 }
-ul.tm-list-lessons > li.not-published > a {
+ul.tm-list-lessons > li.unpublished > a {
   color: #999;
   pointer-events: none;
 }
-ul.tm-list-lessons > li.not-published > a span.badge {
+ul.tm-list-lessons > li.unpublished > a span.badge {
   color: #999;
 }
-ul.tm-list-lessons > li.not-published > a > * {
+ul.tm-list-lessons > li.unpublished > a > * {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
 }
