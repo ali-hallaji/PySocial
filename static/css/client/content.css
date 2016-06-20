@@ -120,6 +120,20 @@ ul.tm-list-lessons > li {
 ul.tm-list-lessons > li:last-child {
   border-bottom: 0;
 }
+ul.tm-list-lessons > li.not-published {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+ul.tm-list-lessons > li.not-published > a {
+  color: #999;
+  pointer-events: none;
+}
+ul.tm-list-lessons > li.not-published > a span.badge {
+  color: #999;
+}
+ul.tm-list-lessons > li.not-published > a > * {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
 ul.tm-list-lessons > li > a {
   color: #3a3a3a;
   font-family: Mirzab, ubuntub;

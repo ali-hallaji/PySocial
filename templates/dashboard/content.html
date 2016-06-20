@@ -61,13 +61,23 @@
                             <div class="uk-accordion-content">
                                 <ul class="tm-list-lessons uk-list">
                                     {% for doc in parent.3 %}
-                                        <li>
-                                            <a href="{% url "lesson" box.title doc|mongo_id %}">
-                                            <span class="badge">{{ forloop.counter }}.</span>
-                                            {{ doc.title }}
-                                            <span class="tm-btn-1 uk-button uk-button-small uk-hidden-small uk-float-left">ورود</span>
-                                            </a>
-                                        </li>
+                                        {% if doc.published %}
+                                            <li>
+                                                <a href="{% url "lesson" box.title doc|mongo_id %}">
+                                                    <span class="badge">{{ forloop.counter }}.</span>
+                                                    {{ doc.title }}
+                                                    <span class="tm-btn-1 uk-button uk-button-small uk-hidden-small uk-float-left">ورود</span>
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li class="not-published">
+                                                <a>
+                                                    <span class="badge">{{ forloop.counter }}.</span>
+                                                    {{ doc.title }}
+                                                    <span class="tm-btn-1 uk-button uk-button-small uk-hidden-small uk-float-left">ورود</span>
+                                                </a>
+                                            </li>
+                                        {% endif %}
                                     {% endfor %}
                                 </ul>
                             </div>

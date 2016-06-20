@@ -107,6 +107,19 @@ ul.tm-list-lessons {
 
         &:last-child { border-bottom: 0; }
 
+        &.not-published {
+            background-color: rgba(0,0,0,0.02);
+
+            & > a {
+                color: #999;
+                pointer-events: none;
+
+                span.badge { color: #999; }
+
+                > * { @include filter(grayscale(100%)); }
+            }
+        }
+
         > a {
             color: #3a3a3a;
             font-family: $mirzab-font, $ubuntub-font;
