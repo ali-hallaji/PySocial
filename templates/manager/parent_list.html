@@ -31,7 +31,8 @@
                             {% endif %}
                         {% endfor %}
                         <td>
-                            <a href="/manager/edit_parent/{{ item|mongo_id }}">Edit</a>
+                            <a data-delete="{% url 'delete_lesson' item|mongo_id %}"><i class="uk-icon-times"></i></a>
+                            <a href="{% url 'edit_parent' item|mongo_id %}"><i class="uk-icon-edit"></i></a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -46,4 +47,22 @@
             </tfoot>
         </table>
     </div>
+{% endblock %}
+{% block js_code %}
+    <script>
+        $('a[data-delete]').on('click', function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: event.currentTarget.dataset.delete,
+                type: 'POST',
+                dataType: 'xml/html/script/json/jsonp',
+                success: function(data, textStatus, xhr) {
+                    // table.row('.selected').remove().draw( false );
+                    // console.log(data);
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                }
+            });
+        });
+    </script>
 {% endblock %}

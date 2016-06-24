@@ -15,7 +15,13 @@ $table-caption-font-size:                       round(($global-font-size * 0.85)
 // Component
 // ========================================================================
 
-@mixin hook-table() {}
+@mixin hook-table() {
+    direction: rtl;
+    text-align: left;
+    // white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+}
 
 @mixin hook-table-active() {}
 
@@ -31,6 +37,11 @@ $table-caption-font-size:                       round(($global-font-size * 0.85)
 
 @mixin hook-table-misc() {
 
-    th { text-transform: capitalize; }
-    .uk-table td { vertical-align: middle; }
+    .uk-table {
+        // white-space: nowrap;
+
+        th { text-transform: capitalize; }
+
+        td { vertical-align: middle; }
+    }
 }

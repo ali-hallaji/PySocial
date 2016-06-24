@@ -91,11 +91,11 @@
                     {% for doc in roadmap %}
                         <li class="tm-home-widget-list-items">
                             <div class="uk-panel">
-                                <div>
-                                    <i class="{{ doc.icon }}"></i>
-                                    <h2>{{ doc.title }}</h2>
+                                <i class="{{ doc.icon }} uk-float-right uk-border-circle uk-text-center uk-margin-left"></i>
+                                <div class="uk-nbfc-alt">
+                                    <h3 class="uk-margin-top">{{ doc.title }}</h3>
+                                    <p>{{ doc.body|safe }}</p>
                                 </div>
-                                {{ doc.body|safe }}
                             </div>
                         </li>
                     {% endfor %}

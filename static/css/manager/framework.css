@@ -3366,6 +3366,8 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-table th,
 .uk-table td {
   padding: 8px 8px;
+  direction: rtl;
+  text-align: left;
 }
 
 /*
@@ -3429,10 +3431,9 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   background: #EEE;
 }
 
-th {
+.uk-table th {
   text-transform: capitalize;
 }
-
 .uk-table td {
   vertical-align: middle;
 }

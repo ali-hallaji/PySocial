@@ -168,6 +168,11 @@ div.tm-no-result {
   background: rgba(255, 255, 255, 0.15);
 }
 
+a.test {
+  -webkit-filter: url("#filter");
+  filter: url("/#filter");
+}
+
 footer > div.uk-block {
   background-color: #28384A;
 }
