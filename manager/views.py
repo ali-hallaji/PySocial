@@ -688,3 +688,15 @@ def delete_parent(request, _id):
     kwargs['mongodb_remove'] = mongodb_remove.raw_result
 
     return JsonResponse(kwargs, safe=False)
+
+
+@login_required
+@csrf_exempt
+@require_POST
+@has_perm_view()
+def delete_forum(request, _id):
+    kwargs = {}
+    mongodb_remove = cursor.forum.delete_one({'_id': ObjectId(_id)})
+    kwargs['mongodb_remove'] = mongodb_remove.raw_result
+
+    return JsonResponse(kwargs, safe=False)
