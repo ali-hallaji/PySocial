@@ -584,6 +584,7 @@ def edit_forum(request, _id):
 def add_lesson(request):
     kwargs = {}
     user_id = cursor.users.find_one({'username': request.user.username})
+
     if request.method == 'POST':
         kwargs['form'] = LessonForm(request.POST)
 
@@ -637,9 +638,9 @@ def lesson_list(request):
 @has_perm_view()
 def edit_lesson(request, _id):
     kwargs = {}
+
     criteria = {'_id': ObjectId(_id)}
     lesson = cursor.lessons.find_one(criteria)
-
     if not lesson:
         kwargs['not_exists'] = True
         return render(request, 'manager/lesson.html', kwargs)
