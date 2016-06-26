@@ -203,6 +203,16 @@ class ForumForm(forms.Form):
     title = forms.CharField(label='title')
     title_en = forms.CharField(label='title en')
 
+    def __init__(self, *args, **kwargs):
+        boxs = []
+        box = list(cursor.box.find({}, {'title': 1}))
+
+        for doc in box:
+            boxs.append((doc['title'], doc['title']))
+
+        super(ForumForm, self).__init__(*args, **kwargs)
+        self.fields['box'] = forms.ChoiceField(label='Box', choices=boxs)
+
 
 class LessonForm(forms.Form):
     body = forms.CharField(
