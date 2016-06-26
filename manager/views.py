@@ -637,7 +637,6 @@ def lesson_list(request):
 @has_perm_view()
 def edit_lesson(request, _id):
     kwargs = {}
-
     criteria = {'_id': ObjectId(_id)}
     lesson = cursor.lessons.find_one(criteria)
 
@@ -672,7 +671,6 @@ def edit_lesson(request, _id):
 @has_perm_view()
 def delete_lesson(request, _id):
     kwargs = {}
-
     mongodb_remove = cursor.lessons.delete_one({'_id': ObjectId(_id)})
     kwargs['mongodb_remove'] = mongodb_remove.raw_result
 
