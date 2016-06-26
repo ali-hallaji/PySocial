@@ -19,7 +19,14 @@
                 <tr data-id="{{ item.id }}">
                     <td></td>
                     {% for key, value in item.items %}
-                        {% if key != 'id' %}
+                        {% if key =='pk' %}
+                        {% elif key == 'forum_pic' %}
+                        {% elif key == 'cssfile_postviews' %}
+                        {% elif key == 'cssfile_thread' %}
+                        {% elif key == 'cssfile_topic' %}
+                        {% elif key == 'description' %}
+                            <td>{{ value|safe }}</td>
+                        {% elif key != 'id' %}
                             <td>{{ value }}</td>
                         {% endif %}
                     {% endfor %}
