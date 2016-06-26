@@ -40,7 +40,8 @@
                         {% endif %}
                     {% endfor %}
                     <td>
-                        <a href="/manager/edit_forum/{{ item|mongo_id }}">Edit</a>
+                        <a href="/manager/edit_forum/{{ item|mongo_id }}">Edit</a> |
+                        <a href="/manager/delete_forum/{{ item|mongo_id }}">Delete</a>
                     </td>
                 </tr>
             {% endfor %}
