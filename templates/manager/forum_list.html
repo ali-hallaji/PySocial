@@ -14,6 +14,7 @@
                         {% elif key == 'cssfile_postviews' %}
                         {% elif key == 'cssfile_thread' %}
                         {% elif key == 'cssfile_topic' %}
+                        {% elif key != 'id' %}
                             <th>{{ key }}</th>
                         {% endif %}
                 {% endfor %}
