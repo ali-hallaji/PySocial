@@ -9,7 +9,13 @@
             <tr>
                 <th>#</th>
                 {% for key, value in forums.0.items %}
-                    <th>{{ key }}</th>
+                        {% if key == 'pk' %}
+                        {% elif key == 'forum_pic' %}
+                        {% elif key == 'cssfile_postviews' %}
+                        {% elif key == 'cssfile_thread' %}
+                        {% elif key == 'cssfile_topic' %}
+                            <th>{{ key }}</th>
+                        {% endif %}
                 {% endfor %}
                 <th>action</th>
             </tr>
