@@ -9,9 +9,9 @@
 
 $dropdown-z-index:                              $global-z-index + 20;
 $dropdown-padding:                              10px;
-$dropdown-background:                           #edf4f8;
-$dropdown-color:                                #003c5a;
-$dropdown-divider-border:                       #003c5a;
+$dropdown-background:                           #b8b7ad;
+$dropdown-color:                                #373A47;
+$dropdown-divider-border:                       #373A47;
 
 $dropdown-navbar-color:                         $global-color;
 
@@ -20,7 +20,7 @@ $dropdown-navbar-color:                         $global-color;
 // ========================================================================
 
 @mixin hook-dropdown() {
-    border: 1px solid #D6E6EE;
+    @include box-shadow(5px 5px 5px -3px #2A2D38);
 }
 
 

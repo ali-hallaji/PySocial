@@ -23,7 +23,15 @@
                         <td>{{ forloop.counter }}</td>
                         {% for key, value in item.items %}
                             {% if key != '_id' %}
-                                <td>{{ value }}</td>
+                                {% if key == 'groups_name' %}
+                                    <td>
+                                        {% for per in value %}
+                                            <div class="uk-badge uk-border-rounded">{{ per }}</div>
+                                        {% endfor %}
+                                    </td>
+                                {% else %}
+                                    <td>{{ value }}</td>
+                                {% endif %}
                             {% endif %}
                         {% endfor %}
                         <td>
