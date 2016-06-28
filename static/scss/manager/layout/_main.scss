@@ -8,7 +8,9 @@ header#header-main {
     @include position(fixed, 0 0 null 0);
 }
 
-a#user_action_image { font-size: 0; }
+div.tm-panel-space { padding: 15px 15px 68px 15px; }
+
+// a#user_action_image { font-size: 0; }
 
 nav.tm-navbar-header {
 
@@ -29,11 +31,27 @@ div.tm-panel-footer {
 div.django-ckeditor-widget { width: 100%; }
 
 .menu-button {
+    padding: 0;
+    border: 0;
+    width: 2em;
+    height: 2em;
+    margin: 10px 15px;
+    opacity: .1;
     z-index: 1000;
-    margin: 1em;
     font-size: 2em;
+    outline: 0;
+    text-align: center;
+    line-height: 2;
+    color: #ECECEC;
+    background: #373a47;
 
     @include position(fixed, null null 0 null);
+    @include transition(.3s all);
+
+    &:hover {
+        opacity: 1;
+        color: #ECECEC;
+    }
 }
 
 /* Close Button */
@@ -112,7 +130,7 @@ div.django-ckeditor-widget { width: 100%; }
     z-index: 1001;
     height: 160px;
 
-    @include position(absolute, null null 0 0);
+    @include position(fixed, null null 0 0);
     @include transform(translate3d(0,160px,0));
     @include transition(transform 0.4s);
 }
@@ -139,6 +157,7 @@ div.django-ckeditor-widget { width: 100%; }
 
 /* Shown menu */
 .show-menu {
+    overflow: hidden;
 
     &::after {
         content: '';
@@ -146,7 +165,7 @@ div.django-ckeditor-widget { width: 100%; }
         background: rgba(55, 58, 71, 0.41);
         z-index: 1011;
 
-        @include position(absolute, 0 0 0 0);
+        @include position(fixed, 0 0 0 0);
         // @include transform(translate3d(100%,0,0));
         // @include transition(opacity 0.4s, transform 0s 0.4s);
     }
@@ -180,5 +199,3 @@ div.django-ckeditor-widget { width: 100%; }
 
     & .content::before { @include transition(opacity 0.4s); }
 }
-
-#content-main { overflow-y: scroll; }

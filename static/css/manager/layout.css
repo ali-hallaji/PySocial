@@ -30,8 +30,8 @@ header#header-main {
   left: 0;
 }
 
-a#user_action_image {
-  font-size: 0;
+div.tm-panel-space {
+  padding: 15px 15px 68px 15px;
 }
 
 nav.tm-navbar-header a {
@@ -53,11 +53,28 @@ div.django-ckeditor-widget {
 }
 
 .menu-button {
+  padding: 0;
+  border: 0;
+  width: 2em;
+  height: 2em;
+  margin: 10px 15px;
+  opacity: .1;
   z-index: 1000;
-  margin: 1em;
   font-size: 2em;
+  outline: 0;
+  text-align: center;
+  line-height: 2;
+  color: #ECECEC;
+  background: #373a47;
   position: fixed;
   bottom: 0;
+  -webkit-transition: 0.3s all;
+  -moz-transition: 0.3s all;
+  transition: 0.3s all;
+}
+.menu-button:hover {
+  opacity: 1;
+  color: #ECECEC;
 }
 
 /* Close Button */
@@ -145,7 +162,7 @@ div.django-ckeditor-widget {
   width: 100%;
   z-index: 1001;
   height: 160px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   -webkit-transform: translate3d(0, 160px, 0);
@@ -191,11 +208,14 @@ div.django-ckeditor-widget {
 }
 
 /* Shown menu */
+.show-menu {
+  overflow: hidden;
+}
 .show-menu::after {
   content: '';
   background: rgba(55, 58, 71, 0.41);
   z-index: 1011;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -258,8 +278,4 @@ div.django-ckeditor-widget {
   -webkit-transition: opacity 0.4s;
   -moz-transition: opacity 0.4s;
   transition: opacity 0.4s;
-}
-
-#content-main {
-  overflow-y: scroll;
 }

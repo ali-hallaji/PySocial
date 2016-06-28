@@ -6,8 +6,14 @@
 @import "../settings/settings";
 @import "../settings/mixins";
 @import "../modules/buttons";
+@import "../../static/bourbon/bourbon";
 
-body { background-color: #f6f8f8; }
+div.tm-background::after {
+    content: '';
+    background-color: rgba(44, 51, 64, 0.8);
+
+    @include position(absolute, 0 0 0 0);
+}
 
 form { padding: 0 20px; }
 
@@ -20,31 +26,6 @@ p#tm-user-links {
     }
 
     i { @include transition(0.2s all); }
-}
-
-div.tm-social-links {
-    padding: 30px;
-    text-align: center;
-    border: 1px solid #E9F0F0;
-    background-color: #F3F6F6;
-
-    @include border-radius(5px);
-
-    > * { color: #aebdc1; }
-
-    a {
-
-        i {
-            font-size: 32px;
-            vertical-align: -20%;
-            margin-right: 10px;
-
-            @include transition(0.2s all);
-
-            &:hover { color: #748e95; }
-        }
-    }
-
 }
 
 div#captcha {
@@ -63,5 +44,189 @@ div#captcha {
     img {
         width: 100px;
         height: 40px;
+    }
+}
+
+.input {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin-top: 1em;
+    max-width: 350px;
+    width: calc(100% - 2em);
+    vertical-align: top;
+}
+
+.input__field {
+    position: relative;
+    display: block;
+    float: left;
+    padding: 0.8em;
+    width: 60%;
+    border: none;
+    border-radius: 0;
+    background: #f0f0f0;
+    color: #aaa;
+    -webkit-appearance: none; /* for box shadows to show on iOS */
+}
+
+.input__field:focus { outline: none; }
+
+.input__label {
+    display: inline-block;
+    float: right;
+    padding: 0 1em;
+    width: 40%;
+    color: #6a7989;
+    font-family: $mirzab-font;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.input__label-content {
+    text-align: right;
+    position: relative;
+    display: block;
+    padding: 1.6em .5em 1.6em 0;
+    width: 100%;
+}
+
+.graphic {
+    fill: none;
+
+    @include position(absolute, 0 null null 0);
+}
+
+/* Hoshi */
+.input--hoshi {
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.input__field--hoshi {
+    margin-top: 1em;
+    padding: 1.85em 0.15em;
+    width: 100%;
+    background: transparent;
+    color: #595F6E;
+}
+
+.input__label--hoshi {
+    padding: 0 0.25em;
+    width: 100%;
+    height: calc(100% - 1em);
+    pointer-events: none;
+
+    @include position(absolute, null null 0 0);
+}
+
+.input__label-content--hoshi { position: absolute; }
+
+.input__label--hoshi::before,
+.input__label--hoshi::after {
+    content: '';
+    width: 100%;
+    height: calc(100% - 10px);
+    border-bottom: 1px solid #B9C1CA;
+
+    @include position(absolute, 0 null null 0);
+}
+
+.input__label--hoshi::after {
+    margin-top: -2px;
+    border-bottom: 4px solid red;
+
+    @include transform(translate3d(100%, 0, 0));
+    @include transition(transform 0.3s);
+}
+
+.input__label--hoshi-color-1::after {
+    border-color: hsl(200, 100%, 50%);
+}
+
+.input__label--hoshi-color-2::after {
+    border-color: hsl(160, 100%, 50%);
+}
+
+.input__label--hoshi-color-3::after {
+    border-color: hsl(20, 100%, 50%);
+}
+
+.input__field--hoshi:focus + .input__label--hoshi::after,
+.input--filled .input__label--hoshi::after { @include transform(translate3d(0, 0, 0)); }
+
+.input__field--hoshi:focus + .input__label--hoshi .input__label-content--hoshi,
+.input--filled .input__label-content--hoshi { @include animation(anim-1 0.3s forwards); }
+
+@-webkit-keyframes anim-1 {
+    50% {
+        opacity: 0;
+
+        @include transform(translate3d(1em, 0, 0));
+    }
+    51% {
+        opacity: 0;
+
+        @include transform(translate3d(-1em, -40%, 0));
+    }
+    100% {
+        opacity: 1;
+
+        @include transform(translate3d(0, -40%, 0));
+    }
+}
+
+@keyframes anim-1 {
+    50% {
+        opacity: 0;
+
+        @include transform(translate3d(1em, 0, 0));
+    }
+    51% {
+        opacity: 0;
+
+        @include transform(translate3d(-1em, -40%, 0));
+    }
+    100% {
+        opacity: 1;
+
+        @include transform(translate3d(0, -40%, 0));
+    }
+}
+
+input:-webkit-autofill {
+    @include box-shadow(0 0 0px 1000px white inset);
+}
+
+div.tm-social-links a {
+    color: #ddd;
+    font-size: 2em;
+    width: 2.5em;
+    height: 2.5em;
+    line-height: 2.5em;
+    border: 1px solid #f0f0f0;
+    margin: 0 5px;
+
+    @include transition(1s all);
+
+    &:nth-child(1):hover { background: #3c5a99; }
+
+    &:nth-child(2):hover { background: #d34836; }
+
+    &:nth-child(3):hover { background: #0077B5; }
+
+    &:nth-child(4):hover { background: #333333; }
+
+    &:hover {
+        color: #fff;
+
+        @include transition(.1s all);
+        @include border-radius(50%);
     }
 }
