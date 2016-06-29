@@ -225,6 +225,7 @@ div.tm-social-links a {
 
     &:hover {
         color: #fff;
+        border-color: transparent;
 
         @include transition(.1s all);
         @include border-radius(50%);

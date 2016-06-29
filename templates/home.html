@@ -7,13 +7,14 @@
 {% endblock %}
 {% block content %}
     <section id="main-slide">
-        <div class="uk-block uk-padding-remove uk-block-primary uk-height-viewport uk-position-relative">
-            <div class="uk-position-absolute uk-position-bottom uk-height-1-1" style="background: url(/static/img/header_wall.png) 50% 50%; background-size: cover;">
-                <div class="uk-container uk-container-center">
+        <div class="uk-block uk-padding-remove uk-height-viewport uk-position-relative">
+            <div class="tm-cover-home uk-position-absolute uk-position-bottom uk-height-1-1" style="background: url({% static "img/bkm01.jpg" %}) 50% 50%; background-size: cover;"></div>
+            <div class="uk-container uk-container-center uk-height-1-1">
+                <div class="uk-flex uk-flex-middle uk-flex-center uk-height-1-1 uk-width-1-1">
                     <div class="uk-contrast uk-text-center">
                         <div class="uk-block uk-block-large">
-                            <h1>پای سوشیال</h1>
-                            <h1>PySocial</h1>
+                            <h1 data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:300}">پای سوشیال</h1>
+                            <h1 data-uk-scrollspy="{cls:'uk-animation-slide-top', delay:300}">PySocial</h1>
                         </div>
                     </div>
                 </div>
@@ -29,7 +30,7 @@
                         {{ what|safe }}
                     </div>
                     <div class="uk-width-small-1-1 uk-width-large-1-2 uk-text-center">
-                        <img src="{% static "img/page01_img02.png" %}" alt="">
+                        <img src="{% static "img/sec01.png" %}" alt="">
                     </div>
                 </div>
             </div>

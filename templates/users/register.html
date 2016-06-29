@@ -4,32 +4,35 @@
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        <div class="uk-form-row">
-            <label class="uk-form-label">نام کاربری</label>
-            <div class="uk-form-controls">
-                <input class="uk-form-large uk-form-width-large" autocomplete="off" name="username" type="text">
-            </div>
-        </div>
-        <div class="uk-form-row">
-            <label class="uk-form-label">گذرواژه</label>
-            <div class="uk-form-controls">
-                <input class="uk-form-large uk-form-width-large" autocomplete="off" name="password1" type="password">
-            </div>
-        </div>
-        <div class="uk-form-row">
-            <label class="uk-form-label">تکرار گذرواژه</label>
-            <div class="uk-form-controls">
-                <input class="uk-form-large uk-form-width-large" autocomplete="off" name="password2" type="password">
-            </div>
-        </div>
-        <div class="uk-form-row">
-            <label class="uk-form-label">ایمیل</label>
-            <div class="uk-form-controls">
-                <input class="uk-form-large uk-form-width-large" autocomplete="off" name="email" type="email" required="required" placeholder="name@yourdomain.com">
-            </div>
-        </div>
-        <div class="uk-form-row">
-            <label class="uk-form-label">کپچا</label>
+        <span class="input input--hoshi">
+            <input class="input__field input__field--hoshi" dir="ltr" autocomplete="off" name="username" type="text" id="input-1">
+            <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-1">
+                <span class="input__label-content input__label-content--hoshi">نام کاربری</span>
+            </label>
+        </span>
+
+        <span class="input input--hoshi">
+            <input class="input__field input__field--hoshi" dir="ltr" autocomplete="off" name="password1" type="password" id="input-2">
+            <label class="input__label input__label--hoshi input__label--hoshi-color-2" for="input-2">
+                <span class="input__label-content input__label-content--hoshi">گذرواژه</span>
+            </label>
+        </span>
+
+        <span class="input input--hoshi">
+            <input class="input__field input__field--hoshi" dir="ltr" autocomplete="off" name="password2" type="password" id="input-3">
+            <label class="input__label input__label--hoshi input__label--hoshi-color-2" for="input-3">
+                <span class="input__label-content input__label-content--hoshi">تکرار گذرواژه</span>
+            </label>
+        </span>
+
+        <span class="input input--hoshi">
+            <input class="input__field input__field--hoshi" dir="ltr" autocomplete="off" name="email" type="email" required="required" placeholder="name@yourdomain.com" id="input-4">
+            <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="input-4">
+                <span class="input__label-content input__label-content--hoshi">ایمیل</span>
+            </label>
+        </span>
+
+        <div class="uk-form-row uk-form uk-margin-large-top uk-width-large-1-2 uk-width-small-1-2 uk-container-center">
             <div class="uk-form-controls uk-flex uk-flex-middle" id="captcha">
                 {{ form.captcha }}
                 <a class="js-captcha-refresh"><i class="uk-icon-refresh"></i></a>
@@ -38,11 +41,12 @@
         <div class="uk-form-row uk-text-center">
             <button class="uk-button uk-button-primary uk-button-large" type="submit">ثبت نام</button>
         </div>
-        <p id="tm-user-links">
+
+        <p class="uk-text-right" id="tm-user-links">
             <a href="/users/login/"><i class="uk-icon-circle uk-margin-small-left"></i>در صورتی که ثبت نام کرده اید وارد شوید</a>
         </p>
-        <div class="tm-social-links uk-margin-large-top">
-            <span>ثبت نام با حساب های:</span>
+
+        <div class="tm-social-links uk-margin-large-top uk-flex uk-flex-middle uk-flex-center">
             <a href="{% provider_login_url "facebook" %}"><i class="uk-icon-facebook-square"></i></a>
             <a href="{% provider_login_url "google" %}"><i class="uk-icon-google-plus-square"></i></a>
             <a href="{% provider_login_url "linkedin" %}"><i class="uk-icon-linkedin-square"></i></a>
