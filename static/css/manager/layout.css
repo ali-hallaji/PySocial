@@ -269,6 +269,11 @@ div.django-ckeditor-widget {
   -moz-transition-delay: 0.3s;
   transition-delay: 0.3s;
 }
+.show-menu .main-title-list > .main-title:nth-child(8) {
+  -webkit-transition-delay: 0.35s;
+  -moz-transition-delay: 0.35s;
+  transition-delay: 0.35s;
+}
 .show-menu .close-button {
   -webkit-transition-delay: 0.3s;
   -moz-transition-delay: 0.3s;

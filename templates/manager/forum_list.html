@@ -9,7 +9,15 @@
             <tr>
                 <th>#</th>
                 {% for key, value in forums.0.items %}
-                    <th>{{ key }}</th>
+                        {% if key == 'pk' %}
+                        {% elif key == 'forum_pic' %}
+                        {% elif key == 'cssfile_postviews' %}
+                        {% elif key == 'cssfile_thread' %}
+                        {% elif key == 'cssfile_topic' %}
+                        {% elif key == '_id' %}
+                        {% elif key != 'id' %}
+                            <th>{{ key }}</th>
+                        {% endif %}
                 {% endfor %}
                 <th>action</th>
             </tr>
@@ -19,12 +27,21 @@
                 <tr data-id="{{ item.id }}">
                     <td></td>
                     {% for key, value in item.items %}
-                        {% if key != 'id' %}
+                        {% if key == 'pk' %}
+                        {% elif key == 'forum_pic' %}
+                        {% elif key == 'cssfile_postviews' %}
+                        {% elif key == 'cssfile_thread' %}
+                        {% elif key == 'cssfile_topic' %}
+                        {% elif key == '_id' %}
+                        {% elif key == 'description' %}
+                            <td dir='rtl'>{{ value|safe }}</td>
+                        {% elif key != 'id' %}
                             <td>{{ value }}</td>
                         {% endif %}
                     {% endfor %}
                     <td>
-                        <a href="/manager/edit_forum/{{ item|mongo_id }}">Edit</a>
+                        <a href="/manager/edit_forum/{{ item|mongo_id }}">Edit</a> |
+                        <a data-delete="{% url 'delete_forum' item|mongo_id %}"><i class="uk-icon-times"></i></a>
                     </td>
                 </tr>
             {% endfor %}
@@ -38,4 +55,22 @@
             </tr>
         </tfoot>
     </table>
+{% endblock %}
+{% block js_code %}
+    <script>
+        $('a[data-delete]').on('click', function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: event.currentTarget.dataset.delete,
+                type: 'POST',
+                dataType: 'xml/html/script/json/jsonp',
+                success: function(data, textStatus, xhr) {
+                    // table.row('.selected').remove().draw( false );
+                    // console.log(data);
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                }
+            });
+        });
+    </script>
 {% endblock %}

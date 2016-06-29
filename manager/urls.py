@@ -12,8 +12,10 @@ from views import box_list
 from views import content_list
 from views import define_group
 from views import delete_box
+from views import delete_forum
 from views import delete_group
 from views import delete_lesson
+from views import delete_parent
 from views import delete_user
 from views import edit_box
 from views import edit_content
@@ -81,6 +83,16 @@ urlpatterns = [
         r'^delete_group/(?P<_id>[\w\d]+)/$',
         delete_group,
         name="delete_group"
+    ),
+    url(
+        r'^delete_forum/(?P<_id>[\w\d]+)/$',
+        delete_forum,
+        name="delete_forum"
+    ),
+    url(
+        r'^delete_parent/(?P<_id>[\w\d]+)/$',
+        delete_parent,
+        name="delete_parent"
     ),
     url(
         r'^delete_lesson/(?P<_id>[\w\d]+)/$',

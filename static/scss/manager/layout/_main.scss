@@ -193,6 +193,7 @@ div.django-ckeditor-widget { width: 100%; }
         &:nth-child(5) { @include transition-delay(0.2s); }
         &:nth-child(6) { @include transition-delay(0.25s); }
         &:nth-child(7) { @include transition-delay(0.30s); }
+        &:nth-child(8) { @include transition-delay(0.35s); }
     }
 
     & .close-button { @include transition-delay(0.3s); }
