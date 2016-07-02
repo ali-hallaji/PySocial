@@ -22,75 +22,127 @@
     <body>
         <header id="header-main">
             <nav class="tm-navbar-header uk-navbar">
-                <a id="toggler-aside" class="uk-float-left" href="#"><i class="uk-icon-chevron-left"></i></a>
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a id="user_action_image" href="">
+                            <img class="uk-border-circle" width="34" src="{{ user_data.picture }}" alt="{{ user_data.first_name }} {{ user_data.last_name }}">
+                            {% if user_data.first_name or user_data.last_name %}
+                                Hi, {{ user_data.first_name }} {{ user_data.last_name }}
+                            {% else %}
+                                Hi, {{ user_data.username }}
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li><a href=""><i class="uk-icon-search"></i></a></li>
+                    <li><a href=""><i class="uk-icon-bell"></i></a></li>
+                </ul>
                 <div class="uk-navbar-flip">
-                    <ul class="uk-navbar-nav">
-                        <li><a href=""><i class="uk-icon-search"></i></a></li>
-                        <li><a href=""><i class="uk-icon-bell"></i></a></li>
-                        <li>
-                            <a id="user_action_image" href="">
-                                <img class="uk-border-circle" width="34" src="{{ user_data.picture }}" alt="{{ user_data.first_name }} {{ user_data.last_name }}">
-                            </a>
-                        </li>
-                    </ul>
+                    <a class="uk-navbar-brand" href="{% url "home_manager" %}">
+                        <img src="{% static 'img/logo2.png' %}" width="130" alt="پای سوشیال">
+                    </a>
                 </div>
             </nav>
         </header>
 
-        <aside id="sidebar-main">
-            <div class="uk-panel uk-panel-space uk-overlay-background uk-text-center">
-                <a href="{% url "home_manager" %}">
-                    <img src="{% static 'img/logo2.png' %}" width="130" alt="پای سوشیال">
-                </a>
-            </div>
-            <ul class="tm-nav uk-nav uk-nav-parent-icon uk-margin-top uk-text-large" data-uk-nav>
-                <li class="uk-parent">
-                    <a href="#"><i class="uk-icon-justify uk-icon-cubes uk-margin-small-right"></i>‌box</a>
-                    <ul>
-                        <li><a href="/manager/box_list">box list</a></li>
-                        <li><a href="/manager/add_box">creat new box</a></li>
-                    </ul>
-                </li>
-                <li class="uk-parent">
-                    <a href="#"><i class="uk-icon-justify uk-icon-book uk-margin-small-right"></i>catalog</a>
-                    <ul>
-                        <li><a href="/manager/content_list">catalog list</a></li>
-                        <li><a href="/manager/add_content">creat new catalog</a></li>
-                    </ul>
-                </li>
-                <li class="uk-parent">
-                    <a href="#"><i class="uk-icon-justify uk-icon-user uk-margin-small-right"></i>user</a>
-                    <ul>
-                        <li><a href="/manager/user_list">users list</a></li>
-                    </ul>
-                </li>
-                <li class="uk-parent">
-                    <a href="#"><i class="uk-icon-justify uk-icon-users uk-margin-small-right"></i>group</a>
-                    <ul>
-                        <li><a href="/manager/group_list">groups list</a></li>
-                        <li><a href="/manager/add_group">creat new group</a></li>
-                    </ul>
-                </li>
-                <li class="uk-parent">
-                    <a href="#"><i class="uk-icon-justify uk-icon-cubes uk-margin-small-right"></i>lesson</a>
-                    <ul>
-                        <li><a href="/manager/parent_list">lessons list</a></li>
-                        <li><a href="/manager/add_parent">creat new lessons</a></li>
-                    </ul>
-                </li>
-                <li class="uk-parent">
-                    <a href="#"><i class="uk-icon-justify uk-icon-file-text uk-margin-small-right"></i>article</a>
-                    <ul>
-                        <li><a href="/manager/home_list">article in homepage</a></li>
-                        <li><a href="/manager/add_home">creat new article in homepage</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </aside>
+        <div class="menu-wrap">
+            <div class="uk-text-center uk-flex uk-flex-middle uk-flex-center uk-height-1-1">
+                <nav class="main-title-list uk-position-relative uk-position-z-index">
+                    <div class="main-title uk-display-inline-block uk-position-relative" data-uk-dropdown="{pos:'top-center'}">
+                        <a><i class="uk-icon-cubes uk-margin-small-right"></i>‌box</a>
+                        <div class="uk-dropdown">
+                            <ul class="uk-nav uk-nav-dropdown">
+                                <li><a href="/manager/box_list">box list</a></li>
+                                <li><a href="/manager/add_box">creat new box</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-        <div id="content-main">
-            <div class="uk-panel-space">
-                {% block content %}{% endblock %}
+                    <div class="main-title uk-display-inline-block uk-position-relative" data-uk-dropdown="{pos:'top-center'}">
+                        <a><i class="uk-icon-book uk-margin-small-right"></i>catalog</a>
+                        <div class="uk-dropdown">
+                            <ul class="uk-nav uk-nav-dropdown">
+                                <li><a href="/manager/content_list">catalog list</a></li>
+                                <li><a href="/manager/add_content">creat new catalog</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="main-title uk-display-inline-block uk-position-relative" data-uk-dropdown="{pos:'top-center'}">
+                        <a><i class="uk-icon-user uk-margin-small-right"></i>user</a>
+                        <div class="uk-dropdown">
+                            <ul class="uk-nav uk-nav-dropdown">
+                                <li><a href="/manager/user_list">users list</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="main-title uk-display-inline-block uk-position-relative" data-uk-dropdown="{pos:'top-center'}">
+                        <a><i class="uk-icon-users uk-margin-small-right"></i>group</a>
+                        <div class="uk-dropdown">
+                            <ul class="uk-nav uk-nav-dropdown">
+                                <li><a href="/manager/group_list">groups list</a></li>
+                                <li><a href="/manager/add_group">creat new group</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="main-title uk-display-inline-block uk-position-relative" data-uk-dropdown="{pos:'top-center'}">
+                        <a><i class="uk-icon-cubes uk-margin-small-right"></i>Parent</a>
+                        <div class="uk-dropdown">
+                            <ul class="uk-nav uk-nav-dropdown">
+                                <li><a href="/manager/parent_list">Parent list</a></li>
+                                <li><a href="/manager/add_parent">creat new Parent</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="main-title uk-display-inline-block uk-position-relative" data-uk-dropdown="{pos:'top-center'}">
+                        <a><i class="uk-icon-file-text uk-margin-small-right"></i>article</a>
+                        <div class="uk-dropdown">
+                            <ul class="uk-nav uk-nav-dropdown">
+                                <li><a href="/manager/home_list">article in homepage</a></li>
+                                <li><a href="/manager/add_home">creat new article in homepage</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="main-title uk-display-inline-block uk-position-relative" data-uk-dropdown="{pos:'top-center'}">
+                        <a><i class="uk-icon-file-text uk-margin-small-right"></i>lesson</a>
+                        <div class="uk-dropdown">
+                            <ul class="uk-nav uk-nav-dropdown">
+                                <li><a href="/manager/lesson_list">Lesson list</a></li>
+                                <li><a href="/manager/add_lesson">Create new lesson</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="main-title uk-display-inline-block uk-position-relative" data-uk-dropdown="{pos:'top-center'}">
+                        <a><i class="uk-icon-file-text uk-margin-small-right"></i>Forum</a>
+                        <div class="uk-dropdown">
+                            <ul class="uk-nav uk-nav-dropdown">
+                                <li><a href="/manager/add_forum">Add forum</a></li>
+                                <li><a href="/manager/forum_list">Forum list</a></li>
+                                <li><a href="/manager/add_thread">Add thread</a></li>
+                                <li><a href="/manager/thread_list">Thread list</a></li>
+                                <li><a href="/manager/posts_list">Posts list</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <button class="close-button" id="close-button">Close Menu</button>
+            <div class="morph-shape" id="morph-shape" data-morph-open="M0,100h1000V0c0,0-136.938,0-224,0C583,0,610.924,0,498,0C387,0,395,0,249,0C118,0,0,0,0,0V100z">
+                <svg class="uk-height-1-1" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                    <path d="M0,100h1000l0,0c0,0-136.938,0-224,0c-193,0-170.235-1.256-278-35C399,34,395,0,249,0C118,0,0,100,0,100L0,100z"/>
+                </svg>
+            </div>
+        </div>
+
+        <a class="menu-button uk-border-circle" id="open-button"><i class="uk-icon-reorder"></i></a>
+        <div class="content-wrap" id="content-main">
+            <div class="tm-panel-space">
+                {% block content %}
+                {% endblock %}
             </div>
         </div>
 
@@ -111,6 +163,9 @@
         <script src="{% static "js/datatable/dataTables.uikit.min.js" %}"></script>
         <script src="{% static "js/waves.min.js" %}"></script>
         <script src="{% static "ckeditor/ckeditor.js" %}"></script>
+        <script src="{% static "js/snap.svg-min.js" %}"></script>
+        <script src="{% static "js/classie.js" %}"></script>
+        <script src="{% static "js/main3.js" %}"></script>
         <script src="{% static "js/manager_script.js" %}"></script>
         {% block js_code %}{% endblock %}
     </body>

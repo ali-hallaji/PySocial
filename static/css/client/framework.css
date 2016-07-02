@@ -2378,13 +2378,13 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 /* OnClick */
 .uk-navbar-nav > li > a:active {
   background-color: transparent;
-  color: #393d40;
+  color: #ddd;
 }
 
 /* Active */
 .uk-navbar-nav > li.uk-active > a {
   background-color: #f5f5f5;
-  color: #393d40;
+  color: #ddd;
 }
 
 /* Sub-objects: `uk-navbar-nav-subtitle`

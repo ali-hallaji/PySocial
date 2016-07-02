@@ -2,43 +2,42 @@
 {% load socialaccount %}
 {% block title_page %}ورود{% endblock title_page %}
 {% block content %}
-    <div class="uk-vertical-align uk-height-1-1 uk-text-center">
-        <div class="uk-vertical-align-middle">
-            <form class="uk-form uk-form-stacked uk-text-right" action="" method="post">
-                {% csrf_token %}
-                <div class="uk-form-row">
-                    <label class="uk-form-label">نام کاربری</label>
-                    <div class="uk-form-controls">
-                        <input class="uk-form-large uk-form-width-large" autocomplete="off" name="username" type="text">
-                    </div>
-                </div>
-                <div class="uk-form-row">
-                    <label class="uk-form-label">رمز عبور</label>
-                    <div class="uk-form-controls">
-                        <input class="uk-form-large uk-form-width-large" autocomplete="off" name="password" type="password">
-                    </div>
-                </div>
-                <div class="uk-text-center">
-                    <button class="uk-button uk-button-primary uk-button-large uk-margin-top uk-margin-bottom" type="submit" name='login'>ورود به سایت</button>
-                </div>
-                <p id="tm-user-links">
-                    <a href="/users/register"><i class="uk-icon-circle uk-margin-small-left"></i>ثبت نام</a>
-                    <br>
-                    <a href="/users/reset_password/"><i class="uk-icon-circle uk-margin-small-left"></i>رمز عبور را فراموش کردم</a>
-                </p>
-                <div class="tm-social-links uk-margin-large-top">
-                    <span>ورود با حساب های:</span>
-                    <a href="{% provider_login_url "facebook" %}"><i class="uk-icon-facebook-square"></i></a>
-                    <a href="{% provider_login_url "google" %}"><i class="uk-icon-google-plus-square"></i></a>
-                    <a href="{% provider_login_url "linkedin" %}"><i class="uk-icon-linkedin-square"></i></a>
-                    <a href="{% provider_login_url "github" %}"><i class="uk-icon-github-square"></i></a>
-                </div>
-            </form>
+    <form method="post">
+        {% csrf_token %}
+        <span class="input input--hoshi">
+            <input class="input__field input__field--hoshi" dir="ltr" autocomplete="off" name="username" type="text" id="input-1">
+            <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-1">
+                <span class="input__label-content input__label-content--hoshi">نام کاربری</span>
+            </label>
+        </span>
+        <span class="input input--hoshi">
+            <input class="input__field input__field--hoshi" dir="ltr" autocomplete="off" name="password" type="password" id="input-2">
+            <label class="input__label input__label--hoshi input__label--hoshi-color-2" for="input-2">
+                <span class="input__label-content input__label-content--hoshi">رمز عبور</span>
+            </label>
+        </span>
+
+        <div class="uk-text-center">
+            <button class="uk-button uk-button-primary uk-button-large uk-margin-top uk-margin-bottom" type="submit" name='login'>ورود به سایت</button>
         </div>
-    </div>
+
+        <p class="uk-text-right" id="tm-user-links">
+            <a href="/users/register"><i class="uk-icon-circle uk-margin-small-left"></i>ثبت نام</a>
+            <br>
+            <a href="/users/reset_password/"><i class="uk-icon-circle uk-margin-small-left"></i>رمز عبور را فراموش کردم</a>
+        </p>
+        <div class="tm-social-links uk-margin-large-top uk-flex uk-flex-middle uk-flex-center">
+            <a href="{% provider_login_url "facebook" %}"><i class="uk-icon-facebook-square"></i></a>
+            <a href="{% provider_login_url "google" %}"><i class="uk-icon-google-plus-square"></i></a>
+            <a href="{% provider_login_url "linkedin" %}"><i class="uk-icon-linkedin-square"></i></a>
+            <a href="{% provider_login_url "github" %}"><i class="uk-icon-github-square"></i></a>
+        </div>
+    </form>
 {% endblock content %}
 {% block js_code %}
-    <script>
-        uikitNotify('{{ msg|safe|escape }}', 'exclamation-circle', 'danger');
-    </script>
+    {% if msg %}
+        <script>
+            uikitNotify('{{ msg|safe|escape }}', 'exclamation-circle', 'danger');
+        </script>
+    {% endif %}
 {% endblock %}

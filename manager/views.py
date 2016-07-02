@@ -319,8 +319,8 @@ def add_box(request):
 @has_perm_view()
 def box_list(request):
     kwargs = {}
-
-    kwargs['boxs'] = list(cursor.box.find({}, {'pk': 0, 'cssfile_lessons': 0, 'cssfile': 0}))
+    projection = {'pk': 0, 'cssfile_lessons': 0, 'cssfile': 0}
+    kwargs['boxs'] = list(cursor.box.find({}, projection))
 
     return render(request, 'manager/box_list.html', kwargs)
 
@@ -495,7 +495,6 @@ def edit_parent(request, _id):
 @has_perm_view()
 def parent_list(request):
     kwargs = {}
-
     kwargs['parents'] = list(
         cursor.settings.find({'settings_type': 'Parents'})
     )
@@ -513,14 +512,12 @@ def home_manager(request):
 @has_perm_view()
 def add_forum(request):
     kwargs = {}
-
     if request.method == 'POST':
         kwargs['form'] = ForumForm(request.POST)
 
         if kwargs['form'].is_valid():
             data = kwargs['form'].cleaned_data
             forum_pic = request.FILES.get('forum_pic', None)
-
             result = cursor.forum.insert(data)
 
             if result:
@@ -531,7 +528,6 @@ def add_forum(request):
                     path += '{0}'.format(_format[1])
 
                     handle_uploaded_file(path, request.FILES['forum_pic'])
-
                 return HttpResponseRedirect('/manager/forum_list')
 
     else:
@@ -552,7 +548,6 @@ def forum_list(request):
 @has_perm_view()
 def edit_forum(request, _id):
     kwargs = {}
-
     criteria = {'_id': ObjectId(_id)}
     forum = cursor.forum.find_one(criteria)
 
@@ -574,7 +569,6 @@ def edit_forum(request, _id):
                     _format = os.path.splitext(request.FILES['forum_pic'].name)
                     path += '/media/forum/{0}'.format(_id)
                     path += '{0}'.format(_format[1])
-
                     handle_uploaded_file(path, request.FILES['forum_pic'])
 
                 return HttpResponseRedirect('/manager/forum_list')
@@ -590,6 +584,7 @@ def edit_forum(request, _id):
 def add_lesson(request):
     kwargs = {}
     user_id = cursor.users.find_one({'username': request.user.username})
+
     if request.method == 'POST':
         kwargs['form'] = LessonForm(request.POST)
 
@@ -614,7 +609,6 @@ def add_lesson(request):
 @has_perm_view()
 def lesson_list(request):
     kwargs = {}
-
     users = {}
     user = cursor.users.find({}, {'username': 1})
     for doc in user:
@@ -647,7 +641,6 @@ def edit_lesson(request, _id):
 
     criteria = {'_id': ObjectId(_id)}
     lesson = cursor.lessons.find_one(criteria)
-
     if not lesson:
         kwargs['not_exists'] = True
         return render(request, 'manager/lesson.html', kwargs)
@@ -679,8 +672,31 @@ def edit_lesson(request, _id):
 @has_perm_view()
 def delete_lesson(request, _id):
     kwargs = {}
-
     mongodb_remove = cursor.lessons.delete_one({'_id': ObjectId(_id)})
+    kwargs['mongodb_remove'] = mongodb_remove.raw_result
+
+    return JsonResponse(kwargs, safe=False)
+
+
+@login_required
+@csrf_exempt
+@require_POST
+@has_perm_view()
+def delete_parent(request, _id):
+    kwargs = {}
+    mongodb_remove = cursor.settings.delete_one({'_id': ObjectId(_id)})
+    kwargs['mongodb_remove'] = mongodb_remove.raw_result
+
+    return JsonResponse(kwargs, safe=False)
+
+
+@login_required
+@csrf_exempt
+@require_POST
+@has_perm_view()
+def delete_forum(request, _id):
+    kwargs = {}
+    mongodb_remove = cursor.forum.delete_one({'_id': ObjectId(_id)})
     kwargs['mongodb_remove'] = mongodb_remove.raw_result
 
     return JsonResponse(kwargs, safe=False)

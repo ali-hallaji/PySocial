@@ -31,7 +31,7 @@
                             {% endif %}
                         {% endfor %}
                         <td>
-                            <a data-delete="{% url 'delete_lesson' item|mongo_id %}"><i class="uk-icon-times"></i></a>
+                            <a data-delete="{% url 'delete_parent' item|mongo_id %}"><i class="uk-icon-times"></i></a>
                             <a href="{% url 'edit_parent' item|mongo_id %}"><i class="uk-icon-edit"></i></a>
                         </td>
                     </tr>

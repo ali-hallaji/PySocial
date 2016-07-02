@@ -31,7 +31,7 @@ $nav-side-nested-color:                         $global-link-color;
 $nav-side-nested-hover-color:                   $global-link-hover-color;
 
 $nav-dropdown-color:                            $global-color;
-$nav-dropdown-hover-background:                 $global-primary-background;
+$nav-dropdown-hover-background:                 #575A65;
 $nav-dropdown-hover-color:                      $global-contrast-color;
 $nav-dropdown-header-color:                     $global-muted-color;
 $nav-dropdown-divider-border:                   $global-border;
@@ -116,7 +116,10 @@ $nav-offcanvas-nested-hover-color:              $offcanvas-panel-link-hover-colo
 // Items
 //
 
-@mixin hook-nav-dropdown() {}
+@mixin hook-nav-dropdown() {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
 
 // Hover
 @mixin hook-nav-dropdown-hover() {}

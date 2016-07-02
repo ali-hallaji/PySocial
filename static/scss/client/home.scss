@@ -1,5 +1,11 @@
 @import "style";
 
+div.tm-cover-home::after {
+    content: '';
+    @include position(absolute, 0 0 0 0);
+    @include background(linear-gradient(rgba(57, 71, 96, 0.75), rgba(0, 0, 0, 0.75)));
+}
+
 ul.tm-home-widget-list {
 
     i { 

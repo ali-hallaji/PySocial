@@ -11,7 +11,24 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/client/users/authentication.css' %}">
     </head>
     <body class="uk-height-1-1">
-        {% block content %}{% endblock content %}
+        <div class="uk-grid uk-grid-collapse uk-height-1-1">
+            <div class="uk-width-large-1-2 uk-width-small-1-1 uk-height-1-1">
+                <div class="uk-vertical-align uk-height-1-1 uk-text-center">
+                    <div class="uk-vertical-align-middle">
+                        <img src="{% static 'img/logo.png' %}" width="130" alt="پای سوشیال">
+                        {% block content %}{% endblock content %}
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-large-1-2 uk-width-small-1-1 uk-hidden-small">
+                <div class="uk-position-relative">
+                    <a class="uk-position-absolute uk-position-top-left uk-position-z-index uk-margin-left uk-margin-top" href="/">
+                        <img src="{% static "img/logo2.png" %}" width="130" alt="">
+                    </a>
+                </div>
+                <div class="tm-background uk-cover-background uk-height-viewport uk-position-relative" style="background-image: url('{% static "img/bkl.jpg" %}');"></div>
+            </div>
+        </div>
 
         <!-- jQuery -->
         <script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
@@ -23,8 +40,44 @@
         {% block uikit %}{% endblock %}
 
         <!-- Plugins And Scripts -->
+        <script src="{% static 'js/classie.js' %}"></script>
         {% block js_plugins %}{% endblock %}
         <script src="{% static 'js/script.js' %}"></script>
+        <script>
+            (function() {
+                // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+                if (!String.prototype.trim) {
+                    (function() {
+                        // Make sure we trim BOM and NBSP
+                        var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                        String.prototype.trim = function() {
+                            return this.replace(rtrim, '');
+                        };
+                    })();
+                }
+
+                [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+                    // in case the input is already filled..
+                    if( inputEl.value.trim() !== '' ) {
+                        classie.add( inputEl.parentNode, 'input--filled' );
+                    }
+
+                    // events:
+                    inputEl.addEventListener( 'focus', onInputFocus );
+                    inputEl.addEventListener( 'blur', onInputBlur );
+                } );
+
+                function onInputFocus( ev ) {
+                    classie.add( ev.target.parentNode, 'input--filled' );
+                }
+
+                function onInputBlur( ev ) {
+                    if( ev.target.value.trim() === '' ) {
+                        classie.remove( ev.target.parentNode, 'input--filled' );
+                    }
+                }
+            })();
+        </script>
         {% block js_code %}{% endblock %}
     </body>
 </html>

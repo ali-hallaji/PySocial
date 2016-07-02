@@ -6,12 +6,20 @@
 
 {% block content %}
     {% if not not_exists %}
-        <form class="uk-form" method="POST">
+        <form class="uk-form uk-form-horizontal" method="POST">
             {% csrf_token %}
-            <h1><strong>Edit Username</strong></h1>
-            {{ form.as_ul }}
-            <hr>
-            <button type="submit">Edit</button>
+            <div class="uk-panel uk-panel-box uk-panel-box-primary">
+                <h3>Edit Username</h3>
+                {% for item in form %}
+                    <div class="uk-form-row">
+                        <label class="uk-form-label">{{ item.label }}</label>
+                        <div class="uk-form-controls">{{ item }}</div>
+                    </div>
+                {% endfor %}
+                <div class="tm-panel-footer">
+                    <button class="btn uk-button-primary" type="submit">Edit</button>
+                </div>
+            </div>
         </form>
     {% else %}
         چنین کاربری موجود نمیباشد

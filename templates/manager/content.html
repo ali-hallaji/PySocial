@@ -9,8 +9,10 @@
 {% load staticfiles %}
 {% block content %}
     {% if not not_exists %}
-        <form class="uk-form uk-form-horizontal" enctype="multipart/form-data" method="POST">
+        <form class="uk-form uk-form-horizontal" enctype="multipart/form-data" method="POST" data-uk-margin>
             {% csrf_token %}
+
+            {{ form.description }}
             <div class="uk-panel uk-panel-box uk-panel-box-primary">
                 {% if 'edit' in request.get_full_path %}
                     <h3>Edit Content</h3>
@@ -19,10 +21,12 @@
                 {% endif %}
 
                 {% for item in form %}
-                    <div class="uk-form-row">
-                        <label class="uk-form-label">{{ item.label }}</label>
-                        <div class="uk-form-controls">{{ item }}</div>
-                    </div>
+                    {% if item.label != 'Description' %}
+                        <div class="uk-form-row">
+                            <label class="uk-form-label">{{ item.label }}</label>
+                            <div class="uk-form-controls">{{ item }}</div>
+                        </div>
+                    {% endif %}
                 {% endfor %}
 
                 {% if 'edit' in request.get_full_path %}

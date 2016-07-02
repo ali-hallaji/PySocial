@@ -8,8 +8,10 @@
 {% endblock %}
 {% load staticfiles %}
 {% block content %}
-    <form class="uk-form uk-form-horizontal" method='POST'>
+    <form class="uk-form uk-form-horizontal" method='POST' data-uk-margin>
         {% csrf_token %}
+
+        {{ form.body }}
         <div class="uk-panel uk-panel-box uk-panel-box-primary">
             {% if 'edit' in request.get_full_path %}
                 <h3>Edit Home Page</h3>
@@ -18,10 +20,12 @@
             {% endif %}
 
             {% for item in form %}
-                <div class="uk-form-row">
-                    <label class="uk-form-label">{{ item.label }}</label>
-                    <div class="uk-form-controls">{{ item }}</div>
-                </div>
+                {% if item.label != 'body' %}
+                    <div class="uk-form-row">
+                        <label class="uk-form-label">{{ item.label }}</label>
+                        <div class="uk-form-controls">{{ item }}</div>
+                    </div>
+                {% endif %}
             {% endfor %}
 
             <div class="tm-panel-footer">
