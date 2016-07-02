@@ -48,6 +48,9 @@
                                     <img src="{{ box|get_path_pic_box }}" alt="{{ box.title }}" width="90">
                                     <h3>{{ box.title }}</h3>
                                     <i class="uk-icon-chevron-left"></i>
+                                    {% comment %}
+                                        <p>{{ box.description }}</p>
+                                    {% endcomment %}
                                 </div>
                             </a>
                         </li>
@@ -93,7 +96,7 @@
                             <div class="uk-panel">
                                 <i class="{{ doc.icon }} uk-float-right uk-border-circle uk-text-center uk-margin-left"></i>
                                 <div class="uk-nbfc-alt">
-                                    <h3 class="uk-margin-top">{{ doc.title }}</h3>
+                                    <h4 class="uk-margin-top"><strong>{{ doc.title }}</strong></h4>
                                     <p>{{ doc.body|safe }}</p>
                                 </div>
                             </div>

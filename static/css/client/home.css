@@ -23,7 +23,7 @@ ul.tm-home-widget-list i {
   line-height: 2;
   border: 2px solid rgba(1, 59, 89, 0.11);
 }
-ul.tm-home-widget-list h3 ~ * {
+ul.tm-home-widget-list h4 ~ * {
   color: #666;
 }
 
