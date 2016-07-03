@@ -43,9 +43,8 @@ def box_exist_file(value):
 
 
 @register.filter("get_path_pic_box")
-def get_path_pic_box(value):
-
-    return path_pic_box(value)
+def get_path_pic_box(value, custom_field=False):
+    return path_pic_box(value, custom_field)
 
 
 @register.filter("to_jalali")

@@ -205,11 +205,13 @@ class ForumForm(forms.Form):
     title_en = forms.CharField(label='title en')
 
     def __init__(self, *args, **kwargs):
-        boxs = [ObjectId('57060eed6007f0fb6eb95700'), "PySocial"]
+        boxs = [
+            (ObjectId('57060eed6007f0fb6eb95700'), "PySocial"),
+        ]
         box = list(cursor.box.find({}, {'title': 1}))
 
         for doc in box:
-            boxs.append((doc['title'], doc['title']))
+            boxs.append((doc['_id'], doc['title']))
 
         super(ForumForm, self).__init__(*args, **kwargs)
         self.fields['box'] = forms.ChoiceField(label='Box', choices=boxs)

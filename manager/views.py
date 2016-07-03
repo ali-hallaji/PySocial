@@ -540,7 +540,15 @@ def add_forum(request):
 @has_perm_view()
 def forum_list(request):
     kwargs = {}
+    boxs = {"Empty": 'Empty'}
+    box = list(cursor.box.find({}, {'title': 1}))
+    for doc in box:
+        boxs[str(doc['_id'])] = doc['title']
+
     kwargs['forums'] = list(cursor.forum.find().sort('sort', ASCENDING))
+    for doc in kwargs['forums']:
+        doc['box'] = boxs[str(doc.get('box', 'Empty'))]
+
     return render(request, 'manager/forum_list.html', kwargs)
 
 

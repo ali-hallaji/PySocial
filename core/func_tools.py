@@ -59,12 +59,17 @@ def remove_all_pic_by_id(_id, path):
         os.remove(remove_path)
 
 
-def path_pic_box(value):
+def path_pic_box(value, custom_field=False):
 
     if isinstance(value, dict):
-        _id = str(value['_id'])
+        if custom_field:
+            _id = str(value[custom_field])
+        else:
+            _id = str(value['_id'])
+
     elif isinstance(value, str):
         _id = value
+
     elif isinstance(value, unicode):
         _id = value
 

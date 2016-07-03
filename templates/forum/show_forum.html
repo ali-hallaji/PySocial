@@ -9,7 +9,7 @@
                 <a href="/forum/show_thread/{{ doc|mongo_id }}">
                     <figure class="uk-overlay uk-overlay-hover uk-flex uk-flex-center uk-flex-middle" style="background: #3776AB;">
                         <div class="uk-panel-space">
-                            <img class="uk-overlay-spin" src="{{ doc|get_path_pic_box }}" alt="">
+                            <img class="uk-overlay-spin" src="{{ doc|get_path_pic_box:'box' }}" alt="">
                             <figcaption class="uk-overlay-panel uk-overlay-background uk-overlay-fade uk-flex uk-flex-center uk-flex-middle uk-text-center">
                                 <h2 class="uk-heading-large"><strong>{{ doc.title }} | {{ doc.title_en }}</strong></h2>
                             </figcaption>
