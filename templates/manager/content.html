@@ -7,6 +7,10 @@
     {% endif %}
 {% endblock %}
 {% load staticfiles %}
+{% block extrahead %}
+    <script src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+    <script src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+{% endblock %}
 {% block content %}
     {% if not not_exists %}
         <form class="uk-form uk-form-horizontal" enctype="multipart/form-data" method="POST" data-uk-margin>
@@ -49,4 +53,3 @@
         {% endfor %}
     {% endif %}
 {% endblock %}
-

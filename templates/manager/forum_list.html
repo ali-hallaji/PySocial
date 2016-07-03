@@ -3,58 +3,62 @@
 {% load func_tools %}
 {% block title %}Forum List{% endblock %}
 {% block content %}
-    <h3>Forum list</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                {% for key, value in forums.0.items %}
-                        {% if key == 'pk' %}
-                        {% elif key == 'forum_pic' %}
-                        {% elif key == 'cssfile_postviews' %}
-                        {% elif key == 'cssfile_thread' %}
-                        {% elif key == 'cssfile_topic' %}
-                        {% elif key == '_id' %}
-                        {% elif key != 'id' %}
-                            <th>{{ key }}</th>
-                        {% endif %}
-                {% endfor %}
-                <th>action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in forums %}
-                <tr data-id="{{ item.id }}">
-                    <td></td>
-                    {% for key, value in item.items %}
-                        {% if key == 'pk' %}
-                        {% elif key == 'forum_pic' %}
-                        {% elif key == 'cssfile_postviews' %}
-                        {% elif key == 'cssfile_thread' %}
-                        {% elif key == 'cssfile_topic' %}
-                        {% elif key == '_id' %}
-                        {% elif key == 'description' %}
-                            <td dir='rtl'>{{ value|safe }}</td>
-                        {% elif key != 'id' %}
-                            <td>{{ value }}</td>
-                        {% endif %}
+    <div class="uk-panel uk-panel-box uk-panel-box-primary">
+        <h3>Forums list</h3>
+        <div class="uk-overflow-container">
+            <table class="uk-table uk-table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        {% for key, value in forums.0.items %}
+                                {% if key == 'pk' %}
+                                {% elif key == 'forum_pic' %}
+                                {% elif key == 'cssfile_postviews' %}
+                                {% elif key == 'cssfile_thread' %}
+                                {% elif key == 'cssfile_topic' %}
+                                {% elif key == '_id' %}
+                                {% elif key != 'id' %}
+                                    <th>{{ key }}</th>
+                                {% endif %}
+                        {% endfor %}
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in forums %}
+                        <tr data-id="{{ item.id }}">
+                            <td></td>
+                            {% for key, value in item.items %}
+                                {% if key == 'pk' %}
+                                {% elif key == 'forum_pic' %}
+                                {% elif key == 'cssfile_postviews' %}
+                                {% elif key == 'cssfile_thread' %}
+                                {% elif key == 'cssfile_topic' %}
+                                {% elif key == '_id' %}
+                                {% elif key == 'description' %}
+                                    <td dir='rtl'>{{ value|safe }}</td>
+                                {% elif key != 'id' %}
+                                    <td>{{ value }}</td>
+                                {% endif %}
+                            {% endfor %}
+                            <td>
+                                <a href="/manager/edit_forum/{{ item|mongo_id }}">Edit</a> |
+                                <a data-delete="{% url 'delete_forum' item|mongo_id %}"><i class="uk-icon-times"></i></a>
+                            </td>
+                        </tr>
                     {% endfor %}
-                    <td>
-                        <a href="/manager/edit_forum/{{ item|mongo_id }}">Edit</a> |
-                        <a data-delete="{% url 'delete_forum' item|mongo_id %}"><i class="uk-icon-times"></i></a>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td></td>
-                {% for key, value in forums.0.items %}
-                    <td></td>
-                {% endfor %}
-            </tr>
-        </tfoot>
-    </table>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        {% for key, value in forums.0.items %}
+                            <td></td>
+                        {% endfor %}
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
 {% endblock %}
 {% block js_code %}
     <script>

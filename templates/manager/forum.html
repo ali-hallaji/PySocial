@@ -7,29 +7,43 @@
     {% endif %}
 {% endblock %}
 {% load staticfiles %}
-{% block extrahead %}
-    <script src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
-    <script src="{% static "ckeditor/ckeditor-init.js" %}"></script>
-{% endblock %}
 {% block content %}
     {% if not not_exists %}
-        <form  enctype="multipart/form-data" method="POST">
+        <form class="uk-form uk-form-horizontal" enctype="multipart/form-data" method="POST" data-uk-margin>
             {% csrf_token %}
-            {% if 'edit' in request.get_full_path %}
-                <h1><strong>Edit Forum</strong></h1>
-            {% else %}
-                <h1><strong>Add Forum</strong></h1>
-            {% endif %}
-             <input type="file" name="forum_pic">
-            {{ form.as_ul }}
 
-            {% if 'edit' in request.get_full_path %}
-                <hr>
-                <button type="submit">Edit</button>
-            {% else %}
-                <hr>
-                <button type="submit">Add</button>
-            {% endif %}
+            {{ form.description }}
+            <div class="uk-panel uk-panel-box uk-panel-box-primary">
+                {% if 'edit' in request.get_full_path %}
+                    <h3>Edit Forum</h3>
+                {% else %}
+                    <h3>Add Forum</h3>
+                {% endif %}
+
+                {% for item in form %}
+                    {% if item.label != 'description' %}
+                        <div class="uk-form-row">
+                            <label class="uk-form-label">{{ item.label }}</label>
+                            <div class="uk-form-controls">{{ item }}</div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+                <div class="uk-form-row">
+                    <label class="uk-form-label">Upload Image</label>
+                    <div class="uk-form-controls">
+                        <input type="file" name="forum_pic">
+                    </div>
+                </div>
+
+                <div class="tm-panel-footer">
+                    {% if 'edit' in request.get_full_path %}
+                        <button class="btn uk-button-primary" type="submit">Edit</button>
+                    {% else %}
+                        <button class="btn uk-button-primary" type="submit">Add</button>
+                    {% endif %}
+                </div>
+            </div>
         </form>
     {% else %}
         چنین فصلی موجود نمیباشد
@@ -40,4 +54,3 @@
         {% endfor %}
     {% endif %}
 {% endblock %}
-
