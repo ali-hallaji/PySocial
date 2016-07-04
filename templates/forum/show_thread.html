@@ -5,7 +5,11 @@
 {% block content %}
 <div class="uk-grid uk-grid-collapse uk-grid-width-1-4">
     {% for thread in threads %}
+<<<<<<< HEAD
         <a href="/forum/show_posts/{{ thread|mongo_id }}">{{ thread.title }}</a>
+=======
+        <a href="/forum/show_posts/{{ thread.id }}">{{ thread.title }}</a>
+>>>>>>> 0d11169c1e8d04268efa8da9048294c499e3cd0d
     {% endfor %}
 </div>
 {% endblock %}
