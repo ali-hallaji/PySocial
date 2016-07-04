@@ -39,3 +39,7 @@ def show_post(request, _id):
     }
     kwargs['post'] = cursor.post.find_one(criteria)
     return render(request, 'forum/show_post.html', kwargs)
+
+
+def create_post(request, thread, user):
+    return render(request, 'forum/show_post.html')
