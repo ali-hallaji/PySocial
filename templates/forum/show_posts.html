@@ -4,6 +4,6 @@
 {% block title %}تاپیک ها{% endblock %}
 {% block content %}
     {% for post in posts %}
-        <a href="/forum/show_post/{{ post|mongo_id }}">{{ post.title }}</a>
+        <a href="/forum/show_post/{{ post|mongo_id }}">{{ post.title }}</a><br>
     {% endfor %}
 {% endblock %}

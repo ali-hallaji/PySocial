@@ -4,6 +4,6 @@
 {% block title %}تالار{% endblock %}
 {% block content %}
     {% for thread in threads %}
-        <a href="/forum/show_posts/{{ thread|mongo_id }}">{{ thread.title }}</a>
+        <a href="/forum/show_posts/{{ thread|mongo_id }}">{{ thread.title }}</a><br>
     {% endfor %}
 {% endblock %}
