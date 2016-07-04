@@ -49,8 +49,10 @@
         چنین فصلی موجود نمیباشد
     {% endif %}
     {% if error and error.errors %}
-        {% for key, value in error.errors.items %}
-            {{ key }}: {{ value}}
-        {% endfor %}
+        <script>
+            {% for key, value in error.errors.items %}
+                uikitNotify('{{ key }}: {{ value}}', 'exclamation-circle', 'danger');
+            {% endfor %}
+        </script>
     {% endif %}
 {% endblock %}
