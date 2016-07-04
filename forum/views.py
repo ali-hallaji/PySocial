@@ -19,7 +19,7 @@ def show_thread(request, _id):
     criteria = {
         'forum_id': ObjectId(_id)
     }
-    kwargs['thread'] = list(cursor.thread.find(criteria))
+    kwargs['threads'] = list(cursor.thread.find(criteria))
     return render(request, 'forum/show_thread.html', kwargs)
 
 
