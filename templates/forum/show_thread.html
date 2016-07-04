@@ -3,9 +3,7 @@
 {% load func_tools %}
 {% block title %}تالار{% endblock %}
 {% block content %}
-<div class="uk-grid uk-grid-collapse uk-grid-width-1-4">
     {% for thread in threads %}
         <a href="/forum/show_posts/{{ thread|mongo_id }}">{{ thread.title }}</a>
     {% endfor %}
-</div>
 {% endblock %}

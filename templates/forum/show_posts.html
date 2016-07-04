@@ -3,4 +3,7 @@
 {% load func_tools %}
 {% block title %}تاپیک ها{% endblock %}
 {% block content %}
+    {% for post in posts %}
+        <a href="/forum/show_post/{{ post|mongo_id }}">{{ post.title }}</a>
+    {% endfor %}
 {% endblock %}
