@@ -2,6 +2,7 @@
 {% load static %}
 {% load func_tools %}
 {% block title %}آموزش {{ box.title }} | {{ box.title_fa }}{% endblock %}
+{% block meta_desc %}{{ box.description }}{% endblock %}
 {% block extrastyle %}
     <link rel="stylesheet" href="{% static 'css/client/content.css' %}">
 {% endblock %}
