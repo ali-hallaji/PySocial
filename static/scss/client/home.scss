@@ -21,35 +21,14 @@ ul.tm-home-widget-list {
 }
 
 div.tm-panel-courses {
-    background-color: #EAF2F6;
-    border: 1px solid #D1DFE7;
+    background-color: #fcfcfc;
+    padding: 20px;
 
-    @include transition(.3s all linear);
-    @include border-top-left-radius(50px);
-    @include border-bottom-left-radius(50px);
+    @include box-shadow(0 1px 1px rgba(0,0,0,0.3));
 
-    img {
-        margin: -20px -15px -20px 10px;
-    }
+    h3 { color: #63696f; }
 
-    h3 {
-        margin: 0;
-        color: #003c5a;
-        font-size: 1.5em;
-        text-transform: capitalize;
-    }
-
-    i {
-        margin: 0 auto 0 20px;
-        color: #003c5a;
-    }
-
-    &:hover {
-        background-color: #003c5a;
-        border-color: #003c5a;
-
-        * { color: #fff; }
-    }
+    p { color: #888; }
 }
 
 div.tm-panel-new-course {

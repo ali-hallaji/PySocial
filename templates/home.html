@@ -45,13 +45,12 @@
                     {% for box in boxs %}
                         <li class="uk-margin-large-bottom">
                             <a href="/dashboard/content/{{ box.title }}/{{ box|mongo_id }}" title="{{ box.title }}">
-                                <div data-uk-scrollspy="{cls:'uk-animation-scale-up'}" class="tm-panel-courses uk-panel uk-flex uk-flex-middle">
-                                    <img src="{{ box|get_path_pic_box }}" alt="{{ box.title }}" width="90">
-                                    <h3>{{ box.title }}</h3>
-                                    <i class="uk-icon-chevron-left"></i>
-                                    {% comment %}
-                                        <p>{{ box.description }}</p>
-                                    {% endcomment %}
+                                <div class="tm-panel-courses uk-border-rounded uk-panel" data-uk-scrollspy="{cls:'uk-animation-scale-up'}">
+                                    <img class="uk-float-right uk-margin-left" src="{{ box|get_path_pic_box }}" alt="{{ box.title }}" width="90">
+                                    <div class="uk-nbfc-alt">
+                                        <h3><strong>{{ box.title_fa }}</strong></h3>
+                                        <p>{{ box.description | striptags | truncatechars:120 }}</p>
+                                    </div>
                                 </div>
                             </a>
                         </li>
