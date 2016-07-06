@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load func_tools %}
+{% block meta_desc %}{{ content.title }} , {{ box_name_en }} , {{ box_name_fa }} , {{ content.description|removetags:"p" }}{% endblock %}
 {% block title %}
     {{ content.title }} | {{ box_name_en }} | {{ box_name_fa }}
 {% endblock %}

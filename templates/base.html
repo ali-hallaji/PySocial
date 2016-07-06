@@ -8,8 +8,23 @@
         {% analytical_head_top %}
         <meta charset="utf-8">
         <meta name="robots" content="NONE,NOARCHIVE">
+        <meta name="description" content="{% block meta_desc %}آموزش برنامه نویسی پایتون | کلان داده | آنالیز داده ها{% endblock %}">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Start Alexa Certify Javascript -->
+        <script type="text/javascript">
+            _atrk_opts = { atrk_acct:"rkQun1QolK107i", domain:"pysocial.com",dynamic: true};
+            (function() {
+                var as = document.createElement('script');
+                as.type = 'text/javascript';
+                as.async = true;
+                as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js";
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(as, s);
+            })();
+        </script>
+        <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=rkQun1QolK107i" style="display:none" height="1" width="1" alt="" /></noscript>
+        <!-- End Alexa Certify Javascript -->
         {% block blockbots %}{% endblock %}
         <title>{% block title %}{% endblock %}</title>
 
