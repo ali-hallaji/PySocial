@@ -547,7 +547,10 @@ def forum_list(request):
 
     kwargs['forums'] = list(cursor.forum.find().sort('sort', ASCENDING))
     for doc in kwargs['forums']:
-        doc['box'] = boxs.get(str(doc.get('box', 'Empty')), 'Empty')
+        if doc['title_en'] != 'PySocial':
+            doc['box'] = boxs[str(doc.get('box', 'Empty'))]
+        else:
+            doc['box'] = 'PySocial'
 
     return render(request, 'manager/forum_list.html', kwargs)
 
