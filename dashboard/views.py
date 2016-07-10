@@ -1,5 +1,4 @@
 # Python Import
-import re
 from bson.objectid import ObjectId
 
 # Django Import
