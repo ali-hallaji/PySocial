@@ -22,7 +22,7 @@
                         <img class="uk-border-circle uk-margin-left" src="{{ doc|get_path_pic_box:'box' }}" alt="">
                         <div>
                             <h2><strong>{{ doc.title }}</strong></h2>
-                            <p>{{ doc.description | striptags }}</p>
+                            <p>{{ doc.description | striptags | safe | truncatechars:150 }}</p>
                         </div>
                     </a>
                 {% endfor %}
