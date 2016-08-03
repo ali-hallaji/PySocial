@@ -72,7 +72,11 @@ div.tm-no-result {
     background: rgba(255, 255, 255, 0.15);
 }
 
-a.test {
-    -webkit-filter: url("#filter");
-    filter: url("/#filter");
+a.tm-forum-panel {
+    padding: 10px;
+
+    img {
+        width: 150px;
+        @include box-shadow(0 0 5px 3px #C3C3C3);
+    }
 }

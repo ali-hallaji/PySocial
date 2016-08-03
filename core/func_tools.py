@@ -81,7 +81,7 @@ def path_pic_box(value, custom_field=False):
         path = '/media' + path.split('media')[1]
 
     else:
-        path = '/static/img/default.png'
+        path = '/static/img/default.jpg'
 
     return path
 
@@ -98,11 +98,11 @@ def avatar_maker(user):
             user['picture'] = path
 
         else:
-            user['picture'] = '/media/avatars/default.png'
+            user['picture'] = '/media/avatars/default.jpg'
 
     else:
         if user and not user.get('picture', None):
-            user['picture'] = '/media/avatars/default.png'
+            user['picture'] = '/media/avatars/default.jpg'
 
     return user
 
