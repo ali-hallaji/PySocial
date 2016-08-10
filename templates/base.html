@@ -32,7 +32,8 @@
         <link rel="stylesheet" href="{% static 'css/client/framework.css' %}">
         <link rel="stylesheet" href="{% static 'css/client/style.css' %}">
         <link rel="stylesheet" href="{% static 'css/client/layout.css' %}">
-        <link rel="stylesheet" href="{% static 'css/client/monokai-sublime.css' %}">
+        <link rel="stylesheet" href="{% static 'css/client/shCore.css' %}">
+        <link rel="stylesheet" href="{% static 'css/client/shCoreDefault.css' %}">
         {% block extrastyle %}{% endblock %}
 
         <!-- Fav Icons -->
@@ -160,9 +161,14 @@
 
         <!-- Plugins And Scripts -->
         {% block js_plugins %}{% endblock %}
-        <script src="{% static 'js/highlight.pack.js' %}"></script>
+        <script src="{% static 'js/shCore.js' %}"></script>
+        <script src="{% static 'js/shAutoloader.js' %}"></script>
+        <script src="{% static 'js/shBrushJScript.js' %}"></script>
         <script src="{% static 'js/script.js' %}"></script>
-        <script>hljs.initHighlightingOnLoad();</script>
+        <script>
+            SyntaxHighlighter.config.bloggerMode = true;
+            SyntaxHighlighter.all();
+        </script>
         {% block js_code %}{% endblock %}
     </body>
 </html>
