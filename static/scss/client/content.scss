@@ -2,8 +2,6 @@
 
 html { @include background(url('/static/img/bg.png')); }
 
-section.tm-main-section-panel { height: 456px; }
-
 div.tm-baner-content {
 
     &:after {

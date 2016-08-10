@@ -5,7 +5,7 @@
 {% block content %}
     <section style="height: 300px;">
         <div class="uk-position-absolute uk-position-top">
-            <div class="uk-cover-background" style="background: linear-gradient(to top, #001C34, #2D4345); height: 360px;"></div>
+            <div style="background: linear-gradient(to top, #001C34, #2D4345); height: 360px;"></div>
         </div>
         <div class="uk-block">
             <div class="uk-container uk-container-center uk-contrast">
@@ -16,7 +16,7 @@
 
     <div class="uk-block">
         <div class="uk-container uk-container-center">
-            <div class="uk-grid uk-grid-medium uk-grid-width-1-2" data-uk-grid-margin data-uk-scrollspy="{cls:'uk-animation-slide-bottom', target:'.tm-forum-panel'}">
+            <div class="uk-grid uk-grid-medium uk-grid-width-1-2" data-uk-grid-margin="{cls: 'uk-margin-large-top'}" data-uk-scrollspy="{cls:'uk-animation-slide-bottom', target:'.tm-forum-panel'}">
                 {% for doc in forum %}
                     <a class="tm-forum-panel uk-flex uk-flex-middle" href="/forum/show_thread/{{ doc|mongo_id }}">
                         <img class="uk-border-circle uk-margin-left" src="{{ doc|get_path_pic_box:'box' }}" alt="">

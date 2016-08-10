@@ -20,10 +20,6 @@ html {
   background: url("/static/img/bg.png");
 }
 
-section.tm-main-section-panel {
-  height: 356px;
-}
-
 div.tm-baner-content:after {
   content: '';
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAH0lEQVQIW2NkQAU+jEh8HwYGhi0wATAHJAkSgHNAAgBV7gNRbmnIiQAAAABJRU5ErkJggg=="), linear-gradient(to left, #21abc7, #616db3);

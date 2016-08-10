@@ -98,11 +98,11 @@ def avatar_maker(user):
             user['picture'] = path
 
         else:
-            user['picture'] = '/media/avatars/default.jpg'
+            user['picture'] = '/media/avatars/default.png'
 
     else:
         if user and not user.get('picture', None):
-            user['picture'] = '/media/avatars/default.jpg'
+            user['picture'] = '/media/avatars/default.png'
 
     return user
 

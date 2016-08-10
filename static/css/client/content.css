@@ -20,10 +20,6 @@ html {
   background: url("/static/img/bg.png");
 }
 
-section.tm-main-section-panel {
-  height: 456px;
-}
-
 div.tm-baner-content:after {
   content: '';
   background-color: rgba(44, 51, 64, 0.7);

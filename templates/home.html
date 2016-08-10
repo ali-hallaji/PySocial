@@ -49,7 +49,7 @@
                                     <img class="uk-float-right uk-margin-left" src="{{ box|get_path_pic_box }}" alt="{{ box.title }}" width="90">
                                     <div class="uk-nbfc-alt">
                                         <h3><strong>{{ box.title_fa }}</strong></h3>
-                                        <p>{{ box.description | striptags | truncatechars:120 }}</p>
+                                        <p>{{ box.description | striptags | safe | truncatechars:120 }}</p>
                                     </div>
                                 </div>
                             </a>

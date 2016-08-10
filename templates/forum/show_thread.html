@@ -3,6 +3,31 @@
 {% load func_tools %}
 {% block title %}تالار{% endblock %}
 {% block content %}
+    <section style="height: 456px;">
+        <div class="uk-position-absolute uk-position-top">
+            <div style="background: #151b20; height: 360px;"></div>
+        </div>
+        <div class="uk-block uk-block-large">
+            <div class="uk-container uk-container-center">
+                <div class="uk-grid uk-flex-middle">
+                    <div class="uk-flex-item-auto">
+                        <div class="tm-panel-header-content uk-panel uk-flex uk-flex-column uk-flex-space-between uk-contrast">
+                            <h1 class="uk-heading-large">{{ box.title_fa }}</h1>
+                            <hr>
+                            <ul class="tm-subnav-content uk-subnav">
+                                <li><i class="uk-icon-thumbs-up"></i>{{ box.likes }} لایک</li>
+                                <li><i class="uk-icon-book"></i>{{ len_contents }} درس</li>
+                                <li><i class="uk-icon-users"></i>{{ box.likes }} بازدید</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-hidden-small">
+                        <img src="{{ box.picture }}" alt="{{ box.title_fa }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     {% for thread in threads %}
         <a href="/forum/show_posts/{{ thread|mongo_id }}">{{ thread.title }}</a><br>
     {% endfor %}
