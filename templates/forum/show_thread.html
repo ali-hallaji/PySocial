@@ -28,7 +28,21 @@
             </div>
         </div>
     </section>
-    {% for thread in threads %}
-        <a href="/forum/show_posts/{{ thread|mongo_id }}">{{ thread.title }}</a><br>
-    {% endfor %}
+
+    <div class="uk-container uk-container-center">
+        <table class="uk-table">
+            <thead>
+                <th class="uk-text-right"></th>
+                <th class="uk-text-right">موضوع</th>
+                <th class="uk-text-right"></th>
+            </thead>
+            {% for thread in threads %}
+                <tbody>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a href="/forum/show_posts/{{ thread|mongo_id }}">{{ thread.title }}</a></td>
+                    <td></td>
+                </tbody>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}
