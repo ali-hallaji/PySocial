@@ -98,3 +98,10 @@ $('.toggle-btn.uk-active').children('a:not(.uk-hidden)').html('پنهان کرد
 $('.toggle-btn').on('click', function() {
     $('.toggle-btn.uk-active').children('a:not(.uk-hidden)').html('پنهان کردن لیست <i class="uk-icon-chevron-up"></i>');
 });
+
+// datatble
+$('.datatable').DataTable({
+    "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Persian.json"
+    }
+});

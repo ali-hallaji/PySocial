@@ -15,9 +15,9 @@
                             <h1 class="uk-heading-large">{{ box.title_fa }}</h1>
                             <hr>
                             <ul class="tm-subnav-content uk-subnav">
-                                <li><i class="uk-icon-thumbs-up"></i>{{ box.likes }} لایک</li>
-                                <li><i class="uk-icon-book"></i>{{ len_contents }} درس</li>
-                                <li><i class="uk-icon-users"></i>{{ box.likes }} بازدید</li>
+                                <li><i class="uk-icon-thumbs-up"></i>{{ box.likes }} کیﻻ</li>
+                                <li><i class="uk-icon-book"></i>{{ len_contents }} ﺱﺭﺩ</li>
+                                <li><i class="uk-icon-users"></i>{{ box.likes }} ﺩیﺩﺯﺎﺑ</li>
                             </ul>
                         </div>
                     </div>
@@ -30,19 +30,29 @@
     </section>
 
     <div class="uk-container uk-container-center">
-        <table class="uk-table">
+        <table class="uk-table datatable">
             <thead>
                 <th class="uk-text-right"></th>
                 <th class="uk-text-right">موضوع</th>
+                <th class="uk-text-right">توضیحات</th>
                 <th class="uk-text-right"></th>
             </thead>
             {% for thread in threads %}
                 <tbody>
-                    <td>{{ forloop.counter }}</td>
-                    <td><a href="/forum/show_posts/{{ thread|mongo_id }}">{{ thread.title }}</a></td>
-                    <td></td>
+                    <td>
+                        <img src="{{ thread.thread_pic }}" alt="{{ thread.title }}">
+                    </td>
+                    <td><a href="{% url 'show_posts' thread|mongo_id %}">{{ thread.title }}</a></td>
+                    <td>{{ thread.description | striptags | safe }}</td>
+                    <td>
+                        <a class="uk-button" href="{% url 'show_posts' thread|mongo_id %}"><i class="uk-icon-arrow-left"></i></a>
+                    </td>
                 </tbody>
             {% endfor %}
         </table>
     </div>
+{% endblock %}
+{% block js_plugins %}
+    <script src="{% static "js/datatable/jquery.dataTables.min.js" %}"></script>
+    <script src="{% static "js/datatable/dataTables.uikit.min.js" %}"></script>
 {% endblock %}

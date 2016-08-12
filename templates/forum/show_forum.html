@@ -16,10 +16,10 @@
 
     <div class="uk-block">
         <div class="uk-container uk-container-center">
-            <div class="uk-grid uk-grid-medium uk-grid-width-1-2" data-uk-grid-margin="{cls: 'uk-margin-large-top'}" data-uk-scrollspy="{cls:'uk-animation-slide-bottom', target:'.tm-forum-panel'}">
+            <div class="uk-grid uk-grid-medium uk-grid-width-small-1-1 uk-grid-width-large-1-2" data-uk-grid-margin="{cls: 'uk-margin-large-top'}" data-uk-scrollspy="{cls:'uk-animation-slide-bottom', target:'.tm-forum-panel'}">
                 {% for doc in forum %}
-                    <a class="tm-forum-panel uk-flex uk-flex-middle" href="/forum/show_thread/{{ doc|mongo_id }}">
-                        <img class="uk-border-circle uk-margin-left" src="{{ doc|get_path_pic_box:'box' }}" alt="">
+                    <a class="tm-forum-panel uk-flex uk-flex-middle" href="{% url 'show_thread' doc|mongo_id %}">
+                        <img class="uk-border-circle uk-margin-left uk-flex-item-auto" src="{{ doc|get_path_pic_box:'box' }}" alt="{{ doc.title }}" width="120">
                         <div>
                             <h2><strong>{{ doc.title }}</strong></h2>
                             <p>{{ doc.description | striptags | safe | truncatechars:150 }}</p>

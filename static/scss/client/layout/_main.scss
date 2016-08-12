@@ -72,11 +72,4 @@ div.tm-no-result {
     background: rgba(255, 255, 255, 0.15);
 }
 
-a.tm-forum-panel {
-
-    img {
-        width: 170px;
-
-        @include box-shadow(0 0 5px 3px #C3C3C3);
-    }
-}
+a.tm-forum-panel img { @include box-shadow(0 0 5px 3px #C3C3C3); }

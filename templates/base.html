@@ -145,26 +145,26 @@
         {% endblock %}
 
         <!-- jQuery -->
-        <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+        <script src="{% static "js/jquery-3.0.0.min.js" %}"></script>
         {% google_analytics %}
         {% analytical_head_bottom %}
         {% analytical_body_top %}
         {% analytical_body_bottom %}
 
         <!-- UIkit -->
-        <script src="{% static 'js/uikit.min.js' %}"></script>
-        <script src="{% static 'js/components/sticky.min.js' %}"></script>
-        <script src="{% static 'js/components/notify.min.js' %}"></script>
-        <script src="{% static 'js/components/search.js' %}"></script>
-        <script src="{% static 'js/components/autocomplete.js' %}"></script>
+        <script src="{% static "js/uikit.min.js" %}"></script>
+        <script src="{% static "js/components/sticky.min.js" %}"></script>
+        <script src="{% static "js/components/notify.min.js" %}"></script>
+        <script src="{% static "js/components/search.js" %}"></script>
+        <script src="{% static "js/components/autocomplete.js" %}"></script>
         {% block uikit %}{% endblock %}
 
         <!-- Plugins And Scripts -->
         {% block js_plugins %}{% endblock %}
-        <script src="{% static 'js/shCore.js' %}"></script>
-        <script src="{% static 'js/shAutoloader.js' %}"></script>
-        <script src="{% static 'js/shBrushJScript.js' %}"></script>
-        <script src="{% static 'js/script.js' %}"></script>
+        <script src="{% static "js/shCore.js" %}"></script>
+        <script src="{% static "js/shAutoloader.js" %}"></script>
+        <script src="{% static "js/shBrushJScript.js" %}"></script>
+        <script src="{% static "js/script.js" %}"></script>
         <script>
             SyntaxHighlighter.config.bloggerMode = true;
             SyntaxHighlighter.all();
