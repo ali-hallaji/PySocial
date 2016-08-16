@@ -8,44 +8,27 @@
             <div style="background: #151b20; height: 360px;"></div>
         </div>
         <div class="uk-block uk-block-large">
-            <div class="uk-container uk-container-center">
-                <div class="uk-grid uk-flex-middle">
-                    <div class="uk-flex-item-auto">
-                        <div class="tm-panel-header-content uk-panel uk-flex uk-flex-column uk-flex-space-between uk-contrast">
-                            <h1 class="uk-heading-large">{{ box.title_fa }}</h1>
-                            <hr>
-                            <ul class="tm-subnav-content uk-subnav">
-                                <li><i class="uk-icon-thumbs-up"></i>{{ box.likes }} کیﻻ</li>
-                                <li><i class="uk-icon-book"></i>{{ len_contents }} ﺱﺭﺩ</li>
-                                <li><i class="uk-icon-users"></i>{{ box.likes }} ﺩیﺩﺯﺎﺑ</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="uk-hidden-small">
-                        <img src="{{ box.picture }}" alt="{{ box.title_fa }}">
-                    </div>
-                </div>
-            </div>
+            <div class="uk-container uk-container-center"></div>
         </div>
     </section>
 
     <div class="uk-container uk-container-center">
-        <table class="uk-table datatable">
+        <table class="tm-table-thread uk-table datatable uk-table-middle">
             <thead>
-                <th class="uk-text-right"></th>
+                <th class="uk-text-right uk-text-center">#</th>
                 <th class="uk-text-right">موضوع</th>
                 <th class="uk-text-right">توضیحات</th>
-                <th class="uk-text-right"></th>
+                <th class="uk-text-center">عملیات</th>
             </thead>
             {% for thread in threads %}
                 <tbody>
+                    <td class="uk-text-center"><strong>{{ forloop.counter }}</strong></td>
                     <td>
-                        <img src="{{ thread.thread_pic }}" alt="{{ thread.title }}">
+                        <strong><a href="{% url 'show_posts' thread|mongo_id %}">{{ thread.title }}</a></strong>
                     </td>
-                    <td><a href="{% url 'show_posts' thread|mongo_id %}">{{ thread.title }}</a></td>
                     <td>{{ thread.description | striptags | safe }}</td>
-                    <td>
-                        <a class="uk-button" href="{% url 'show_posts' thread|mongo_id %}"><i class="uk-icon-arrow-left"></i></a>
+                    <td class="uk-text-center">
+                        <a class="tm-btn-1 uk-button uk-button-small" href="{% url 'show_posts' thread|mongo_id %}"><i class="uk-icon-arrow-left"></i></a>
                     </td>
                 </tbody>
             {% endfor %}

@@ -1,0 +1,15 @@
+table.tm-table-thread {
+    border: 1px solid #ebf4f7;
+
+    thead {
+        background-color: #ebf4f7;
+        color: #3AC;
+    }
+
+    tbody > tr > td {
+
+        &:first-child { color: #E76E33; }
+
+        border-bottom: 1px solid #ebf4f7;
+    }
+}
